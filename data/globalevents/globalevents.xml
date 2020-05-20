@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalevents>
+
+	<!-- Custom -->
+	<globalevent name="Bosses" interval="198000000" script="custom/bosses.lua" />
+	
+	<!-- Events -->
+	<globalevent name="Lottery" time="15:00:00" script="custom/events/lottery.lua" />
+	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/> 
+	
+	<!-- Others -->
+	<globalevent type="startup" name="doCheckHouses" script="others/doCheckHouses.lua" />
+	<globalevent type="startup" name="ServerStartup" script="others/startup.lua" />
+	<globalevent type="record" name="PlayerRecord" script="others/record.lua" />
+	<globalevent name="Server Save" time="05:55:00" script="others/serversave.lua" />
+	
+</globalevents>

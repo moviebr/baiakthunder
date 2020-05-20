@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+
+	<!-- Custom -->
+	<event type="login" name="FreeBless" script="custom/freeBless.lua" />
+	<event type="login" name="OnlineBonus" script="custom/onlineBonus.lua" />
+	<event type="advance" name="RewardLevel" script="custom/rewardLevel.lua" />
+	<event type="advance" name="AnimationUp" script="custom/animationUp.lua" />
+	<!--event type="healthchange" name="CriticalSystem" script="custom/critical.lua"/>
+	<event type="healthchange" name="DodgeSystem" script="custom/dodge.lua"/-->
+	<event type="kill" name="AutoLoot" script="custom/autoLoot.lua" />
+	
+	<!-- Events -->
+	<event type="logout" name="eventlogout" script="custom/events/eventLogout.lua" />
+	<event type="death" name="HungerGames" script="custom/events/hungerGames.lua" />
+
+	<!-- Others -->
+	<event type="login" name="PlayerLogin" script="others/login.lua" />
+	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
+	<event type="login" name="FirstItems" script="others/firstitems.lua" />
+	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />
+	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
+	<event type="death" name="DropLoot" script="others/droploot.lua" />
+	<event type="extendedopcode" name="ExtendedOpcode" script="others/extendedopcode.lua" />
+</creaturescripts>
