@@ -18,9 +18,9 @@ function spellbook.onUse(player, item, fromPosition, target, toPosition, isHotke
 	for i, spell in ipairs(spells) do
 		if prevLevel ~= spell:level() then
 			if i == 1 then
-				text[#text == nil and 1 or #text+1] = "Spells for Level "
+				text[#text == nil and 1 or #text+1] = "Magias para Level "
 			else
-				text[#text+1] = "\nSpells for Level "
+				text[#text+1] = "\nMagias para Level "
 			end
 			text[#text+1] = spell:level() .. "\n"
 			prevLevel = spell:level()

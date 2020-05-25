@@ -4,9 +4,6 @@ function onSay(player, words, param)
 	end
 
 	local steps = tonumber(param)
-	if not steps then
-		return false
-	end
 
 	local position = player:getPosition()
 	position:getNextPosition(player:getDirection(), steps)
@@ -17,6 +14,6 @@ function onSay(player, words, param)
 		return false
 	end
 
-	player:teleportTo(position)
+	player:teleportTo(position, true)
 	return false
 end

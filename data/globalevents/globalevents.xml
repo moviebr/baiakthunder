@@ -3,9 +3,12 @@
 
 	<!-- Custom -->
 	<globalevent name="Bosses" interval="198000000" script="custom/bosses.lua" />
+	<globalevent name="TextEffect" interval="3000" script="custom/textEffect.lua" />
+	<globalevent name="EventsShow" interval="5000" script="custom/eventsShow.lua" />
 	
 	<!-- Events -->
 	<globalevent name="Lottery" time="15:00:00" script="custom/events/lottery.lua" />
+	<globalevent name="Battlefield" interval="60000" script="custom/events/battlefield.lua" />
 	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/> 
 	
 	<!-- Others -->

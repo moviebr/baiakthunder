@@ -28,25 +28,25 @@
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item fromid="371" toid="382" article="uma" name="parede de pedra" />
-	<item id="383" article="a" name="hole">
+	<item id="383" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="384" name="dirt floor">
-		<attribute key="description" value="There is a hole in the ceiling." />
+		<attribute key="description" value="There is a buraco in the ceiling." />
 	</item>
-	<item id="385" article="a" name="small hole">
+	<item id="385" article="a" name="small buraco">
 		<attribute key="description" value="It seems too narrow to climb through." />
 	</item>
-	<item fromid="386" toid="387" name="stalagmites" />
-	<item id="388" article="a" name="lava hole">
+	<item fromid="386" toid="387" name="estalagmites" />
+	<item id="388" article="a" name="lava buraco">
 		<attribute key="description" value="It seems to be inactive." />
 	</item>
-	<item id="389" article="a" name="lava hole">
+	<item id="389" article="a" name="lava buraco">
 		<attribute key="fluidsource" value="lava" />
 		<attribute key="description" value="It emits heat and light." />
 	</item>
-	<item fromid="390" toid="391" name="stalagmites" />
-	<item id="392" article="a" name="hole">
+	<item fromid="390" toid="391" name="estalagmites" />
+	<item id="392" article="um" name="buraco">
 		<attribute key="decayTo" value="354" />
 		<attribute key="duration" value="300" />
 		<attribute key="floorchange" value="down" />
@@ -69,7 +69,7 @@
 		<attribute key="walkStack" value="0" />
 	</item>
 	<item id="418" article="a" name="stone tile">
-		<attribute key="description" value="There is a hole in the ceiling." />
+		<attribute key="description" value="There is a buraco in the ceiling." />
 	</item>
 	<item id="419" article="a" name="sandstone tile" />
 	<item id="420" name="tiled floor" />
@@ -107,9 +107,9 @@
 	<item id="459" name="escadas">
 		<attribute key="floorchange" value="down" />
 	</item>
-	<item id="460" name="nothing special" />
-	<item id="461" article="a" name="closed trapdoor" />
-	<item id="462" article="an" name="open trapdoor">
+	<item id="460" name="nada especial" />
+	<item id="461" article="a" name="alçapão fechado" />
+	<item id="462" article="an" name="alçapão aberto">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="461" />
 		<attribute key="duration" value="5" />
@@ -120,40 +120,40 @@
 	<item id="466" article="a" name="sandstone wall" />
 	<item id="467" name="stone flooring" />
 	<item id="468" article="a" name="stone pile" />
-	<item id="469" article="a" name="hole">
+	<item id="469" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="468" />
 		<attribute key="duration" value="60" />
 	</item>
-	<item id="470" article="a" name="hole">
+	<item id="470" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item fromid="471" toid="474" article="a" name="strange carving" />
-	<item fromid="475" toid="476" article="a" name="hole">
+	<item fromid="475" toid="476" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item fromid="477" toid="478" article="a" name="ramp" />
-	<item fromid="479" toid="480" article="a" name="hole">
+	<item fromid="479" toid="480" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="481" article="a" name="loose stone pile" />
-	<item id="482" article="a" name="hole">
+	<item id="482" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="481" />
 		<attribute key="duration" value="300" />
 	</item>
 	<item id="483" article="a" name="loose ice pile" />
-	<item id="484" article="a" name="hole">
+	<item id="484" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="483" />
 		<attribute key="duration" value="300" />
 	</item>
-	<item id="485" article="a" name="hole">
+	<item id="485" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="486" article="a" name="snow heap" />
 	<item fromid="487" toid="488" article="a" name="ramp" />
-	<item id="489" article="a" name="hole">
+	<item id="489" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="9059" />
 		<attribute key="duration" value="30" />
@@ -782,7 +782,7 @@
 		<attribute key="decayTo" value="1510" />
 		<attribute key="duration" value="10" />
 	</item>
-	<item id="1512" name="strange holes">
+	<item id="1512" name="strange buracos">
 		<attribute key="decayTo" value="1513" />
 		<attribute key="duration" value="4" />
 	</item>
@@ -810,7 +810,7 @@
 	</item>
 	<item fromid="1543" toid="1545" article="a" name="fence" />
 	<item fromid="1546" toid="1547" name="bars" />
-	<item id="1548" name="nothing special" />
+	<item id="1548" name="nada especial" />
 	<item id="1549" article="a" name="sandstone pillar" />
 	<item id="1550" article="a" name="sandstone statue" />
 	<item id="1551" article="an" name="oriental pillar" />
@@ -2659,7 +2659,11 @@
 		<attribute key="weight" value="105" />
 		<attribute key="charges" value="2" />
 	</item>
-	<item fromid="2263" toid="2264" article="a" name="spell rune">
+	<item id="2263" article="uma" name="thunder death rune">
+		<attribute key="type" value="rune" />
+		<attribute key="weight" value="1000" />
+	</item>
+	<item id="2264" article="a" name="spell rune">
 		<attribute key="type" value="rune" />
 		<attribute key="weight" value="120" />
 	</item>
@@ -2701,9 +2705,9 @@
 		<attribute key="weight" value="42" />
 		<attribute key="charges" value="5" />
 	</item>
-	<item id="2272" article="a" name="spell rune">
+	<item id="2272" article="uma" name="thunder mana rune">
 		<attribute key="type" value="rune" />
-		<attribute key="weight" value="120" />
+		<attribute key="weight" value="1200" />
 	</item>
 	<item id="2273" article="an" name="ultimate healing rune">
 		<attribute key="type" value="rune" />
@@ -3078,7 +3082,7 @@
 		<attribute key="description" value="(This item has 2 charges left)." />
 		<attribute key="weight" value="600" />
 	</item>
-	<item id="2360" article="a" name="portable hole" />
+	<item id="2360" article="a" name="portable buraco" />
 	<item id="2361" article="a" name="frozen starlight">
 		<attribute key="slotType" value="ammo" />
 		<attribute key="weight" value="20" />
@@ -9073,7 +9077,7 @@
 		<attribute key="corpseType" value="blood" />
 	</item>
 	<item id="5730" name="" />
-	<item id="5731" article="a" name="hole">
+	<item id="5731" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="5732" article="uma" name="porta fechada">
@@ -10585,7 +10589,7 @@
 	</item>
 	<item fromid="6175" toid="6176" article="a" name="tree archway" />
 	<item id="6177" article="a" name="branch" />
-	<item fromid="6178" toid="6179" article="a" name="tree hole" />
+	<item fromid="6178" toid="6179" article="a" name="tree buraco" />
 	<item fromid="6180" toid="6181" article="a" name="tree" />
 	<item fromid="6182" toid="6189" article="a" name="large branch" />
 	<item fromid="6190" toid="6191" article="a" name="branch" />
@@ -12015,17 +12019,17 @@
 	<item fromid="7201" toid="7212" article="a" name="raft" />
 	<item fromid="7213" toid="7214" article="a" name="raft rudder" />
 	<item fromid="7215" toid="7218" article="a" name="ship rudder" />
-	<item id="7219" article="a" name="ship rudder hole" />
+	<item id="7219" article="a" name="ship rudder buraco" />
 	<item fromid="7220" toid="7227" article="a" name="ship rudder" />
 	<item fromid="7228" toid="7231" article="a" name="figurehead" />
 	<item fromid="7232" toid="7233" name="spikes" />
 	<item fromid="7234" toid="7235" article="a" name="shield" />
-	<item id="7236" article="an" name="ice hole">
+	<item id="7236" article="an" name="ice buraco">
 		<attribute key="description" value="You can see the movement of fish." />
 		<attribute key="decayTo" value="7200" />
 		<attribute key="duration" value="300" />
 	</item>
-	<item id="7237" article="an" name="ice hole">
+	<item id="7237" article="an" name="ice buraco">
 		<attribute key="decayTo" value="7236" />
 		<attribute key="duration" value="300" />
 	</item>
@@ -12050,7 +12054,7 @@
 		<attribute key="weight" value="700" />
 	</item>
 	<item id="7247" name="fine sulphur">
-		<attribute key="description" value="It has been extracted from an inactive lava hole." />
+		<attribute key="description" value="It has been extracted from an inactive lava buraco." />
 		<attribute key="weight" value="50" />
 	</item>
 	<item id="7248" article="a" name="frostbite herb">
@@ -14779,10 +14783,10 @@
 		<attribute key="corpseType" value="blood" />
 		<attribute key="fluidSource" value="blood" />
 	</item>
-	<item id="7932" article="a" name="large hole">
+	<item id="7932" article="a" name="large buraco">
 		<attribute key="description" value="It is loosely covered by some stones and earth." />
 	</item>
-	<item id="7933" article="a" name="hole">
+	<item id="7933" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="7932" />
 		<attribute key="duration" value="600" />
@@ -14793,7 +14797,7 @@
 		<attribute key="weight" value="970" />
 	</item>
 	<item id="7937" article="a" name="potion stand" />
-	<item id="7938" article="a" name="large hole">
+	<item id="7938" article="a" name="large buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="7939" article="a" name="mining helmet">
@@ -15031,19 +15035,19 @@
 	<item fromid="8237" toid="8240" name="jagged stones" />
 	<item fromid="8241" toid="8242" article="an" name="ornamented stone pillar" />
 	<item fromid="8243" toid="8248" article="an" name="archway" />
-	<item fromid="8249" toid="8252" article="a" name="hole">
+	<item fromid="8249" toid="8252" article="um" name="buraco">
 		<attribute key="description" value="It seems too narrow to crawl trough." />
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="8253" name="something crawling" />
-	<item fromid="8254" toid="8255" article="a" name="hole">
+	<item fromid="8254" toid="8255" article="um" name="buraco">
 		<attribute key="description" value="It seems too narrow to crawl trough." />
 		<attribute key="floorchange" value="down" />
 	</item>
-	<item id="8256" article="a" name="large hole">
+	<item id="8256" article="a" name="large buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
-	<item fromid="8257" toid="8258" article="a" name="large hole" />
+	<item fromid="8257" toid="8258" article="a" name="large buraco" />
 	<item id="8259" name="" />
 	<item id="8260" article="a" name="mountain" />
 	<item id="8261" article="a" name="jewel case">
@@ -15103,7 +15107,7 @@
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="8278" name="dirt floor">
-		<attribute key="description" value="There is a hole in the ceiling." />
+		<attribute key="description" value="There is a buraco in the ceiling." />
 	</item>
 	<item fromid="8279" toid="8281" article="a" name="trapdoor">
 		<attribute key="floorchange" value="down" />
@@ -15137,7 +15141,7 @@
 		<attribute key="weight" value="250" />
 	</item>
 	<item id="8301" name="holy soil">
-		<attribute key="description" value="It has been extracted from an inactive lava hole." />
+		<attribute key="description" value="It has been extracted from an inactive lava buraco." />
 		<attribute key="weight" value="50" />
 	</item>
 	<item id="8302" name="iced soil">
@@ -15196,7 +15200,7 @@
 	<item id="8313" article="a" name="birch" />
 	<item id="8314" article="a" name="dead tree" />
 	<item fromid="8315" toid="8322" name="areia" />
-	<item id="8323" article="a" name="hole" />
+	<item id="8323" article="um" name="buraco" />
 	<item fromid="8324" toid="8325" article="a" name="heap of sand" />
 	<item fromid="8326" toid="8334" name="dried grass" />
 	<item fromid="8335" toid="8346" name="areia" />
@@ -15331,7 +15335,7 @@
 	<item fromid="8559" toid="8566" article="a" name="ramp">
 		<attribute key="floorchange" value="down" />
 	</item>
-	<item id="8567" article="a" name="hole">
+	<item id="8567" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="8568" name="areia" />
@@ -15339,12 +15343,12 @@
 	<item id="8570" name="ice" />
 	<item id="8571" article="an" name="ice cube" />
 	<item id="8572" name="dead man's saddle" article="a" />
-	<item id="8573" article="an" name="inactive lava hole" />
+	<item id="8573" article="an" name="inactive lava buraco" />
 	<item id="8574" article="an" name="ice statue">
 		<attribute key="decayTo" value="8571" />
 		<attribute key="duration" value="120" />
 	</item>
-	<item id="8575" article="a" name="lavahole">
+	<item id="8575" article="a" name="lavaburaco">
 		<attribute key="decayTo" value="8573" />
 		<attribute key="duration" value="120" />
 	</item>
@@ -15369,7 +15373,7 @@
 	<item id="8584" name="Jerom's family necklace">
 		<attribute key="weight" value="630" />
 	</item>
-	<item id="8585" article="a" name="hole">
+	<item id="8585" article="um" name="buraco">
 		<attribute key="floorchange" value="down" />
 		<attribute key="decayTo" value="8579" />
 		<attribute key="duration" value="600" />
@@ -16411,7 +16415,7 @@
 		<attribute key="description" value="It is the pheromone gland of a rotworm queen." />
 		<attribute key="weight" value="50" />
 	</item>
-	<item id="8972" article="a" name="large hole">
+	<item id="8972" article="a" name="large buraco">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item id="8973" article="an" name="archway" />
@@ -16431,7 +16435,7 @@
 		<attribute key="description" value="It contains all the knowledge of the world." />
 		<attribute key="weight" value="1337" />
 	</item>
-	<item id="8978" article="uma" name="Chave de Super UP">
+	<item id="8978" article="uma" name="chave de Super UP">
 		<attribute key="weight" value="150" />
 	</item>
 	<item id="8979" article="an" name="emblem">
@@ -16871,8 +16875,8 @@
 	</item>
 	<item fromid="9607" toid="9610" article="a" name="small balcony" />
 	<item fromid="9611" toid="9623" article="an" name="old carpet" />
-	<item id="9624" article="a" name="closed trapdoor" />
-	<item id="9625" article="an" name="open trapdoor">
+	<item id="9624" article="a" name="alçapão fechado" />
+	<item id="9625" article="an" name="alçapão aberto">
 		<attribute key="floorchange" value="down" />
 	</item>
 	<item fromid="9626" toid="9630" article="an" name="old carpet" />
@@ -18203,7 +18207,7 @@
 		<attribute key="showattributes" value="1" />
 	</item>
 	<item id="10219" article="a" name="sacred tree amulet">
-		<attribute key="description" value="Its leaves stretch out to cover your whole body if you receive earth damage." />
+		<attribute key="description" value="Its leaves stretch out to cover your wburaco body if you receive earth damage." />
 		<attribute key="weight" value="700" />
 		<attribute key="slotType" value="necklace" />
 		<attribute key="charges" value="5" />
@@ -19392,7 +19396,7 @@
 		<attribute key="corpseType" value="blood" />
 	</item>
 	<item fromid="11142" toid="11143" article="a" name="shrine" />
-	<item id="11144" article="um" name="premium addon doll">
+	<item id="11144" article="um" name="addon doll premium">
 	<attribute key="description" value="Clique para ganhar todos os addons, menos o addon mage.&#xA;[Premium]" />
 	<attribute key="weight" value="1800" />
 	</item>
@@ -20201,7 +20205,7 @@
 		<attribute key="duration" value="600" />
 		<attribute key="corpseType" value="undead" />
 	</item>
-	<item id="11421" article="a" name="premium pick">
+	<item id="11421" article="uma" name="picareta premium">
 		<attribute key="description" value="Tenha mais chances ao minerar.&#xA;[Premium]" />
 		<attribute key="weight" value="7000" />
 	</item>

@@ -12,5 +12,5 @@ function onSay(player, words, param)
         player:sendCancelMessage("Você não tem dinheiro suficiente.")
     end
 
-      return false
+    return false
 end

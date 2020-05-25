@@ -3,7 +3,7 @@ local outfits =
 	--[outfit] = {id_female, id_male}
 	["citizen"] = {136, 128},
 	["hunter"] = {137, 129},
-	--["mage"] = {138, 130},
+	["mage"] = {138, 130},
 	["knight"] = {139, 131},
 	["noblewoman"] = {140, 132},
 	["summoner"] = {141, 133},
@@ -29,24 +29,44 @@ local outfits =
 function onSay(player, words, param)
 
 	local addondoll_id = 9693
+	local word = outfits[string.lower(param)]
 
-	if player:getItemCount(addondoll_id) > 0 then
-		local word = outfits[string.lower(param)]
-		if param ~= "" and word then
-			if (not player:hasOutfit(word[1], 3) or not player:hasOutfit(word[2], 3)) and player:removeItem(addondoll_id, 1) then
-				player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
-				player:addOutfitAddon(word[1], 3)
-				player:addOutfitAddon(word[2], 3)
-				player:sendTextMessage(MESSAGE_INFO_DESCR, "Seu addon full foi adicionado!")
-			else
-				player:sendCancelMessage("Você já tem esse addon")
-			end
-		else
-			player:sendCancelMessage("Digite novamente, algo está errado!")
-		end
-	else
-		player:sendCancelMessage("Você não tem addon doll!")
+	if param == "" or not word then
+		player:sendCancelMessage("Digite novamente, algo está errado!")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
 	end
+
+	if player:getItemCount(addondoll_id) < 1 then
+		player:sendCancelMessage("Você não tem addon doll!")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
+
+	if (player:hasOutfit(word[1], 3) or player:hasOutfit(word[2], 3)) then
+		player:sendCancelMessage("Você já tem esse addon")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
+
+	if not player:removeItem(addondoll_id, 1) then
+		player:sendCancelMessage("Digite novamente, algo está errado!")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
+
+	if word[1] == 138 or word[2] == 130 then
+		player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
+		player:addOutfitAddon(word[1], 1)
+		player:addOutfitAddon(word[2], 1)
+		player:sendTextMessage(MESSAGE_INFO_DESCR, "Seu addon 1 de mage foi adicionado!")
+		return true
+	end
+
+	player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
+	player:addOutfitAddon(word[1], 3)
+	player:addOutfitAddon(word[2], 3)
+	player:sendTextMessage(MESSAGE_INFO_DESCR, "Seu addon full foi adicionado!")
 
 	return true
 end

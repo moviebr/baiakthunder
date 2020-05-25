@@ -1,8 +1,0 @@
-Position(196, 496, 7) -- Antiga sala de teleports
-Position(176, 769, 7) -- Nova sala de teleports
-
-Position(268, 487, 7) -- SuperUP que eu tinha feito
-Position(327, 585, 7) -- SuperUP trackeado do IceWar
-
-Position(438, 481, 7) -- Possível quest (tem que aumentar o tamanho)
-Position(354, 416, 7) -- Possível quest (tem que aumentar o tamanho)

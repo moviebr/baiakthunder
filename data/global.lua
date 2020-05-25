@@ -1,16 +1,20 @@
 math.randomseed(os.time())
 dofile('data/lib/lib.lua')
 
+templePosition = Position(991, 1210, 7)
+
+tabelaExiva = {}
+
 STORAGEVALUE_PROMOTION = 30018
 STORAGEVALUE_DELAY_LARGE_SEASHELL = 30019
--- Storage Online Bonus
-STORAGEVALUE_ONLINE_BONUS = 47641
 -- Storage Castle 24H
 STORAGEVALUE_CASTLE_DOMINADO = 75147
 STORAGEVALUE_CASTLE_SPAM = 75148
 -- Critical/Dodge System
 STORAGEVALUE_DODGE = 48900
 STORAGEVALUE_CRITICAL = 48901
+-- Events
+STORAGEVALUE_EVENTS = 74861
 -- AutoLoot
 AUTO_LOOT_MAX_ITEMS = 5
 AUTOLOOT_STORAGE_START = 10000
@@ -174,4 +178,25 @@ function Game.sendTextOnPosition(message, position, effect)
     end
 
     return true
+end
+
+string.diff = function (diff, translate)
+    local format = {
+        {not translate and 'week' or 'semana', diff / 60 / 60 / 24 / 7},
+        {not translate and 'day' or 'dia', diff / 60 / 60 / 24 % 7},
+        {not translate and 'hour' or 'hora', diff / 60 / 60 % 24},
+        {not translate and 'minute' or 'minuto', diff / 60 % 60},
+        {not translate and 'second' or 'segundo', diff % 60}
+    }
+
+    local t = {}
+    for k, v in ipairs(format) do
+        local d, tmp = math.floor(v[2]), ''
+        if(d > 0) then
+            tmp = (k < table.maxn(format) and (table.maxn(t) > 0 and ', ' or '') or (#t == 0 and '' or (not translate and ' and ' or ' e '))) .. d .. ' ' .. v[1] .. (d ~= 1 and 's' or '')
+            table.insert(t, tmp)
+        end
+    end
+
+    return table.concat(t)
 end

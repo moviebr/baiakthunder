@@ -30,9 +30,6 @@ local potions = {
 	[8473] = {health = {650, 850}, vocations = {4, 8}, level = 130, flask = 7635, description = "Somente knights de level 130 ou superior pode beber este líquido."},
 	[8474] = {antidote = true, flask = 7636},
 	[8704] = {health = {60, 90}, flask = 7636},
-	[26029] = {mana = {425, 575}, vocations = {1, 2, 5, 6}, level = 130, flask = 7635, description = "Somente druids e sorcerers de level 130 ou superior pode beber este líquido."},
-	[26030] = {health = {420, 580}, mana = {200, 350}, vocations = {3, 7}, level = 130, flask = 7635, description = "Somente paladins de level 130 ou superior pode beber este líquido."},
-	[26031] = {health = {875, 1125}, vocations = {4, 8}, level = 200, flask = 7635, description = "Somente knights do level 200 ou superior pode beber este líquido."}
 }
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)

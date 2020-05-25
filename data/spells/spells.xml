@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spells>
+	<!-- Custom -->
+	<rune group="attack" name="Thunder Death Rune" id="2263" allowfaruse="1" charges="1" level="45" magiclevel="1" cooldown="1800" needtarget="1" blocktype="solid" script="attack/thunder_death_rune.lua" >
+		<vocation name="Sorcerer" />
+		<vocation name="Druid" />
+		<vocation name="Master Sorcerer" />
+		<vocation name="Masterful Sorcerer" />
+		<vocation name="Elder Druid" />
+		<vocation name="Ancient Druid" />
+	</rune>
+	<rune group="support" name="Thunder Mana Rune" id="2272" allowfaruse="1" charges="1" level="45" magiclevel="1" cooldown="1000" needtarget="1" aggressive="0" blocktype="solid" script="support/thunder_mana_rune.lua">
+		<vocation name="Sorcerer" />
+		<vocation name="Druid" />
+		<vocation name="Master Sorcerer" />
+		<vocation name="Masterful Sorcerer" />
+		<vocation name="Elder Druid" />
+		<vocation name="Ancient Druid" />
+	</rune>
+
 	<!-- Attack Spells -->
 	<instant group="attack" name="Berserk" words="exori" level="35" mana="115" premium="0" needweapon="1" cooldown="4000" needlearn="0" script="attack/berserk.lua">
 		<vocation name="Knight" />
@@ -238,6 +256,7 @@
 		<vocation name="Glorious Paladin" />
 	</instant>
 	<instant group="support" name="Challenge" words="exeta res" level="20" mana="30" premium="0" aggressive="0" cooldown="2000" needlearn="0" script="support/challenge.lua">
+		<vocation name="Knight" />
 		<vocation name="Elite Knight" />
 		<vocation name="Rageful Knight" />
 	</instant>

@@ -12,3 +12,9 @@ dofile('data/lib/custom/infoStorage.lua')
 
 -- Online Time System 
 dofile('data/lib/custom/onlineTime.lua')
+
+-- Debug Lib
+dofile('data/lib/custom/debug.lua')
+
+-- Battlefield
+dofile('data/lib/events/battlefield.lua')

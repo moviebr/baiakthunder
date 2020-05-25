@@ -15,6 +15,15 @@ function onLogin(player)
 	-- Stamina
 	nextUseStaminaTime[player.uid] = 0
 
+	-- Eventos
+	if player:getStorageValue(STORAGEVALUE_EVENTS) >= 1 then
+		player:teleportTo(player:getTown():getTemplePosition())
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
+
+		-- Battlefield
+	end
+
 	-- Dodge/Critical System
 	if player:getDodgeLevel() == -1 then
 		player:setDodgeLevel(0) 
@@ -44,8 +53,9 @@ function onLogin(player)
 	player:registerEvent("AnimationUp")
 	player:registerEvent("DropLoot")
 	player:registerEvent("HungerGames")
-	player:registerEvent("DodgeSystem")
-	player:registerEvent("CriticalSystem")
+	player:registerEvent("DodgeCriticalSystem")
+	player:registerEvent("DodgeManaSystem")
 	player:registerEvent("AutoLoot")
+	player:registerEvent("Exiva")
 	return true
 end

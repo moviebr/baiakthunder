@@ -1,3 +1,4 @@
+local monstro = true
 local LEVEL_LOWER = 1
 local LEVEL_SAME = 2
 local LEVEL_HIGHER = 3
@@ -8,29 +9,29 @@ local DISTANCE_FAR = 3
 local DISTANCE_VERYFAR = 4
 
 local directions = {
-	[DIRECTION_NORTH] = "north",
-	[DIRECTION_SOUTH] = "south",
-	[DIRECTION_EAST] = "east",
-	[DIRECTION_WEST] = "west",
-	[DIRECTION_NORTHEAST] = "north-east",
-	[DIRECTION_NORTHWEST] = "north-west",
-	[DIRECTION_SOUTHEAST] = "south-east",
-	[DIRECTION_SOUTHWEST] = "south-west"
+	[DIRECTION_NORTH] = "norte",
+	[DIRECTION_SOUTH] = "sul",
+	[DIRECTION_EAST] = "leste",
+	[DIRECTION_WEST] = "oeste",
+	[DIRECTION_NORTHEAST] = "nordeste",
+	[DIRECTION_NORTHWEST] = "noroeste",
+	[DIRECTION_SOUTHEAST] = "sudeste",
+	[DIRECTION_SOUTHWEST] = "sudoeste"
 }
 
 local messages = {
 	[DISTANCE_BESIDE] = {
-		[LEVEL_LOWER] = "is below you",
-		[LEVEL_SAME] = "is standing next to you",
-		[LEVEL_HIGHER] = "is above you"
+		[LEVEL_LOWER] = "está abaixo de você",
+		[LEVEL_SAME] = "está de pé ao seu lado",
+		[LEVEL_HIGHER] = "está acima de você"
 	},
 	[DISTANCE_CLOSE] = {
-		[LEVEL_LOWER] = "is on a lower level to the",
-		[LEVEL_SAME] = "is to the",
-		[LEVEL_HIGHER] = "is on a higher level to the"
+		[LEVEL_LOWER] = "está em um nível inferior a",
+		[LEVEL_SAME] = "está para o",
+		[LEVEL_HIGHER] = "está em um nível superior a"
 	},
-	[DISTANCE_FAR] = "is far to the",
-	[DISTANCE_VERYFAR] = "is very far to the"
+	[DISTANCE_FAR] = "está longe do",
+	[DISTANCE_VERYFAR] = "é muito longe do"
 }
 
 function onCastSpell(creature, variant)
@@ -66,6 +67,12 @@ function onCastSpell(creature, variant)
 	local message = messages[distance][level] or messages[distance]
 	if distance ~= DISTANCE_BESIDE then
 		message = message .. " " .. directions[direction]
+	end
+
+	local targetId = target:getId()
+	local tabela = tabelaExiva[targetId]
+	if tabela and monstro then
+		message = message .. ".\nO último monstro morto por ".. target:getName() .. " foi " .. tabelaExiva[targetId][1] .." " .. string.diff((os.time() - tabelaExiva[targetId][2]), true) .. " atrás"
 	end
 
 	creature:sendTextMessage(MESSAGE_INFO_DESCR, target:getName() .. " " .. message .. ".")

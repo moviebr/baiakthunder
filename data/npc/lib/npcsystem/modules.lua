@@ -2,15 +2,15 @@
 
 if Modules == nil then
 	-- default words for greeting and ungreeting the npc. Should be a table containing all such words.
-	FOCUS_GREETWORDS = {"hi", "hello"}
-	FOCUS_FAREWELLWORDS = {"bye", "farewell"}
+	FOCUS_GREETWORDS = {"hi", "hello", "olá", "ola", "oi"}
+	FOCUS_FAREWELLWORDS = {"bye", "farewell", "adeus", "goodbye", "good bye", "tchau"}
 
 	-- The words for requesting trade window.
-	SHOP_TRADEREQUEST = {"trade"}
+	SHOP_TRADEREQUEST = {"trade", "troca", "trocar"}
 
 	-- The word for accepting/declining an offer. CAN ONLY CONTAIN ONE FIELD! Should be a table with a single string value.
-	SHOP_YESWORD = {"yes"}
-	SHOP_NOWORD = {"no"}
+	SHOP_YESWORD = {"yes", "sim"}
+	SHOP_NOWORD = {"no", "não", "nao"}
 
 	-- Pattern used to get the amount of an item a player wants to buy/sell.
 	PATTERN_COUNT = "%d+"
@@ -107,13 +107,13 @@ if Modules == nil then
 		local player = Player(cid)
 		if player:isPremium() or not parameters.premium then
 			if player:hasLearnedSpell(parameters.spellName) then
-				npcHandler:say("You already know this spell.", cid)
+				npcHandler:say("Você já sabe essa magia.", cid)
 			elseif not player:canLearnSpell(parameters.spellName) then
-				npcHandler:say("You cannot learn this spell.", cid)
+				npcHandler:say("Você não pode aprender essa magia.", cid)
 			elseif not player:removeTotalMoney(parameters.price) then
-				npcHandler:say("You do not have enough money, this spell costs " .. parameters.price .. " gold.", cid)
+				npcHandler:say("Você não tem dinheiro suficiente, essa magia custa " .. parameters.price .. " gold.", cid)
 			else
-				npcHandler:say("You have learned " .. parameters.spellName .. ".", cid)
+				npcHandler:say("Você aprendeu " .. parameters.spellName .. ".", cid)
 				player:learnSpell(parameters.spellName)
 			end
 		else

@@ -1322,7 +1322,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 								}
 								s << ": ";
 							} else {
-								s << "VocÃª lÃª: ";
+								s << "Você lê: ";
 							}
 							s << *text;
 						} else {
@@ -1332,7 +1332,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 						s << "Nada está escrito";
 					}
 				} else {
-					s << "VocÃª está muito longe para ler";
+					s << "Você está muito longe para ler";
 				}
 			} else if (it.levelDoor != 0 && item) {
 				uint16_t actionId = item->getActionId();

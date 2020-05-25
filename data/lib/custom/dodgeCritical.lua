@@ -1,11 +1,11 @@
 DODGE = {
 	LEVEL_MAX = 100, -- máximo de dodge level que o player pode alcançar
-	PERCENT = 0.3 -- porcentagem que irá defender o ataque [padrão 50% = 0.5]
+	PERCENT = 0.2 -- porcentagem que irá defender o ataque [padrão 50% = 0.5]
 }
 
 CRITICAL = {
 	LEVEL_MAX = 100, -- máximo de critical level que o player pode alcançar
-	PERCENT = 0.3 -- porcentagem que irá aumentar o ataque [padrão 50% = 0.5]
+	PERCENT = 0.2 -- porcentagem que irá aumentar o ataque [padrão 50% = 0.5]
 }
 
 function Player.getDodgeLevel(self)

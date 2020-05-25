@@ -1,4 +1,10 @@
 function Player:onLook(thing, position, distance)
+	local minDist = 5
+	if (thing:isCreature() and thing:isNpc() and distance <= minDist) then
+       self:say("hi", TALKTYPE_PRIVATE_PN, false, thing)
+       self:say("trade", TALKTYPE_PRIVATE_PN, false, thing)
+       return false   
+   end
 	local description = "Você vê " .. thing:getDescription(distance)
 	
 	if LOOK_MARRIAGE_DESCR and thing:isCreature() then
@@ -64,6 +70,12 @@ function Player:onLook(thing, position, distance)
 end
 
 function Player:onLookInBattleList(creature, distance)
+	local minDist = 5
+	if (thing:isCreature() and thing:isNpc() and distance <= minDist) then
+       self:say("hi", TALKTYPE_PRIVATE_PN, false, thing)
+       self:say("trade", TALKTYPE_PRIVATE_PN, false, thing)
+       return false   
+   end
 	local description = "Você vê " .. creature:getDescription(distance)
 	if self:getGroup():getAccess() then
 		local str = "%s\nVida: %d / %d"

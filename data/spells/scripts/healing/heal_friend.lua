@@ -13,7 +13,12 @@ end
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 function onCastSpell(creature, variant)
-	pos = creature:getPosition()
+	local pos = creature:getPosition()
 	pos:sendMagicEffect(CONST_ME_MAGIC_BLUE)
+	local player = Player(variant.number)
+	local playerPos = player:getPosition()
+	pos:sendDistanceEffect(playerPos, 5)
+	playerPos:sendMagicEffect(48)
+
 	return combat:execute(creature, variant)
 end
