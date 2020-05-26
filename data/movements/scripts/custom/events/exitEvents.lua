@@ -12,6 +12,8 @@ function onStepIn(creature, item, position, fromPosition)
 		Game.setStorageValue(BATTLEFIELD.storageTeamRed, (getTeamRed - 1))
 	end
 	player:setStorageValue(BATTLEFIELD.storageTeam, 0)
+	-- SafeZone
+	player:setStorageValue(SAFEZONE.storage, 0)
 
 	-- Geral
 	player:sendTextMessage(MESSAGE_INFO_DESCR, "Você saiu do evento.")
