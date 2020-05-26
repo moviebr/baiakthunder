@@ -10,6 +10,7 @@
 	<event type="manachange" name="DodgeManaSystem" script="custom/dodgeMana.lua"/>
 	<event type="kill" name="AutoLoot" script="custom/autoLoot.lua" />
 	<event type="kill" name="Exiva" script="custom/exiva.lua" />
+	<event type="kill" name="Tasks" script="custom/task.lua" />
 	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
 	
 	<!-- Events -->

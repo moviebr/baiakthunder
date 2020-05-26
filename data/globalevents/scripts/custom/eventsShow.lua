@@ -1,13 +1,27 @@
 local EventsList = {
     ["Sunday"] = {
        {name = "Battlefield", time = "15:00"},
-       {name = "SnowBall", time = "20:00"},
+       {name = "SafeZone", time = "20:00"},
     },
     ["Monday"] = {
-        {name = "Battlelfield", time = "20:00"},
+        {name = "Battlefield", time = "15:00"},
+        {name = "SafeZone", time = "20:00"},
+    },
+    ["Tuesday"] = {
+    	{name = "Battlefield", time = "15:00"},
+        {name = "SafeZone", time = "20:00"},
+    },
+    ["Wednesday"] = {
+        {name = "Battlefield", time = "15:00"},
+        {name = "SafeZone", time = "20:00"},
     },
     ["Thursday"] = {
-    	{name = "SafeZone", time = "15:00"}
+        {name = "Battlefield", time = "15:00"},
+        {name = "SafeZone", time = "20:00"},
+    },
+    ["Friday"] = {
+        {name = "Battlefield", time = "15:00"},
+        {name = "SafeZone", time = "20:00"},
     },
 }
 
@@ -26,7 +40,7 @@ function onThink(interval, lastExecution)
         			if tile then
         				local item = tile:getItemById(1387)
         				if item then
-        					spectators[i]:say("Participe agora do evento!", TALKTYPE_MONSTER_SAY, false, spectators[i], position)
+        					spectators[i]:say("Participe agora\ndo evento!", TALKTYPE_MONSTER_SAY, false, spectators[i], position)
         					position:sendMagicEffect(56)
         					position:sendMagicEffect(57)
         				else
@@ -36,6 +50,7 @@ function onThink(interval, lastExecution)
         			end
                 end
         	end
+            break
 	    end
  	end
 	return true

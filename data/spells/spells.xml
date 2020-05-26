@@ -9,7 +9,7 @@
 		<vocation name="Elder Druid" />
 		<vocation name="Ancient Druid" />
 	</rune>
-	<rune group="support" name="Thunder Mana Rune" id="2272" allowfaruse="1" charges="1" level="45" magiclevel="1" cooldown="1000" needtarget="1" aggressive="0" blocktype="solid" script="support/thunder_mana_rune.lua">
+	<rune group="support" name="Thunder Mana Rune" id="2272" allowfaruse="1" charges="1" level="45" magiclevel="1" cooldown="200" needtarget="1" aggressive="0" blocktype="solid" script="support/thunder_mana_rune.lua">
 		<vocation name="Sorcerer" />
 		<vocation name="Druid" />
 		<vocation name="Master Sorcerer" />

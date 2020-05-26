@@ -1,4 +1,3 @@
-dofile('data/lib/events/castle.lua')
 function onStepIn(creature, item, position, fromPosition)
 	local player = creature:getPlayer()
     if not player then
@@ -8,7 +7,7 @@ function onStepIn(creature, item, position, fromPosition)
 	local guild = player:getGuild()
     if not guild then
         player:teleportTo(fromPosition, true)
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. config.castleNome .." ".. config.mensagemPrecisaGuild .."")
+        player:sendCancelMessage(CASTLE.castleNome .." " ..CASTLE.mensagemPrecisaGuild)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
     end
@@ -18,10 +17,10 @@ function onStepIn(creature, item, position, fromPosition)
 	
 	
 		if guildId == Game.getStorageValue(STORAGEVALUE_CASTLE_DOMINADO) or guildId == getGuildIdFromCastle() then
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. config.castleNome .." ".. config.mensagemBemvindo .."")
+			player:sendCancelMessage(CASTLE.castleNome .." " .. CASTLE.mensagemBemvindo)
 			return true
 		else
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. config.castleNome .." ".. config.mensagemGuildNaoDominante .." (".. guildName ..")")
+			player:sendCancelMessage(CASTLE.castleNome .." " .. CASTLE.mensagemGuildNaoDominante .." (".. guildName ..")")
 			player:teleportTo(fromPosition, true)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 			return false

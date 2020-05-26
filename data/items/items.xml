@@ -4214,7 +4214,7 @@
 	<item id="2552" article="a" name="hoe">
 		<attribute key="weight" value="2800" />
 	</item>
-	<item id="2553" article="a" name="pick">
+	<item id="2553" article="uma" name="picareta">
 		<attribute key="description" value="Use para minerar.&#xA;[Normal]" />
 		<attribute key="weight" value="4500" />
 	</item>
@@ -20900,7 +20900,7 @@
 		<attribute key="weight" value="1200" />
 	</item>
 	<item id="12543" article="a" name="online token">
-		<attribute key="description" value="Troque online tokens por itens no NPC Online Seller." />
+		<attribute key="description" value="Troque online tokens por itens no NPC Breno." />
 		<attribute key="weight" value="150" />
 	</item>
 	<item id="12544" article="um" name="elixir de stamina">

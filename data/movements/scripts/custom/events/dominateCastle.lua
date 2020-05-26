@@ -1,4 +1,3 @@
-dofile('data/lib/events/castle.lua')
 function onStepIn(creature, item, position, fromPosition)
 	local player = creature:getPlayer()
     if not player then
@@ -13,7 +12,7 @@ function onStepIn(creature, item, position, fromPosition)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		player:teleportTo(temploPos)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. config.castleNome .." ".. config.mensagemPrecisaGuild .."")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. CASTLE.castleNome .." ".. CASTLE.mensagemPrecisaGuild .."")
         return false
     end
 	
@@ -21,12 +20,12 @@ function onStepIn(creature, item, position, fromPosition)
 	local guildName = guild:getName()
 
 	if guildId == Game.getStorageValue(STORAGEVALUE_CASTLE_DOMINADO) or guildId == getGuildIdFromCastle() then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. config.castleNome .." ".. config.mensagemGuildDominante .."")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. CASTLE.castleNome .." ".. CASTLE.mensagemGuildDominante .."")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		player:teleportTo(fromPosition, true)
 	else
 		Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, guildId)
-		Game.broadcastMessage("".. config.castleNome .." O castelo foi dominado pelo player ".. player:getName() .." da guild ".. guildName ..".", MESSAGE_STATUS_WARNING)
+		Game.broadcastMessage("".. CASTLE.castleNome .." O castelo foi dominado pelo player ".. player:getName() .." da guild ".. guildName ..".", MESSAGE_STATUS_WARNING)
 		player:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
 		db.query(('UPDATE `castle` SET `name` = "%s", `guild_id` = %d'):format(guildName, guildId)) -- Por Lyu
 		return true

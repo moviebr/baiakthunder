@@ -42,11 +42,6 @@ function onStepIn(creature, item, position, fromPosition)
 		player:setStorageValue(BATTLEFIELD.storageTeam, 1)
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time azul.")
 		player:setOutfit(BATTLEFIELD.blueTeamOutfit)
-	elseif getTeamRed == getTeamBlue then
-		Game.setStorageValue(BATTLEFIELD.storageTeamRed, (getTeamRed + 1))
-		player:setStorageValue(BATTLEFIELD.storageTeam, 2)
-		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time vermelho.")
-		player:setOutfit(BATTLEFIELD.redTeamOutfit)
 	else
 		Game.setStorageValue(BATTLEFIELD.storageTeamRed, (getTeamRed + 1))
 		player:setStorageValue(BATTLEFIELD.storageTeam, 2)

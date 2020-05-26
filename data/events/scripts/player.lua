@@ -61,6 +61,11 @@ function Player:onLook(thing, position, distance)
 			end
 		end
 	end
+	if thing:isCreature() then
+		if thing:isPlayer() then
+			description = string.format("%s\nTask Rank: "..getRankTask(thing), description)
+		end
+	end
 	self:sendTextMessage(MESSAGE_INFO_DESCR, description)
 	
 	if thing:isPlayer() and not self:getGroup():getAccess() then
@@ -92,6 +97,11 @@ function Player:onLookInBattleList(creature, distance)
 
 		if creature:isPlayer() then
 			description = string.format("%s\nIP: %s", description, Game.convertIpToString(creature:getIp()))
+		end
+	end
+	if thing:isCreature() then
+		if thing:isPlayer() then
+			description = string.format("%s\nTask Rank: "..getRankTask(thing), description)
 		end
 	end
 	self:sendTextMessage(MESSAGE_INFO_DESCR, description)

@@ -1,19 +1,16 @@
--- Cr√©ditos ao Lyu e Gengo que ajudaram em coisas focais desse script
--- C√≥digo testado em TFS 1.3 na vers√£o 8.60
-
-config = {
-castleNome = "[Castle 24H]", -- Prefixo que ir√° aparecer nas mensagens
-mensagemPrecisaGuild = "Voc√™ precisa fazer parte de alguma guild para invadir o castelo.", -- Mensagem que ir√° aparecer caso o player n√£o tenha guild
-mensagemGuildDominante = "O castelo j√° √© da sua guild.", -- Mensagem caso o player tente dominar o castelo mesmo sendo da sua guild
-mensagemGuildNaoDominante = "O castelo n√£o √© da sua guild", -- Caso o castelo n√£o seja da guild do player
-mensagemLevelMinimo = "Voc√™ n√£o tem level suficiente para invadir o castelo.", -- Caso o player n√£o tenha n√≠vel para entrar
-mensagemBemvindo = "Seja bem vindo ao seu castelo.", -- Mensagem de bem-vindo √† guild dominante
-levelParaDominar = true, -- true para precisar de nivel para dominar e false para n√£o precisar
-level = 100, -- caso o levelParaDominar seja true, qual o nivel?
-tempoAvisar = 10, -- Tempo em SEGUNDOS para n√£o ficar spammando que o player est√° invadindo
+CASTLE = {
+	castleNome = "[Castle 24H]", -- Prefixo que ir· aparecer nas mensagens
+	mensagemPrecisaGuild = "VocÍ n„o faz parte de nenhuma guild.", -- Mensagem que ir· aparecer caso o player n„o tenha guild
+	mensagemGuildDominante = "O castelo j· È da sua guild.", -- Mensagem caso o player tente dominar o castelo mesmo sendo da sua guild
+	mensagemGuildNaoDominante = "O castelo n„o È da sua guild", -- Caso o castelo n„o seja da guild do player
+	mensagemLevelMinimo = "VocÍ n„o tem level suficiente para invadir o castelo.", -- Caso o player n„o tenha n√≠vel para entrar
+	mensagemBemvindo = "Seja bem vindo ao seu castelo.", -- Mensagem de bem-vindo √† guild dominante
+	levelParaDominar = true, -- true para precisar de nivel para dominar e false para n„o precisar
+	level = 100, -- caso o levelParaDominar seja true, qual o nivel?
+	tempoAvisar = 10, -- Tempo em SEGUNDOS para n„o ficar spammando que o player est· invadindo
 }
 
-function getGuildIdFromCastle() -- Por Gengo e Movie
+function getGuildIdFromCastle()
   local guildId  = -1
   local resultId = db.storeQuery("SELECT `guild_id` FROM `castle`;")
   if (resultId ~= false) then

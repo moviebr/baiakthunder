@@ -5,6 +5,8 @@
 	<action itemid="12328" script="custom/staminaCharges.lua"/>
 	<action itemid="5957" script="custom/lotteryTicket.lua"/>
 	<action itemid="11144" script="custom/addonDollPremium.lua"/>
+	<action actionid="5341" script="custom/miningCar.lua"/>
+	<action actionid="4189" script="custom/citizenAddon.lua"/>
 	
 	<!-- Events -->
 	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>

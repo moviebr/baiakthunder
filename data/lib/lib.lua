@@ -18,3 +18,12 @@ dofile('data/lib/custom/debug.lua')
 
 -- Battlefield
 dofile('data/lib/events/battlefield.lua')
+
+-- Castle 24H
+dofile('data/lib/events/castle.lua')
+
+-- SafeZone
+dofile('data/lib/events/safezone.lua')
+
+-- Tasks
+dofile('data/lib/custom/task.lua')

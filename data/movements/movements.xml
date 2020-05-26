@@ -4,7 +4,10 @@
 	<!-- Custom -->
 	<movevent event="StepIn" actionid="4537" script="custom/temple.lua" />
 	<movevent event="StepIn" actionid="6489" script="custom/events/battlefield.lua" />
+	<movevent event="StepIn" actionid="6412" script="custom/events/safezone.lua" />
 	<movevent event="StepIn" actionid="1436" script="custom/events/exitEvents.lua" />
+	<movevent event="StepIn" actionid="9168" script="custom/premiumTile.lua" />
+	<movevent event="StepIn" actionid="8294" script="custom/fromPosition.lua" />
 
 	<!-- Castle 24H -->
 	<movevent event="StepIn" actionid="7538" script="custom/events/dominateCastle.lua" />

@@ -19,6 +19,9 @@
 	<spawn centerx="1003" centery="1258" centerz="6" radius="1">
 		<monster name="Hunter" x="0" y="0" z="6" spawntime="30" />
 	</spawn>
+	<spawn centerx="983" centery="1217" centerz="7" radius="1">
+		<npc name="Marcelo" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="1041" centery="1234" centerz="7" radius="1">
 		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
 	</spawn>

@@ -22,6 +22,7 @@ function onLogin(player)
 		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 
 		-- Battlefield
+		player:setStorageValue(BATTLEFIELD.storageTeam, 0)
 	end
 
 	-- Dodge/Critical System
@@ -57,5 +58,7 @@ function onLogin(player)
 	player:registerEvent("DodgeManaSystem")
 	player:registerEvent("AutoLoot")
 	player:registerEvent("Exiva")
+	player:registerEvent("Events")
+	player:registerEvent("Tasks")
 	return true
 end
