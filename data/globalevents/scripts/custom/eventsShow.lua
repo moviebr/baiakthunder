@@ -1,27 +1,33 @@
 local EventsList = {
     ["Sunday"] = {
-       {name = "Battlefield", time = "15:00"},
-       {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
     ["Monday"] = {
-        {name = "Battlefield", time = "15:00"},
-        {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
     ["Tuesday"] = {
-    	{name = "Battlefield", time = "15:00"},
-        {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
     ["Wednesday"] = {
-        {name = "Battlefield", time = "15:00"},
-        {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
     ["Thursday"] = {
-        {name = "Battlefield", time = "15:00"},
-        {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
     ["Friday"] = {
-        {name = "Battlefield", time = "15:00"},
-        {name = "SafeZone", time = "20:00"},
+		{name = "SnowBall", time = "10:00"},
+		{name = "Battlefield", time = "15:00"},
+		{name = "SafeZone", time = "20:00"},
     },
 }
 

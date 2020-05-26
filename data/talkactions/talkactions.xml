@@ -14,6 +14,7 @@
 	<talkaction words="!critical" script="critical.lua"/>
 	<talkaction words="!autoloot" separator=" " script="autoloot.lua"/>
 	<talkaction words="!addon" separator=" " script="addonDoll.lua"/>
+	<talkaction words="!snowball" separator=" " script="snowball.lua" />
 	
 	<!-- Events -->
 	<talkaction words="!join" separator=" " script="join.lua"/>

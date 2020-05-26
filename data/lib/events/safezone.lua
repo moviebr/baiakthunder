@@ -2,7 +2,7 @@ SAFEZONE = {
 	teleportTimeClose = 5,
 	eventTimeTotal = 30,
 	positionTeleportOpen = Position(1003, 1217, 7),
-	positionEnterEvent = Position(),
+	positionEnterEvent = Position(1545, 957, 7),
 	storage = 12149,
 	actionId = 6412,
 	protectionTileId = {9562, 9563, 9564, 9565},
@@ -34,7 +34,7 @@ SAFEZONE = {
 		[2] = 77, -- orange
 		[3] = 79 -- yellow
 	},
-	positionEvent = {firstTile = {x = 904, y = 580, z = 7}, tilesX = 18, tilesY = 12}
+	positionEvent = {firstTile = {x = 1538, y = 951, z = 7}, tilesX = 15, tilesY = 11}
 }
 
 function safezoneTeleportCheck()
@@ -53,7 +53,7 @@ function safezoneTeleportCheck()
 						Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageTime, MESSAGE_STATUS_WARNING)
 						safezoneRemovePlayers()
 					end
-				end, eventTimeTotal * 60 * 1000)
+				end, SAFEZONE.eventTimeTotal * 60 * 1000)
 			else
 				Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageNoStart, MESSAGE_STATUS_WARNING)
 				safezoneRemovePlayers()

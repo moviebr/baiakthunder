@@ -77,7 +77,7 @@ class CreatureEvent final : public Event
 		bool executeOnThink(Creature* creature, uint32_t interval);
 		bool executeOnPrepareDeath(Creature* creature, Creature* killer);
 		bool executeOnDeath(Creature* creature, Item* corpse, Creature* killer, Creature* mostDamageKiller, bool lastHitUnjustified, bool mostDamageUnjustified);
-		void executeOnKill(Creature* creature, Creature* target);
+		void executeOnKill(Creature* creature, Creature* target, bool lastHit);
 		bool executeAdvance(Player* player, skills_t, uint32_t, uint32_t);
 		bool executeTextEdit(Player* player, Item* item, const std::string& text);
 		void executeHealthChange(Creature* creature, Creature* attacker, CombatDamage& damage);

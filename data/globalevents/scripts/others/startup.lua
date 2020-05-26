@@ -3,6 +3,7 @@ function onStartup()
 	-- New
 	db.query("SET sql_mode = 0;")
 	db.query("UPDATE `players` SET `online_time` = 0")
+	carregarEvento()
 	
 	-- Auction System
 	local days = 7

@@ -34,7 +34,7 @@ function onStepIn(creature, item, position, fromPosition)
     end
 
     for _, check in ipairs(Game.getPlayers()) do
-        if player:getIp() == check:getIp() and check:getStorageValue(SAFEZONE.storage) > 0 then
+        if player:getIp() == check:getIp() and check:getStorageValue(STORAGEVALUE_EVENTS) > 0 then
             player:sendCancelMessage(SAFEZONE.messages.prefix .. "Você já possui um outro player dentro do evento.")
             player:teleportTo(fromPosition, true)
             player:getPosition():sendMagicEffect(CONST_ME_POFF)

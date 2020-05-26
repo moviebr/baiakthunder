@@ -11,6 +11,28 @@ function Creature:onAreaCombat(tile, isAggressive)
 	return RETURNVALUE_NOERROR
 end
 
+local staminaBonus = {
+	target = 'Training Monk',
+	period = 600000, -- time on miliseconds
+	bonus = 5, -- gain stamina
+	events = {}
+}
+
+local function addStamina(name)
+	local player = Player(name)
+	if not player then
+		staminaBonus.events[name] = nil
+	else
+		local target = player:getTarget()
+		if not target or target:getName() ~= staminaBonus.target then
+			staminaBonus.events[name] = nil
+		else
+			player:setStamina(player:getStamina() + staminaBonus.bonus)
+			staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+		end
+	end
+end
+
 function Creature:onTargetCombat(target)
    if not self then
         return true
@@ -21,6 +43,22 @@ function Creature:onTargetCombat(target)
         self:say("trade", TALKTYPE_PRIVATE_PN, false, target)
         return RETURNVALUE_NOTPOSSIBLE   
     end
+
+    -- Battlefield
+    if Game.getStorageValue(BATTLEFIELD.storageEventStatus) == 1 then
+    	if self:getStorageValue(BATTLEFIELD.storageTeam) == target:getStorageValue(BATTLEFIELD.storageTeam) then
+    		return RETURNVALUE_NOTPOSSIBLE
+    	end
+    end
+
+    if self:isPlayer() then
+        if target and target:getName() == staminaBonus.target then
+            local name = self:getName()
+            if not staminaBonus.events[name] then
+                staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+            end
+		end
+	end
 	
     if(self:getPlayer() and self:getPlayer():getIp() == 0) then
         self:setTarget(nil)

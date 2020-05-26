@@ -1,6 +1,6 @@
 local presents = {
 	[5957] = { -- lottery ticket normal
-		{12544, 1}, 8978
+		8978, 12544
 	}
 }
 

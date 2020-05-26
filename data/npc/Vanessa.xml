@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Vanessa" script="runes.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="148" head="0" body="119" legs="119" feet="119" addons="3" />
+	<parameters>
+		<parameter key="message_greet" value="Olá |PLAYERNAME|. Eu vendo runas, poções e varinhas. Diga {troca} ou {trocar}." />
+		<parameter key="message_decline" value="|TOTALCOST| gold coins é demais para você? Saia daqui!" />
+	</parameters>
+</npc>

@@ -30,6 +30,15 @@ function onStepIn(creature, item, position, fromPosition)
 		end
 	end
 
+	for _, check in ipairs(Game.getPlayers()) do
+        if player:getIp() == check:getIp() and check:getStorageValue(STORAGEVALUE_EVENTS) > 0 then
+            player:sendCancelMessage(BATTLEFIELD.messages.prefix .. "Você já possui um outro player dentro do evento.")
+            player:teleportTo(fromPosition, true)
+            player:getPosition():sendMagicEffect(CONST_ME_POFF)
+            return true
+        end
+    end
+
 	if BFcheckPlayers() >= BATTLEFIELD.maxPlayers then
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."O evento já atingiu o máximo de participantes.")
 		player:teleportTo(fromPosition, true)
