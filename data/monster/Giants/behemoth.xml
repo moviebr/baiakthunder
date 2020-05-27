@@ -57,7 +57,6 @@
 		<item id="2387" chance="10000"/><!-- double axe -->
 		<item id="2666" countmax="6" chance="6500"/><!-- meat -->
 		<item id="5893" chance="1300"/><!-- perfect behemoth fang -->
-		<item id="2553" chance="6400"/><!-- pick -->
 		<item id="1987" chance="100000"><!-- bag -->
 			
 				<item id="2463" chance="2000"/><!-- plate armor -->

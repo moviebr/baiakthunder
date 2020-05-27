@@ -8,7 +8,7 @@ function Player:onLook(thing, position, distance)
 	local description = "Você vê " .. thing:getDescription(distance)
 	
 	if LOOK_MARRIAGE_DESCR and thing:isCreature() then
-        if thing:isPlayer() then
+        if thing:isPlayer() and not thing:getGroup():getAccess() then
             description =  description .. self:getMarriageDescription(thing)
         end
     end
@@ -62,7 +62,7 @@ function Player:onLook(thing, position, distance)
 		end
 	end
 	if thing:isCreature() then
-		if thing:isPlayer() then
+		if thing:isPlayer() and not thing:getGroup():getAccess() then
 			description = string.format("%s\nTask Rank: "..getRankTask(thing), description)
 		end
 	end
@@ -100,7 +100,7 @@ function Player:onLookInBattleList(creature, distance)
 		end
 	end
 	if thing:isCreature() then
-		if thing:isPlayer() then
+		if thing:isPlayer() and not thing:getGroup():getAccess() then
 			description = string.format("%s\nTask Rank: "..getRankTask(thing), description)
 		end
 	end
@@ -121,6 +121,35 @@ function Player:onLookInShop(itemType, count)
 end
 
 function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+	local antiTrash = true
+    local antiTheft = true
+    if antiTrash then
+    local tile = Tile(toPosition)
+        if tile and tile:hasFlag(TILESTATE_HOUSE) then
+        local house = tile:getHouse()
+            if house then
+                local accessList = House.getAccessList
+                local playerName = self:getName():lower()
+                if house ~= self:getHouse() and (playerName ~= accessList(house, GUEST_LIST):lower() or playerName ~= accessList(house, SUBOWNER_LIST):lower()) then
+                    self:sendTextMessage(MESSAGE_STATUS_SMALL, "Você não pode jogar itens nas casas dos jogadores, para os quais não está convidado.")
+                    return false
+                end
+            end
+        end
+    end
+
+    if antiTheft then
+    	local tile = Tile(fromPosition)
+        if tile and tile:hasFlag(TILESTATE_HOUSE) then
+            local house = tile:getHouse()
+            if house then
+                if house ~= self:getHouse() and self:getName():lower() ~= house:getAccessList(SUBOWNER_LIST):lower() then
+                    self:sendTextMessage(MESSAGE_STATUS_SMALL, "Você não pode mover itens da casa, dos quais você é apenas convidado.")
+                    return false
+                end
+            end
+        end
+    end    
 	return true
 end
 

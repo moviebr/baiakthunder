@@ -9,7 +9,7 @@
 	<outfit type="0" looktype="141" name="Summoner" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="0" looktype="142" name="Warrior" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="0" looktype="147" name="Barbarian" premium="no" unlocked="yes" enabled="yes" />
-	<outfit type="0" looktype="148" name="Druid" premium="no" unlocked="yes" enabled="yes" />
+	<outfit type="0" looktype="148" name="Druid" premium="yes" unlocked="yes" enabled="yes" />
 	<outfit type="0" looktype="149" name="Wizard" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="0" looktype="150" name="Oriental" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="0" looktype="155" name="Pirate" premium="no" unlocked="yes" enabled="yes" />
@@ -35,7 +35,7 @@
 	<outfit type="1" looktype="133" name="Summoner" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="134" name="Warrior" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="143" name="Barbarian" premium="no" unlocked="yes" enabled="yes" />
-	<outfit type="1" looktype="144" name="Druid" premium="no" unlocked="yes" enabled="yes" />
+	<outfit type="1" looktype="144" name="Druid" premium="yes" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="145" name="Wizard" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="146" name="Oriental" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="151" name="Pirate" premium="no" unlocked="yes" enabled="yes" />

@@ -12,6 +12,11 @@ function onLogin(player)
 	end
 	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, loginStr)
 
+	if player:isPremium() and player:getAccountType() < ACCOUNT_TYPE_GOD then
+		player:say("[PREMIUM]", TALKTYPE_MONSTER_SAY)
+		player:getPosition():sendMagicEffect(50)
+	end
+
 	-- Stamina
 	nextUseStaminaTime[player.uid] = 0
 

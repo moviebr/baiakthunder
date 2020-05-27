@@ -12,6 +12,7 @@
 	<event type="kill" name="Exiva" script="custom/exiva.lua" />
 	<event type="kill" name="Tasks" script="custom/task.lua" />
 	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
+	<event type="login" name="FirstItems" script="custom/firstitems.lua" />
 	
 	<!-- Events -->
 	<event type="logout" name="eventlogout" script="custom/events/eventLogout.lua" />
@@ -20,7 +21,6 @@
 	<!-- Others -->
 	<event type="login" name="PlayerLogin" script="others/login.lua" />
 	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
-	<event type="login" name="FirstItems" script="others/firstitems.lua" />
 	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />
 	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
 	<event type="death" name="DropLoot" script="others/droploot.lua" />

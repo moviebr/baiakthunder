@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <weapons>
+	<!-- Custom -->
+	<wand id="2184" mana="5" min="50" max="100" type="holy"> <!-- Inicial Wand -->
+		<vocation name="Druid" />
+		<vocation name="Sorcerer" />
+	</wand>
+	<wand id="7879" mana="25" script="thunderWand.lua">
+		<vocation name="Druid" />
+		<vocation name="Sorcerer" />
+	</wand>
+	<melee id="7872">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7878">
+		<vocation name="Knight" />
+	</melee>
+	<melee id="7882">
+		<vocation name="Knight" />
+	</melee>
+	<distance id="8858">
+		<vocation name="Paladin" />
+	</distance>
+
 	<!-- Rods -->
 	<wand id="2182" level="7" mana="2" min="8" max="18" type="earth"> <!-- Snakebit Rod -->
 		<vocation name="Druid" />
@@ -162,9 +184,6 @@
 	<melee id="7869" action="removecharge" />
 	<melee id="7870" level="50" action="removecharge" unproperly="1" />
 	<melee id="7871" level="60" action="removecharge" unproperly="1" />
-	<melee id="7872" level="35" action="removecharge" unproperly="1">
-		<vocation name="Knight" />
-	</melee>
 	<melee id="7873" level="45" action="removecharge" unproperly="1">
 		<vocation name="Knight" />
 	</melee>
@@ -281,9 +300,6 @@
 	<melee id="7877" level="35" action="removecharge" unproperly="1">
 		<vocation name="Knight" />
 	</melee>
-	<melee id="7878" level="65" action="removecharge" unproperly="1">
-		<vocation name="Knight" />
-	</melee>
 
 	<!--Clubs -->
 	<melee id="2423" level="20" unproperly="1" />
@@ -374,10 +390,8 @@
 	</melee>
 
 	<!-- Energy -->
-	<melee id="7879" level="20" action="removecharge" unproperly="1" />
 	<melee id="7880" level="35" action="removecharge" unproperly="1" />
 	<melee id="7881" level="60" action="removecharge" unproperly="1" />
-	<melee id="7882" level="35" action="removecharge" unproperly="1" />
 	<melee id="7883" level="50" action="removecharge" unproperly="1">
 		<vocation name="Knight" />
 	</melee>
@@ -408,9 +422,6 @@
 		<vocation name="Paladin" />
 	</distance>
 	<distance id="8856" level="60" unproperly="1"> <!-- Yol's Bow -->
-		<vocation name="Paladin" />
-	</distance>
-	<distance id="8858" level="70" unproperly="1"> <!-- Elethriel's Elemental Bow -->
 		<vocation name="Paladin" />
 	</distance>
 	<distance id="8854" level="80" unproperly="1"> <!-- Warsinger Bow -->

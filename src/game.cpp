@@ -1471,23 +1471,9 @@ void Game::addMoney(Cylinder* cylinder, uint64_t money, uint32_t flags /*= 0*/)
 		return;
 	}
 
-	uint32_t goldIngot = money / 1000000;
-	money -= goldIngot * 1000000;
-	while (goldIngot > 0) {
-		const uint16_t count = std::min<uint32_t>(100, goldIngot);
-
-		Item* remaindItem = Item::CreateItem(ITEM_GOLD_INGOT, count);
-
-		ReturnValue ret = internalAddItem(cylinder, remaindItem, INDEX_WHEREEVER, flags);
-		if (ret != RETURNVALUE_NOERROR) {
-			internalAddItem(cylinder->getTile(), remaindItem, INDEX_WHEREEVER, FLAG_NOLIMIT);
-		}
-
-		goldIngot -= count;
-	}
-
 	uint32_t crystalCoins = money / 10000;
-	if (crystalCoins != 0) {
+	money -= crystalCoins * 10000;
+	while (crystalCoins > 0) {
 		const uint16_t count = std::min<uint32_t>(100, crystalCoins);
 
 		Item* remaindItem = Item::CreateItem(ITEM_CRYSTAL_COIN, count);

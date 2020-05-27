@@ -2298,6 +2298,9 @@
 	</item>
 	<item id="2184" article="a" name="crystal wand">
 		<attribute key="weight" value="2800" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="holy" />
+		<attribute key="range" value="5" />
 	</item>
 	<item id="2185" article="a" name="necrotic rod">
 		<attribute key="description" value="It was brought up from hell to deliver death." />
@@ -3294,13 +3297,13 @@
 		<attribute key="attack" value="16" />
 		<attribute key="weaponType" value="club" />
 	</item>
-	<item id="2399" article="a" name="throwing star">
+	<item id="2399" article="uma" name="star inicial">
 		<attribute key="weight" value="200" />
 		<attribute key="attack" value="30" />
 		<attribute key="weaponType" value="distance" />
 		<attribute key="shootType" value="throwingstar" />
 		<attribute key="maxHitChance" value="76" />
-		<attribute key="range" value="4" />
+		<attribute key="range" value="6" />
 	</item>
 	<item id="2400" article="a" name="magic sword">
 		<attribute key="description" value="It's the Sword of Valor." />
@@ -4503,10 +4506,20 @@
 		<attribute key="armor" value="1" />
 		<attribute key="slotType" value="body" />
 	</item>
-	<item id="2656" article="a" name="blue robe">
-		<attribute key="description" value="It is a magic robe." />
+	<item id="9080" article="um" name="thunder mage helmet">
+		<attribute key="weight" value="4300" />
+		<attribute key="armor" value="15" />
+		<attribute key="slotType" value="head" />
+		<attribute key="absorbPercentAll" value="3"/>
+		<attribute key="magiclevelpoints" value="3" />
+		<attribute key="showattributes" value="1" />
+	</item>
+	<item id="2656" article="uma" name="thunder mage armor">
 		<attribute key="weight" value="2200" />
-		<attribute key="armor" value="11" />
+		<attribute key="armor" value="18" />
+		<attribute key="absorbPercentAll" value="5"/>
+		<attribute key="magiclevelpoints" value="4" />
+		<attribute key="showattributes" value="1" />
 		<attribute key="slotType" value="body" />
 	</item>
 	<item id="2657" article="a" name="simple dress">
@@ -12920,12 +12933,11 @@
 	<item fromid="7447" toid="7448" article="a" name="small ice statue">
 		<attribute key="weight" value="1000" />
 	</item>
-	<item id="7449" article="a" name="crystal sword">
+	<item id="7449" article="uma" name="espada inicial">
 		<attribute key="weight" value="6900" />
 		<attribute key="defense" value="26" />
 		<attribute key="attack" value="35" />
 		<attribute key="weaponType" value="sword" />
-		<attribute key="slotType" value="two-handed" />
 	</item>
 	<item id="7450" article="a" name="hammer of prophecy">
 		<attribute key="weight" value="11000" />
@@ -13506,9 +13518,12 @@
 		<attribute key="writeOnceItemId" value="7726" />
 	</item>
 	<item fromid="7728" toid="7729" name="" />
-	<item id="7730" name="blue legs">
+	<item id="7730" article="uma" name="thunder mage legs">
 		<attribute key="weight" value="1800" />
-		<attribute key="armor" value="8" />
+		<attribute key="armor" value="13" />
+		<attribute key="absorbPercentAll" value="4"/>
+		<attribute key="magiclevelpoints" value="3" />
+		<attribute key="showattributes" value="1" />
 		<attribute key="slotType" value="legs" />
 	</item>
 	<item id="7731" article="an" name="elvenhair rope">
@@ -14431,16 +14446,12 @@
 		<attribute key="showcharges" value="1" />
 		<attribute key="decayTo" value="7384" />
 	</item>
-	<item id="7872" article="an" name="energy blacksteel sword">
+	<item id="7872" article="uma" name="thunder sword">
 		<attribute key="weight" value="5900" />
-		<attribute key="defense" value="22" />
-		<attribute key="attack" value="35" />
+		<attribute key="defense" value="32" />
+		<attribute key="attack" value="102" />
+		<attribute key="skillSword" value="1" />
 		<attribute key="weaponType" value="sword" />
-		<attribute key="slotType" value="two-handed" />
-		<attribute key="elementEnergy" value="7" />
-		<attribute key="charges" value="1000" />
-		<attribute key="showcharges" value="1" />
-		<attribute key="decayTo" value="7406" />
 	</item>
 	<item id="7873" article="an" name="energy dragon slayer">
 		<attribute key="weight" value="8200" />
@@ -14497,27 +14508,19 @@
 		<attribute key="showcharges" value="1" />
 		<attribute key="decayTo" value="7380" />
 	</item>
-	<item id="7878" article="an" name="energy war axe">
+	<item id="7878" article="um" name="thunder axe">
 		<attribute key="weight" value="6150" />
-		<attribute key="defense" value="10" />
-		<attribute key="attack" value="39" />
+		<attribute key="defense" value="32" />
+		<attribute key="attack" value="102" />
 		<attribute key="weaponType" value="axe" />
-		<attribute key="slotType" value="two-handed" />
-		<attribute key="elementEnergy" value="9" />
-		<attribute key="charges" value="1000" />
-		<attribute key="showcharges" value="1" />
-		<attribute key="decayTo" value="2454" />
+		<attribute key="skillAxe" value="1" />
 	</item>
-	<item id="7879" article="an" name="energy clerical mace">
+	<item id="7879" article="uma" name="thunder staff">
+		<attribute key="description" value="A melhor staff do jogo.&#xA;Dano entre 640 - 800&#xA;[Premium]" />
 		<attribute key="weight" value="5800" />
-		<attribute key="defense" value="15" />
-		<attribute key="attack" value="23" />
-		<attribute key="weaponType" value="club" />
-		<attribute key="extradef" value="1" />
-		<attribute key="elementEnergy" value="5" />
-		<attribute key="charges" value="1000" />
-		<attribute key="showcharges" value="1" />
-		<attribute key="decayTo" value="2423" />
+		<attribute key="weaponType" value="wand" />
+		<attribute key="shootType" value="ice" />
+		<attribute key="range" value="6" />
 	</item>
 	<item id="7880" article="an" name="energy crystal mace">
 		<attribute key="weight" value="8000" />
@@ -14541,16 +14544,12 @@
 		<attribute key="showcharges" value="1" />
 		<attribute key="decayTo" value="7415" />
 	</item>
-	<item id="7882" article="an" name="energy orcish maul">
+	<item id="7882" article="um" name="thunder club">
 		<attribute key="weight" value="5400" />
-		<attribute key="defense" value="18" />
-		<attribute key="attack" value="35" />
+		<attribute key="defense" value="32" />
+		<attribute key="attack" value="102" />
+		<attribute key="skillClub" value="1" />
 		<attribute key="weaponType" value="club" />
-		<attribute key="slotType" value="two-handed" />
-		<attribute key="elementEnergy" value="7" />
-		<attribute key="charges" value="1000" />
-		<attribute key="showcharges" value="1" />
-		<attribute key="decayTo" value="7392" />
 	</item>
 	<item id="7883" article="an" name="energy war hammer">
 		<attribute key="weight" value="8500" />
@@ -14627,12 +14626,19 @@
 		<attribute key="absorbPercentIce" value="-5" />
 		<attribute key="slotType" value="feet" />
 	</item>
-	<item id="7892" name="glacier shoes">
+	<item id="7892" name="thunder mage shoes">
 		<attribute key="weight" value="750" />
-		<attribute key="armor" value="2" />
 		<attribute key="slotType" value="feet" />
-		<attribute key="absorbPercentIce" value="5" />
-		<attribute key="absorbPercentEnergy" value="-5" />
+		<attribute key="magiclevelpoints" value="1" />
+		<attribute key="description" value="Vida: +175/1s&#xA;Mana: +325/1s" />
+		<attribute key="speed" value="50" />
+		<attribute key="weight" value="2500" />
+		<attribute key="slotType" value="feet" />
+		<attribute key="showattributes" value="1" />
+		<attribute key="healthGain" value="175" />
+		<attribute key="healthTicks" value="1000" />
+		<attribute key="manaGain" value="325" />
+		<attribute key="manaTicks" value="1000" />
 	</item>
 	<item id="7893" name="lightning boots">
 		<attribute key="weight" value="750" />
@@ -15769,13 +15775,13 @@
 		<attribute key="range" value="6" />
 		<attribute key="hitChance" value="3" />
 	</item>
-	<item id="8858" name="Elethriel's elemental bow">
+	<item id="8858" name="thunder bow">
 		<attribute key="weight" value="4400" />
 		<attribute key="slotType" value="two-handed" />
 		<attribute key="weaponType" value="distance" />
-		<attribute key="ammoType" value="arrow" />
-		<attribute key="range" value="4" />
-		<attribute key="attack" value="7" />
+		<attribute key="shootType" value="shiverarrow" />
+		<attribute key="range" value="6" />
+		<attribute key="attack" value="112" />
 	</item>
 	<item id="8859" name="spider fangs">
 		<attribute key="showcount" value="0" />
@@ -16038,14 +16044,12 @@
 		<attribute key="duration" value="900" />
 		<attribute key="decayTo" value="8905" />
 	</item>
-	<item id="8908" article="a" name="sparking rainbow shield">
-		<attribute key="description" value="It has been temporarily imbued with energy magic and increases your speed." />
+	<item id="8908" article="um" name="thunder mage shield">
 		<attribute key="weight" value="6900" />
-		<attribute key="defense" value="36" />
+		<attribute key="defense" value="42" />
 		<attribute key="weaponType" value="shield" />
-		<attribute key="duration" value="900" />
-		<attribute key="decayTo" value="8905" />
-		<attribute key="speed" value="20" />
+		<attribute key="magiclevelpoints" value="6" />
+		<attribute key="showattributes" value="1" />
 	</item>
 	<item id="8909" article="a" name="terran rainbow shield">
 		<attribute key="description" value="It has been temporarily imbued with earth magic and boosts your regeneration." />
@@ -17083,24 +17087,41 @@
 		<attribute key="containerSize" value="8" />
 		<attribute key="slotType" value="backpack" />
 	</item>
-	<item id="9776" article="a" name="yalahari armor">
+	<item id="9776" article="uma" name="thunder paladin armor">
 		<attribute key="weight" value="7000" />
-		<attribute key="armor" value="16" />
+		<attribute key="armor" value="21" />
 		<attribute key="slotType" value="body" />
-		<attribute key="absorbPercentDeath" value="3" />
+		<attribute key="skillDist" value="4" />
+		<attribute key="absorbPercentAll" value="5"/>
+		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="9777" article="a" name="yalahari leg piece">
+	<item id="9777" article="uma" name="thunder paladin legs">
 		<attribute key="weight" value="6500" />
-		<attribute key="armor" value="8" />
+		<attribute key="armor" value="16" />
 		<attribute key="slotType" value="legs" />
-		<attribute key="absorbPercentDeath" value="5" />
-		<attribute key="skillDist" value="2" />
+		<attribute key="skillDist" value="3" />
+		<attribute key="absorbPercentAll" value="4"/>
+		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="9778" article="a" name="yalahari mask">
+	<item id="9778" article="um" name="thunder paladin helmet">
 		<attribute key="weight" value="3500" />
-		<attribute key="armor" value="5" />
+		<attribute key="armor" value="18" />
+		<attribute key="skillDist" value="3" />
+		<attribute key="absorbPercentAll" value="3"/>
+		<attribute key="showattributes" value="1" />
 		<attribute key="slotType" value="head" />
-		<attribute key="magiclevelpoints" value="2" />
+	</item>
+	<item id="12660" article="uma" name="thunder paladin boots">
+		<attribute key="description" value="Vida: +225/1s&#xA;Mana: +275/1s" />
+		<attribute key="weight" value="2500" />
+		<attribute key="showattributes" value="1" />
+		<attribute key="skillDist" value="1" />
+		<attribute key="slotType" value="feet" />
+		<attribute key="speed" value="50" />
+		<attribute key="healthGain" value="225" />
+		<attribute key="healthTicks" value="1000" />
+		<attribute key="manaGain" value="275" />
+		<attribute key="manaTicks" value="1000" />
 	</item>
 	<item id="9779" article="a" name="crystal column" />
 	<item fromid="9784" toid="9791" article="a" name="crystal column" />
@@ -18878,8 +18899,9 @@
 	<item id="10558" article="a" name="piece of scarab shell" plural="pieces of scarab shell">
 		<attribute key="weight" value="142" />
 	</item>
-	<item id="10559" article="a" name="spooky blue eye">
+	<item id="10559" article="uma" name="task token">
 		<attribute key="weight" value="86" />
+		<attribute key="description" value="Troque task tokens por itens no NPC Não sei ainda." />
 	</item>
 	<item id="10560" article="a" name="thorn">
 		<attribute key="weight" value="120" />
@@ -21244,39 +21266,58 @@
 	<item id="12641" article="a" name="cheese cookie">
 		<attribute key="weight" value="10" />
 	</item>
-	<item id="12642" article="a" name="royal draken mail">
+	<item id="12642" article="uma" name="thunder knight armor">
 		<attribute key="weight" value="13000" />
-		<attribute key="armor" value="16" />
+		<attribute key="armor" value="21" />
 		<attribute key="slotType" value="body" />
-		<attribute key="skillShield" value="3" />
-		<attribute key="absorbPercentPhysical" value="5" />
+		<attribute key="skillClub" value="4" />
+		<attribute key="skillAxe" value="4" />
+		<attribute key="skillSword" value="4" />
+		<attribute key="absorbPercentAll" value="5"/>
+		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="12643" article="a" name="royal scale robe">
+	<item id="12643" article="uma" name="thunder knight legs">
 		<attribute key="weight" value="4500" />
-		<attribute key="armor" value="12" />
-		<attribute key="slotType" value="body" />
-		<attribute key="magiclevelpoints" value="2" />
-		<attribute key="absorbPercentFire" value="5" />
+		<attribute key="armor" value="16" />
+		<attribute key="slotType" value="legs" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="absorbPercentAll" value="4"/>
+		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="12644" article="a" name="shield of corruption">
+	<item id="12644" article="um" name="thunder shield">
 		<attribute key="weight" value="4900" />
-		<attribute key="defense" value="36" />
+		<attribute key="defense" value="67" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="skillAxe" value="3" />
 		<attribute key="skillSword" value="3" />
 		<attribute key="weaponType" value="shield" />
 		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="12645" article="an" name="elite draken helmet">
+	<item id="12645" article="um" name="thunder knight helmet">
 		<attribute key="weight" value="4300" />
-		<attribute key="armor" value="9" />
+		<attribute key="armor" value="18" />
 		<attribute key="slotType" value="head" />
-		<attribute key="absorbPercentDeath" value="3" />
-		<attribute key="skillDist" value="1" />
+		<attribute key="skillClub" value="3" />
+		<attribute key="skillAxe" value="3" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="absorbPercentAll" value="3"/>
+		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="12646" name="draken boots">
-		<attribute key="armor" value="3" />
-		<attribute key="speed" value="30" />
+	<item id="12646" name="thunder knight boots">
+		<attribute key="description" value="Vida: +325/1s&#xA;Mana: +175/1s" />
+		<attribute key="speed" value="50" />
+		<attribute key="skillClub" value="1" />
+		<attribute key="skillAxe" value="1" />
+		<attribute key="skillSword" value="1" />
 		<attribute key="weight" value="2500" />
 		<attribute key="slotType" value="feet" />
+		<attribute key="showattributes" value="1" />
+		<attribute key="healthGain" value="325" />
+		<attribute key="healthTicks" value="1000" />
+		<attribute key="manaGain" value="175" />
+		<attribute key="manaTicks" value="1000" />
 	</item>
 	<item id="12647" article="a" name="snake god's wristguard">
 		<attribute key="description" value="It shows your spells and can also shield against attacks when worn." />
@@ -21328,10 +21369,6 @@
 	</item>
 	<item id="12659" article="a" name="brimstone shell">
 		<attribute key="weight" value="112" />
-	</item>
-	<item id="12660" name="trashed draken boots">
-		<attribute key="description" value="They will expire within a short time, sell them back to Esrik before they do." />
-		<attribute key="weight" value="2500" />
 	</item>
 	<item id="30001" name="water" />
 	<item id="30002" name="lifefluid" />

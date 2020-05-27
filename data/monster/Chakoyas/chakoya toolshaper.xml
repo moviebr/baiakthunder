@@ -43,7 +43,6 @@
 		<item id="2666" chance="22500"/><!-- meat -->
 		<item id="2667" countmax="2" chance="10000"/><!-- fish -->
 		<item id="2398" chance="9000"/><!-- mace-->
-		<item id="2553" chance="7500"/><!-- pick -->
 		<item id="2541" chance="7000"/><!-- bone shield -->
 		<item id="1987" chance="100000"><!-- bag -->
 			

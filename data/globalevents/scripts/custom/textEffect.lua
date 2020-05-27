@@ -30,6 +30,7 @@ local effects = {
     {position = Position(473, 1379, 6), text = "NPCs", effect = 49},
     {position = Position(477, 1379, 6), text = "Cidades", effect = 49},
     {position = Position(478, 1379, 6), text = "Bosses", effect = 49},
+    {position = Position(984, 1212, 7), text = "Rotworms", effect = 57},
 }
 
 function onThink(interval)

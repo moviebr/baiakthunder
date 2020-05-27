@@ -18,6 +18,7 @@ local configMining = {
 		{itemid = 2156, name = "red gem.", chancePickNormal = 2, chancePickEspecial = 5},
 		{itemid = 2155, name = "green gem.", chancePickNormal = 2, chancePickEspecial = 5},
 		{itemid = 2158, name = "blue gem.", chancePickNormal = 2, chancePickEspecial = 5},
+		{itemid = 2153, name = "violet gem.", chancePickNormal = 2, chancePickEspecial = 5},
 	},
 	hit = {danoMin = 300, danoMax = 500, chance = 4},
 	idPick = 2553,

@@ -18,8 +18,8 @@ SNOWBALL = {
 	mensagemFalhaComprar = "Você não tem %d ponto(s).",
 	mensagemMinComprar = "Você só pode comprar bolas de neve com o minimo de 30 bolas.",
 	-- Configurações de posições
-	posArena = {{x = 14246, y = 12190, z = 7}, {x = 14250, y = 12194, z = 7}},
-	posEspera = {{x = 14246, y = 12190, z = 7}, {x = 14250, y = 12194, z = 7}},
+	posArena = {{x = 1525, y = 884, z = 7}, {x = 1580, y = 930, z = 7}},
+	posEspera = {x = 1553, y = 855, z = 7},
 	posTpEntrarEvento = Position(1003, 1217, 7),
 	-- Configurações de munição
 	muniPreco = 1,
@@ -48,7 +48,7 @@ SNOWBALL = {
 	days = {
 		["Sunday"] = {"10:00"},
 		["Monday"] = {"10:00"},
-		["Tuesday"] = {"10:00"},
+		["Tuesday"] = {"23:12"},
 		["Wednesday"] = {"10:00"},
 		["Thursday"] = {"10:00"},
 		["Friday"] = {"10:00"},
@@ -84,17 +84,12 @@ function carregarEvento()
 		end
 	end
 	
-	if getTileThingByPos(SnowBall_Configurations.Area_Configurations.Position_WaitRoom).itemid == 0 then
+	if getTileThingByPos(SNOWBALL.posEspera).itemid == 0 then
 		print("".. SNOWBALL.prefixo .."There was a problem checking the position of the waiting room, please check the conditions.")
 		return false
 	end
 
-	if getTileThingByPos(SnowBall_Configurations.Area_Configurations.Position_ExitWaitRoom).itemid == 0 then
-		print("".. SNOWBALL.prefixo .."There was a problem checking the teleport position in the waiting room, please check the conditions.")
-		return false
-	end
-
-	if getTileThingByPos(SnowBall_Configurations.Area_Configurations.Position_EventTeleport).itemid == 0 then
+	if getTileThingByPos(SNOWBALL.posTpEntrarEvento).itemid == 0 then
 		print("".. SNOWBALL.prefixo .."There was a problem when checking the existence of the position to create the event teleport, please check the conditions.")
 		return false
 	end
