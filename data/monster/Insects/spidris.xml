@@ -45,11 +45,9 @@
 		<voice sentence="Iiiiieeeeeh!" />
 	</voices>
 	<loot>
-		<item name="small ruby" countmax="5" chance="11900" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="platinum coin" countmax="4" chance="45000" />
-		<item name="violet gem" chance="770" />
 		<item id="6300" chance="2700" /><!-- death ring -->
 		<item name="titan axe" chance="920" />
 		<item name="great mana potion" countmax="2" chance="11500" />

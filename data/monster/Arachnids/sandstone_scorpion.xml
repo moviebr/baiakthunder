@@ -42,7 +42,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="128" chance="90000" />
-		<item name="small emerald" countmax="2" chance="9900" />
 		<item name="platinum coin" countmax="2" chance="11111" />
 		<item name="daramian mace" chance="6250" />
 		<item name="steel helmet" chance="5000" />

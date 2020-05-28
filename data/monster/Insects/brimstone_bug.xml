@@ -54,7 +54,6 @@
 	<loot>
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
-		<item name="small emerald" countmax="4" chance="2702" />
 		<item name="stealth ring" chance="892" />
 		<item name="platinum amulet" chance="110" />
 		<item name="magic sulphur" chance="1639" />

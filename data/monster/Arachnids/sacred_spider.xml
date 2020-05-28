@@ -37,6 +37,5 @@
 		<item name="scarab coin" countmax="4" chance="7142" />
 		<item name="plate armor" chance="4761" />
 		<item name="spider fangs" chance="25000" />
-		<item name="gold ingot" chance="95" />
 	</loot>
 </monster>

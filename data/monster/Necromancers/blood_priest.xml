@@ -56,7 +56,6 @@
 		<voice sentence="Blood for the dark god!" />
 	</voices>
 	<loot>
-		<item name="small ruby" countmax="2" chance="3510" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="71" chance="50000" />
 		<item name="boots of haste" chance="120" />
@@ -69,7 +68,6 @@
 		<item name="spellbook of mind control" chance="180" />
 		<item name="underworld rod" chance="470" />
 		<item name="book of necromantic rituals" chance="13550" />
-		<item name="rough red gem" chance="880" />
 		<item name="lancet" chance="14410" />
 		<item name="horoscope" chance="9270" />
 		<item name="blood tincture in a vial" chance="14460" />

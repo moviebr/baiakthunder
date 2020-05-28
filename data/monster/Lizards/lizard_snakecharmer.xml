@@ -55,8 +55,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="55" chance="83740" />
-		<item name="small amethyst" chance="520" />
-		<item name="yellow gem" chance="150" />
 		<item name="life ring" chance="340" />
 		<item name="life crystal" chance="1430" />
 		<item name="terra rod" chance="920" />

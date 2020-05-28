@@ -64,12 +64,8 @@
 		<voice sentence="Come to me my children!" />
 	</voices>
 	<loot>
-		<item name="white pearl" chance="5000" />
-		<item name="black pearl" countmax="3" chance="5960" />
 		<item name="gold coin" countmax="139" chance="100000" />
-		<item name="small emerald" countmax="3" chance="2230" />
 		<item name="platinum coin" chance="19720" />
-		<item name="yellow gem" chance="690" />
 		<item name="platinum amulet" chance="450" />
 		<item id="2175" chance="10000" /><!-- spellbook -->
 		<item name="mind stone" chance="350" />
@@ -78,10 +74,8 @@
 		<item name="strange helmet" chance="740" />
 		<item name="ancient shield" chance="2422" />
 		<item name="castle shield" chance="350" />
-		<item name="blue robe" chance="150" />
 		<item name="strong mana potion" chance="7500" />
 		<item name="lightning boots" chance="200" />
-		<item name="small topaz" countmax="3" chance="2430" />
 		<item name="maxilla maximus" chance="100" />
 	</loot>
 </monster>

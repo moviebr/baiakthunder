@@ -56,7 +56,6 @@
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="35" chance="40000" />
-		<item name="small emerald" countmax="4" chance="6250" />
 		<item name="energy ring" chance="961" />
 		<item name="brown mushroom" countmax="5" chance="3846" />
 		<item name="magic sulphur" chance="102" />

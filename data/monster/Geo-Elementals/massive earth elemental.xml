@@ -48,7 +48,6 @@
 		<item id="2148" countmax="90" chance="32000"/><!-- gold coin -->
 		<item id="2148" countmax="80" chance="32000"/><!-- gold coin -->
 		<item id="2148" countmax="51" chance="32000"/><!-- gold coin -->
-		<item id="1294" countmax="10" chance="1200"/><!-- small stone -->
 		<item id="2510" chance="8750"/><!-- plate shield-->
 		<item id="2666" chance="9000"/><!-- meat -->
 

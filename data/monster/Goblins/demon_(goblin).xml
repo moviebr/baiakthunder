@@ -30,7 +30,6 @@
 		<element deathPercent="-10" />
 	</elements>
 	<loot>
-		<item name="small stone" countmax="3" chance="15290" />
 		<item name="gold coin" countmax="9" chance="50320" />
 		<item id="2230" chance="1130" /><!-- bone -->
 		<item name="mouldy cheese" chance="1000" />

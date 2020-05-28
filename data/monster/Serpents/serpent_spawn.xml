@@ -63,7 +63,6 @@
 	</voices>
 	<loot>
 		<item name="golden mug" chance="2870" />
-		<item name="small sapphire" chance="12000" />
 		<item name="gold coin" countmax="100" chance="32300" />
 		<item name="gold coin" countmax="100" chance="32300" />
 		<item name="gold coin" countmax="39" chance="32300" />

@@ -52,7 +52,6 @@
 		<item name="black pearl" countmax="3" chance="720" />
 		<item name="gold coin" countmax="50" chance="53000" />
 		<item name="gold coin" countmax="70" chance="40000" />
-		<item name="small amethyst" countmax="2" chance="500" />
 		<item name="energy ring" chance="990" />
 		<item name="battle shield" chance="7760" />
 		<item name="black shield" chance="70" />

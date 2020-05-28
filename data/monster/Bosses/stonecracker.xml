@@ -48,7 +48,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="100" chance="76225" />
-		<item name="small amethyst" countmax="2" chance="7650" />
 		<item name="double axe" chance="7650" />
 		<item name="crowbar" chance="14800" />
 		<item name="plate armor" chance="7650" />

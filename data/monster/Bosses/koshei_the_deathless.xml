@@ -69,7 +69,6 @@
 		<item name="dirty cape" chance="10000" />
 		<item id="2401" chance="10000" />
 		<item name="castle shield" chance="588" />
-		<item name="blue robe" chance="709" />
 		<item name="lich staff" chance="1000" />
 		<item name="lightning boots" chance="688" />
 	</loot>

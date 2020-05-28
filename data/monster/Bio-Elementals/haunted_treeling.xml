@@ -54,7 +54,6 @@
 		<voice sentence="Knorrrrrr" />
 	</voices>
 	<loot>
-		<item name="small sapphire" chance="585" />
 		<item name="gold coin" countmax="95" chance="60000" />
 		<item name="dwarven ring" chance="621" />
 		<item name="white mushroom" countmax="2" chance="5263" />

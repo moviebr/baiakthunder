@@ -51,7 +51,6 @@
 	<loot>
 		<item name="gold coin" countmax="61" chance="60000" />
 		<item name="gold coin" countmax="79" chance="60000" />
-		<item name="small amethyst" chance="247" />
 		<item name="poisonous slime" chance="8333" />
 		<item name="lump of dirt" chance="4166" />
 		<item name="lancer beetle shell" chance="16666" />

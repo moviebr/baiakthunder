@@ -43,7 +43,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="75" chance="100000" />
-		<item name="small emerald" chance="920" />
 		<item name="epee" chance="450" />
 		<item name="swarmer antenna" chance="15300" />
 		<item name="compound eye" chance="12500" />

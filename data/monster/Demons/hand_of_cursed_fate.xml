@@ -51,13 +51,10 @@
 	</immunities>
 	<loot>
 		<item name="emerald bangle" chance="3500" />
-		<item name="small sapphire" countmax="4" chance="11000" />
 		<item name="gold coin" countmax="100" chance="60000" />
 		<item name="gold coin" countmax="100" chance="60000" />
 		<item name="gold coin" countmax="67" chance="50000" />
 		<item name="platinum coin" countmax="7" chance="100000" />
-		<item name="violet gem" chance="700" />
-		<item name="yellow gem" chance="5940" />
 		<item name="energy ring" chance="3150" />
 		<item name="platinum amulet" chance="1005" />
 		<item name="mind stone" chance="9090" />
@@ -78,7 +75,5 @@
 		<item name="assassin star" countmax="5" chance="7692" />
 		<item name="abyss hammer" chance="495" />
 		<item name="great mana potion" countmax="2" chance="19990" />
-		<item name="ultimate health potion" chance="18000" />
-		<item name="gold ingot" chance="700" />
-	</loot>
+		<item name="ultimate health potion" chance="18000" />	</loot>
 </monster>

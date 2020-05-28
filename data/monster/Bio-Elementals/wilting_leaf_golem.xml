@@ -42,7 +42,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="45" chance="97230" />
-		<item name="small emerald" chance="830" />
 		<item name="white mushroom" countmax="3" chance="4860" />
 		<item name="swampling club" chance="4200" />
 		<item name="dowser" chance="10690" />

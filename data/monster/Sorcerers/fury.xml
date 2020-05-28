@@ -69,7 +69,6 @@
 		<voice sentence="Dieee!" />
 	</voices>
 	<loot>
-		<item id="2120" countmax="3" chance="8000" /><!-- small amethyst -->
 		<item id="2124" chance="410" /><!-- crystal ring-->
 		<item name="gold coin" countmax="100" chance="30000" />
 		<item name="gold coin" countmax="100" chance="30000" />

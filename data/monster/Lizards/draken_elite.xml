@@ -53,7 +53,6 @@
 		<voice sentence="You will die zhouzandz deazhz!" />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="4" chance="2440" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="47000" />
 		<item name="platinum coin" countmax="8" chance="50360" />
@@ -66,14 +65,11 @@
 		<item name="Zaoan helmet" chance="150" />
 		<item name="Zaoan legs" chance="770" />
 		<item name="Zaoan sword" chance="490" />
-		<item name="elite draken mail" chance="110" />
 		<item name="twiceslicer" chance="910" />
 		<item name="draken sulphur" chance="7600" />
 		<item name="draken wristbands" chance="14030" />
-		<item name="broken draken mail" chance="16930" />
 		<item name="broken slicer" chance="24670" />
 		<item name="cobra crown" chance="10" />
-		<item name="draken boots" chance="600" />
 		<item name="snake god's wristguard" chance="80" />
 		<item name="blade of corruption" chance="20" />
 	</loot>

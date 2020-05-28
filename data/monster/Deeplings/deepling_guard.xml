@@ -49,7 +49,6 @@
 		<voice sentence="QJELL NETA NA!!" />
 	</voices>
 	<loot>
-		<item name="small sapphire" countmax="3" chance="2890" />
 		<item name="gold coin" countmax="90" chance="100000" />
 		<item name="gold coin" countmax="90" chance="100000" />
 		<item name="platinum coin" countmax="2" chance="70000" />

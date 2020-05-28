@@ -83,17 +83,11 @@
 		<item name="ancient amulet" chance="3500" />
 		<item name="white pearl" countmax="15" chance="12500" />
 		<item name="black pearl" countmax="15" chance="15000" />
-		<item name="small diamond" countmax="5" chance="9500" />
-		<item name="small sapphire" countmax="10" chance="13500" />
 		<item name="gold coin" countmax="100" chance="99900" />
 		<item name="gold coin" countmax="100" chance="88800" />
 		<item name="gold coin" countmax="100" chance="77700" />
 		<item name="gold coin" countmax="100" chance="66600" />
-		<item name="small emerald" countmax="10" chance="15500" />
-		<item name="small amethyst" countmax="20" chance="13500" />
 		<item name="talon" countmax="7" chance="14000" />
-		<item name="green gem" chance="1500" />
-		<item name="blue gem" chance="1500" />
 		<item id="2162" chance="11500" />
 		<item name="might ring" chance="5000" />
 		<item name="stealth ring" chance="9500" />

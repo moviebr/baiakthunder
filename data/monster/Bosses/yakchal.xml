@@ -74,6 +74,5 @@
 		<item name="pair of earmuffs" chance="1000" />
 		<item name="glacier kilt" chance="2650" />
 		<item name="glacier robe" chance="3000" />
-		<item name="gold ingot" chance="5000" />
 	</loot>
 </monster>

@@ -60,7 +60,6 @@
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="97" chance="40000" />
 		<item name="gold coin" countmax="7" chance="3390" />
-		<item name="small amethyst" countmax="3" chance="2250" />
 		<item name="stealth ring" chance="2702" />
 		<item name="necrotic rod" chance="830" />
 		<item name="blank rune" countmax="2" chance="16666" />

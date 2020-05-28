@@ -44,12 +44,10 @@
 		<immunity invisible="1" />
 	</immunities>
 	<loot>
-		<item name="small stone" countmax="10" chance="10000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="63" chance="50000" />
 		<item name="blank rune" chance="25000" />
 		<item name="earth arrow" countmax="8" chance="5555" />
-		<item name="small topaz" chance="320" />
 		<item name="lump of earth" chance="25000" />
 		<item name="clay lump" chance="1100" />
 	</loot>

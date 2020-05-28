@@ -79,7 +79,6 @@
 		<item name="nightmare blade" chance="1100" />
 		<item name="great mana potion" countmax="3" chance="15000" />
 		<item name="great health potion" countmax="2" chance="15000" />
-		<item name="gold ingot" chance="2300" />
 		<item name="sai" chance="1460" />
 		<item name="violet crystal shard" chance="3000" />
 		<item name="brown crystal splinter" chance="16000" />

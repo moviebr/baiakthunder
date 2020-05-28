@@ -57,13 +57,11 @@
 		<voice sentence="HISSSS" />
 	</voices>
 	<loot>
-		<item name="small sapphire" countmax="5" chance="56325" />
 		<item name="stone skin amulet" chance="100000" />
 		<item name="warrior helmet" chance="75500" />
 		<item name="royal helmet" chance="25500" />
 		<item name="medusa shield" chance="75500" />
 		<item name="strong mana potion" countmax="2" chance="100000" />
-		<item name="gold ingot" countmax="3" chance="47725" />
 		<item name="sacred tree amulet" chance="75500" />
 		<item name="egg of The Many" chance="100000" />
 	</loot>

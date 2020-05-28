@@ -54,7 +54,6 @@
 	</voices>
 	<loot>
 		<item name="piggy bank" chance="1030" />
-		<item name="small ruby" countmax="5" chance="4761" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="50" chance="50000" />

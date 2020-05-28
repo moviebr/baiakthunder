@@ -51,8 +51,6 @@
 	</voices>
 	<loot>
 		<item name="black pearl" chance="1612" />
-		<item name="small diamond" chance="66" />
-		<item name="small sapphire" chance="578" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="3" chance="50000" />
 		<item name="ice rapier" chance="400" />

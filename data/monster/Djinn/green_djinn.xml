@@ -62,7 +62,6 @@
 		<item name="oil lamp" chance="830" />
 		<item name="gold coin" countmax="70" chance="41000" />
 		<item name="gold coin" countmax="45" chance="51000" />
-		<item name="small emerald" countmax="4" chance="2960" />
 		<item name="mystic turban" chance="140" />
 		<item id="2696" chance="23500" /><!-- cheese -->
 		<item name="grave flower" chance="1000" />

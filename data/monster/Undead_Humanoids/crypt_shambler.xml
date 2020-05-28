@@ -40,7 +40,6 @@
 		<voice sentence="Chhhhhhh!" />
 	</voices>
 	<loot>
-		<item name="small diamond" chance="510" />
 		<item name="gold coin" countmax="55" chance="57000" />
 		<item name="rotten meat" chance="1850" />
 		<item id="2230" chance="5000" /><!-- bone -->

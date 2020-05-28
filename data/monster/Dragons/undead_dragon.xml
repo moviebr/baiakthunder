@@ -90,7 +90,6 @@
 		<item name="great health potion" chance="21200" />
 		<item name="divine plate" chance="430" />
 		<item name="skullcracker armor" chance="290" />
-		<item name="gold ingot" chance="570" />
 		<item name="unholy bone" chance="33380" />
 		<item name="spellweaver's robe" chance="860" />
 	</loot>

@@ -49,7 +49,6 @@
 		<voice sentence="Secret objective complete." />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="2" chance="1000" />
 		<item name="gold coin" countmax="100" chance="43000" />
 		<item name="gold coin" countmax="40" chance="50000" />
 		<item name="might ring" chance="370" />

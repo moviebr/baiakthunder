@@ -54,7 +54,6 @@
 	<loot>
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="90" chance="50000" />
-		<item name="small emerald" countmax="5" chance="5882" />
 		<item name="platinum coin" countmax="2" chance="35333" />
 		<item name="energy ring" chance="606" />
 		<item name="brown mushroom" countmax="5" chance="5263" />

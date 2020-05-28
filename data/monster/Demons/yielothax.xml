@@ -53,7 +53,6 @@
 		<voice sentence="Bsssssssm Bssssssm Bsssssssssssm!" yell="1" />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="5" chance="4761" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="27" chance="50000" />

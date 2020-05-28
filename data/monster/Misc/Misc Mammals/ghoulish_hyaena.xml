@@ -41,7 +41,6 @@
 		<voice sentence="Hoouu!" />
 	</voices>
 	<loot>
-		<item name="small ruby" countmax="2" chance="2700" />
 		<item name="gold coin" countmax="40" chance="89000" />
 		<item name="meat" countmax="3" chance="51060" />
 		<item name="worm" countmax="7" chance="65000" />

@@ -67,6 +67,5 @@
 		<item name="butcher's axe" chance="850" />
 		<item name="great mana potion" countmax="2" chance="14830" />
 		<item name="great health potion" countmax="2" chance="10000" />
-		<item name="gold ingot" chance="3140" />
 	</loot>
 </monster>

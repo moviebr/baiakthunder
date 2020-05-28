@@ -55,7 +55,6 @@
 		<voice sentence="Tcharrr!" />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="4" chance="11800" />
 		<item name="gold coin" countmax="100" chance="40000" />
 		<item name="gold coin" countmax="100" chance="40000" />
 		<item name="gold coin" countmax="20" chance="20000" />

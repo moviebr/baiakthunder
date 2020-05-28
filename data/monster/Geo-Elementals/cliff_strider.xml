@@ -55,8 +55,6 @@
 		<item name="gold coin" countmax="100" chance="100000" />
 		<item name="gold coin" countmax="95" chance="100000" />
 		<item name="platinum coin" countmax="10" chance="100000" />
-		<item name="red gem" chance="6110" />
-		<item name="blue gem" chance="830" />
 		<item name="giant sword" chance="620" />
 		<item name="hammer of wrath" chance="70" />
 		<item name="knight legs" chance="830" />

@@ -44,7 +44,6 @@
 		<voice sentence="Shrrrr" />
 	</voices>
 	<loot>
-		<item name="small sapphire" chance="1000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="29" chance="50000" />
 		<item name="stealth ring" chance="960" />
@@ -52,7 +51,6 @@
 		<item name="halberd" chance="5000" />
 		<item name="strange helmet" chance="100" />
 		<item name="cape" chance="1050" />
-		<item name="blue robe" chance="50" />
 		<item name="shrimp" countmax="5" chance="5000" />
 		<item name="fish fin" chance="630" />
 		<item name="mantassin tail" chance="11600" />

@@ -46,8 +46,6 @@
 		<item id="2050" chance="4800" /><!-- torch -->
 		<item name="battle hammer" chance="4000" />
 		<item name="iron helmet" chance="3450" />
-		<item name="black pearl" chance="2900" />
-		<item name="small ruby" chance="1500" />
 		<item name="mysterious fetish" chance="530" />
 		<item name="mind stone" chance="470" />
 		<item name="guardian shield" chance="110" />

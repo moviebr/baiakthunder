@@ -53,7 +53,6 @@
 	<loot>
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="91" chance="50000" />
-		<item name="small amethyst" countmax="3" chance="3270" />
 		<item name="strong mana potion" chance="17450" />
 		<item name="great mana potion" chance="5450" />
 		<item name="flash arrow" countmax="15" chance="6550" />
@@ -63,6 +62,5 @@
 		<item name="spellbook of warding" chance="360" />
 		<item name="wand of starstorm" chance="730" />
 		<item id="9809" chance="730" /><!-- rusty armor -->
-		<item name="shockwave amulet" chance="500" />
 	</loot>
 </monster>

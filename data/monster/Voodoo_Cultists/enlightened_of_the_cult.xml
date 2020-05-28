@@ -65,14 +65,12 @@
 	<loot>
 		<item id="1962" chance="910" /><!-- orange book -->
 		<item name="piggy bank" chance="130" />
-		<item name="small sapphire" chance="550" />
 		<item name="gold coin" countmax="70" chance="64550" />
 		<item name="energy ring" chance="450" />
 		<item name="platinum amulet" chance="200" />
 		<item name="wand of inferno" chance="180" />
 		<item name="protection amulet" chance="790" />
 		<item name="skull staff" chance="350" />
-		<item name="blue robe" chance="40" />
 		<item name="enigmatic voodoo skull" chance="130" />
 		<item name="jewelled backpack" chance="100" />
 		<item name="pirate voodoo doll" chance="430" />
@@ -81,6 +79,5 @@
 		<item name="strong mana potion" chance="740" />
 		<item name="cultish mask" chance="10250" />
 		<item name="cultish symbol" chance="890" />
-		<item name="broken key ring" chance="100" />
 	</loot>
 </monster>

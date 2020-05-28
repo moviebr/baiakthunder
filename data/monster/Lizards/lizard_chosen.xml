@@ -50,7 +50,6 @@
 		<voice sentence="Kzzzzzz!" />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="5" chance="2550" />
 		<item name="gold coin" countmax="100" chance="33000" />
 		<item name="gold coin" countmax="100" chance="32000" />
 		<item name="gold coin" countmax="36" chance="32000" />

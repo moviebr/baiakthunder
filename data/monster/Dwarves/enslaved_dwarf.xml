@@ -56,8 +56,6 @@
 	<loot>
 		<item name="gold coin" countmax="99" chance="50000" />
 		<item name="gold coin" countmax="50" chance="50000" />
-		<item name="small emerald" countmax="2" chance="10290" />
-		<item name="small amethyst" countmax="2" chance="10680" />
 		<item name="platinum coin" countmax="6" chance="100000" />
 		<item name="axe ring" chance="1550" />
 		<item name="war hammer" chance="5050" />

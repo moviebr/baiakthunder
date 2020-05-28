@@ -58,7 +58,6 @@
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="98" chance="50000" />
 		<item name="platinum coin" countmax="10" chance="100000" />
-		<item name="yellow gem" chance="1030" />
 		<item name="dwarven ring" chance="4660" />
 		<item name="knight legs" chance="1910" />
 		<item name="crown armor" chance="370" />
@@ -73,7 +72,6 @@
 		<item name="mana potion" countmax="4" chance="14000" />
 		<item name="ultimate health potion" countmax="2" chance="9500" />
 		<item name="crystalline armor" chance="560" />
-		<item name="small topaz" countmax="3" chance="16500" />
 		<item name="shiny stone" chance="13700" />
 		<item name="sulphurous stone" chance="20700" />
 		<item name="wand of defiance" chance="1300" />

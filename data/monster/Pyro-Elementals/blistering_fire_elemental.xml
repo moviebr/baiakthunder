@@ -36,7 +36,6 @@
 		<immunity fire="1" />
 	</immunities>
 	<loot>
-		<item name="small ruby" countmax="3" chance="3200" />
 		<item name="gold coin" countmax="65" chance="12500" />
 		<item name="gold coin" countmax="60" chance="12500" />
 		<item name="glimmering soil" chance="2500" />

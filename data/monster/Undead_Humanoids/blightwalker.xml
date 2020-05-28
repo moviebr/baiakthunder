@@ -75,7 +75,6 @@
 		<item name="terra mantle" chance="1050" />
 		<item name="terra legs" chance="2500" />
 		<item name="ultimate health potion" countmax="2" chance="14720" />
-		<item name="gold ingot" chance="5270" />
 		<item name="bundle of cursed straw" chance="15000" />
 	</loot>
 </monster>

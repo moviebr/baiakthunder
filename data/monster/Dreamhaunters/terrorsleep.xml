@@ -64,10 +64,7 @@
 		<voice sentence="I am the darkness around you..." />
 	</voices>
 	<loot>
-		<item name="small ruby" countmax="3" chance="9600" />
 		<item name="gold coin" countmax="100" chance="100000" />
-		<item name="small emerald" chance="14000" />
-		<item name="small amethyst" countmax="3" chance="17000" />
 		<item name="platinum coin" countmax="8" chance="100000" />
 		<item name="giant sword" chance="560" />
 		<item name="warrior helmet" chance="2820" />
@@ -76,7 +73,6 @@
 		<item name="red piece of cloth" chance="1130" />
 		<item name="great mana potion" countmax="2" chance="36000" />
 		<item name="ultimate health potion" chance="26000" />
-		<item name="small topaz" countmax="2" chance="17000" />
 		<item name="blue crystal shard" chance="6000" />
 		<item name="blue crystal splinter" chance="13000" />
 		<item name="cyan crystal fragment" chance="17000" />

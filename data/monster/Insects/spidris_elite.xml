@@ -27,11 +27,9 @@
 		<immunity invisible="1" />
 	</immunities>
 	<loot>
-		<item name="small ruby" countmax="5" chance="23280" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="platinum coin" countmax="6" chance="45000" />
-		<item name="violet gem" chance="1120" />
 		<item id="6300" chance="4480" /><!-- death ring -->
 		<item name="titan axe" chance="1440" />
 		<item name="great mana potion" countmax="2" chance="20400" />

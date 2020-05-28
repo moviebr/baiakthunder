@@ -59,7 +59,6 @@
 		<item id="1949" chance="31000" /><!-- scroll -->
 		<item name="candlestick" chance="2100" />
 		<item name="gold coin" countmax="47" chance="37000" />
-		<item name="yellow gem" chance="50" />
 		<item name="life crystal" chance="970" />
 		<item name="wand of cosmic energy" chance="1160" />
 		<item name="elven amulet" chance="1999" />

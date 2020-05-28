@@ -56,7 +56,6 @@
 		<item name="spiked squelcher" chance="160" />
 		<item name="strong health potion" countmax="2" chance="5000" />
 		<item name="strong mana potion" countmax="2" chance="5000" />
-		<item name="small topaz" countmax="2" chance="7940" />
 		<item name="stampor horn" chance="4920" />
 		<item name="stampor talons" countmax="2" chance="9950" />
 		<item name="hollow stampor hoof" chance="3020" />

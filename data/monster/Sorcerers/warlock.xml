@@ -86,7 +86,6 @@
 		<item id="2151" chance="5500"/><!-- talon -->
 		<item id="7591" chance="12500"/><!-- great health potion -->
 		<item id="7590" chance="10000"/><!-- great mana potion -->
-		<item id="2656" chance="2000"/><!-- blue robe -->
 		<item id="7368" countmax="4" chance="1200"/><!-- assassin star -->
 		<item id="1986" chance="800"/><!-- red tome -->
 		<item id="2197" chance="750"/><!-- stone skin amulet -->

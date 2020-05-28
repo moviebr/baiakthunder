@@ -43,7 +43,6 @@
 		<item name="gold coin" countmax="100" chance="31500" />
 		<item name="gold coin" countmax="100" chance="31500" />
 		<item name="gold coin" countmax="68" chance="31000" />
-		<item name="small emerald" countmax="5" chance="4830" />
 		<item name="platinum coin" countmax="2" chance="48900" />
 		<item name="tower shield" chance="1000" />
 		<item name="lizard leather" chance="14360" />

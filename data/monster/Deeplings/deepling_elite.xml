@@ -37,7 +37,6 @@
 	<loot>
 		<item name="gold coin" countmax="100" chance="100000" />
 		<item name="gold coin" countmax="86" chance="100000" />
-		<item name="small emerald" countmax="2" chance="6290" />
 		<item name="life ring" chance="5360" />
 		<item name="fish fin" chance="2000" />
 		<item name="great mana potion" chance="24000" />

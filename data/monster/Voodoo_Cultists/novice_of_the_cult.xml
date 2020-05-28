@@ -50,7 +50,6 @@
 	</voices>
 	<loot>
 		<item id="1962" chance="700" /><!-- orange book -->
-		<item name="small diamond" chance="210" />
 		<item name="gold coin" countmax="40" chance="43380" />
 		<item name="wand of vortex" chance="450" />
 		<item name="garlic necklace" chance="420" />

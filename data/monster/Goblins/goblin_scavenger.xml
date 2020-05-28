@@ -51,7 +51,6 @@
 		<voice sentence="Uhh!" />
 	</voices>
 	<loot>
-		<item name="small stone" countmax="2" chance="25560" />
 		<item name="gold coin" countmax="9" chance="50810" />
 		<item id="2230" chance="12450" /><!-- bone -->
 		<item name="mouldy cheese" chance="7000" />

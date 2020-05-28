@@ -53,10 +53,7 @@
 		<immunity lifedrain="1" />
 	</immunities>
 	<loot>
-		<item name="small diamond" chance="1000" />
-		<item name="small sapphire" chance="1000" />
 		<item name="gold coin" countmax="100" chance="50000" />
-		<item name="small emerald" countmax="2" chance="1000" />
 		<item name="platinum coin" chance="10000" />
 		<item name="energy ring" chance="950" />
 		<item name="life ring" chance="930" />

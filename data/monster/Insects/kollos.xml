@@ -39,7 +39,6 @@
 		<voice sentence="Flzlzlzlzlzlz!" />
 	</voices>
 	<loot>
-		<item name="small ruby" countmax="2" chance="8180" />
 		<item name="gold coin" countmax="100" chance="49000" />
 		<item name="gold coin" countmax="97" chance="50000" />
 		<item name="platinum coin" countmax="3" chance="66000" />
@@ -48,7 +47,6 @@
 		<item name="great mana potion" countmax="4" chance="8950" />
 		<item id="7632" chance="2600" /><!-- giant shimmering pearl -->
 		<item name="ultimate health potion" countmax="3" chance="4000" />
-		<item name="gold ingot" chance="5160" />
 		<item name="kollos shell" chance="15390" />
 		<item name="compound eye" chance="15720" />
 		<item name="calopteryx cape" chance="360" />

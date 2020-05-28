@@ -54,7 +54,6 @@
 		<voice sentence="HISSSS" />
 	</voices>
 	<loot>
-		<item name="small sapphire" chance="5000" />
 		<item name="gold coin" countmax="100" chance="34000" />
 		<item name="gold coin" countmax="100" chance="34000" />
 		<item name="gold coin" countmax="46" chance="20000" />

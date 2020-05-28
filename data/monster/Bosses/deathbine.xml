@@ -43,7 +43,6 @@
 		<immunity invisible="1" />
 	</immunities>
 	<loot>
-		<item name="small emerald" countmax="4" chance="100000" />
 		<item name="platinum coin" countmax="5" chance="100000" />
 		<item name="dark mushroom" chance="50000" />
 		<item name="shadow herb" chance="100000" />

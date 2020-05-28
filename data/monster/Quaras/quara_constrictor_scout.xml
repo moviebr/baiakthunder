@@ -43,7 +43,6 @@
 	</voices>
 	<loot>
 		<item name="gold coin" countmax="49" chance="98800" />
-		<item name="small amethyst" chance="4350" />
 		<item name="longsword" chance="8310" />
 		<item name="brass armor" chance="4660" />
 		<item name="shrimp" countmax="3" chance="9680" />

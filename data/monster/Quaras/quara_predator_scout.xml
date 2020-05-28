@@ -38,7 +38,6 @@
 		<voice sentence="Rraaar!" />
 	</voices>
 	<loot>
-		<item name="small diamond" countmax="2" chance="5520" />
 		<item name="gold coin" countmax="60" chance="50000" />
 		<item name="gold coin" countmax="69" chance="48000" />
 		<item name="two handed sword" chance="2320" />

@@ -53,7 +53,6 @@
 		<item id="7732" chance="1600"/><!-- seeds -->
 		<item id="2244" chance="10000"/><!-- leaves -->
 		<item id="2245" chance="18000"/><!-- twigs -->
-		<item id="2148" countmax="10" chance="1500"/><!-- small stone -->
 
 			
 		</item>

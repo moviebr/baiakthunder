@@ -49,7 +49,6 @@
 		<voice sentence="FCHHHHH" yell="1" />
 	</voices>
 	<loot>
-		<item name="small diamond" chance="500" />
 		<item name="gold coin" countmax="70" chance="37500" />
 		<item name="gold coin" countmax="50" chance="37500" />
 		<item name="life crystal" chance="150" />

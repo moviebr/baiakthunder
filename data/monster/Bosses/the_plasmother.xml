@@ -48,8 +48,6 @@
 		<voice sentence="Blubb" />
 	</voices>
 	<loot>
-		<item name="black pearl" countmax="3" chance="5000" />
-		<item name="small sapphire" countmax="3" chance="5000" />
 		<item name="gold coin" countmax="70" chance="20000" />
 		<item name="gold coin" countmax="60" chance="20000" />
 		<item name="gold coin" countmax="45" chance="20000" />

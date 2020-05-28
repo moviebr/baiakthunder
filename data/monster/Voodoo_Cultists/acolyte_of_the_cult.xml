@@ -57,7 +57,6 @@
 	<loot>
 		<item id="1962" chance="730" /><!-- orange book -->
 		<item name="gold coin" countmax="40" chance="66940" />
-		<item name="small emerald" chance="550" />
 		<item name="life ring" chance="560" />
 		<item name="terra rod" chance="250" />
 		<item name="dragon necklace" chance="1050" />

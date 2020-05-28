@@ -64,12 +64,9 @@
 		<voice sentence="Zzzzzooom!!" />
 	</voices>
 	<loot>
-		<item name="ring of the sky" chance="370" />
-		<item name="small ruby" countmax="5" chance="6910" />
 		<item name="gold coin" countmax="100" chance="41000" />
 		<item name="gold coin" countmax="100" chance="58000" />
 		<item name="platinum coin" countmax="5" chance="25510" />
-		<item name="green gem" chance="970" />
 		<item name="wand of inferno" chance="1660" />
 		<item name="meat" chance="30400" />
 		<item name="great mana potion" chance="4970" />

@@ -42,7 +42,6 @@
 		<immunity drown="1" />
 	</immunities>
 	<loot>
-		<item name="small sapphire" countmax="2" chance="4125" />
 		<item name="gold coin" countmax="90" chance="27000" />
 		<item name="gold coin" countmax="87" chance="27000" />
 		<item name="shiver arrow" countmax="2" chance="1000" />

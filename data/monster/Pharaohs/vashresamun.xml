@@ -57,8 +57,6 @@
 		<item id="7691" chance="7000"/><!-- great mana potion -->
 		<item id="1987" chance="100000"><!-- bag -->
 			
-		<item id="2656" chance="2500"/><!-- blue robe -->
-		<item id="2124" chance="1500"/><!-- crystal ring -->
 		<item id="2074" chance="1500"/><!-- panpipes -->
 		<item id="2445" chance="500"/><!-- crystal mace -->
 		<item id="2139" chance="300"/><!-- ancient tiara -->

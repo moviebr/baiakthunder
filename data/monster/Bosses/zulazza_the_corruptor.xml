@@ -55,11 +55,6 @@
 		<item name="emerald bangle" chance="10500" />
 		<item name="gold coin" countmax="100" chance="49650" />
 		<item name="platinum coin" countmax="30" chance="41325" />
-		<item name="violet gem" chance="25500" />
-		<item name="yellow gem" chance="15500" />
-		<item name="green gem" chance="20500" />
-		<item name="red gem" chance="10500" />
-		<item name="blue gem" chance="30500" />
 		<item name="mastermind shield" chance="5500" />
 		<item name="guardian shield" chance="5500" />
 		<item name="tower shield" chance="15500" />
@@ -73,7 +68,6 @@
 		<item name="earthborn titan armor" chance="5500" />
 		<item name="paladin armor" chance="5500" />
 		<item id="9808" chance="50500" /><!-- rusty armor -->
-		<item name="gold ingot" countmax="4" chance="33000" />
 		<item name="dragon scale boots" chance="5500" />
 	</loot>
 </monster>

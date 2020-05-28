@@ -36,7 +36,6 @@
 		<voice sentence="Rarr chomp chomp!" />
 	</voices>
 	<loot>
-		<item name="small sapphire" chance="1222" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="38" chance="40000" />
 		<item id="2667" countmax="4" chance="25000" /><!-- fish -->

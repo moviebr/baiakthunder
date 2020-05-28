@@ -56,7 +56,6 @@
 		<item id="1976" chance="9000" /><!-- book (gemmed) -->
 		<item name="power bolt" countmax="7" chance="6700" />
 		<item name="energy ring" chance="5250" />
-		<item name="small sapphire" chance="5300" />
 		<item name="golden mug" chance="3190" />
 		<item name="red dragon scale" chance="1920" />
 		<item name="red dragon leather" chance="1040" />

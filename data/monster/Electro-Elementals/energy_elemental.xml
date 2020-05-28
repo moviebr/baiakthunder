@@ -53,7 +53,6 @@
 		<item id="2124" chance="2000" /><!-- crystal ring -->
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="70" chance="50000" />
-		<item name="small amethyst" countmax="2" chance="5000" />
 		<item name="energy ring" chance="892" />
 		<item name="silver amulet" chance="1020" />
 		<item name="wand of cosmic energy" chance="636" />

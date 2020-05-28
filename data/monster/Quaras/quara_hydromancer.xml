@@ -66,7 +66,6 @@
 		<item name="black pearl" chance="3150" />
 		<item name="gold coin" countmax="50" chance="50000" />
 		<item name="gold coin" countmax="60" chance="50000" />
-		<item name="small emerald" countmax="2" chance="5111" />
 		<item name="wand of cosmic energy" chance="900" />
 		<item name="ring of healing" chance="1008" />
 		<item name="knight armor" chance="200" />

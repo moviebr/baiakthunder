@@ -40,7 +40,6 @@
 		<immunity invisible="1" />
 	</immunities>
 	<loot>
-		<item name="small diamond" countmax="3" chance="33333" />
 		<item name="gold coin" countmax="10" chance="100000" />
 		<item name="gold coin" countmax="100" chance="100000" />
 		<item name="meat" countmax="50" chance="33333" />

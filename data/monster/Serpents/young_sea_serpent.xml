@@ -51,7 +51,6 @@
 		<voice sentence="HISSSS" />
 	</voices>
 	<loot>
-		<item name="small sapphire" countmax="2" chance="1900" />
 		<item name="gold coin" countmax="100" chance="50000" />
 		<item name="gold coin" countmax="74" chance="48000" />
 		<item name="stealth ring" chance="1000" />

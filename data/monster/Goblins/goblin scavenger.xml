@@ -42,7 +42,6 @@
 	</voices>
 	<loot>
 		<item id="2148" countmax="9" chance="31500"/><!-- gold coin -->
-		<item id="1294" countmax="4" chance="9000"/><!-- small stone -->
 		<item id="2379" chance="22500"/><!-- dagger -->
 		<item id="2230" chance="15000"/><!-- bone -->
 		<item id="2559" chance="14250"/><!-- small axe -->

@@ -32,7 +32,6 @@
 		<summon name="Pirate Cutthroat" interval="2000" chance="50" />
 	</summons>
 	<loot>
-		<item name="small diamond" chance="100000" />
 		<item name="gold coin" countmax="40" chance="100000" />
 		<item name="skull of Ratha" chance="100000" />
 		<item name="double axe" chance="1500" />

@@ -47,7 +47,6 @@
 		<item name="gold coin" countmax="100" chance="40000" />
 		<item name="gold coin" countmax="35" chance="50000" />
 		<item name="platinum coin" chance="40430" />
-		<item name="yellow gem" chance="1040" />
 		<item name="waspoid claw" chance="9096" />
 		<item name="waspoid wing" chance="13890" />
 		<item name="compound eye" chance="6060" />
