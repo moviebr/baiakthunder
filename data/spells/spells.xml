@@ -588,15 +588,6 @@
 		<vocation name="Royal Paladin" />
 		<vocation name="Glorious Paladin" />
 	</instant>
-	<instant group="support" name="Enchant Spear" words="exeta con" level="45" mana="350" soul="3" premium="0" aggressive="0" selftarget="1" cooldown="2000" needlearn="0" script="conjuring/enchant_spear.lua">
-		<vocation name="Paladin" />
-		<vocation name="Royal Paladin" />
-		<vocation name="Glorious Paladin" />
-	</instant>
-	<instant group="support" name="Enchant Staff" words="exeta vis" level="41" mana="80" premium="0" aggressive="0" selftarget="1" cooldown="2000" needlearn="0" script="conjuring/enchant_staff.lua">
-		<vocation name="Master Sorcerer" />
-		<vocation name="Masterful Sorcerer" />
-	</instant>
 	<instant group="support" name="Energy Bomb Rune" words="adevo mas vis" level="37" mana="880" soul="5" premium="0" aggressive="0" cooldown="2000" needlearn="0" script="conjuring/energy_bomb_rune.lua">
 		<vocation name="Sorcerer" />
 		<vocation name="Master Sorcerer" />

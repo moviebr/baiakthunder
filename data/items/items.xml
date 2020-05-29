@@ -4048,10 +4048,10 @@
 		<attribute key="defense" value="38" />
 		<attribute key="weaponType" value="shield" />
 	</item>
-	<item id="2523" article="a" name="blessed shield">
-		<attribute key="description" value="The shield grants divine protection." />
+	<item id="2523" article="um" name="thunder paladin shield">
 		<attribute key="weight" value="6800" />
-		<attribute key="defense" value="40" />
+		<attribute key="defense" value="50" />
+		<attribute key="skilldist" value="5"/>
 		<attribute key="weaponType" value="shield" />
 	</item>
 	<item id="2524" article="an" name="ornamented shield">
@@ -12445,13 +12445,12 @@
 		<attribute key="maxHitChance" value="76" />
 		<attribute key="range" value="4" />
 	</item>
-	<item id="7367" article="an" name="enchanted spear">
+	<item id="7367" article="uma" name="thunder paladin spear">
 		<attribute key="weight" value="2000" />
-		<attribute key="attack" value="38" />
+		<attribute key="attack" value="92" />
 		<attribute key="weaponType" value="distance" />
 		<attribute key="shootType" value="enchantedspear" />
-		<attribute key="maxHitChance" value="80" />
-		<attribute key="range" value="4" />
+		<attribute key="range" value="6" />
 	</item>
 	<item id="7368" article="an" name="assassin star">
 		<attribute key="weight" value="200" />
@@ -21286,7 +21285,7 @@
 		<attribute key="absorbPercentAll" value="4"/>
 		<attribute key="showattributes" value="1" />
 	</item>
-	<item id="12644" article="um" name="thunder shield">
+	<item id="12644" article="um" name="thunder knight shield">
 		<attribute key="weight" value="4900" />
 		<attribute key="defense" value="67" />
 		<attribute key="skillClub" value="3" />

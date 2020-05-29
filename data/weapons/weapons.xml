@@ -21,6 +21,9 @@
 	<distance id="8858">
 		<vocation name="Paladin" />
 	</distance>
+	<distance id="7367">
+		<vocation name="Paladin" />
+	</distance>
 
 	<!-- Rods -->
 	<wand id="2182" level="7" mana="2" min="8" max="18" type="earth"> <!-- Snakebit Rod -->
@@ -445,7 +448,6 @@
 	<distance id="7364" unproperly="1" level="20" /> <!-- Sniper Arrow -->
 	<distance id="7365" unproperly="1" level="40" /> <!-- Onyx Arrow -->
 	<distance id="7366" script="viper_star.lua" />
-	<distance id="7367" unproperly="1" level="42" /> <!-- Enchanted Spear -->
 	<distance id="7368" unproperly="1" level="80" /> <!-- Assassin Star -->
 	<distance id="7378" unproperly="1" level="25" /> <!-- Royal Spear -->
 	<distance id="7838" unproperly="1" level="20" /> <!-- Flash Arrow -->

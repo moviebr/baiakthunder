@@ -91,7 +91,6 @@
 		<skill id="6" multiplier="1.1" />
 	</vocation>
 	
-	<!-- Novas Vocações -->
 	<vocation id="9" clientid="3" name="Masterful Sorcerer" description="um(a) masterful sorcerer" gaincap="10" gainhp="5" gainmana="30" gainhpticks="4" gainhpamount="10" gainmanaticks="2" gainmanaamount="10" manamultiplier="1.1" attackspeed="350" basespeed="260" soulmax="200" gainsoulticks="15" fromvoc="5">
 		<formula meleeDamage="1.0" distDamage="1.0" defense="1.0" armor="1.0" />
 		<skill id="0" multiplier="1.5" />
@@ -102,7 +101,6 @@
 		<skill id="5" multiplier="1.5" />
 		<skill id="6" multiplier="1.1" />
 	</vocation>
-	
 	<vocation id="10" clientid="4" name="Ancient Druid" description="um(a) ancient druid" gaincap="10" gainhp="5" gainmana="30" gainhpticks="4" gainhpamount="10" gainmanaticks="2" gainmanaamount="10" manamultiplier="1.1" attackspeed="350" basespeed="260" soulmax="200" gainsoulticks="15" fromvoc="6">
 		<formula meleeDamage="1.0" distDamage="1.0" defense="1.0" armor="1.0" />
 		<skill id="0" multiplier="1.5" />
@@ -133,6 +131,4 @@
 		<skill id="5" multiplier="1.1" />
 		<skill id="6" multiplier="1.1" />
 	</vocation>
-	<!-- Fim das Novas Vocações -->
-	
 </vocations>
