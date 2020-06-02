@@ -9,6 +9,8 @@
 	<movevent event="StepIn" actionid="1436" script="custom/events/exitEvents.lua" />
 	<movevent event="StepIn" actionid="9168" script="custom/premiumTile.lua" />
 	<movevent event="StepIn" actionid="8294" script="custom/fromPosition.lua" />
+	<movevent event="StepIn" actionid="1957" script="custom/trainers.lua" />
+	<movevent event="StepIn" actionid="1958" script="custom/trainersExit.lua" />
 
 	<movevent event="DeEquip" itemid="9080" slot="head" function="onDeEquipItem" />
 	<movevent event="Equip" itemid="9080" slot="head" function="onEquipItem">

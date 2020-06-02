@@ -33,6 +33,7 @@ function onSay(player, words, param)
 
         player:setStorageValue(STORAGEVALUE_THUNDER_WAND, index)
         player:sendTextMessage(MESSAGE_INFO_DESCR, 'Elemento trocado para: ' .. param)
+        player:save()
     else
         player:sendCancelMessage('Você não está usando uma Thunder Staff.')
         player:getPosition():sendMagicEffect(CONST_ME_POFF)

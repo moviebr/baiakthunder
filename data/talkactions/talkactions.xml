@@ -17,6 +17,7 @@
 	<talkaction words="!snowball" separator=" " script="snowball.lua" />
 	<talkaction words="!machete" script="machete.lua" />
 	<talkaction words="!staff" separator=" " script="thunderWand.lua" />
+	<talkaction words="!war" separator=" " script="war.lua"/>
 	
 	<!-- Events -->
 	<talkaction words="!join" separator=" " script="join.lua"/>

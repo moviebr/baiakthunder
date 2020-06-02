@@ -14446,6 +14446,7 @@
 		<attribute key="decayTo" value="7384" />
 	</item>
 	<item id="7872" article="uma" name="thunder sword">
+		<attribute key="description" value="A melhor sword do jogo.&#xA;[Premium]" />
 		<attribute key="weight" value="5900" />
 		<attribute key="defense" value="32" />
 		<attribute key="attack" value="102" />
@@ -14508,6 +14509,7 @@
 		<attribute key="decayTo" value="7380" />
 	</item>
 	<item id="7878" article="um" name="thunder axe">
+		<attribute key="description" value="O melhor axe do jogo.&#xA;[Premium]" />
 		<attribute key="weight" value="6150" />
 		<attribute key="defense" value="32" />
 		<attribute key="attack" value="102" />
@@ -14544,6 +14546,7 @@
 		<attribute key="decayTo" value="7415" />
 	</item>
 	<item id="7882" article="um" name="thunder club">
+		<attribute key="description" value="O melhor club do jogo.&#xA;[Premium]" />
 		<attribute key="weight" value="5400" />
 		<attribute key="defense" value="32" />
 		<attribute key="attack" value="102" />
@@ -15775,6 +15778,7 @@
 		<attribute key="hitChance" value="3" />
 	</item>
 	<item id="8858" name="thunder bow">
+		<attribute key="description" value="O melhor bow do jogo.&#xA;[Premium]" />
 		<attribute key="weight" value="4400" />
 		<attribute key="slotType" value="two-handed" />
 		<attribute key="weaponType" value="distance" />

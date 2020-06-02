@@ -49,6 +49,7 @@ function onSay(player, words, param)
         if amount > 0 and amount == player:getMoney() then
             player:deposit(amount)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Você adicionou " .. amount .. " na sua conta, você pode sacar seu dinheiro a qualquer momento.\nO saldo da sua conta é " .. player:getBankBalance() .. ".")
+            player:save()
         else
             player:sendCancelMessage("[Bank System] Você não tem dinheiro suficiente para depositar.")
         end
@@ -63,6 +64,7 @@ function onSay(player, words, param)
         if amount > 0 and amount <= player:getMoney() then
             player:deposit(amount)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Você adicionou " .. amount .. " na sua conta, você pode sacar seu dinheiro a qualquer momento.\nO saldo da sua conta é " .. player:getBankBalance() .. ".")
+            player:save()
         else
             player:sendCancelMessage("[Bank System] Você não tem dinheiro suficiente para depositar.")
         end
@@ -73,6 +75,7 @@ function onSay(player, words, param)
         if amount > 0 and amount <= player:getBankBalance() then
             player:withdraw(amount)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Aqui está todo o seu dinheiro na sua conta. Você pode depositar seu dinheiro a qualquer momento.\nO saldo da sua conta é " .. player:getBankBalance() .. ".")
+            player:save()
         else
             player:sendCancelMessage("[Bank System] Você não tem dinheiro suficiente na sua conta bancária.")
         end
@@ -87,6 +90,7 @@ function onSay(player, words, param)
         if amount > 0 and amount <= player:getBankBalance() then
             player:withdraw(amount)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Aqui está " .. amount .. " gold coins da sua conta, você pode depositar seu dinheiro a qualquer momento.\nO saldo da sua conta é " .. player:getBankBalance() .. ".")
+            player:save()
         else
             player:sendCancelMessage("[Bank System] Você não tem dinheiro suficiente na sua conta bancária.")
         end
@@ -105,6 +109,7 @@ function onSay(player, words, param)
         if getPlayer then
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Você transferiu com sucesso " .. amount .. " para " .. split[2] .. ".")
             player:transferMoneyTo(split[2], amount)
+            player:save()
         else
             if not playerExists(split[2]) then
                 player:sendCancelMessage("[Bank System] Um jogador com nome " .. split[2] .. " não existe.")
@@ -112,6 +117,7 @@ function onSay(player, words, param)
             end
             if playerExists(split[2]) and player:transferMoneyTo(split[2], amount) then
                 player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Você transferiu com sucesso " .. amount .. " para " .. split[2] .. ".")
+                player:save()
             end
         end
     --------------------------- Transfer ---------------------------
@@ -135,6 +141,7 @@ function onSay(player, words, param)
 			if getPlayer then
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Bank System] Você transferiu com sucesso " .. s[2] .. " para " .. s[3] .. ".")
 				player:transferMoneyTo(s[3], amount)
+                player:save()
 			else
 				if not playerExists(s[3]) then
 					player:sendCancelMessage("[Bank System] Um jogador com nome " .. s[3] .. " não existe.")
@@ -142,6 +149,7 @@ function onSay(player, words, param)
 				end
 				if playerExists(s[3]) and player:transferMoneyTo(s[3], amount) then
 					player:sendCancelMessage("[Bank System] Você transferiu com sucesso " .. s[2] .. " para " .. s[3] .. ".")
+                    player:save()
 				end
 			end
 		else

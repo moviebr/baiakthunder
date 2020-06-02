@@ -3,7 +3,7 @@ function Player:onLook(thing, position, distance)
 	if (thing:isCreature() and thing:isNpc() and distance <= minDist) then
        self:say("hi", TALKTYPE_PRIVATE_PN, false, thing)
        self:say("trade", TALKTYPE_PRIVATE_PN, false, thing)
-       return false   
+       return false
    end
 	local description = "Você vê " .. thing:getDescription(distance)
 	
@@ -114,6 +114,7 @@ end
 
 function Player:onLookInTrade(partner, item, distance)
 	self:sendTextMessage(MESSAGE_INFO_DESCR, "Você vê " .. item:getDescription(distance))
+	return true
 end
 
 function Player:onLookInShop(itemType, count)
@@ -154,6 +155,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
 end
 
 function Player:onItemMoved(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+
 end
 
 function Player:onMoveCreature(creature, fromPosition, toPosition)
@@ -232,6 +234,14 @@ function Player:onTurn(direction)
 end
 
 function Player:onTradeRequest(target, item)
+	local blockList = {7879, 7878, 7882, 8858, 7872, 12644, 8908, 2523} -- ID
+
+	if isInArray(blockList, item:getId()) then
+		self:sendCancelMessage("Você não pode trocar esse item.")
+		self:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return false
+	end
+
 	return true
 end
 

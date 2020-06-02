@@ -384,14 +384,19 @@
 		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
 	</spawn>
 	<spawn centerx="888" centery="1263" centerz="8" radius="1" />
+	<spawn centerx="237" centery="1264" centerz="8" radius="30" />
+	<spawn centerx="289" centery="1265" centerz="8" radius="30" />
+	<spawn centerx="345" centery="1265" centerz="8" radius="30" />
 	<spawn centerx="876" centery="1265" centerz="8" radius="1" />
 	<spawn centerx="979" centery="1269" centerz="8" radius="1">
 		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
 	</spawn>
+	<spawn centerx="288" centery="1270" centerz="8" radius="30" />
 	<spawn centerx="981" centery="1274" centerz="8" radius="1">
 		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
 	</spawn>
 	<spawn centerx="872" centery="1275" centerz="8" radius="1" />
+	<spawn centerx="319" centery="1283" centerz="8" radius="30" />
 	<spawn centerx="872" centery="1285" centerz="8" radius="1" />
 	<spawn centerx="966" centery="1285" centerz="8" radius="1">
 		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
@@ -407,6 +412,15 @@
 	<spawn centerx="896" centery="1300" centerz="8" radius="1" />
 	<spawn centerx="915" centery="1300" centerz="8" radius="1" />
 	<spawn centerx="880" centery="1301" centerz="8" radius="1" />
+	<spawn centerx="341" centery="1315" centerz="8" radius="30" />
+	<spawn centerx="353" centery="1318" centerz="8" radius="30" />
+	<spawn centerx="228" centery="1327" centerz="8" radius="30" />
+	<spawn centerx="255" centery="1333" centerz="8" radius="30" />
+	<spawn centerx="292" centery="1333" centerz="8" radius="30" />
+	<spawn centerx="280" centery="1336" centerz="8" radius="30" />
+	<spawn centerx="230" centery="1366" centerz="8" radius="30" />
+	<spawn centerx="319" centery="1371" centerz="8" radius="30" />
+	<spawn centerx="364" centery="1373" centerz="8" radius="30" />
 	<spawn centerx="969" centery="1190" centerz="9" radius="1">
 		<monster name="Beholder" x="0" y="0" z="9" spawntime="30" />
 	</spawn>

@@ -12,7 +12,7 @@ function Creature:onAreaCombat(tile, isAggressive)
 end
 
 local staminaBonus = {
-	target = 'Training Monk',
+	target = 'Trainer',
 	period = 600000, -- time on miliseconds
 	bonus = 5, -- gain stamina
 	events = {}
