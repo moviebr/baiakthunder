@@ -18,7 +18,7 @@ function onAdvance(player, skill, oldLevel, newLevel)
 	
 	local efeito = 50
 	local shot = 31
-	local delay = 0
+	local delay = 1
 	
 	if newLevel > oldLevel then
 		for _, pos in ipairs(positions) do

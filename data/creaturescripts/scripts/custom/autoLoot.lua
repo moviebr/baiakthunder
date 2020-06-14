@@ -13,9 +13,16 @@ local function scanContainer(cid, position)
         for i = corpse:getSize() - 1, 0, -1 do
             local containerItem = corpse:getItem(i)
             if containerItem then
-                for i = AUTOLOOT_STORAGE_START, AUTOLOOT_STORAGE_END do
-                    if player:getStorageValue(i) == containerItem:getId() then
-                        containerItem:moveTo(player)
+                if player:getStorageValue(AUTOLOOT_STORAGE_GOLD) == 1 and containerItem:getWorth() > 0 then
+                    local itemMoney = containerItem:getWorth()
+                    player:sendTextMessage(MESSAGE_STATUS_SMALL, "[Auto Loot System] Coletados: ".. itemMoney .." gold coins.")
+                    player:setBankBalance(player:getBankBalance() + itemMoney)
+                    containerItem:remove()
+                else
+                    for i = AUTOLOOT_STORAGE_START, AUTOLOOT_STORAGE_END do
+                        if player:getStorageValue(i) == containerItem:getId() then
+                            containerItem:moveTo(player)
+                        end
                     end
                 end
             end

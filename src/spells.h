@@ -207,11 +207,36 @@ class Spell : public BaseSpell
 			vocSpellMap[n] = b;
 		}
 
+		const SpellGroup_t getGroup() const {
+			return group;
+		}
+		void setGroup(SpellGroup_t g) {
+			group = g;
+		}
+		const SpellGroup_t getSecondaryGroup() const {
+			return secondaryGroup;
+		}
+		void setSecondaryGroup(SpellGroup_t g) {
+			secondaryGroup = g;
+		}
+
 		uint32_t getCooldown() const {
 			return cooldown;
 		}
 		void setCooldown(uint32_t cd) {
 			cooldown = cd;
+		}
+		uint32_t getSecondaryCooldown() const {
+			return secondaryGroupCooldown;
+		}
+		void setSecondaryCooldown(uint32_t cd) {
+			secondaryGroupCooldown = cd;
+		}
+		uint32_t getGroupCooldown() const {
+			return groupCooldown;
+		}
+		void setGroupCooldown(uint32_t cd) {
+			groupCooldown = cd;
 		}
 
 		int32_t getRange() const {
@@ -273,7 +298,12 @@ class Spell : public BaseSpell
 
 		VocSpellMap vocSpellMap;
 
+		SpellGroup_t group = SPELLGROUP_NONE;
+		SpellGroup_t secondaryGroup = SPELLGROUP_NONE;
+
 		uint32_t cooldown = 1000;
+		uint32_t groupCooldown = 1000;
+		uint32_t secondaryGroupCooldown = 0;
 		uint32_t level = 0;
 		uint32_t magLevel = 0;
 		int32_t range = -1;
@@ -282,6 +312,7 @@ class Spell : public BaseSpell
 
 		bool selfTarget = false;
 		bool needTarget = false;
+		bool aggressive = true;
 
 	private:
 
@@ -292,7 +323,6 @@ class Spell : public BaseSpell
 		bool needWeapon = false;
 		bool blockingSolid = false;
 		bool blockingCreature = false;
-		bool aggressive = true;
 		bool learnable = false;
 		bool enabled = true;
 		bool premium = false;

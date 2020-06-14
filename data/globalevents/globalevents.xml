@@ -13,6 +13,7 @@
 	<globalevent name="Battlefield" interval="60000" script="custom/events/battlefield.lua" />
 	<globalevent name="SafeZone" interval="60000" script="custom/events/safezone.lua" />
 	<globalevent name="SnowBall" interval="60000" script="custom/events/snowball.lua" />
+	<globalevent name="FireStorm" interval="60000" script="custom/events/firestorm.lua" />
 	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/> 
 	
 	<!-- Others -->

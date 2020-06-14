@@ -1,5 +1,4 @@
-local table = 
-{
+local table = {
 	[50] = {type = "bank", id = {5000, 0}, msg = "Foi depositado em seu bank 5000 gold coins por alcançar o level 50!"},
 	[100] = {type = "bank", id = {20000, 0}, msg = "Foi depositado em seu bank 20000 gold coins por alcançar o level 100!"},
 	[200] = {type = "bank", id = {25000, 0}, msg = "Foi depositado em seu bank 25000 gold coins por alcançar o level 200!"},

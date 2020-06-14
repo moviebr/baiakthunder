@@ -29,5 +29,8 @@ dofile('data/lib/events/safezone.lua')
 -- SnowBall
 dofile('data/lib/events/snowball.lua')
 
+-- FireStorm
+dofile('data/lib/events/firestorm.lua')
+
 -- Tasks
 dofile('data/lib/custom/task.lua')

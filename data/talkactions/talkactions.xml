@@ -12,7 +12,6 @@
 	<talkaction words="!onlinebonus" script="onlineBonus.lua"/>
 	<talkaction words="!dodge" script="dodge.lua"/>
 	<talkaction words="!critical" script="critical.lua"/>
-	<talkaction words="!autoloot" separator=" " script="autoloot.lua"/>
 	<talkaction words="!addon" separator=" " script="addonDoll.lua"/>
 	<talkaction words="!snowball" separator=" " script="snowball.lua" />
 	<talkaction words="!machete" script="machete.lua" />

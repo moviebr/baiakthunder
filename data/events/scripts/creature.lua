@@ -13,8 +13,9 @@ end
 
 local staminaBonus = {
 	target = 'Trainer',
-	period = 600000, -- time on miliseconds
-	bonus = 5, -- gain stamina
+	period = 180000, -- time on miliseconds
+    periodPremium = 120000,
+	bonus = 1, -- gain stamina
 	events = {}
 }
 
@@ -27,8 +28,13 @@ local function addStamina(name)
 		if not target or target:getName() ~= staminaBonus.target then
 			staminaBonus.events[name] = nil
 		else
-			player:setStamina(player:getStamina() + staminaBonus.bonus)
-			staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+            if player:isPremium() then
+                player:setStamina(player:getStamina() + staminaBonus.bonus)
+                staminaBonus.events[name] = addEvent(addStamina, staminaBonus.periodPremium, name)
+            else
+                player:setStamina(player:getStamina() + staminaBonus.bonus)
+                staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
+            end
 		end
 	end
 end

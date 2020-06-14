@@ -61,5 +61,3 @@ function onStepIn(creature, item, position, fromPosition)
 
     return true
 end
-
--- <movevent event="StepIn" actionid="6412" script="safezone.lua"/>

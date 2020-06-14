@@ -1317,3 +1317,17 @@ function getPlayerNameById(id)
     end
     return 0
 end
+
+function getStringTimeEnglish(tempo)
+	local result = {}
+
+	result.hours = math.floor(tempo / 3600)
+	tempo = math.max(0, tempo - (result.hours * 3600))
+
+	result.minutes = math.floor(tempo / 60)
+	tempo = math.max(0, tempo - (result.minutes * 60))
+
+	result.seconds = tempo
+	
+	return result
+end
