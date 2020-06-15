@@ -156,6 +156,8 @@ class MonsterType
 		bool isHostile = true;
 		bool hiddenHealth = false;
 		bool isBoss = false;
+		bool isBlockable = false;
+        bool isRewardBoss = false;
 		bool canWalkOnEnergy = true;
 		bool canWalkOnFire = true;
 		bool canWalkOnPoison = true;
@@ -243,6 +245,8 @@ class Monsters
 
 		std::unique_ptr<LuaScriptInterface> scriptInterface;
 		std::map<std::string, MonsterType> monsters;
+
+		bool loadCallback(LuaScriptInterface* scriptInterface, MonsterType* mType);
 
 	private:
 		ConditionDamage* getDamageCondition(ConditionType_t conditionType,

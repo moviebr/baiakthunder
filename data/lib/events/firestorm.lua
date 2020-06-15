@@ -55,7 +55,7 @@ FSE.status = [[Stoped]]
 FSE.rewardContainerName = [[Prêmio FireStorm]]
 FSE.rewardContainerID = 2596
 FSE.rewards = {
-	{id = 2160, count = 100}
+	{id = 9020, count = 5}
 }
 FSE.msg = {
 	prefix = "[FireStorm] ",
@@ -68,7 +68,7 @@ FSE.msg = {
 }
 FSE.days = {
 		["Sunday"] = {"22:00"},
-		["Monday"] = {"22:00"},
+		["Monday"] = {"00:32"},
 		["Tuesday"] = {"22:00"},
 		["Wednesday"] = {"22:00"},
 		["Thursday"] = {"22:00"},
@@ -77,7 +77,8 @@ FSE.days = {
 }
 
 function FSE:removeTp(seconds)
-	local teleport = FSE.teleport.position:getTile():getItemById(FSE.teleport.itemid)
+	local piso = Tile (FSE.teleport.position)
+	local teleport = piso:getItemById(FSE.teleport.itemid)
 	if teleport then
 		teleport:remove()
 		FSE.teleport.position:sendMagicEffect(CONST_ME_POFF)

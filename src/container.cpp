@@ -28,7 +28,10 @@ extern Game g_game;
 Container::Container(uint16_t type) :
 	Container(type, items[type].maxItems) {}
 
-Container::Container(uint16_t type, uint16_t size) : Item(type), maxSize(size) {}
+Container::Container(uint16_t type, uint16_t size, bool unlocked /*= true*/) :
+	Item(type),
+	maxSize(size),
+	unlocked(unlocked) {}
 
 Container::~Container()
 {
@@ -148,7 +151,7 @@ std::ostringstream& Container::getContentDescription(std::ostringstream& os) con
 	}
 
 	if (firstitem) {
-		os << "nothing";
+		os << "nada";
 	}
 	return os;
 }
@@ -238,6 +241,10 @@ ReturnValue Container::queryAdd(int32_t index, const Thing& thing, uint32_t coun
 		return RETURNVALUE_NOERROR;
 	}
 
+	if (!unlocked) {
+		return RETURNVALUE_NOTPOSSIBLE;
+	}
+
 	const Item* item = thing.getItem();
 	if (item == nullptr) {
 		return RETURNVALUE_NOTPOSSIBLE;
@@ -306,18 +313,16 @@ ReturnValue Container::queryMaxCount(int32_t index, const Thing& thing, uint32_t
 			uint32_t slotIndex = 0;
 			for (Item* containerItem : itemlist) {
 				if (containerItem != item && containerItem->equals(item) && containerItem->getItemCount() < 100) {
-					uint32_t remainder = (100 - containerItem->getItemCount());
-					if (queryAdd(slotIndex++, *item, remainder, flags) == RETURNVALUE_NOERROR) {
-						n += remainder;
+					if (queryAdd(slotIndex++, *item, count, flags) == RETURNVALUE_NOERROR) {
+						n += 100 - containerItem->getItemCount();
 					}
 				}
 			}
 		} else {
 			const Item* destItem = getItemByIndex(index);
 			if (item->equals(destItem) && destItem->getItemCount() < 100) {
-				uint32_t remainder = 100 - destItem->getItemCount();
-				if (queryAdd(index, *item, remainder, flags) == RETURNVALUE_NOERROR) {
-					n = remainder;
+				if (queryAdd(index, *item, count, flags) == RETURNVALUE_NOERROR) {
+					n = 100 - destItem->getItemCount();
 				}
 			}
 		}
@@ -360,6 +365,11 @@ ReturnValue Container::queryRemove(const Thing& thing, uint32_t count, uint32_t 
 Cylinder* Container::queryDestination(int32_t& index, const Thing& thing, Item** destItem,
 		uint32_t& flags)
 {
+
+	if (!unlocked) {
+		*destItem = nullptr;
+		return this;
+	}
 
 	if (index == 254 /*move up*/) {
 		index = INDEX_WHEREEVER;

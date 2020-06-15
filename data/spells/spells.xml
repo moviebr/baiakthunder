@@ -19,7 +19,7 @@
 	</rune>
 
 	<!-- Attack Spells -->
-	<instant group="attack" spellid="80" name="Berserk" words="exori" level="35" mana="115" premium="0" needweapon="1" exhaustion="4000" groupcooldown="2000" needlearn="0" script="attack/berserk.lua">
+	<instant group="attack" spellid="80" name="Berserk" words="exori" level="35" mana="115" premium="0" needweapon="1" exhaustion="10000" groupcooldown="2000" needlearn="0" script="attack/berserk.lua">
 		<vocation name="Knight" />
 		<vocation name="Elite Knight" />
 		<vocation name="Rageful Knight" />
@@ -67,7 +67,7 @@
 		<vocation name="Royal Paladin" />
 		<vocation name="Glorious Paladin" />
 	</instant>
-	<instant group="attack" spellid="105" name="Fierce Berserk" words="exori gran" level="90" mana="340" premium="0" needweapon="1" exhaustion="2000" groupcooldown="2000" needlearn="0" script="attack/fierce_berserk.lua">
+	<instant group="attack" spellid="105" name="Fierce Berserk" words="exori gran" level="90" mana="340" premium="0" needweapon="1" exhaustion="40000" groupcooldown="4000" needlearn="0" script="attack/fierce_berserk.lua">
 		<vocation name="Knight" />
 		<vocation name="Elite Knight" />
 		<vocation name="Rageful Knight" />

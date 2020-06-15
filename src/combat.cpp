@@ -479,6 +479,66 @@ CallBack* Combat::getCallback(CallBackParam_t key)
 	return nullptr;
 }
 
+void Combat::CombatHealthFunc(Creature* caster, Creature* target, const CombatParams& params, CombatDamage* data)
+{
+	assert(data);
+	CombatDamage damage = *data;
+	if (g_game.combatBlockHit(damage, caster, target, params.blockedByShield, params.blockedByArmor, params.itemId != 0)) {
+		return;
+	}
+	if ((damage.primary.value < 0 || damage.secondary.value < 0) && caster) {
+		Player* targetPlayer = target->getPlayer();
+		if (targetPlayer && caster->getPlayer() && targetPlayer->getSkull() != SKULL_BLACK) {
+			damage.primary.value /= 2;
+			damage.secondary.value /= 2;
+		}
+	}
+	if (g_game.combatChangeHealth(caster, target, damage)) {
+		CombatConditionFunc(caster, target, params, &damage);
+		CombatDispelFunc(caster, target, params, nullptr);
+	}
+}
+void Combat::CombatManaFunc(Creature* caster, Creature* target, const CombatParams& params, CombatDamage* damage)
+{
+	assert(damage);
+	CombatDamage damageCopy = *damage;
+	if (damageCopy.primary.value < 0) {
+		if (caster && caster->getPlayer() && target->getPlayer()) {
+			damageCopy.primary.value /= 2;
+		}
+	}
+	if (g_game.combatChangeMana(caster, target, damageCopy)) {
+		CombatConditionFunc(caster, target, params, nullptr);
+		CombatDispelFunc(caster, target, params, nullptr);
+	}
+}
+void Combat::CombatConditionFunc(Creature* caster, Creature* target, const CombatParams& params, CombatDamage* data)
+{
+	if (params.origin == ORIGIN_MELEE && data && data->primary.value == 0 && data->secondary.value == 0) {
+		return;
+	}
+	for (const auto& condition : params.conditionList) {
+		if (caster == target || !target->isImmune(condition->getType())) {
+			Condition* conditionCopy = condition->clone();
+			if (caster) {
+				conditionCopy->setParam(CONDITION_PARAM_OWNER, caster->getID());
+			}
+			//TODO: infight condition until all aggressive conditions has ended
+			target->addCombatCondition(conditionCopy);
+		}
+	}
+}
+void Combat::CombatDispelFunc(Creature*, Creature* target, const CombatParams& params, CombatDamage*)
+{
+	target->removeCombatCondition(params.dispelType);
+}
+void Combat::CombatNullFunc(Creature* caster, Creature* target, const CombatParams& params, CombatDamage*)
+{
+	CombatConditionFunc(caster, target, params, nullptr);
+	CombatDispelFunc(caster, target, params, nullptr);
+}
+
+
 void Combat::combatTileEffects(const SpectatorVec& spectators, Creature* caster, Tile* tile, const CombatParams& params)
 {
 	if (params.itemId != 0) {

@@ -1424,6 +1424,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_ATTRIBUTE_SPECIAL)
 
 	registerEnum(ITEM_TYPE_DEPOT)
+	registerEnum(ITEM_TYPE_REWARDCHEST)
 	registerEnum(ITEM_TYPE_MAILBOX)
 	registerEnum(ITEM_TYPE_TRASHHOLDER)
 	registerEnum(ITEM_TYPE_CONTAINER)
@@ -1440,6 +1441,8 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_PLATINUM_COIN)
 	registerEnum(ITEM_CRYSTAL_COIN)
 	registerEnum(ITEM_GOLD_INGOT)
+	registerEnum(ITEM_REWARD_CHEST)
+	registerEnum(ITEM_REWARD_CONTAINER)
 	registerEnum(ITEM_AMULETOFLOSS)
 	registerEnum(ITEM_PARCEL)
 	registerEnum(ITEM_LABEL)
@@ -2082,6 +2085,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Container", "addItem", LuaScriptInterface::luaContainerAddItem);
 	registerMethod("Container", "addItemEx", LuaScriptInterface::luaContainerAddItemEx);
 	registerMethod("Container", "getCorpseOwner", LuaScriptInterface::luaContainerGetCorpseOwner);
+	registerMethod("Container", "registerReward", LuaScriptInterface::luaContainerRegisterReward);
 
 	// Teleport
 	registerClass("Teleport", "Item", LuaScriptInterface::luaTeleportCreate);
@@ -2191,6 +2195,10 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("Player", "setCapacity", LuaScriptInterface::luaPlayerSetCapacity);
 
 	registerMethod("Player", "getFreeCapacity", LuaScriptInterface::luaPlayerGetFreeCapacity);
+
+	registerMethod("Player", "getReward", LuaScriptInterface::luaPlayerGetReward);
+	registerMethod("Player", "removeReward", LuaScriptInterface::luaPlayerRemoveReward);
+	registerMethod("Player", "getRewardList", LuaScriptInterface::luaPlayerGetRewardList);
 
 	registerMethod("Player", "getDepotChest", LuaScriptInterface::luaPlayerGetDepotChest);
 
@@ -2567,6 +2575,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMethod("MonsterType", "isHostile", LuaScriptInterface::luaMonsterTypeIsHostile);
 	registerMethod("MonsterType", "isPushable", LuaScriptInterface::luaMonsterTypeIsPushable);
 	registerMethod("MonsterType", "isHealthHidden", LuaScriptInterface::luaMonsterTypeIsHealthHidden);
+	registerMethod("MonsterType", "isRewardBoss", LuaScriptInterface::luaMonsterTypeIsRewardBoss);
 	registerMethod("MonsterType", "isBoss", LuaScriptInterface::luaMonsterTypeIsBoss);
 
 	registerMethod("MonsterType", "canPushItems", LuaScriptInterface::luaMonsterTypeCanPushItems);
@@ -3181,37 +3190,32 @@ int LuaScriptInterface::luaDoAreaCombat(lua_State* L)
 	return 1;
 }
 
-int LuaScriptInterface::luaDoTargetCombat(lua_State* L)
-{
-	//doTargetCombat(cid, target, type, min, max, effect[, origin = ORIGIN_SPELL])
-	Creature* creature = getCreature(L, 1);
-	if (!creature && (!isNumber(L, 1) || getNumber<uint32_t>(L, 1) != 0)) {
-		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
-		pushBoolean(L, false);
-		return 1;
-	}
-
-	Creature* target = getCreature(L, 2);
-	if (!target) {
-		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
-		pushBoolean(L, false);
-		return 1;
-	}
-
-	CombatType_t combatType = getNumber<CombatType_t>(L, 3);
-
-	CombatParams params;
-	params.combatType = combatType;
-	params.impactEffect = getNumber<uint8_t>(L, 6);
-
-	CombatDamage damage;
-	damage.origin = getNumber<CombatOrigin>(L, 7, ORIGIN_SPELL);
-	damage.primary.type = combatType;
-	damage.primary.value = normal_random(getNumber<int32_t>(L, 4), getNumber<int32_t>(L, 5));
-
-	Combat::doTargetCombat(creature, target, damage, params);
-	pushBoolean(L, true);
-	return 1;
+int LuaScriptInterface::luaDoTargetCombat(lua_State* L)	
+{	
+	//doTargetCombat(cid, target, type, min, max, effect[, origin = ORIGIN_SPELL])	
+	Creature* creature = getCreature(L, 1);	
+	if (!creature && (!isNumber(L, 1) || getNumber<uint32_t>(L, 1) != 0)) {	
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));	
+		pushBoolean(L, false);	
+		return 1;	
+	}	
+	Creature* target = getCreature(L, 2);	
+	if (!target) {	
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));	
+		pushBoolean(L, false);	
+		return 1;	
+	}	
+	CombatType_t combatType = getNumber<CombatType_t>(L, 3);	
+	CombatParams params;	
+	params.combatType = combatType;	
+	params.impactEffect = getNumber<uint8_t>(L, 6);	
+	CombatDamage damage;	
+	damage.origin = getNumber<CombatOrigin>(L, 7, ORIGIN_SPELL);	
+	damage.primary.type = combatType;	
+	damage.primary.value = normal_random(getNumber<int32_t>(L, 4), getNumber<int32_t>(L, 5));	
+	Combat::doTargetCombat(creature, target, damage, params);	
+	pushBoolean(L, true);	
+	return 1;	
 }
 
 int LuaScriptInterface::luaDoChallengeCreature(lua_State* L)
@@ -6456,6 +6460,26 @@ int LuaScriptInterface::luaContainerGetContentDescription(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaContainerRegisterReward(lua_State* L)
+{
+	// container:registerReward()
+	Container* container = getUserdata<Container>(L, 1);
+	if (!container) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	auto timestamp = time(nullptr);
+	Item * rewardContainer = Item::CreateItem(ITEM_REWARD_CONTAINER);
+	rewardContainer->setIntAttr(ITEM_ATTRIBUTE_DATE, timestamp);
+	container->setIntAttr(ITEM_ATTRIBUTE_DATE, timestamp);
+	container->internalAddThing(rewardContainer);
+	container->setRewardCorpse();
+	
+	pushBoolean(L, true);
+	return 1;
+}
+
 // Teleport
 int LuaScriptInterface::luaTeleportCreate(lua_State* L)
 {
@@ -7602,6 +7626,74 @@ int LuaScriptInterface::luaPlayerGetFreeCapacity(lua_State* L)
 	Player* player = getUserdata<Player>(L, 1);
 	if (player) {
 		lua_pushnumber(L, player->getFreeCapacity());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerGetReward(lua_State* L)
+{
+	// player:getReward(rewardId[, autoCreate = false])
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint32_t rewardId = getNumber<uint32_t>(L, 2);
+	bool autoCreate = getBoolean(L, 3, false);
+	if (Reward* reward = player->getReward(rewardId, autoCreate)) {
+		pushUserdata<Item>(L, reward);
+		setItemMetatable(L, -1, reward);
+	} else {
+		pushBoolean(L, false);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerRemoveReward(lua_State* L)
+{
+	// player:removeReward(rewardId)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	uint32_t rewardId = getNumber<uint32_t>(L, 2);
+	player->removeReward(rewardId);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int LuaScriptInterface::luaPlayerGetRewardList(lua_State* L)
+{
+	// player:getRewardList()
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	std::vector<uint32_t> rewardVec;
+	player->getRewardList(rewardVec);
+	lua_createtable(L, rewardVec.size(), 0);
+
+	int index = 0;
+	for (const auto& rewardId : rewardVec) {
+		lua_pushnumber(L, rewardId);
+		lua_rawseti(L, -2, ++index);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaMonsterTypeIsRewardBoss(lua_State* L)
+{
+	// monsterType:isRewardBoss()
+	MonsterType* monsterType = getUserdata<MonsterType>(L, 1);
+	if (monsterType) {
+		pushBoolean(L, monsterType->info.isRewardBoss);
 	} else {
 		lua_pushnil(L);
 	}
@@ -13443,6 +13535,72 @@ int LuaScriptInterface::luaSpellId(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaSpellGroup(lua_State* L)
+{
+	// spell:group(primaryGroup[, secondaryGroup])
+	Spell* spell = getUserdata<Spell>(L, 1);
+	if (spell) {
+		if (lua_gettop(L) == 1) {
+			lua_pushnumber(L, spell->getGroup());
+			lua_pushnumber(L, spell->getSecondaryGroup());
+			return 2;
+		} else if (lua_gettop(L) == 2) {
+			SpellGroup_t group = getNumber<SpellGroup_t>(L, 2);
+			if (group) {
+				spell->setGroup(group);
+				pushBoolean(L, true);
+			} else if (isString(L, 2)) {
+				group = stringToSpellGroup(getString(L, 2));
+				if (group != SPELLGROUP_NONE) {
+					spell->setGroup(group);
+				} else {
+					std::cout << "[Warning - Spell::group] Unknown group: " << getString(L, 2) << std::endl;
+					pushBoolean(L, false);
+					return 1;
+				}
+				pushBoolean(L, true);
+			} else {
+				std::cout << "[Warning - Spell::group] Unknown group: " << getString(L, 2) << std::endl;
+				pushBoolean(L, false);
+				return 1;
+			}
+		} else {
+			SpellGroup_t primaryGroup = getNumber<SpellGroup_t>(L, 2);
+			SpellGroup_t secondaryGroup = getNumber<SpellGroup_t>(L, 2);
+			if (primaryGroup && secondaryGroup) {
+				spell->setGroup(primaryGroup);
+				spell->setSecondaryGroup(secondaryGroup);
+				pushBoolean(L, true);
+			} else if (isString(L, 2) && isString(L, 3)) {
+				primaryGroup = stringToSpellGroup(getString(L, 2));
+				if (primaryGroup != SPELLGROUP_NONE) {
+					spell->setGroup(primaryGroup);
+				} else {
+					std::cout << "[Warning - Spell::group] Unknown primaryGroup: " << getString(L, 2) << std::endl;
+					pushBoolean(L, false);
+					return 1;
+				}
+				secondaryGroup = stringToSpellGroup(getString(L, 3));
+				if (secondaryGroup != SPELLGROUP_NONE) {
+					spell->setSecondaryGroup(secondaryGroup);
+				} else {
+					std::cout << "[Warning - Spell::group] Unknown secondaryGroup: " << getString(L, 3) << std::endl;
+					pushBoolean(L, false);
+					return 1;
+				}
+				pushBoolean(L, true);
+			} else {
+				std::cout << "[Warning - Spell::group] Unknown primaryGroup: " << getString(L, 2) << " or secondaryGroup: " << getString(L, 3) << std::endl;
+				pushBoolean(L, false);
+				return 1;
+			}
+		}
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaSpellCooldown(lua_State* L)
 {
 	// spell:cooldown(cooldown)
@@ -13452,6 +13610,29 @@ int LuaScriptInterface::luaSpellCooldown(lua_State* L)
 			lua_pushnumber(L, spell->getCooldown());
 		} else {
 			spell->setCooldown(getNumber<uint32_t>(L, 2));
+			pushBoolean(L, true);
+		}
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaSpellGroupCooldown(lua_State* L)
+{
+	// spell:groupCooldown(primaryGroupCd[, secondaryGroupCd])
+	Spell* spell = getUserdata<Spell>(L, 1);
+	if (spell) {
+		if (lua_gettop(L) == 1) {
+			lua_pushnumber(L, spell->getGroupCooldown());
+			lua_pushnumber(L, spell->getSecondaryCooldown());
+			return 2;
+		} else if (lua_gettop(L) == 2) {
+			spell->setGroupCooldown(getNumber<uint32_t>(L, 2));
+			pushBoolean(L, true);
+		} else {
+			spell->setGroupCooldown(getNumber<uint32_t>(L, 2));
+			spell->setSecondaryCooldown(getNumber<uint32_t>(L, 3));
 			pushBoolean(L, true);
 		}
 	} else {

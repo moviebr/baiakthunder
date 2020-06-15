@@ -27,6 +27,7 @@
 #include "house.h"
 #include "game.h"
 #include "bed.h"
+#include "rewardchest.h"
 
 #include "actions.h"
 #include "spells.h"
@@ -53,6 +54,8 @@ Item* Item::CreateItem(const uint16_t type, uint16_t count /*= 0*/)
 	if (it.id != 0) {
 		if (it.isDepot()) {
 			newItem = new DepotLocker(type);
+		} else if (it.isRewardChest()) {
+			newItem = new RewardChest(type);
 		} else if (it.isContainer()) {
 			newItem = new Container(type);
 		} else if (it.isTeleport()) {

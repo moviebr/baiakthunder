@@ -7,6 +7,7 @@
 	<movevent event="StepIn" actionid="6412" script="custom/events/safezone.lua" />
 	<movevent event="StepIn" actionid="10101" script="custom/events/snowball.lua" />
 	<movevent event="StepIn" actionid="1436" script="custom/events/exitEvents.lua" />
+	<movevent event="StepIn" actionid="64500" script="custom/events/firestorm.lua" />
 	<movevent event="StepIn" actionid="9168" script="custom/premiumTile.lua" />
 	<movevent event="StepIn" actionid="8294" script="custom/fromPosition.lua" />
 	<movevent event="StepIn" actionid="1957" script="custom/trainers.lua" />

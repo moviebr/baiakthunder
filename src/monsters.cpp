@@ -857,6 +857,8 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 			const char* attrName = attr.name();
 			if (strcasecmp(attrName, "summonable") == 0) {
 				mType->info.isSummonable = attr.as_bool();
+			} else if (strcasecmp(attrName, "rewardboss") == 0) {
+				mType->info.isRewardBoss = attr.as_bool();
 			} else if (strcasecmp(attrName, "attackable") == 0) {
 				mType->info.isAttackable = attr.as_bool();
 			} else if (strcasecmp(attrName, "hostile") == 0) {
@@ -893,6 +895,8 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 				mType->info.hiddenHealth = attr.as_bool();
 			} else if (strcasecmp(attrName, "canwalkonenergy") == 0) {
 				mType->info.canWalkOnEnergy = attr.as_bool();
+			} else if (strcasecmp(attrName, "isblockable") == 0) {
+				mType->info.isBlockable = attr.as_bool();
 			} else if (strcasecmp(attrName, "canwalkonfire") == 0) {
 				mType->info.canWalkOnFire = attr.as_bool();
 			} else if (strcasecmp(attrName, "canwalkonpoison") == 0) {
