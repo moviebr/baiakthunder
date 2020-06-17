@@ -1,18 +1,44 @@
 BOSSES ={
 	bosses = {
-		["Ferumbras"] = {dia = "05/10/20", horario = 12, tempoMatar = 1,}, -- mes/dia/ano - somente a hora - em horas
+		["Merlin"] = {dia = "05/10/20", horario = 12, tempoMatar = 1,}, -- mes/dia/ano - somente a hora - em horas
 	},
 	posMensagem = Position(369, 196, 7),
-	posNasceBoss = Position(367, 197, 7),
-	mensagemUm = "Thunder, lightning and earthquakes in the depths of the continent ... The magic portal is collapsing!",  -- 15 min
-	mensagemDois = "No more magic is able to stop what is to come. The portal is completely open!", -- 10 min
-	mensagemTres = "Citizens, watch out! An evil creature has just escaped the portal.", -- 5 min
+	posNasceBoss = Position(1646, 975, 9),
+	posTpOpen = Position(1003, 1217, 7),
+	posDestino = Position(1646, 960, 8),
+	level = {
+		active = true,
+		levelMin = 150,
+	},
+	tempoTpAberto = 20, -- Em minutos
+	mensagemUm = "Trovões, raios e terremotos nas profundezas do continente ... O portal mágico está entrando em colapso!",  -- 15 min
+	mensagemDois = "Não há mais magia capaz de parar o que está por vir. O portal está completamente aberto!", -- 10 min
+	mensagemTres = "Cidadãos, cuidado! Uma criatura do mal acaba de escapar do portal.", -- 5 min
+	mensagemTpFechar = "O teleport irá fechar em 5 minutos e não será possível entrar mais na sala do boss.",
+	actionIdTp = 4247,
 }
+
+function openTpBosses()
+	local tile = Tile(BOSSES.posTpOpen)
+	if tile then
+		local item = tile:getItemById(1387)
+		if item then
+			item:getPosition():sendMagicEffect(CONST_ME_POFF)
+			item:remove()
+		else
+			local teleport = Game.createItem(1387, 1, BOSSES.posTpOpen)
+			if teleport then
+				teleport:setActionId(BOSSES.actionIdTp)
+			end
+			addEvent(openTpBosses, tempoTpAberto * 60 * 1000)
+			addEvent(Game.broadcastMessage, (BOSSES.tempoTpAberto - 15) * 60 * 1000, (BOSSES.mensagemTpFechar))
+		end
+	end
+end
 
 function verificarDiaeHorario()
 	for index, v in pairs(BOSSES.bosses) do
 		if v.dia == os.date("%x") and v.horario  == tonumber(os.date("%H")) then
-			print(">> Boss System initiated [".. index .." - ".. v.horario .."]")
 			addEvent(function()
 				local monster = Game.createMonster(index, BOSSES.posNasceBoss)
 				monster:setEmblem(GUILDEMBLEM_ENEMY)

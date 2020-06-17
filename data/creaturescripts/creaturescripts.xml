@@ -11,12 +11,18 @@
 	<event type="kill" name="AutoLoot" script="custom/autoLoot.lua" />
 	<event type="kill" name="Exiva" script="custom/exiva.lua" />
 	<event type="kill" name="Tasks" script="custom/task.lua" />
-	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
 	<event type="login" name="FirstItems" script="custom/firstitems.lua" />
+
+	<!-- Reward Chest -->
+	<event type="login" name="LoginBossPlayer" script="custom/reward/reward.lua" />
+    <event type="death" name="BossDeath" script="custom/reward/reward.lua" />
+    <event type="healthchange" name="BossParticipation" script="custom/reward/reward.lua" />
+    <event type="think" name="BossThink" script="custom/reward/reward.lua" />
 	
 	<!-- Events -->
 	<event type="logout" name="eventlogout" script="custom/events/eventLogout.lua" />
 	<event type="death" name="HungerGames" script="custom/events/hungerGames.lua" />
+	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
 
 	<!-- Others -->
 	<event type="login" name="PlayerLogin" script="others/login.lua" />
@@ -25,4 +31,9 @@
 	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
 	<event type="death" name="DropLoot" script="others/droploot.lua" />
 	<event type="extendedopcode" name="ExtendedOpcode" script="others/extendedopcode.lua" />
+
+	<!-- Monsters -->
+	<event type="death" name="MerlinDeath" script="monsters/merlin.lua" />
+	<event type="healthchange" name="MerlinLife" script="monsters/merlin.lua" />
+
 </creaturescripts>

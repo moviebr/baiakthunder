@@ -265,6 +265,10 @@ void Item::setID(uint16_t newid)
 		removeAttribute(ITEM_ATTRIBUTE_DURATION);
 	}
 
+	if (!isRewardCorpse()) {
+		removeAttribute(ITEM_ATTRIBUTE_CORPSEOWNER);
+	}
+
 	removeAttribute(ITEM_ATTRIBUTE_CORPSEOWNER);
 
 	if (newDuration > 0 && (!prevIt.stopTime || !hasAttribute(ITEM_ATTRIBUTE_DURATION))) {

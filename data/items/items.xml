@@ -15552,7 +15552,9 @@
 	</item>
 	<item id="8718" name="vines" />
 	<item id="8719" article="a" name="window" />
-	<item id="8720" article="a" name="sturdy chest" />
+	<item id="8720" article="a" name="sturdy chest">
+		<attribute key="type" value="rewardchest" />
+	</item>
 	<item id="8721" name="demonic residue">
 		<attribute key="containerSize" value="24" />
 		<attribute key="decayTo" value="0" />

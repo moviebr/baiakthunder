@@ -1,4 +1,11 @@
 function Monster:onDropLoot(corpse)
+	
+	local mType = self:getType()
+	if mType:isRewardBoss() then
+		corpse:registerReward()
+		return
+	end
+
 	if configManager.getNumber(configKeys.RATE_LOOT) == 0 then
 		return
 	end

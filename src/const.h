@@ -426,7 +426,7 @@ enum item_t : uint16_t {
 	ITEM_CRYSTAL_COIN = 2160,
 	ITEM_GOLD_INGOT = 9971,
 
-	ITEM_REWARD_CONTAINER = 11236, // expedition bag
+	ITEM_REWARD_CONTAINER = 11242, // expedition bag
 	ITEM_REWARD_CHEST = 8720, // sturdy chest
 
 	ITEM_DEPOT = 2594,

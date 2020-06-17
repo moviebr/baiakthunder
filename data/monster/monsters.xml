@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <monsters>
+
+	<!-- Boss System -->
+	<monster name="Merlin" file="Boss_System/merlin.xml"/>
+
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml"/>
 	<monster name="Valkyrie" file="Amazons/valkyrie.xml"/>

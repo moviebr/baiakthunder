@@ -29,7 +29,7 @@ FSE.players.levelMin = 150
 
 ---@Timers in seconds
 FSE.timer = {}
-FSE.timer.removeTp = 20
+FSE.timer.removeTp = 5 -- em minutos
 FSE.timer.checking = 2
 FSE.timer.signal = {}
 FSE.timer.signal.min = 0.1
@@ -52,23 +52,20 @@ FSE.teleport.actionid = 64500
 
 FSE.status = [[Stoped]]
 
-FSE.rewardContainerName = [[Prêmio FireStorm]]
-FSE.rewardContainerID = 2596
-FSE.rewards = {
-	{id = 9020, count = 5}
-}
+FSE.rewards = {9020, 5}
+
 FSE.msg = {
 	prefix = "[FireStorm] ",
-	openTp = "O evento foi aberto e espera por jogadores. Você tem %s para entrar.",
+	openTp = "O evento foi aberto e espera por jogadores. Você tem %d minuto(s) para entrar.",
 	forceStop = "O evento foi forçado a parar.",
 	noPlayers = "Não foi possível iniciar o evento por falta de jogadores.",
-	rewardDepot = "Você recebeu no seu depot: %s",
-	playerRemoved = "O player %s foi removido do evento.",
-	eventFinish = "O evento foi encerrado.",
+	playerRemoved = "O player %s foi atingido.",
+	eventFinish = "O evento foi encerrado e o jogador vencedor foi %s.",
+	eventFinishNoWin = "O evento foi encerrado sem jogadores.",
 }
 FSE.days = {
 		["Sunday"] = {"22:00"},
-		["Monday"] = {"00:32"},
+		["Monday"] = {"11:41"},
 		["Tuesday"] = {"22:00"},
 		["Wednesday"] = {"22:00"},
 		["Thursday"] = {"22:00"},
@@ -96,8 +93,11 @@ function FSE:Init()
 		else
 			teleport:setActionId(FSE.teleport.actionid)
 		end
-		addEvent(FSE.removeTp, FSE.timer.removeTp * 1000)
-		Game.broadcastMessage(FSE.msg.prefix .. string.format(FSE.msg.openTp, getStringTimeEnglish(FSE.timer.removeTp)))
+		addEvent(FSE.removeTp, FSE.timer.removeTp * 60 * 1000)
+		Game.broadcastMessage(FSE.msg.prefix .. string.format(FSE.msg.openTp, FSE.timer.removeTp))
+		addEvent(Game.broadcastMessage, (FSE.timer.removeTp - 3) * 60 * 1000, FSE.msg.prefix .. (FSE.msg.openTp):format(FSE.timer.removeTp - 2))
+		addEvent(Game.broadcastMessage, (FSE.timer.removeTp - 1) * 60 * 1000, FSE.msg.prefix .. (FSE.msg.openTp):format(FSE.timer.removeTp - 4))
+			
 	else
 		return DEBUG_ON
 	end
@@ -140,7 +140,7 @@ end
 local function getWinNames(players)
 	local names = [[]]
 	for index, player in pairs(players) do
-		names = string.format([[%s%s%s]], names, player:getName(), next(players, index) == nil and '.' or [[, ]])
+		names = string.format([[%s%s]], names, player:getName())
 	end
 	return names
 end
@@ -159,10 +159,12 @@ function FSE:CheckControl()
 		local players = FSE:GetPlayers()
 		if #players <= FSE.players.win then
 			if #players == 0 then
-				FSE:Stoped(players, FSE.msg.prefix .. FSE.msg.eventFinish)
+				FSE:Stoped(players, FSE.msg.prefix .. FSE.msg.eventFinishNoWin)
 			else
-				FSE:Stoped(players, FSE.msg.prefix .. FSE.msg.eventFinish)
-				FSE:SendRewardToPlayers(players)
+				for _, player in pairs(players) do
+					player:addItem(FSE.rewards[1], FSE.rewards[2])
+				end
+				FSE:Stoped(players, FSE.msg.prefix .. string.format(FSE.msg.eventFinish, getWinNames(players)))
 			end
 		else
 			for index = 1, FSE.dificulty.attacks do
@@ -196,25 +198,6 @@ local function getRewardNames(items)
 	return names
 end
 
-function FSE:SendRewardToPlayers(players)
-	for index, player in pairs(players) do
-		local depotChest = player:getDepotChest(0, true)
-		if depotChest then
-			local rewardContainer = Game.createItem(FSE.rewardContainerID, 1)
-			if rewardContainer then
-				rewardContainer:setName(FSE.rewardContainerName)
-				local rewardNames = getRewardNames(FSE.rewards)
-				for index2, item in pairs(FSE.rewards) do
-					rewardContainer:addItem(item.id, item.count)
-				end
-				if depotChest:addItemEx(rewardContainer, INDEX_WHEREEVER, FLAG_NOLIMIT) then
-					player:sendTextMessage(MESSAGE_INFO_DESCR, FSE.msg.prefix .. string.format(FSE.msg.rewardDepot, rewardNames))
-				end
-			end
-		end
-	end
-end
-
 function FSE:GetRandomTile()
 	local foundTile = Tile(FSE.room.from + Position(math.random(0, FSE.room.rangeX), math.random(0, FSE.room.rangeY), 0))
 	while not foundTile or not foundTile:getGround() or foundTile:hasProperty(CONST_PROP_BLOCKSOLID) do
@@ -235,7 +218,8 @@ end
 
 function FSE:AttackTile(tpos)
 	local position = Position(tpos)
-	local creatures = position:getTile():getCreatures()
+	local pisoTile = Tile(position)
+	local creatures = pisoTile:getCreatures()
 	local fromposdist = (position-Position(5, 5, 0))
 	fromposdist:sendDistanceEffect(position, FSE.attackDistEffect)
 	position:sendMagicEffect(FSE.attackEffect)
@@ -251,10 +235,6 @@ function FSE:AttackTile(tpos)
 			end
 		end
 	end
-end
-
-function FSE:AllRightReserve()
-	return SHOW_COPYRIGHT
 end
 
 end

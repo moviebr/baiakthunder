@@ -29,8 +29,17 @@ dofile('data/lib/events/safezone.lua')
 -- SnowBall
 dofile('data/lib/events/snowball.lua')
 
+-- Bosses
+dofile('data/lib/events/bosses.lua')
+
 -- FireStorm
 dofile('data/lib/events/firestorm.lua')
 
 -- Tasks
 dofile('data/lib/custom/task.lua')
+
+-- Reward Boss
+dofile('data/lib/custom/rewardBoss.lua')
+
+-- Premium Points
+dofile('data/lib/custom/premiumPoints.lua')

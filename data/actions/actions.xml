@@ -8,6 +8,7 @@
 	<action actionid="5341" script="custom/miningCar.lua"/>
 	<action actionid="4189" script="custom/citizenAddon.lua"/>
 	<action fromaid="1515" toaid="1522" script="custom/potionLevers.lua" />
+	<action fromaid="1523" toaid="1528" script="custom/runeLevers.lua" />
 	
 	<!-- Events -->
 	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>
