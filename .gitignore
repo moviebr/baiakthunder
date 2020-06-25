@@ -34,7 +34,6 @@ build/
 *.pgc
 *.pgd
 *.dll
-config.lua
 *.exe
 *.rsp
 *.sbr
