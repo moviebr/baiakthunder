@@ -39,7 +39,7 @@ function talk.onSay(player, words, param)
     local targetPlayerGUID = result.getDataInt(resultId, "id")
     result.free(resultId)
 
-    targetPlayer = Player(targetPlayerGUID)
+    targetPlayer = Player(targetPlayerGUID, true) -- load from db
     if not targetPlayer then
       return false
     end
