@@ -7599,22 +7599,23 @@ int LuaScriptInterface::luaPlayerIsPlayer(lua_State* L)
 	return 1;
 }
 
-int LuaScriptInterface::luaPlayerDelete(lua_state* L)
+int LuaScriptInterface::luaPlayerDelete(lua_State* L)
 {
   // player:delele()
   Player* player = getUserdata<Player>(L, 1);
   if (!player) {
     lua_pushnil(L);
-    return;
+    return 1;
   }
 
   if (!player->isOffline()) {
     lua_pushnil(L);
-    return;
+    return 1;
   }
 
 	IOLoginData::savePlayer(player);
   delete player;
+  pushBoolean(L, true);
   return 1;
 }
 
