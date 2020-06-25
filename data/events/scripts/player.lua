@@ -12,6 +12,10 @@ function Player:onLook(thing, position, distance)
             description =  description .. self:getMarriageDescription(thing)
         end
     end
+
+    if thing:isItem() and thing:getCustomAttribute("premiumPoints") then
+    	description = description .. "\nEsse item vale " .. thing:getCustomAttribute("premiumPoints") .." pontos."
+    end
 	
 	if self:getGroup():getAccess() then
 		if thing:isItem() then
@@ -113,7 +117,12 @@ function Player:onLookInBattleList(creature, distance)
 end
 
 function Player:onLookInTrade(partner, item, distance)
-	self:sendTextMessage(MESSAGE_INFO_DESCR, "Você vê " .. item:getDescription(distance))
+	local description = "Você vê "
+	description = description .. item:getDescription(distance)
+	if item:getCustomAttribute("premiumPoints") then
+    	description = description .. "\nEsse item vale " .. item:getCustomAttribute("premiumPoints") .." pontos."
+    end
+    self:sendTextMessage(MESSAGE_INFO_DESCR, description)
 	return true
 end
 

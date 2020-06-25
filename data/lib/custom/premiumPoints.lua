@@ -9,6 +9,10 @@ function Player.getPremiumPoints(self)
     return value
 end
 
-function Player.setPremiumPoints(self, amount)
+function Player.addPremiumPoints(self, amount)
     return db.query(string.format("UPDATE `accounts` SET `premium_points` = `premium_points` + %d WHERE `id` = %d", amount, self:getAccountId()))
+end
+
+function Player.setPremiumPoints(self, amount)
+	return db.query(string.format("UPDATE `accounts` SET `premium_points` = %d WHERE `id` = %d", amount, self:getAccountId()))
 end

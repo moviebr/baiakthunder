@@ -46,6 +46,7 @@ function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if item.itemid == configMining.idPick or item.itemid == configMining.idPickEspecial then
 		if configMining.hit.chance >= math.random(1,100) then
 			player:getPosition():sendMagicEffect(CONST_ME_STONES)
+			player:getPosition():sendMagicEffect(1)
 			player:addHealth(- randHit)
 			player:sendTextMessage(22, configMining.msg.dano)
 			return false
