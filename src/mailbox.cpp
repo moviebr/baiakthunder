@@ -22,6 +22,7 @@
 #include "mailbox.h"
 #include "game.h"
 #include "iologindata.h"
+#include "inbox.h"
 
 extern Game g_game;
 
@@ -103,9 +104,9 @@ bool Mailbox::sendItem(Item* item) const
 
 	Player* player = g_game.getPlayerByName(receiver);
 	if (player) {
-		DepotLocker* depotLocker = player->getDepotLocker(depotId);
-		if (depotLocker) {
-			if (g_game.internalMoveItem(item->getParent(), depotLocker, INDEX_WHEREEVER, item, item->getItemCount(), nullptr) == RETURNVALUE_NOERROR) {
+		Inbox* inbox = player->getInbox();
+		if (inbox) {
+			if (g_game.internalMoveItem(item->getParent(), inbox, INDEX_WHEREEVER, item, item->getItemCount(), nullptr) == RETURNVALUE_NOERROR) {
 				g_game.transformItem(item, item->getID() + 1);
 				player->onReceiveMail();
 				return true;
@@ -117,9 +118,9 @@ bool Mailbox::sendItem(Item* item) const
 			return false;
 		}
 
-		DepotLocker* depotLocker = tmpPlayer.getDepotLocker(depotId);
-		if (depotLocker) {
-			if (g_game.internalMoveItem(item->getParent(), depotLocker, INDEX_WHEREEVER, item, item->getItemCount(), nullptr) == RETURNVALUE_NOERROR) {
+		Inbox* inbox = tmpPlayer.getInbox();
+		if (inbox) {
+			if (g_game.internalMoveItem(item->getParent(), inbox, INDEX_WHEREEVER, item, item->getItemCount(), nullptr) == RETURNVALUE_NOERROR) {
 				g_game.transformItem(item, item->getID() + 1);
 				IOLoginData::savePlayer(&tmpPlayer);
 				return true;
