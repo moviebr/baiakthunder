@@ -16,11 +16,18 @@ function talk.onSay(player, words, param)
     local count = split[3]
 
     if not name or not id or not count then
-        player:sendCancelMessage("Falta parâmetros.")
+        player:sendCancelMessage("Falta parametros.")
     end
 
     if not tonumber(id) or not tonumber(count) then
         player:sendCancelMessage("Informe apenas números.")
+    end
+
+    local targetPlayer = Player(name)
+    if targetPlayer then
+      local item = Game.createItem(id, count)
+      item:moveTo(targetPlayer)
+      return
     end
 
     local resultId = db.storeQuery("SELECT `id` FROM `players` WHERE `name` = '" .. name.. "'")
@@ -29,15 +36,17 @@ function talk.onSay(player, words, param)
         return false
     end
 
-    local targetPlayerId = result.getDataInt(resultId, "id")
+    local targetPlayerGUID = result.getDataInt(resultId, "id")
     result.free(resultId)
 
-    if not Player(name) then
-        db.query("INSERT INTO `player_inboxitems` (`player_id`, `pid`, `sid`, `itemtype`, `count`) VALUES ("..targetPlayerId..", 0, 0, "..id..", "..count..")")
-        player:sendCancelMessage("Enviado com sucesso.")
-        return false
+    targetPlayer = Player(targetPlayerGUID)
+    if not targetPlayer then
+      return false
     end
 
+    local item = Game.createItem(id, count)
+    item:moveTo(targetPlayer)
+    targetPlayer:delete()
     return false
 end
 

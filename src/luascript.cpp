@@ -1817,7 +1817,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::REMOVE_RUNE_CHARGES)
 	registerEnumIn("configKeys", ConfigManager::REMOVE_WEAPON_AMMO)
 	registerEnumIn("configKeys", ConfigManager::REMOVE_WEAPON_CHARGES)
-	registerEnumIn("configKeys", ConfigManager::REMOVE_POTION_CHARGES)	
+	registerEnumIn("configKeys", ConfigManager::REMOVE_POTION_CHARGES)
 	registerEnumIn("configKeys", ConfigManager::EXPERIENCE_FROM_PLAYERS)
 	registerEnumIn("configKeys", ConfigManager::FREE_PREMIUM)
 	registerEnumIn("configKeys", ConfigManager::REPLACE_KICK_ON_LOGIN)
@@ -2181,6 +2181,7 @@ void LuaScriptInterface::registerFunctions()
 	registerMetaMethod("Player", "__eq", LuaScriptInterface::luaUserdataCompare);
 
 	registerMethod("Player", "isPlayer", LuaScriptInterface::luaPlayerIsPlayer);
+  registerMethod("Player", "delete", LuaScriptInterface::luaPlayerDelete);
 
 	registerMethod("Player", "getGuid", LuaScriptInterface::luaPlayerGetGuid);
 	registerMethod("Player", "getIp", LuaScriptInterface::luaPlayerGetIp);
@@ -3196,32 +3197,32 @@ int LuaScriptInterface::luaDoAreaCombat(lua_State* L)
 	return 1;
 }
 
-int LuaScriptInterface::luaDoTargetCombat(lua_State* L)	
-{	
-	//doTargetCombat(cid, target, type, min, max, effect[, origin = ORIGIN_SPELL])	
-	Creature* creature = getCreature(L, 1);	
-	if (!creature && (!isNumber(L, 1) || getNumber<uint32_t>(L, 1) != 0)) {	
-		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));	
-		pushBoolean(L, false);	
-		return 1;	
-	}	
-	Creature* target = getCreature(L, 2);	
-	if (!target) {	
-		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));	
-		pushBoolean(L, false);	
-		return 1;	
-	}	
-	CombatType_t combatType = getNumber<CombatType_t>(L, 3);	
-	CombatParams params;	
-	params.combatType = combatType;	
-	params.impactEffect = getNumber<uint8_t>(L, 6);	
-	CombatDamage damage;	
-	damage.origin = getNumber<CombatOrigin>(L, 7, ORIGIN_SPELL);	
-	damage.primary.type = combatType;	
-	damage.primary.value = normal_random(getNumber<int32_t>(L, 4), getNumber<int32_t>(L, 5));	
-	Combat::doTargetCombat(creature, target, damage, params);	
-	pushBoolean(L, true);	
-	return 1;	
+int LuaScriptInterface::luaDoTargetCombat(lua_State* L)
+{
+	//doTargetCombat(cid, target, type, min, max, effect[, origin = ORIGIN_SPELL])
+	Creature* creature = getCreature(L, 1);
+	if (!creature && (!isNumber(L, 1) || getNumber<uint32_t>(L, 1) != 0)) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+	Creature* target = getCreature(L, 2);
+	if (!target) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_CREATURE_NOT_FOUND));
+		pushBoolean(L, false);
+		return 1;
+	}
+	CombatType_t combatType = getNumber<CombatType_t>(L, 3);
+	CombatParams params;
+	params.combatType = combatType;
+	params.impactEffect = getNumber<uint8_t>(L, 6);
+	CombatDamage damage;
+	damage.origin = getNumber<CombatOrigin>(L, 7, ORIGIN_SPELL);
+	damage.primary.type = combatType;
+	damage.primary.value = normal_random(getNumber<int32_t>(L, 4), getNumber<int32_t>(L, 5));
+	Combat::doTargetCombat(creature, target, damage, params);
+	pushBoolean(L, true);
+	return 1;
 }
 
 int LuaScriptInterface::luaDoChallengeCreature(lua_State* L)
@@ -6556,7 +6557,7 @@ int LuaScriptInterface::luaContainerRegisterReward(lua_State* L)
 	container->setIntAttr(ITEM_ATTRIBUTE_DATE, timestamp);
 	container->internalAddThing(rewardContainer);
 	container->setRewardCorpse();
-	
+
 	pushBoolean(L, true);
 	return 1;
 }
@@ -7556,6 +7557,14 @@ int LuaScriptInterface::luaPlayerCreate(lua_State* L)
 		} else {
 			player = g_game.getPlayerByGUID(id);
 		}
+
+    if (!player) {
+      player = new Player(nullptr);
+      if (!IOLoginData::loadPlayerById(player, id)) {
+        delete player;
+        return;
+      }
+    }
 	} else if (isString(L, 2)) {
 		ReturnValue ret = g_game.getPlayerByNameWildcard(getString(L, 2), player);
 		if (ret != RETURNVALUE_NOERROR) {
@@ -7587,6 +7596,25 @@ int LuaScriptInterface::luaPlayerIsPlayer(lua_State* L)
 	// player:isPlayer()
 	pushBoolean(L, getUserdata<const Player>(L, 1) != nullptr);
 	return 1;
+}
+
+int LuaScriptInterface::luaPlayerDelete(lua_state* L)
+{
+  // player:delele()
+  Player* player = getUserdata<Player>(L, 1);
+  if (!player) {
+    lua_pushnil(L);
+    return;
+  }
+
+  if (!player->isOffline()) {
+    lua_pushnil(L);
+    return;
+  }
+
+	IOLoginData::savePlayer(player);
+  delete player;
+  return 1;
 }
 
 int LuaScriptInterface::luaPlayerGetGuid(lua_State* L)
