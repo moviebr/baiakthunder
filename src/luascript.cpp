@@ -7601,7 +7601,7 @@ int LuaScriptInterface::luaPlayerIsPlayer(lua_State* L)
 
 int LuaScriptInterface::luaPlayerDelete(lua_State* L)
 {
-  // player:delele()
+  // player:delete()
   Player* player = getUserdata<Player>(L, 1);
   if (!player) {
     lua_pushnil(L);
@@ -7615,6 +7615,7 @@ int LuaScriptInterface::luaPlayerDelete(lua_State* L)
 
 	IOLoginData::savePlayer(player);
   delete player;
+  player = nullptr;
   pushBoolean(L, true);
   return 1;
 }
