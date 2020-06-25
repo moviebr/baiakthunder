@@ -7563,7 +7563,7 @@ int LuaScriptInterface::luaPlayerCreate(lua_State* L)
       player = new Player(nullptr);
       if (!IOLoginData::loadPlayerById(player, id)) {
         delete player;
-        return;
+        return 1;
       }
     }
 	} else if (isString(L, 2)) {
