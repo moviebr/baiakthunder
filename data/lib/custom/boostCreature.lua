@@ -1,7 +1,7 @@
 if not boostCreature then boostCreature = {} end
 
 BoostedCreature = {
-	monsters = {"Rotworm"},
+	monsters = {"Rotworm", "Demon", "Frost Dragon", "Grim Reaper"},
 	db = true,
 	exp = {3, 15},
 	loot = {3, 15},
