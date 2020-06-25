@@ -478,7 +478,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 	}
 
 	//load depot locker items
-	itemMap.clear();
+	/*itemMap.clear();
 
 	query.str(std::string());
 	query << "SELECT `pid`, `sid`, `itemtype`, `count`, `attributes` FROM `player_depotlockeritems` WHERE `player_id` = " << player->getGUID() << " ORDER BY `sid` DESC";
@@ -508,6 +508,7 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 			}
 		}
 	}
+  */
 
 	//load depot items
 	itemMap.clear();
@@ -882,7 +883,7 @@ bool IOLoginData::savePlayer(Player* player)
 
 	if (player->lastDepotId != -1) {
 		//save depot lockers
-		query.str(std::string());
+		/*query.str(std::string());
 		query << "DELETE FROM `player_depotlockeritems` WHERE `player_id` = " << player->getGUID();
 
 		if (!db.executeQuery(query.str())) {
@@ -904,7 +905,7 @@ bool IOLoginData::savePlayer(Player* player)
 
 		if (!saveItems(player, itemList, lockerQuery, propWriteStream)) {
 			return false;
-		}
+		}*/
 
 		//save depot items
 		query.str(std::string());
@@ -961,7 +962,7 @@ bool IOLoginData::savePlayer(Player* player)
 	if (!rewardList.empty()) {
 		DBInsert rewardQuery("INSERT INTO `player_rewards` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES ");
 		itemList.clear();
-	
+
 		int running = 0;
 		for (const auto& rewardId : rewardList) {
 			Reward* reward = player->getReward(rewardId, false);
