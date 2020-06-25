@@ -1504,6 +1504,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(PlayerFlag_IgnoreWeaponCheck)
 	registerEnum(PlayerFlag_CannotBeMuted)
 	registerEnum(PlayerFlag_IsAlwaysPremium)
+  registerEnum(PlayerFlag_CanMoveAllThings)
 
 	registerEnum(PLAYERSEX_FEMALE)
 	registerEnum(PLAYERSEX_MALE)

@@ -62,7 +62,8 @@ const std::unordered_map<std::string, PlayerFlags> ParsePlayerFlagMap = {
 	{"ignorespellcheck", PlayerFlag_IgnoreSpellCheck},
 	{"ignoreweaponcheck", PlayerFlag_IgnoreWeaponCheck},
 	{"cannotbemuted", PlayerFlag_CannotBeMuted},
-	{"isalwayspremium", PlayerFlag_IsAlwaysPremium}
+	{"isalwayspremium", PlayerFlag_IsAlwaysPremium},
+  {"canmoveallthings"}, PlayerFlag_CanMoveAllThings}
 };
 
 bool Groups::load()

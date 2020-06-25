@@ -676,10 +676,11 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 		player->setNextActionTask(task);
 		return;
 	}
+
 	// Testar push cruzado
 	//player->setNextActionTask(nullptr);
 
-	if (!Position::areInRange<1, 1, 0>(movingCreatureOrigPos, player->getPosition())) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !Position::areInRange<1, 1, 0>(movingCreatureOrigPos, player->getPosition())) {
 		//need to walk to the creature first before moving it
 		std::forward_list<Direction> listDir;
 		if (player->getPathTo(movingCreatureOrigPos, listDir, 0, 1, true, true)) {
@@ -703,34 +704,36 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 	//check throw distance
 	const Position& movingCreaturePos = movingCreature->getPosition();
 	const Position& toPos = toTile->getPosition();
-	if ((Position::getDistanceX(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceY(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceZ(movingCreaturePos, toPos) * 4 > movingCreature->getThrowRange())) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && (Position::getDistanceX(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceY(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceZ(movingCreaturePos, toPos) * 4 > movingCreature->getThrowRange())) {
 		player->sendCancelMessage(RETURNVALUE_DESTINATIONOUTOFREACH);
 		return;
 	}
 
 	if (player != movingCreature) {
-		if (toTile->hasFlag(TILESTATE_BLOCKPATH)) {
-			player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-			return;
-		} else if ((movingCreature->getZone() == ZONE_PROTECTION && !toTile->hasFlag(TILESTATE_PROTECTIONZONE)) || (movingCreature->getZone() == ZONE_NOPVP && !toTile->hasFlag(TILESTATE_NOPVPZONE))) {
-			player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
-			return;
-		} else {
-			if (CreatureVector* tileCreatures = toTile->getCreatures()) {
-				for (Creature* tileCreature : *tileCreatures) {
-					if (!tileCreature->isInGhostMode()) {
-						player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-						return;
-					}
-				}
-			}
+    if (!player->hasFlag(PlayerFlag_CanMoveAllThings)) {
+  		if (toTile->hasFlag(TILESTATE_BLOCKPATH)) {
+  			player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+  			return;
+  		} else if ((movingCreature->getZone() == ZONE_PROTECTION && !toTile->hasFlag(TILESTATE_PROTECTIONZONE)) || (movingCreature->getZone() == ZONE_NOPVP && !toTile->hasFlag(TILESTATE_NOPVPZONE))) {
+  			player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
+  			return;
+  		} else {
+  			if (CreatureVector* tileCreatures = toTile->getCreatures()) {
+  				for (Creature* tileCreature : *tileCreatures) {
+  					if (!tileCreature->isInGhostMode()) {
+  						player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+  						return;
+  					}
+  				}
+  			}
 
-			Npc* movingNpc = movingCreature->getNpc();
-			if (movingNpc && !Spawns::isInZone(movingNpc->getMasterPos(), movingNpc->getMasterRadius(), toPos)) {
-				player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-				return;
-			}
-		}
+  			Npc* movingNpc = movingCreature->getNpc();
+  			if (movingNpc && !Spawns::isInZone(movingNpc->getMasterPos(), movingNpc->getMasterRadius(), toPos)) {
+  				player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+  				return;
+  			}
+  		}
+    }
 	}
 
 	if (!g_events->eventPlayerOnMoveCreature(player, movingCreature, movingCreaturePos, toPos)) {
@@ -904,19 +907,19 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if (!item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
 		player->sendCancelMessage(RETURNVALUE_NOTMOVEABLE);
 		return;
 	}
 
 	const Position& playerPos = player->getPosition();
 	const Position& mapFromPos = fromCylinder->getTile()->getPosition();
-	if (playerPos.z != mapFromPos.z) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && playerPos.z != mapFromPos.z) {
 		player->sendCancelMessage(playerPos.z > mapFromPos.z ? RETURNVALUE_FIRSTGOUPSTAIRS : RETURNVALUE_FIRSTGODOWNSTAIRS);
 		return;
 	}
 
-	if (!Position::areInRange<1, 1>(playerPos, mapFromPos)) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !Position::areInRange<1, 1>(playerPos, mapFromPos)) {
 		//need to walk to the item first before using it
 		std::forward_list<Direction> listDir;
 		if (player->getPathTo(item->getPosition(), listDir, 0, 1, true, true)) {
@@ -992,14 +995,14 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if ((Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && (Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
 	        (Position::getDistanceY(playerPos, mapToPos) > item->getThrowRange()) ||
 	        (Position::getDistanceZ(mapFromPos, mapToPos) * 4 > item->getThrowRange())) {
 		player->sendCancelMessage(RETURNVALUE_DESTINATIONOUTOFREACH);
 		return;
 	}
 
-	if (!canThrowObjectTo(mapFromPos, mapToPos)) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !canThrowObjectTo(mapFromPos, mapToPos)) {
 		player->sendCancelMessage(RETURNVALUE_CANNOTTHROW);
 		return;
 	}
@@ -1855,12 +1858,12 @@ void Game::playerOpenPrivateChannel(uint32_t playerId, std::string& receiver)
 	}
 
 	if (!IOLoginData::formatPlayerName(receiver)) {
-		player->sendCancelMessage("O player com esse nome não existe.");
+		player->sendCancelMessage("O player com esse nome nï¿½o existe.");
 		return;
 	}
 
 	if (player->getName() == receiver) {
-		player->sendCancelMessage("Você não pode mandar mensagens privadas para você mesmo.");
+		player->sendCancelMessage("Vocï¿½ nï¿½o pode mandar mensagens privadas para vocï¿½ mesmo.");
 		return;
 	}
 
@@ -2330,13 +2333,13 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 
 	Player* tradePartner = getPlayerByID(tradePlayerId);
 	if (!tradePartner || tradePartner == player) {
-		player->sendTextMessage(MESSAGE_INFO_DESCR, "Desculpe, não é possível.");
+		player->sendTextMessage(MESSAGE_INFO_DESCR, "Desculpe, nï¿½o ï¿½ possï¿½vel.");
 		return;
 	}
 
 	if (!Position::areInRange<2, 2, 0>(tradePartner->getPosition(), player->getPosition())) {
 		std::ostringstream ss;
-		ss << tradePartner->getName() << " diz para você se aproximar.";
+		ss << tradePartner->getName() << " diz para vocï¿½ se aproximar.";
 		player->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 		return;
 	}
@@ -2385,18 +2388,18 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 		for (const auto& it : tradeItems) {
 			Item* item = it.first;
 			if (tradeItem == item) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jï¿½ estï¿½ sendo negociado.");
 				return;
 			}
 
 			if (tradeItemContainer->isHoldingItem(item)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jï¿½ estï¿½ sendo negociado.");
 				return;
 			}
 
 			Container* container = item->getContainer();
 			if (container && container->isHoldingItem(tradeItem)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jï¿½ estï¿½ sendo negociado.");
 				return;
 			}
 		}
@@ -2404,13 +2407,13 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 		for (const auto& it : tradeItems) {
 			Item* item = it.first;
 			if (tradeItem == item) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jï¿½ estï¿½ sendo negociado.");
 				return;
 			}
 
 			Container* container = item->getContainer();
 			if (container && container->isHoldingItem(tradeItem)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jï¿½ estï¿½ sendo negociado.");
 				return;
 			}
 		}
@@ -2418,7 +2421,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 
 	Container* tradeContainer = tradeItem->getContainer();
 	if (tradeContainer && tradeContainer->getItemHoldingCount() + 1 > 100) {
-		player->sendTextMessage(MESSAGE_INFO_DESCR, "Você não pode trocar mais de 100 itens.");
+		player->sendTextMessage(MESSAGE_INFO_DESCR, "Vocï¿½ nï¿½o pode trocar mais de 100 itens.");
 		return;
 	}
 
@@ -2449,7 +2452,7 @@ bool Game::internalStartTrade(Player* player, Player* tradePartner, Item* tradeI
 
 	if (tradePartner->tradeState == TRADE_NONE) {
 		std::ostringstream ss;
-		ss << player->getName() << " quer trocar com você.";
+		ss << player->getName() << " quer trocar com vocï¿½.";
 		tradePartner->sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
 		tradePartner->tradeState = TRADE_ACKNOWLEDGE;
 		tradePartner->tradePartner = player;
@@ -2560,7 +2563,7 @@ std::string Game::getTradeErrorDescription(ReturnValue ret, Item* item)
 	if (item) {
 		if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
 			std::ostringstream ss;
-			ss << "Você não tem capacidade suficiente para transportar";
+			ss << "Vocï¿½ nï¿½o tem capacidade suficiente para transportar";
 
 			if (item->isStackable() && item->getItemCount() > 1) {
 				ss << " esses objetos.";
@@ -2572,7 +2575,7 @@ std::string Game::getTradeErrorDescription(ReturnValue ret, Item* item)
 			return ss.str();
 		} else if (ret == RETURNVALUE_NOTENOUGHROOM || ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
 			std::ostringstream ss;
-			ss << "Você não tem espaço suficiente para carregar";
+			ss << "Vocï¿½ nï¿½o tem espaï¿½o suficiente para carregar";
 
 			if (item->isStackable() && item->getItemCount() > 1) {
 				ss << " esses objetos.";
@@ -2583,7 +2586,7 @@ std::string Game::getTradeErrorDescription(ReturnValue ret, Item* item)
 			return ss.str();
 		}
 	}
-	return "A troca não foi completada.";
+	return "A troca nï¿½o foi completada.";
 }
 
 void Game::playerLookInTrade(uint32_t playerId, bool lookAtCounterOffer, uint8_t index)
@@ -2812,7 +2815,7 @@ void Game::playerLookInShop(uint32_t playerId, uint16_t spriteId, uint8_t count)
 	}
 
 	std::ostringstream ss;
-	ss << "Você vê " << Item::getDescription(it, 1, nullptr, subType);
+	ss << "Vocï¿½ vï¿½ " << Item::getDescription(it, 1, nullptr, subType);
 	player->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 }
 
@@ -2970,19 +2973,19 @@ void Game::playerRequestAddVip(uint32_t playerId, const std::string& name)
 		bool specialVip;
 		std::string formattedName = name;
 		if (!IOLoginData::getGuidByNameEx(guid, specialVip, formattedName)) {
-			player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome não existe.");
+			player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome nï¿½o existe.");
 			return;
 		}
 
 		if (specialVip && !player->hasFlag(PlayerFlag_SpecialVIP)) {
-			player->sendTextMessage(MESSAGE_STATUS_SMALL, "Você não pode adicionar esse player.");
+			player->sendTextMessage(MESSAGE_STATUS_SMALL, "Vocï¿½ nï¿½o pode adicionar esse player.");
 			return;
 		}
 
 		player->addVIP(guid, formattedName, VIPSTATUS_OFFLINE);
 	} else {
 		if (vipPlayer->hasFlag(PlayerFlag_SpecialVIP) && !player->hasFlag(PlayerFlag_SpecialVIP)) {
-			player->sendTextMessage(MESSAGE_STATUS_SMALL, "Você não pode adicionar esse player.");
+			player->sendTextMessage(MESSAGE_STATUS_SMALL, "Vocï¿½ nï¿½o pode adicionar esse player.");
 			return;
 		}
 
@@ -3096,7 +3099,7 @@ void Game::playerSay(uint32_t playerId, uint16_t channelId, SpeakClasses type, c
 	uint32_t muteTime = player->isMuted();
 	if (muteTime > 0) {
 		std::ostringstream ss;
-		ss << "Você ainda está mudo por " << muteTime << " segundos.";
+		ss << "Vocï¿½ ainda estï¿½ mudo por " << muteTime << " segundos.";
 		player->sendTextMessage(MESSAGE_STATUS_SMALL, ss.str());
 		return;
 	}
@@ -3204,7 +3207,7 @@ bool Game::playerYell(Player* player, const std::string& text)
 	uint32_t minimumLevel = g_config.getNumber(ConfigManager::YELL_MINIMUM_LEVEL);
 	if (player->getLevel() < minimumLevel) {
 		std::ostringstream ss;
-		ss << "Você não pode gritar a menos que tenha atingido o nível " << minimumLevel;
+		ss << "Vocï¿½ nï¿½o pode gritar a menos que tenha atingido o nï¿½vel " << minimumLevel;
 		if (g_config.getBoolean(ConfigManager::YELL_ALLOW_PREMIUM)) {
 			if (player->isPremium()) {
 				internalCreatureSay(player, TALKTYPE_YELL, asUpperCaseString(text), false);
@@ -3232,12 +3235,12 @@ bool Game::playerSpeakTo(Player* player, SpeakClasses type, const std::string& r
 {
 	Player* toPlayer = getPlayerByName(receiver);
 	if (!toPlayer) {
-		player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome não está online.");
+		player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome nï¿½o estï¿½ online.");
 		return false;
 	}
-	
+
 	if(player->getLevel() < 150) {
-		player->sendTextMessage(MESSAGE_STATUS_SMALL, "Você precisa ser level 150+ para enviar enviar mensagens privadas.");
+		player->sendTextMessage(MESSAGE_STATUS_SMALL, "Vocï¿½ precisa ser level 150+ para enviar enviar mensagens privadas.");
 	return false;
 	}
 
@@ -3251,7 +3254,7 @@ bool Game::playerSpeakTo(Player* player, SpeakClasses type, const std::string& r
 	toPlayer->onCreatureSay(player, type, text);
 
 	if (toPlayer->isInGhostMode() && !player->isAccessPlayer()) {
-		player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome não está online.");
+		player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome nï¿½o estï¿½ online.");
 	} else {
 		std::ostringstream ss;
 		ss << "Mensagem enviada para " << toPlayer->getName() << '.';
@@ -3751,17 +3754,17 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 				Player* tmpPlayer = spectator->getPlayer();
 				if (tmpPlayer == attackerPlayer && attackerPlayer != targetPlayer) {
 					ss.str({});
-					ss << "Você cura " << target->getNameDescription() << " para " << damageString;
+					ss << "Vocï¿½ cura " << target->getNameDescription() << " para " << damageString;
 					message.type = MESSAGE_STATUS_DEFAULT;
 					message.text = ss.str();
 				} else if (tmpPlayer == targetPlayer) {
 					ss.str({});
 					if (!attacker) {
-						ss << "Você foi curado";
+						ss << "Vocï¿½ foi curado";
 					} else if (targetPlayer == attackerPlayer) {
-						ss << "Você se curou";
+						ss << "Vocï¿½ se curou";
 					} else {
-						ss << "Você foi curado por " << attacker->getNameDescription();
+						ss << "Vocï¿½ foi curado por " << attacker->getNameDescription();
 					}
 					ss << " para " << damageString;
 					message.type = MESSAGE_STATUS_DEFAULT;
@@ -3863,11 +3866,11 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 						message.text = ss.str();
 					} else if (tmpPlayer == targetPlayer) {
 						ss.str({});
-						ss << "Você perdeu " << damageString << " mana";
+						ss << "Vocï¿½ perdeu " << damageString << " mana";
 						if (!attacker) {
 							ss << '.';
 						} else if (targetPlayer == attackerPlayer) {
-							ss << " devido ao seu próprio ataque.";
+							ss << " devido ao seu prï¿½prio ataque.";
 						} else {
 							ss << " devido a um ataque de " << attacker->getNameDescription() << '.';
 						}
@@ -3880,7 +3883,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 							if (attacker) {
 								ss << " devido a ";
 								if (attacker == target) {
-									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
+									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu prï¿½prio ataque" : "seu prï¿½prio ataque");
 								} else {
 									ss << "um ataque de " << attacker->getNameDescription();
 								}
@@ -3986,11 +3989,11 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 					message.text = ss.str();
 				} else if (tmpPlayer == targetPlayer) {
 					ss.str({});
-					ss << "Você perdeu " << damageString;
+					ss << "Vocï¿½ perdeu " << damageString;
 					if (!attacker) {
 						ss << '.';
 					} else if (targetPlayer == attackerPlayer) {
-						ss << " devido ao seu próprio ataque.";
+						ss << " devido ao seu prï¿½prio ataque.";
 					} else {
 						ss << " devido a um ataque de " << attacker->getNameDescription() << '.';
 					}
@@ -4006,9 +4009,9 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 							ss << " devido a ";
 							if (attacker == target) {
 								if (targetPlayer) {
-									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
+									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu prï¿½prio ataque" : "seu prï¿½prio ataque");
 								} else {
-									ss << "seu próprio ataque";
+									ss << "seu prï¿½prio ataque";
 								}
 							} else {
 								ss << "um ataque de " << attacker->getNameDescription();
@@ -4135,11 +4138,11 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 				message.text = ss.str();
 			} else if (tmpPlayer == targetPlayer) {
 				ss.str({});
-				ss << "Você perdeu " << damageString << " mana";
+				ss << "Vocï¿½ perdeu " << damageString << " mana";
 				if (!attacker) {
 					ss << '.';
 				} else if (targetPlayer == attackerPlayer) {
-					ss << " devido ao seu próprio ataque.";
+					ss << " devido ao seu prï¿½prio ataque.";
 				} else {
 					ss << " mana devido a um ataque de " << attacker->getNameDescription() << '.';
 				}
@@ -4152,7 +4155,7 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 					if (attacker) {
 						ss << " devido a ";
 						if (attacker == target) {
-							ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
+							ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu prï¿½prio ataque" : "seu prï¿½prio ataque");
 						} else {
 							ss << "um ataque de " << attacker->getNameDescription();
 						}
@@ -4664,7 +4667,7 @@ void Game::playerInviteToParty(uint32_t playerId, uint32_t invitedId)
 
 	if (invitedPlayer->getParty()) {
 		std::ostringstream ss;
-		ss << invitedPlayer->getName() << " já está em uma party.";
+		ss << invitedPlayer->getName() << " jï¿½ estï¿½ em uma party.";
 		player->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 		return;
 	}
@@ -4697,7 +4700,7 @@ void Game::playerJoinParty(uint32_t playerId, uint32_t leaderId)
 	}
 
 	if (player->getParty()) {
-		player->sendTextMessage(MESSAGE_INFO_DESCR, "Você já está em uma party.");
+		player->sendTextMessage(MESSAGE_INFO_DESCR, "Vocï¿½ jï¿½ estï¿½ em uma party.");
 		return;
 	}
 
@@ -5090,4 +5093,3 @@ bool Game::reload(ReloadTypes_t reloadType)
 	}
 	return true;
 }
-
