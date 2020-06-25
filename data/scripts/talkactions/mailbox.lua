@@ -26,7 +26,7 @@ function talk.onSay(player, words, param)
     local targetPlayer = Player(name)
     if targetPlayer then
       local item = Game.createItem(id, count)
-      item:moveTo(targetPlayer)
+      item:moveTo(targetPlayer:getInbox())
       return
     end
 
@@ -45,7 +45,7 @@ function talk.onSay(player, words, param)
     end
 
     local item = Game.createItem(id, count)
-    item:moveTo(targetPlayer)
+    item:moveTo(targetPlayer:getInbox())
     targetPlayer:delete()
     return false
 end
