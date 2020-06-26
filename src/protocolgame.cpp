@@ -1297,7 +1297,7 @@ void ProtocolGame::sendSaleItemList(const std::list<ShopInfo>& shop)
 	NetworkMessage msg;
 	msg.addByte(0x7B);
 
-  uint16_t moneyType = shopOwner ? shopOwner->getMoneyType() : 0;
+  uint16_t moneyType = player->shopOwner ? player->shopOwner->getMoneyType() : 0;
   if (moneyType == 0) {
 	   msg.add<uint32_t>(player->getMoney());
   } else {
