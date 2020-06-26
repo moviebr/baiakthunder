@@ -256,6 +256,7 @@ void Spawn::checkSpawn()
 
     uint32_t spawnBlockInterval = sb.interval;
 
+    size_t playersOnline = g_game.getPlayersOnline();
     if (playersOnline > 300 && playersOnline < 500) {
       spawnBlockInterval /= 2;
     } else if (playersOnline >= 500 && playersOnline < 700) {
