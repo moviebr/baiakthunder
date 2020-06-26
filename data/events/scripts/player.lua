@@ -314,17 +314,19 @@ function Player:onGainExperience(source, exp, rawExp)
 	end
 	
 	-- Castle 24H
-	local guild = self:getGuild()
-	if not guild then
-        return exp
-    end
-	
-	if self:getGuild():getId() == getGuildIdFromCastle() then
+	if self:getGuild() and self:getGuild():getId() == getGuildIdFromCastle() then
 		local expCastle = 1.2 -- 20% a mais de exp
 		exp = exp * expCastle
 	end
 
-	return exp
+	local extraXp = 0
+	if (source:getName():lower() == boostCreature[1].name) then
+		local extraPercent = boostCreature[1].exp
+		extraXp = exp + (exp * extraPercent / 100)
+		self:sendTextMessage(MESSAGE_STATUS_DEFAULT, "[Boosted Creature] Você ganhou ".. extraXp .." de experiência.")
+	end
+
+	return exp + extraXp
 end
 
 function Player:onLoseExperience(exp)

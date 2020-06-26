@@ -222,7 +222,7 @@ bool IOLoginData::loadPlayerById(Player* player, uint32_t id)
 {
 	Database& db = Database::getInstance();
 	std::ostringstream query;
-	query << "SELECT `id`, `name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `blessings`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `posx`, `posy`, `posz`, `cap`, `lastlogin`, `lastlogout`, `lastip`, `conditions`, `skulltime`, `skull`, `town_id`, `balance`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `direction` FROM `players` WHERE `id` = " << id;
+	query << "SELECT `id`, `name`, `account_id`, `autoloot`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `blessings`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `posx`, `posy`, `posz`, `cap`, `lastlogin`, `lastlogout`, `lastip`, `conditions`, `skulltime`, `skull`, `town_id`, `balance`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `direction` FROM `players` WHERE `id` = " << id;
 	return loadPlayer(player, db.storeQuery(query.str()));
 }
 
@@ -230,7 +230,7 @@ bool IOLoginData::loadPlayerByName(Player* player, const std::string& name)
 {
 	Database& db = Database::getInstance();
 	std::ostringstream query;
-	query << "SELECT `id`, `name`, `account_id`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `blessings`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `posx`, `posy`, `posz`, `cap`, `lastlogin`, `lastlogout`, `lastip`, `conditions`, `skulltime`, `skull`, `town_id`, `balance`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `direction` FROM `players` WHERE `name` = " << db.escapeString(name);
+	query << "SELECT `id`, `name`, `account_id`, `autoloot`, `group_id`, `sex`, `vocation`, `experience`, `level`, `maglevel`, `health`, `healthmax`, `blessings`, `mana`, `manamax`, `manaspent`, `soul`, `lookbody`, `lookfeet`, `lookhead`, `looklegs`, `looktype`, `lookaddons`, `posx`, `posy`, `posz`, `cap`, `lastlogin`, `lastlogout`, `lastip`, `conditions`, `skulltime`, `skull`, `town_id`, `balance`, `stamina`, `skill_fist`, `skill_fist_tries`, `skill_club`, `skill_club_tries`, `skill_sword`, `skill_sword_tries`, `skill_axe`, `skill_axe_tries`, `skill_dist`, `skill_dist_tries`, `skill_shielding`, `skill_shielding_tries`, `skill_fishing`, `skill_fishing_tries`, `direction` FROM `players` WHERE `name` = " << db.escapeString(name);
 	return loadPlayer(player, db.storeQuery(query.str()));
 }
 
@@ -348,6 +348,18 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 			}
 		}
 	}
+
+	//load autoloot
+	unsigned long lootlistSize;
+    const char* autolootlist = result->getStream("autoloot", lootlistSize);
+    PropStream propStreamList;
+    propStreamList.init(autolootlist, lootlistSize);
+    int16_t value;
+    int16_t item = propStreamList.read<int16_t>(value);
+    while (item) {
+        player->addAutoLootItem(value);
+        item = propStreamList.read<int16_t>(value);
+    }
 
 	player->loginPosition.x = result->getNumber<uint16_t>("posx");
 	player->loginPosition.y = result->getNumber<uint16_t>("posy");
@@ -529,6 +541,36 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
 		}
 	}
 
+	//load inbox items
+	itemMap.clear();
+
+	query.str(std::string());
+	query << "SELECT `pid`, `sid`, `itemtype`, `count`, `attributes` FROM `player_inboxitems` WHERE `player_id` = " << player->getGUID() << " ORDER BY `sid` DESC";
+	if ((result = db.storeQuery(query.str()))) {
+		loadItems(itemMap, result);
+
+		for (ItemMap::const_reverse_iterator it = itemMap.rbegin(), end = itemMap.rend(); it != end; ++it) {
+			const std::pair<Item*, int32_t>& pair = it->second;
+			Item* item = pair.first;
+			int32_t pid = pair.second;
+
+			if (pid >= 0 && pid < 100) {
+				player->getInbox()->internalAddThing(item);
+			} else {
+				ItemMap::const_iterator it2 = itemMap.find(pid);
+
+				if (it2 == itemMap.end()) {
+					continue;
+				}
+
+				Container* container = it2->second.first->getContainer();
+				if (container) {
+					container->internalAddThing(item);
+				}
+			}
+		}
+	}
+
 	//load reward chest items
 	itemMap.clear();
 
@@ -694,6 +736,16 @@ bool IOLoginData::savePlayer(Player* player)
 	size_t conditionsSize;
 	const char* conditions = propWriteStream.getStream(conditionsSize);
 
+	//save autoloot
+	PropWriteStream propWriteStreamAutoLoot;
+
+	for(auto i: player->autoLootList){
+		propWriteStreamAutoLoot.write<uint16_t>(i);
+	}
+
+	size_t lootlistSize;
+	const char* autolootlist = propWriteStreamAutoLoot.getStream(lootlistSize);
+
 	//First, an UPDATE query to write the player itself
 	query.str(std::string());
 	query << "UPDATE `players` SET ";
@@ -733,6 +785,7 @@ bool IOLoginData::savePlayer(Player* player)
 	}
 
 	query << "`conditions` = " << db.escapeBlob(conditions, conditionsSize) << ',';
+	query << "`autoloot` = " << db.escapeBlob(autolootlist, lootlistSize) << ',';
 
 	if (g_game.getWorldType() != WORLD_TYPE_PVP_ENFORCED) {
 		int64_t skullTime = 0;
@@ -874,6 +927,24 @@ bool IOLoginData::savePlayer(Player* player)
 		if (!saveItems(player, itemList, depotQuery, propWriteStream)) {
 			return false;
 		}
+	}
+
+	//save inbox items
+	query.str(std::string());
+	query << "DELETE FROM `player_inboxitems` WHERE `player_id` = " << player->getGUID();
+	if (!db.executeQuery(query.str())) {
+		return false;
+	}
+
+	DBInsert inboxQuery("INSERT INTO `player_inboxitems` (`player_id`, `pid`, `sid`, `itemtype`, `count`, `attributes`) VALUES ");
+	itemList.clear();
+
+	for (Item* item : player->getInbox()->getItemList()) {
+		itemList.emplace_back(0, item);
+	}
+
+	if (!saveItems(player, itemList, inboxQuery, propWriteStream)) {
+		return false;
 	}
 
 	//save reward items

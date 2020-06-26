@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<spawns>
+	<spawn centerx="987" centery="1237" centerz="6" radius="1">
+		<monster name="Witch" x="0" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="992" centery="1237" centerz="6" radius="2">
+		<monster name="Valkyrie" x="-1" y="-2" z="6" spawntime="30" />
+		<monster name="Valkyrie" x="1" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="1007" centery="1242" centerz="6" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="1018" centery="1245" centerz="6" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="1011" centery="1254" centerz="6" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="1003" centery="1258" centerz="6" radius="1">
+		<monster name="Hunter" x="0" y="0" z="6" spawntime="30" />
+	</spawn>
+	<spawn centerx="1041" centery="1234" centerz="7" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="990" centery="1235" centerz="7" radius="1">
+		<monster name="Amazon" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="993" centery="1237" centerz="7" radius="1">
+		<monster name="Amazon" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="1038" centery="1238" centerz="7" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="935" centery="1239" centerz="7" radius="1">
+		<monster name="Deer" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="977" centery="1239" centerz="7" radius="1">
+		<monster name="Badger" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="946" centery="1241" centerz="7" radius="1">
+		<monster name="Deer" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="989" centery="1241" centerz="7" radius="1">
+		<monster name="Amazon" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="1029" centery="1242" centerz="7" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="937" centery="1243" centerz="7" radius="1">
+		<monster name="Deer" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="957" centery="1243" centerz="7" radius="1">
+		<monster name="Deer" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="991" centery="1245" centerz="7" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="1035" centery="1248" centerz="7" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="1000" centery="1251" centerz="7" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="989" centery="1254" centerz="7" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="986" centery="1255" centerz="7" radius="1">
+		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="982" centery="1146" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="980" centery="1153" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="975" centery="1158" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="951" centery="1160" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="965" centery="1160" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="974" centery="1166" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="949" centery="1169" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="963" centery="1171" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="991" centery="1172" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="972" centery="1173" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="983" centery="1179" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="948" centery="1183" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="975" centery="1183" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="963" centery="1184" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1023" centery="1184" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1007" centery="1185" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="950" centery="1186" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1005" centery="1188" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1024" centery="1188" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="989" centery="1189" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1044" centery="1189" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="985" centery="1191" centerz="8" radius="1">
+		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1040" centery="1191" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="964" centery="1195" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1017" centery="1196" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1035" centery="1198" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="959" centery="1199" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1023" centery="1199" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="978" centery="1200" centerz="8" radius="1" />
+	<spawn centerx="1018" centery="1200" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="958" centery="1202" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="968" centery="1202" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1010" centery="1202" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1028" centery="1202" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="979" centery="1203" centerz="8" radius="1" />
+	<spawn centerx="1008" centery="1204" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="970" centery="1206" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1001" centery="1206" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1013" centery="1207" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="959" centery="1208" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="989" centery="1209" centerz="8" radius="1" />
+	<spawn centerx="993" centery="1209" centerz="8" radius="1" />
+	<spawn centerx="1012" centery="1209" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="998" centery="1210" centerz="8" radius="1" />
+	<spawn centerx="964" centery="1212" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1014" centery="1212" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="956" centery="1213" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="978" centery="1213" centerz="8" radius="1" />
+	<spawn centerx="991" centery="1213" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="975" centery="1214" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="955" centery="1215" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1001" centery="1215" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="994" centery="1216" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1016" centery="1216" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="963" centery="1217" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="974" centery="1217" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="972" centery="1218" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="981" centery="1218" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1008" centery="1218" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="958" centery="1219" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="991" centery="1219" centerz="8" radius="1" />
+	<spawn centerx="1011" centery="1219" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1033" centery="1219" centerz="8" radius="1">
+		<monster name="Giant Spider" x="1" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="987" centery="1220" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="965" centery="1221" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1030" centery="1221" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="983" centery="1222" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="929" centery="1223" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="999" centery="1223" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="938" centery="1224" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="972" centery="1224" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1002" centery="1224" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="982" centery="1226" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1033" centery="1227" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="973" centery="1228" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="946" centery="1230" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="937" centery="1231" centerz="8" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="976" centery="1231" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="977" centery="1234" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1000" centery="1235" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1005" centery="1236" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="980" centery="1237" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1038" centery="1237" centerz="8" radius="1" />
+	<spawn centerx="1001" centery="1238" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1004" centery="1238" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="997" centery="1239" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="987" centery="1241" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="978" centery="1242" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1034" centery="1242" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="973" centery="1245" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="957" centery="1246" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="964" centery="1247" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="971" centery="1247" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="1038" centery="1247" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="943" centery="1248" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="991" centery="1248" centerz="8" radius="1">
+		<monster name="Carrion Worm" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="955" centery="1249" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="965" centery="1249" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="947" centery="1250" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="960" centery="1251" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="984" centery="1253" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="880" centery="1254" centerz="8" radius="1" />
+	<spawn centerx="935" centery="1255" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="952" centery="1255" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="987" centery="1256" centerz="8" radius="1">
+		<monster name="Carniphila" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="875" centery="1257" centerz="8" radius="1" />
+	<spawn centerx="885" centery="1258" centerz="8" radius="1" />
+	<spawn centerx="903" centery="1258" centerz="8" radius="1" />
+	<spawn centerx="992" centery="1258" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="937" centery="1259" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="952" centery="1259" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="985" centery="1260" centerz="8" radius="1">
+		<monster name="Centipede" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="896" centery="1262" centerz="8" radius="1" />
+	<spawn centerx="991" centery="1262" centerz="8" radius="1">
+		<monster name="Bug" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="888" centery="1263" centerz="8" radius="1" />
+	<spawn centerx="237" centery="1264" centerz="8" radius="30" />
+	<spawn centerx="289" centery="1265" centerz="8" radius="30" />
+	<spawn centerx="345" centery="1265" centerz="8" radius="30" />
+	<spawn centerx="876" centery="1265" centerz="8" radius="1" />
+	<spawn centerx="979" centery="1269" centerz="8" radius="1">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="288" centery="1270" centerz="8" radius="30" />
+	<spawn centerx="981" centery="1274" centerz="8" radius="1">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="872" centery="1275" centerz="8" radius="1" />
+	<spawn centerx="319" centery="1283" centerz="8" radius="30" />
+	<spawn centerx="872" centery="1285" centerz="8" radius="1" />
+	<spawn centerx="966" centery="1285" centerz="8" radius="1">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="971" centery="1288" centerz="8" radius="1">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="873" centery="1290" centerz="8" radius="1" />
+	<spawn centerx="981" centery="1292" centerz="8" radius="1">
+		<monster name="Dragon" x="0" y="0" z="8" spawntime="30" />
+	</spawn>
+	<spawn centerx="875" centery="1299" centerz="8" radius="1" />
+	<spawn centerx="896" centery="1300" centerz="8" radius="1" />
+	<spawn centerx="915" centery="1300" centerz="8" radius="1" />
+	<spawn centerx="880" centery="1301" centerz="8" radius="1" />
+	<spawn centerx="341" centery="1315" centerz="8" radius="30" />
+	<spawn centerx="353" centery="1318" centerz="8" radius="30" />
+	<spawn centerx="228" centery="1327" centerz="8" radius="30" />
+	<spawn centerx="255" centery="1333" centerz="8" radius="30" />
+	<spawn centerx="292" centery="1333" centerz="8" radius="30" />
+	<spawn centerx="280" centery="1336" centerz="8" radius="30" />
+	<spawn centerx="230" centery="1366" centerz="8" radius="30" />
+	<spawn centerx="319" centery="1371" centerz="8" radius="30" />
+	<spawn centerx="364" centery="1373" centerz="8" radius="30" />
+	<spawn centerx="969" centery="1190" centerz="9" radius="1">
+		<monster name="Beholder" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="968" centery="1193" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="983" centery="1194" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1008" centery="1194" centerz="9" radius="1">
+		<monster name="Scorpion" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1012" centery="1194" centerz="9" radius="1">
+		<monster name="Slime" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1014" centery="1195" centerz="9" radius="1">
+		<monster name="Slime" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="985" centery="1196" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="972" centery="1197" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="960" centery="1198" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1005" centery="1198" centerz="9" radius="1">
+		<monster name="Scorpion" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1007" centery="1200" centerz="9" radius="1">
+		<monster name="Slime" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="988" centery="1201" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1000" centery="1201" centerz="9" radius="1">
+		<monster name="Rotworm Queen" x="1" y="-1" z="9" spawntime="30" />
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+		<monster name="Rotworm" x="-1" y="1" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="975" centery="1204" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="982" centery="1204" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="957" centery="1206" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="995" centery="1206" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="954" centery="1207" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="966" centery="1207" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="1000" centery="1211" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="982" centery="1212" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="996" centery="1212" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="966" centery="1215" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="973" centery="1215" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="985" centery="1215" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="954" centery="1216" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="950" centery="1217" centerz="9" radius="1">
+		<monster name="Beholder" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="951" centery="1221" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="978" centery="1221" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="994" centery="1222" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="967" centery="1223" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="979" centery="1224" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="964" centery="1225" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="969" centery="1225" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="993" centery="1225" centerz="9" radius="1">
+		<monster name="Bat" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="987" centery="1226" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="995" centery="1227" centerz="9" radius="1">
+		<monster name="Rotworm Queen" x="-1" y="0" z="9" spawntime="30" />
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="979" centery="1231" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="959" centery="1232" centerz="9" radius="1">
+		<monster name="Rotworm Queen" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="976" centery="1239" centerz="9" radius="1">
+		<monster name="Skeleton" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="964" centery="1241" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="966" centery="1244" centerz="9" radius="1">
+		<monster name="Skeleton" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="972" centery="1244" centerz="9" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="9" spawntime="30" />
+	</spawn>
+	<spawn centerx="913" centery="1260" centerz="9" radius="1" />
+	<spawn centerx="901" centery="1261" centerz="9" radius="1" />
+	<spawn centerx="909" centery="1262" centerz="9" radius="1" />
+	<spawn centerx="903" centery="1266" centerz="9" radius="1" />
+	<spawn centerx="892" centery="1269" centerz="9" radius="1" />
+	<spawn centerx="917" centery="1273" centerz="9" radius="1" />
+	<spawn centerx="894" centery="1274" centerz="9" radius="1" />
+	<spawn centerx="908" centery="1277" centerz="9" radius="1" />
+	<spawn centerx="898" centery="1281" centerz="9" radius="1" />
+	<spawn centerx="898" centery="1284" centerz="9" radius="1" />
+	<spawn centerx="916" centery="1285" centerz="9" radius="1" />
+	<spawn centerx="887" centery="1286" centerz="9" radius="1" />
+	<spawn centerx="914" centery="1287" centerz="9" radius="1" />
+</spawns>

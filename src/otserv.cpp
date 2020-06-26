@@ -184,7 +184,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 	DatabaseManager::updateDatabase();
 
 	if (g_config.getBoolean(ConfigManager::OPTIMIZE_DATABASE) && !DatabaseManager::optimizeTables()) {
-		std::cout << "> No tables were optimized." << std::endl;
+		std::cout << ">> No tables were optimized." << std::endl;
 	}
 
 	//load vocations
@@ -248,7 +248,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 		std::cout << std::endl;
 
 		std::ostringstream ss;
-		ss << "> ERROR: Unknown world type: " << g_config.getString(ConfigManager::WORLD_TYPE) << ", valid world types are: pvp, no-pvp and pvp-enforced.";
+		ss << ">> ERROR: Unknown world type: " << g_config.getString(ConfigManager::WORLD_TYPE) << ", valid world types are: pvp, no-pvp and pvp-enforced.";
 		startupErrorMessage(ss.str());
 		return;
 	}
@@ -294,7 +294,7 @@ void mainLoader(int, char*[], ServiceManager* services)
 
 #ifndef _WIN32
 	if (getuid() == 0 || geteuid() == 0) {
-		std::cout << "> Warning: " << STATUS_SERVER_NAME << " has been executed as root user, please consider running it as a normal user." << std::endl;
+		std::cout << ">> Warning: " << STATUS_SERVER_NAME << " has been executed as root user, please consider running it as a normal user." << std::endl;
 	}
 #endif
 
@@ -302,3 +302,10 @@ void mainLoader(int, char*[], ServiceManager* services)
 	g_game.setGameState(GAME_STATE_NORMAL);
 	g_loaderSignal.notify_all();
 }
+
+#ifndef _WIN32
+__attribute__ ((used)) void saveServer() {
+	if(g_game.getPlayersOnline() > 0)
+		g_game.saveGameState(true);
+}
+#endif

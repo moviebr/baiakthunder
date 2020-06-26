@@ -22,7 +22,7 @@
 #include "depotlocker.h"
 
 DepotLocker::DepotLocker(uint16_t type) :
-	Container(type, 4), depotId(0) {}
+	Container(type, 2), depotId(0) {}
 
 Attr_ReadValue DepotLocker::readAttr(AttrTypes_t attr, PropStream& propStream)
 {
@@ -53,4 +53,13 @@ void DepotLocker::postRemoveNotification(Thing* thing, const Cylinder* newParent
 	if (parent != nullptr) {
 		parent->postRemoveNotification(thing, newParent, index, LINK_PARENT);
 	}
+}
+
+void DepotLocker::removeInbox(Inbox* inbox)
+{
+	auto cit = std::find(itemlist.begin(), itemlist.end(), inbox);
+	if (cit == itemlist.end()) {
+		return;
+	}
+	itemlist.erase(cit);
 }

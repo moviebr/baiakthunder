@@ -666,6 +666,11 @@ class LuaScriptInterface
 		static int luaItemGetWeight(lua_State* L);
 		static int luaItemGetWorth(lua_State* L);
 
+		// AutoLoot
+		static int luaAddAutoLootItem(lua_State* L);
+		static int luaRemoveAutoLootItem(lua_State* L);
+		static int luaPlayerGetAutoLootList(lua_State* L);
+
 		static int luaItemGetSubType(lua_State* L);
 
 		static int luaItemGetName(lua_State* L);
@@ -820,6 +825,7 @@ class LuaScriptInterface
 		static int luaPlayerGetRewardList(lua_State* L);
 
 		static int luaPlayerGetDepotChest(lua_State* L);
+		static int luaPlayerGetInbox(lua_State* L);
 
 		static int luaPlayerGetSkullTime(lua_State* L);
 		static int luaPlayerSetSkullTime(lua_State* L);

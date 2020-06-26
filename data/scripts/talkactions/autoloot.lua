@@ -10,7 +10,7 @@ function talk.onSay(player, words, param)
         if itemType:getId() == 0 then
             itemType = ItemType(tonumber(item))
             if itemType:getId() == 0 then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "There is no item with that id or name.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Não tem item com esse id ou nome.")
                 return false
             end
         end
@@ -20,18 +20,18 @@ function talk.onSay(player, words, param)
         for i = AUTOLOOT_STORAGE_START, AUTOLOOT_STORAGE_END do
             local storage = player:getStorageValue(i)
             if size == AUTO_LOOT_MAX_ITEMS then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "The list is full, please remove from the list to make some room.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Sua lista está cheia, remova algum para adicionar um novo.")
                 break
             end
 
             if storage == itemType:getId() then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." is already in the list.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." já está na sua lista.")
                 break
             end
 
             if storage <= 0 then
                 player:setStorageValue(i, itemType:getId())
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." has been added to the list.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." foi adicionado à sua lista.")
                 break
             end
 
@@ -43,7 +43,7 @@ function talk.onSay(player, words, param)
         if itemType:getId() == 0 then
             itemType = ItemType(tonumber(item))
             if itemType:getId() == 0 then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "There is no item with that id or name.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Não existe um item com esse id ou nome.")
                 return false
             end
         end
@@ -51,13 +51,13 @@ function talk.onSay(player, words, param)
         local itemName = tonumber(split[2]) and itemType:getName() or item
         for i = AUTOLOOT_STORAGE_START, AUTOLOOT_STORAGE_END do
             if player:getStorageValue(i) == itemType:getId() then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." has been removed from the list.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." foi removido da sua lista.")
                 player:setStorageValue(i, 0)
                 return false
             end
         end
 
-        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." was not founded in the list.")
+        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." não foi achado na sua lista.")
     elseif action == "list" then
         local text = "-- Auto Loot List --\n"
         local count = 1
@@ -79,13 +79,13 @@ function talk.onSay(player, words, param)
             player:setStorageValue(i, 0)
         end
 
-        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "The autoloot list has been cleared.")
+        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "A lista de autoloot foi limpa.")
     elseif action == "gold" then
         if player:getStorageValue(AUTOLOOT_STORAGE_GOLD) == 1 then
-            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "The autoloot gold has been disabled.")
+            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "O autoloot de gold foi desativado.")
             player:setStorageValue(AUTOLOOT_STORAGE_GOLD, -1)
         else
-            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "The autoloot gold has been actived.")
+            player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "O autoloot de gold foi ativado.")
             player:setStorageValue(AUTOLOOT_STORAGE_GOLD, 1)
         end
     else

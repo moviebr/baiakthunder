@@ -69,7 +69,7 @@ enum ItemDecayState_t : uint8_t {
 };
 
 enum AttrTypes_t {
-	//ATTR_DESCRIPTION = 1,
+	ATTR_DESCRIPTION = 1,
 	//ATTR_EXT_FILE = 2,
 	ATTR_TILE_FLAGS = 3,
 	ATTR_ACTION_ID = 4,

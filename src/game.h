@@ -410,7 +410,7 @@ class Game
 
 		GameState_t getGameState() const;
 		void setGameState(GameState_t newState);
-		void saveGameState();
+		void saveGameState(bool crash = false);
 
 		//Spoof
 		size_t getMaxSpoofPlayers();

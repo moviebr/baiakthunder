@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Bianca" script="task.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100" />
+	<look type="149" head="0" body="66" legs="48" feet="66" addons="3" />
+	<parameters>
+		<parameter key="message_greet" value="Olá |PLAYERNAME|. Estou encarregada de entregar missões aos jogadores. Você gostaria de fazer uma task {normal}, task {diária}, {receber} seu prêmio por uma task ou {abandonar} uma task ? Você também pode ver uma {lista de task normal} e {lista de task diárias}."/>
+		<parameter key="message_farewell" value="Vejo você depois." />
+		<parameter key="message_walkaway" value="Vejo você depois." />
+	</parameters>
+</npc>

@@ -38,8 +38,14 @@ dofile('data/lib/events/firestorm.lua')
 -- Tasks
 dofile('data/lib/custom/task.lua')
 
+-- SuperUP
+dofile('data/lib/custom/superup.lua')
+
 -- Reward Boss
 dofile('data/lib/custom/rewardBoss.lua')
 
 -- Premium Points
 dofile('data/lib/custom/premiumPoints.lua')
+
+-- Boost Creature
+dofile('data/lib/custom/boostCreature.lua')

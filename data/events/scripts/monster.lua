@@ -14,7 +14,15 @@ function Monster:onDropLoot(corpse)
 	local mType = self:getType()
 	if not player or player:getStamina() > 840 then
 		local monsterLoot = mType:getLoot()
+
+		-- Boost Creature
+		local percent = 0
+		if (mType:getName():lower() == boostCreature[1].name) then
+			percent = (boostCreature[1].loot / 100)
+		end
+
 		for i = 1, #monsterLoot do
+			monsterLoot[i].chance = monsterLoot[i].chance + (monsterLoot[i].chance * percent)
 			local item = corpse:createLootItem(monsterLoot[i])
 			if not item then
 				print('[Warning] DropLoot:', 'Could not add loot item to corpse.')

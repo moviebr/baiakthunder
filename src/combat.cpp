@@ -792,6 +792,10 @@ void Combat::doCombat(Creature* caster, const Position& position) const
 					} else {
 						creature->removeCombatCondition(params.dispelType);
 					}
+
+					if (params.targetCallback) {
+						params.targetCallback->onTargetCombat(caster, creature);
+					}
 				}
 			}
 		}

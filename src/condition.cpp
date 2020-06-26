@@ -178,6 +178,12 @@ Condition* Condition::createCondition(ConditionId_t id, ConditionType_t type, in
 		case CONDITION_ATTRIBUTES:
 			return new ConditionAttributes(id, type, ticks, buff, subId);
 
+		case CONDITION_SPELLCOOLDOWN:
+			return new ConditionSpellCooldown(id, type, ticks, buff, subId);
+
+		case CONDITION_SPELLGROUPCOOLDOWN:
+			return new ConditionSpellGroupCooldown(id, type, ticks, buff, subId);
+
 		case CONDITION_INFIGHT:
 		case CONDITION_DRUNK:
 		case CONDITION_EXHAUST_WEAPON:
@@ -1580,4 +1586,36 @@ void ConditionLight::serialize(PropWriteStream& propWriteStream)
 
 	propWriteStream.write<uint8_t>(CONDITIONATTR_LIGHTINTERVAL);
 	propWriteStream.write<uint32_t>(lightChangeInterval);
+}
+
+void ConditionSpellCooldown::addCondition(Creature*, const Condition* condition)
+{
+	if (updateCondition(condition)) {
+		setTicks(condition->getTicks());
+	}
+}
+
+bool ConditionSpellCooldown::startCondition(Creature* creature)
+{
+	if (!Condition::startCondition(creature)) {
+		return false;
+	}
+
+	return true;
+}
+
+void ConditionSpellGroupCooldown::addCondition(Creature*, const Condition* condition)
+{
+	if (updateCondition(condition)) {
+		setTicks(condition->getTicks());
+	}
+}
+
+bool ConditionSpellGroupCooldown::startCondition(Creature* creature)
+{
+	if (!Condition::startCondition(creature)) {
+		return false;
+	}
+
+	return true;
 }

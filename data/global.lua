@@ -60,6 +60,10 @@ function getFormattedWorldTime()
 	return hours .. ':' .. minutes
 end
 
+function firstToUpper(str)
+    return (str:gsub("^%l", string.upper))
+end
+
 function getLootRandom()
 	return math.random(0, MAX_LOOTCHANCE) / configManager.getNumber(configKeys.RATE_LOOT)
 end
@@ -208,4 +212,12 @@ string.diff = function (diff, translate)
     end
 
     return table.concat(t)
+end
+
+function hourToNumber(str)
+    local hour = (tonumber(str:sub(1,2))*3600) + (tonumber(str:sub(4,5)) * 60)
+    if #str > 5 then
+        hour = hour + tonumber(str:sub(7,8))
+    end
+    return hour
 end

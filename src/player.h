@@ -29,6 +29,7 @@
 #include "protocolgame.h"
 #include "ioguild.h"
 #include "party.h"
+#include "inbox.h"
 #include "depotchest.h"
 #include "depotlocker.h"
 #include "guild.h"
@@ -203,6 +204,10 @@ class Player final : public Creature, public Cylinder
 		}
 		void setLastWalkthroughPosition(Position walkthroughPosition) {
 			lastWalkthroughPosition = walkthroughPosition;
+		}
+
+		Inbox* getInbox() const {
+			return inbox;
 		}
 
 		uint16_t getClientIcons() const;
@@ -803,6 +808,9 @@ class Player final : public Creature, public Cylinder
 		void onSendContainer(const Container* container);
 		void autoCloseContainers(const Container* container);
 
+		void addAutoLootItem(const uint16_t itemID);
+		void removeAutoLootItem(const uint16_t itemID);
+
 		//inventory
 		void onUpdateInventoryItem(Item* oldItem, Item* newItem);
 		void onRemoveInventoryItem(Item* item);
@@ -1057,6 +1065,7 @@ class Player final : public Creature, public Cylinder
 
 		std::unordered_set<uint32_t> attackedSet;
 		std::unordered_set<uint32_t> VIPList;
+		std::unordered_set<uint16_t> autoLootList;
 
 		std::map<uint8_t, OpenContainer> openContainers;
 		std::map<uint32_t, DepotLocker*> depotLockerMap;
@@ -1101,6 +1110,7 @@ class Player final : public Creature, public Cylinder
 		Guild* guild = nullptr;
 		const GuildRank* guildRank = nullptr;
 		Group* group = nullptr;
+		Inbox* inbox;
 		Item* tradeItem = nullptr;
  		Item* inventory[CONST_SLOT_LAST + 1] = {};
 		Item* writeItem = nullptr;
