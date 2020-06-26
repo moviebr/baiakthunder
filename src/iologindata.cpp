@@ -355,10 +355,10 @@ bool IOLoginData::loadPlayer(Player* player, DBResult_ptr result)
     PropStream propStreamList;
     propStreamList.init(autolootlist, lootlistSize);
     int16_t value;
-    int16_t item = propStreamList.read<int16_t>(value);
-    while (item) {
+    int16_t itemAutoLoot = propStreamList.read<int16_t>(value);
+    while (itemAutoLoot) {
         player->addAutoLootItem(value);
-        item = propStreamList.read<int16_t>(value);
+        itemAutoLoot = propStreamList.read<int16_t>(value);
     }
 
 	player->loginPosition.x = result->getNumber<uint16_t>("posx");

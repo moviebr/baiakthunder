@@ -62,6 +62,12 @@ Player::~Player()
 		}
 	}
 
+	for (const auto& it : depotChests) {
+		if (!it.second->getRealParent()) {
+			it.second->decrementReferenceCounter();
+		}
+	}
+
 	for (const auto& it : depotLockerMap) {
 		it.second->removeInbox(inbox);
 		it.second->decrementReferenceCounter();
@@ -781,6 +787,7 @@ DepotLocker* Player::getDepotLocker(uint32_t depotId)
 	}
 
 	DepotLocker* depotLocker = new DepotLocker(ITEM_LOCKER);
+	depotLocker->incrementReferenceCounter();
 	depotLocker->setDepotId(depotId);
 	depotLocker->internalAddThing(inbox);
 	depotLocker->internalAddThing(getDepotChest(depotId, true));
@@ -3981,13 +3988,16 @@ bool Player::addPartyInvitation(Party* party)
 		return false;
 	}
 
-	invitePartyList.push_front(party);
+	invitePartyList.push_back(party);
 	return true;
 }
 
 void Player::removePartyInvitation(Party* party)
 {
-	invitePartyList.remove(party);
+	auto it = std::find(invitePartyList.begin(), invitePartyList.end(), party);
+	if (it != invitePartyList.end()) {
+		invitePartyList.erase(it);
+	}
 }
 
 void Player::clearPartyInvitations()

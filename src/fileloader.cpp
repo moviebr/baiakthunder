@@ -106,11 +106,13 @@ const Node& Loader::parseTree()
 
 bool Loader::getProps(const Node& node, PropStream& props)
 {
-	auto size = std::distance(node.propsBegin, node.propsEnd);
+	size_t size = std::distance(node.propsBegin, node.propsEnd);
 	if (size == 0) {
 		return false;
 	}
-	propBuffer.resize(size);
+	if (propBuffer.size() < size) {
+		propBuffer.resize(size);
+	}
 	bool lastEscaped = false;
 
 	auto escapedPropEnd = std::copy_if(node.propsBegin, node.propsEnd, propBuffer.begin(), [&lastEscaped](const char& byte) {

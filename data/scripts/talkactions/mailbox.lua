@@ -27,6 +27,7 @@ function talk.onSay(player, words, param)
     if targetPlayer then
       local item = Game.createItem(tonumber(id), tonumber(count))
       targetPlayer:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+      player:sendCancelMessage("Enviado ".. count .."x ".. ItemType(tonumber(id)):getName() .." para o player ".. targetPlayer:getName())
       return
     end
 
@@ -46,6 +47,7 @@ function talk.onSay(player, words, param)
 
     local item = Game.createItem(tonumber(id), tonumber(count))
     targetPlayer:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+    player:sendCancelMessage("Enviado ".. count .."x ".. ItemType(tonumber(id)):getName() .." para o player ".. targetPlayer:getName())
     targetPlayer:delete()
     return false
 end

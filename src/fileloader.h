@@ -36,6 +36,18 @@ struct Node
 	using ChildrenVector = std::vector<Node>;
 
 	ChildrenVector children;
+
+	Node() = default;
+
+	// non-copyable
+	Node(const Node&) = delete;
+	Node& operator=(const Node&) = delete;
+
+	// moveable
+	Node(Node&& rhs) noexcept : children(std::move(rhs.children)), propsBegin(rhs.propsBegin), propsEnd(rhs.propsEnd), type(rhs.type) {}
+	Node& operator=(const Node&&) = delete;
+
+	
 	ContentIt      propsBegin;
 	ContentIt      propsEnd;
 	uint8_t           type;
