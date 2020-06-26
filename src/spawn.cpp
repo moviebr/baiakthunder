@@ -321,8 +321,11 @@ void Spawn::removeMonster(Monster* monster)
 
 uint32_t Spawn::getInterval() const {
   size_t playersOnline = g_game.getPlayersOnline();
+  std::cout << "Players online:" << playersOnline << '\n';
 
   uint32_t updatedInterval = interval;
+
+  std::cout << "Interval antes:" << updatedInterval << '\n';
 
   if (playersOnline > 300 && playersOnline < 500) {
     updatedInterval /= 2;
@@ -331,6 +334,8 @@ uint32_t Spawn::getInterval() const {
   } else if (playersOnline >= 700) {
     updatedInterval /= 4;
   }
+
+  std::cout << "Interval depois:" << updatedInterval << '\n';
 
   return updatedInterval;
 }
