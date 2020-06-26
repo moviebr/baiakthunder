@@ -7,4 +7,5 @@
 	<channel id="7" name="Ajuda" public="1" script="help.lua" />
 	<channel id="8" name="Gamemaster" script="gamemaster.lua" />
 	<channel id="10" name="Líderes de Guild" script="guildleaders.lua" />
+	<channel id="11" name="Loot" script="loot.lua" />
 </channels>

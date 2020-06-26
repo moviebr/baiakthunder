@@ -6,7 +6,7 @@ function premium.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if var == nil then 
 		return true 
 	end
-	print(var)
+
 	player:sendCancelMessage("Você recebeu ".. var .." Premium Points.")
 	player:addPremiumPoints(var)
 	item:remove()
