@@ -249,10 +249,9 @@ void Spawn::checkSpawn()
 			continue;
 		}
 
+		spawnBlock_t& sb = it.second;
     std::cout << "Spawn block interval: " << sb.interval << '\n';
     std::cout << "Spawn monster interval: " << getInterval() << '\n';
-
-		spawnBlock_t& sb = it.second;
 
     uint32_t spawnBlockInterval = sb.interval;
 
