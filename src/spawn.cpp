@@ -20,7 +20,6 @@
 #include "otpch.h"
 
 #include "spawn.h"
-#include "game.h"
 #include "monster.h"
 #include "configmanager.h"
 #include "scheduler.h"
@@ -249,9 +248,22 @@ void Spawn::checkSpawn()
 			continue;
 		}
 
-		spawnBlock_t& sb = it.second;
-		if (OTSYS_TIME() >= sb.lastSpawn + sb.interval) {
+    std::cout << "Spawn block interval: " << sb.interval << '\n';
+    std::cout << "Spawn monster interval: " << getInterval() << '\n';
 
+		spawnBlock_t& sb = it.second;
+
+    uint32_t spawnBlockInterval = sb.interval;
+
+    if (playersOnline > 300 && playersOnline < 500) {
+      spawnBlockInterval /= 2;
+    } else if (playersOnline >= 500 && playersOnline < 700) {
+      spawnBlockInterval /= 3;
+    } else if (playersOnline >= 700) {
+      spawnBlockInterval /= 4;
+    }
+
+		if (OTSYS_TIME() >= sb.lastSpawn + spawnBlockInterval) {
 			spawnMonster(spawnId, sb.mType, sb.pos, sb.direction);
 			if (++spawnCount >= static_cast<uint32_t>(g_config.getNumber(ConfigManager::RATE_SPAWN))) {
 				break;
@@ -321,11 +333,8 @@ void Spawn::removeMonster(Monster* monster)
 
 uint32_t Spawn::getInterval() const {
   size_t playersOnline = g_game.getPlayersOnline();
-  std::cout << "Players online:" << playersOnline << '\n';
 
   uint32_t updatedInterval = interval;
-
-  std::cout << "Interval antes:" << updatedInterval << '\n';
 
   if (playersOnline > 300 && playersOnline < 500) {
     updatedInterval /= 2;
@@ -334,8 +343,6 @@ uint32_t Spawn::getInterval() const {
   } else if (playersOnline >= 700) {
     updatedInterval /= 4;
   }
-
-  std::cout << "Interval depois:" << updatedInterval << '\n';
 
   return updatedInterval;
 }
