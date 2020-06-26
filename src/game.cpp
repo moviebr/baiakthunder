@@ -5097,3 +5097,19 @@ bool Game::reload(ReloadTypes_t reloadType)
 	}
 	return true;
 }
+
+uint8_t Game::getSpawnRate() const;
+{
+ size_t playersOnline = getPlayersOnline();
+
+ uint8_t rate = 1; // base rate
+ if (playersOnline >= 300 && playersOnline < 500) {
+	 rate += 1;
+ } else if (playersOnline >= 500 && playersOnline < 700) {
+	 rate += 2;
+ } else if (playersOnline >= 700) {
+	 rate += 3;
+ }
+
+ return rate * g_config.getNumber(ConfigManager::SPAWN_MULTIPLIER);
+}
