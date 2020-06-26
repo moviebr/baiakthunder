@@ -148,6 +148,10 @@ class Npc final : public Creature
 			return CREATURETYPE_NPC;
 		}
 
+    uint16_t getMoneyType() const {
+      return moneyType;
+    }
+
 		void doSay(const std::string& text);
 		void doSayToPlayer(Player* player, const std::string& text);
 
