@@ -20,6 +20,7 @@
 #include "otpch.h"
 
 #include "spawn.h"
+#include "game.h"
 #include "monster.h"
 #include "configmanager.h"
 #include "scheduler.h"
