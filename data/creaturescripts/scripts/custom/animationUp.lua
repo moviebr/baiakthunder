@@ -18,15 +18,11 @@ function onAdvance(player, skill, oldLevel, newLevel)
 	
 	local efeito = 50
 	local shot = 31
-	local delay = 1
 	
 	if newLevel > oldLevel then
 		for _, pos in ipairs(positions) do
-			addEvent(function()
-				position:sendDistanceEffect(pos, shot)
-				pos:sendMagicEffect(efeito)
-			end, delay)
-			delay = delay
+			position:sendDistanceEffect(pos, shot)
+			pos:sendMagicEffect(efeito)
 		end
 		player:say("[LEVEL UP]", TALKTYPE_MONSTER_SAY)
 		position:sendMagicEffect(40)

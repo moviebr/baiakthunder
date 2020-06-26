@@ -88,7 +88,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 		end
 	end
 	
-	if killer:isPlayer() then
+	if killer and killer:isPlayer() then
 		Game.broadcastMessage(player:getName().." ["..player:getLevel().."] acabou de ser morto pelo jogador "..killer:getName().." ["..killer:getLevel().."].", MESSAGE_STATUS_SMALL)
 	end
 	

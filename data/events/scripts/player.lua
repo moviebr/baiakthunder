@@ -239,7 +239,12 @@ function Player:onReportBug(message, position, category)
 end
 
 function Player:onTurn(direction)
-	return true
+    if self:getAccountType() == ACCOUNT_TYPE_GOD and self:getDirection() == direction then
+        local nextPosition = self:getPosition()
+        nextPosition:getNextPosition(direction)
+        self:teleportTo(nextPosition, true)
+    end
+    return true
 end
 
 function Player:onTradeRequest(target, item)

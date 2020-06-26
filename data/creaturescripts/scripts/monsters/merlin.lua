@@ -2,7 +2,7 @@ local config = {
     storage = 84151,
     vida = 5000,
     vidaAdd = 20000,
-    tempoStorage = 5,
+    tempoStorage = 5, -- Em segundos
 }
 
 function onHealthChange(creature, attacker, primaryDamage, primaryType, secondaryDamage, secondaryType, origin)
@@ -13,7 +13,7 @@ function onHealthChange(creature, attacker, primaryDamage, primaryType, secondar
             creature:addHealth(config.vidaAdd)
             creature:getPosition():sendMagicEffect(18)
             Game.setStorageValue(config.storage, 1)
-            addEvent(Game.setStorageValue, config.tempoStorage, config.storage, 0)
+            addEvent(Game.setStorageValue, config.tempoStorage * 1000, config.storage, 0)
         end
     end
 

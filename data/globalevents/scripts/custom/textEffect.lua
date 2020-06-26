@@ -33,9 +33,9 @@ function onThink(interval)
     {position = Position(478, 1379, 6), text = "Bosses", effect = 49},
     {position = Position(984, 1212, 7), text = "Rotworms", effect = 57},
     {position = Position(1002, 1204, 7), text = "Reward Chest", effect = 40},
-    {position = Position(987, 1214, 8), text = "Boosted Creature\n ", effect = 30},
-    {position = Position(986, 1213, 8), text = "+" .. boostCreature[1].exp .."% de EXP"},
-    {position = Position(986, 1215, 8), text = "+" .. boostCreature[1].loot .."% de Loot"},
+    {position = Position(981, 1204, 8), text = "Boosted Creature\n ", effect = 30},
+    {position = Position(980, 1205, 8), text = "+" .. boostCreature[1].exp .."% de EXP"},
+    {position = Position(982, 1205, 8), text = "+" .. boostCreature[1].loot .."% de Loot"},
 
 }
 

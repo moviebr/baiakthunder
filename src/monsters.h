@@ -258,8 +258,6 @@ class Monsters
 		void loadLootContainer(const pugi::xml_node& node, LootBlock&);
 		bool loadLootItem(const pugi::xml_node& node, LootBlock&);
 
-		std::map<std::string, std::string> unloadedMonsters;
-
 		bool loaded = false;
 };
 
