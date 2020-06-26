@@ -5,12 +5,12 @@ function onStepIn(creature, item, position, fromPosition)
     end
 
     if player:getGroup():getAccess() then
-        player:teleportTo(BOSSES.posDestino)
+        player:teleportTo(Bosses.posDestino)
         player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[Boss] Você está participando apenas como espectador.")
         return true
     end
 
-    if player:getLevel() < BOSSES.level.levelMin and BOSSES.level.active then
+    if player:getLevel() < Bosses.level.levelMin and Bosses.level.active then
         player:sendCancelMessage("[Boss] Você precisa ser level " .. FSE.players.levelMin .. " ou maior para entrar no evento.")
         player:teleportTo(fromPosition, true)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -43,7 +43,7 @@ function onStepIn(creature, item, position, fromPosition)
         end
     end
 
-    player:teleportTo(BOSSES.posDestino)
+    player:teleportTo(Bosses.posDestino)
     player:sendCancelMessage("[Boss] Boa sorte.")
     player:setStorageValue(STORAGEVALUE_EVENTS, 1)
     player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)

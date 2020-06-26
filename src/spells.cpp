@@ -36,6 +36,7 @@ extern LuaEnvironment g_luaEnvironment;
 Spells::Spells()
 {
 	scriptInterface.initState();
+	instants.reserve(1000);
 }
 
 Spells::~Spells()
@@ -43,57 +44,33 @@ Spells::~Spells()
 	clear(false);
 }
 
-TalkActionResult_t Spells::playerSaySpell(Player* player, std::string& words)
+TalkActionResult_t Spells::playerSaySpell(Player* player, std::string& words, const std::string& lowerWords)
 {
-	std::string str_words = words;
-
-	//strip trailing spaces
-	trimString(str_words);
-
-	InstantSpell* instantSpell = getInstantSpell(str_words);
-	if (!instantSpell) {
-		return TALKACTION_CONTINUE;
-	}
-
-	std::string param;
-
-	if (instantSpell->getHasParam()) {
-		size_t spellLen = instantSpell->getWords().length();
-		size_t paramLen = str_words.length() - spellLen;
-		std::string paramText = str_words.substr(spellLen, paramLen);
-		if (!paramText.empty() && paramText.front() == ' ') {
-			size_t loc1 = paramText.find('"', 1);
-			if (loc1 != std::string::npos) {
-				size_t loc2 = paramText.find('"', loc1 + 1);
-				if (loc2 == std::string::npos) {
-					loc2 = paramText.length();
-				} else if (paramText.find_last_not_of(' ') != loc2) {
-					return TALKACTION_CONTINUE;
-				}
-
-				param = paramText.substr(loc1 + 1, loc2 - loc1 - 1);
-			} else {
-				trimString(paramText);
-				loc1 = paramText.find(' ', 0);
-				if (loc1 == std::string::npos) {
-					param = paramText;
-				} else {
-					return TALKACTION_CONTINUE;
-				}
+	std::string param, instantWords = lowerWords;
+	if (instantWords.size() >= 4 && instantWords.front() != '"') {
+		size_t param_find = instantWords.find('"');
+		if (param_find != std::string::npos && instantWords[param_find - 1] == ' ') {
+			param = words.substr(param_find + 1);
+			instantWords = instantWords.substr(0, param_find);
+			trim_right(instantWords, ' ');
+			if (!param.empty() && param.back() == '"') {
+				param.pop_back();
 			}
 		}
 	}
 
+	InstantSpell* instantSpell = getInstantSpell(instantWords);
+	if (!instantSpell || (!param.empty() && !instantSpell->getHasParam()) || (param.empty() && instantSpell->getHasParam())) {
+		return TALKACTION_CONTINUE;
+	}
+
 	if (instantSpell->playerCastInstant(player, param)) {
 		words = instantSpell->getWords();
-
 		if (instantSpell->getHasParam() && !param.empty()) {
 			words += " \"" + param + "\"";
 		}
-
 		return TALKACTION_BREAK;
 	}
-
 	return TALKACTION_FAILED;
 }
 
@@ -231,35 +208,9 @@ RuneSpell* Spells::getRuneSpellByName(const std::string& name)
 
 InstantSpell* Spells::getInstantSpell(const std::string& words)
 {
-	InstantSpell* result = nullptr;
-
-	for (auto& it : instants) {
-		const std::string& instantSpellWords = it.second.getWords();
-		size_t spellLen = instantSpellWords.length();
-		if (strncasecmp(instantSpellWords.c_str(), words.c_str(), spellLen) == 0) {
-			if (!result || spellLen > result->getWords().length()) {
-				result = &it.second;
-				if (words.length() == spellLen) {
-					break;
-				}
-			}
-		}
-	}
-
-	if (result) {
-		const std::string& resultWords = result->getWords();
-		if (words.length() > resultWords.length()) {
-			if (!result->getHasParam()) {
-				return nullptr;
-			}
-
-			size_t spellLen = resultWords.length();
-			size_t paramLen = words.length() - spellLen;
-			if (paramLen < 2 || words[spellLen] != ' ') {
-				return nullptr;
-			}
-		}
-		return result;
+	auto it = instants.find(words);
+	if (it != instants.end()) {
+		return &it->second;
 	}
 	return nullptr;
 }

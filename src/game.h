@@ -457,7 +457,7 @@ class Game
 		void incrementMotdNum() { motdNum++; }
 
 		const std::unordered_map<uint32_t, Player*>& getPlayers() const { return players; }
-		const std::map<uint32_t, Npc*>& getNpcs() const { return npcs; }
+		const std::unordered_map<uint32_t, Npc*>& getNpcs() const { return npcs; }
 
 		void addPlayer(Player* player);
 		void removePlayer(Player* player);
@@ -503,6 +503,8 @@ class Game
 
 		std::unordered_map<uint32_t, Player*> players;
 		std::unordered_map<std::string, Player*> mappedPlayerNames;
+		std::unordered_map<uint32_t, Npc*> npcs;
+		std::unordered_map<uint32_t, Monster*> monsters;
 		std::unordered_map<uint32_t, Player*> mappedPlayerGuids;
 		std::unordered_map<uint32_t, Guild*> guilds;
 		std::unordered_map<uint16_t, Item*> uniqueItems;
@@ -517,9 +519,6 @@ class Game
 		size_t lastBucket = 0;
 
 		WildcardTreeNode wildcardTree { false };
-
-		std::map<uint32_t, Npc*> npcs;
-		std::map<uint32_t, Monster*> monsters;
 
 		//list of items that are in trading state, mapped to the player
 		std::map<Item*, uint32_t> tradeItems;

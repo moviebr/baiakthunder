@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Gustavo" script="eventseller.lua" walkinterval="2000" floorchange="0" money="9020">
+    <health now="100" max="100"/>
+    <look type="130" head="0" body="114" legs="88" feet="0" addons="3"/>
+    <parameters>
+        <parameter key="message_greet" value="Olá |PLAYERNAME|, eu troco {event tokens} por {itens}, diga {troca} ou {trocar}." />
+        <parameter key="module_keywords" value="1" />
+    </parameters>
+</npc>

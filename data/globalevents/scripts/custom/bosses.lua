@@ -1,4 +1,4 @@
 function onThink(interval)
-	verificarDiaeHorario()
+	Bosses:checkTime()
 	return true
 end

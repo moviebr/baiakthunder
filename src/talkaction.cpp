@@ -27,6 +27,7 @@ TalkActions::TalkActions()
 	: scriptInterface("TalkAction Interface")
 {
 	scriptInterface.initState();
+	talkActions.reserve(100);
 }
 
 TalkActions::~TalkActions()
@@ -81,35 +82,21 @@ bool TalkActions::registerLuaEvent(TalkAction* event)
 
 TalkActionResult_t TalkActions::playerSaySpell(Player* player, SpeakClasses type, const std::string& words) const
 {
-	size_t wordsLength = words.length();
-	for (auto it = talkActions.begin(); it != talkActions.end(); ) {
-		const std::string& talkactionWords = it->first;
-		size_t talkactionLength = talkactionWords.length();
-		if (wordsLength < talkactionLength || strncasecmp(words.c_str(), talkactionWords.c_str(), talkactionLength) != 0) {
-			++it;
-			continue;
-		}
-
-		std::string param;
-		if (wordsLength != talkactionLength) {
-			param = words.substr(talkactionLength);
-			if (param.front() != ' ') {
-				++it;
-				continue;
-			}
+	std::string param, instantWords = words;
+	if (instantWords.size() >= 3 && instantWords.front() != ' ') {
+		size_t param_find = instantWords.find(' ');
+		if (param_find != std::string::npos) {
+			param = instantWords.substr(param_find + 1);
+			instantWords = instantWords.substr(0, param_find);
 			trim_left(param, ' ');
+		}
+	}
 
-			std::string separator = it->second.getSeparator();
-			if (separator != " ") {
-				if (!param.empty()) {
-					if (param != separator) {
-						++it;
-						continue;
-					} else {
-						param.erase(param.begin());
-					}
-				}
-			}
+			auto it = talkActions.find(instantWords);
+	if (it != talkActions.end()) {
+		char separator = it->second.getSeparator();
+		if (separator != ' ' && !param.empty()) {
+			return TALKACTION_CONTINUE;
 		}
 
 		if (it->second.executeSay(player, param, type)) {

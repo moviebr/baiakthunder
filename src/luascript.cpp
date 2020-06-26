@@ -8793,10 +8793,13 @@ int LuaScriptInterface::luaPlayerShowTextDialog(lua_State* L)
 	}
 
 	Item* item;
+	bool fixMemoryLeak = false;
 	if (isNumber(L, 2)) {
 		item = Item::CreateItem(getNumber<uint16_t>(L, 2));
+		fixMemoryLeak = true;
 	} else if (isString(L, 2)) {
 		item = Item::CreateItem(Item::items.getItemIdByName(getString(L, 2)));
+		fixMemoryLeak = true;
 	} else if (isUserdata(L, 2)) {
 		if (getUserdataType(L, 2) != LuaData_Item) {
 			pushBoolean(L, false);
@@ -8826,6 +8829,12 @@ int LuaScriptInterface::luaPlayerShowTextDialog(lua_State* L)
 	item->setParent(player);
 	player->setWriteItem(item, length);
 	player->sendTextWindow(item, length, canWrite);
+	if (fixMemoryLeak) {
+		// Player::setWriteItem will add reference so we'll end up with 2 references
+		// and since we'll have 2 references the memory allocated will never be destroyed
+		// to avoid that we decrement one reference here
+		item->decrementReferenceCounter();
+	}
 	pushBoolean(L, true);
 	return 1;
 }
@@ -13647,17 +13656,19 @@ int LuaScriptInterface::luaSpellOnCastSpell(lua_State* L)
 int LuaScriptInterface::luaSpellRegister(lua_State* L)
 {
 	// spell:register()
-	Spell* spell = getUserdata<Spell>(L, 1);
-	if (spell) {
+	Spell** spellPtr = getRawUserdata<Spell>(L, 1);
+	if (spellPtr && *spellPtr) {
+		Spell* spell = *spellPtr;
 		if (spell->spellType == SPELL_INSTANT) {
-			InstantSpell* instant = dynamic_cast<InstantSpell*>(getUserdata<Spell>(L, 1));
+			InstantSpell* instant = dynamic_cast<InstantSpell*>(spell);
 			if (!instant->isScripted()) {
 				pushBoolean(L, false);
-				return 1;
+				delete spell;
+			} else {
+				pushBoolean(L, g_spells->registerInstantLuaEvent(instant));
 			}
-			pushBoolean(L, g_spells->registerInstantLuaEvent(instant));
 		} else if (spell->spellType == SPELL_RUNE) {
-			RuneSpell* rune = dynamic_cast<RuneSpell*>(getUserdata<Spell>(L, 1));
+			RuneSpell* rune = dynamic_cast<RuneSpell*>(spell);
 			if (rune->getMagicLevel() != 0 || rune->getLevel() != 0) {
 				//Change information in the ItemType to get accurate description
 				ItemType& iType = Item::items.getItemType(rune->getRuneItemId());
@@ -13668,10 +13679,12 @@ int LuaScriptInterface::luaSpellRegister(lua_State* L)
 			}
 			if (!rune->isScripted()) {
 				pushBoolean(L, false);
-				return 1;
+				delete spell;
+			} else {
+				pushBoolean(L, g_spells->registerRuneLuaEvent(rune));
 			}
-			pushBoolean(L, g_spells->registerRuneLuaEvent(rune));
 		}
+		*spellPtr = nullptr; // Remove luascript reference
 	} else {
 		lua_pushnil(L);
 	}
@@ -14102,7 +14115,7 @@ int LuaScriptInterface::luaSpellWords(lua_State* L)
 
 		if (lua_gettop(L) == 1) {
 			pushString(L, spell->getWords());
-			pushString(L, spell->getSeparator());
+			pushString(L, std::string(1, spell->getSeparator()));
 			return 2;
 		} else {
 			std::string sep = "";
@@ -14110,7 +14123,7 @@ int LuaScriptInterface::luaSpellWords(lua_State* L)
 				sep = getString(L, 3);
 			}
 			spell->setWords(getString(L, 2));
-			spell->setSeparator(sep);
+			spell->setSeparator((sep.empty() ? '"' : sep[0]));
 			pushBoolean(L, true);
 		}
 	} else {
@@ -14575,7 +14588,8 @@ int LuaScriptInterface::luaTalkactionSeparator(lua_State* L)
 	// talkAction:separator(sep)
 	TalkAction* talk = getUserdata<TalkAction>(L, 1);
 	if (talk) {
-		talk->setSeparator(getString(L, 2).c_str());
+		std::string sep = getString(L, 2);
+		talk->setSeparator((sep.empty() ? '"' : sep[0]));
 		pushBoolean(L, true);
 	} else {
 		lua_pushnil(L);

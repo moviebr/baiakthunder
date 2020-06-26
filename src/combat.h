@@ -55,7 +55,7 @@ class TargetCallback final : public CallBack
 };
 
 struct CombatParams {
-	std::forward_list<std::unique_ptr<const Condition>> conditionList;
+	std::vector<std::unique_ptr<const Condition>> conditionList;
 
 	std::unique_ptr<ValueCallback> valueCallback;
 	std::unique_ptr<TileCallback> tileCallback;
@@ -282,7 +282,8 @@ class Combat
 			return area != nullptr;
 		}
 		void addCondition(const Condition* condition) {
-			params.conditionList.emplace_front(condition);
+			params.conditionList.emplace_back(condition);
+			params.conditionList.shrink_to_fit();
 		}
 		void clearConditions() {
 			params.conditionList.clear();

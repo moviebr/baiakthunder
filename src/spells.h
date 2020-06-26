@@ -53,12 +53,12 @@ class Spells final : public BaseEvents
 
 		InstantSpell* getInstantSpellById(uint32_t spellId);
 
-		TalkActionResult_t playerSaySpell(Player* player, std::string& words);
+		TalkActionResult_t playerSaySpell(Player* player, std::string& words, const std::string& lowerWords);
 
 		static Position getCasterPosition(Creature* creature, Direction dir);
 		std::string getScriptBaseName() const override;
 
-		const std::map<std::string, InstantSpell>& getInstantSpells() const {
+		const std::unordered_map<std::string, InstantSpell>& getInstantSpells() const {
 			return instants;
 		};
 
@@ -73,7 +73,7 @@ class Spells final : public BaseEvents
 		bool registerEvent(Event_ptr event, const pugi::xml_node& node) override;
 
 		std::map<uint16_t, RuneSpell> runes;
-		std::map<std::string, InstantSpell> instants;
+		std::unordered_map<std::string, InstantSpell> instants;
 
 		friend class CombatSpell;
 		LuaScriptInterface scriptInterface { "Spell Interface" };

@@ -239,7 +239,7 @@ function Player:onReportBug(message, position, category)
 end
 
 function Player:onTurn(direction)
-    if self:getAccountType() == ACCOUNT_TYPE_GOD and self:getDirection() == direction then
+    if self:getGroup() == ACCOUNT_TYPE_GOD and self:getDirection() == direction then
         local nextPosition = self:getPosition()
         nextPosition:getNextPosition(direction)
         self:teleportTo(nextPosition, true)

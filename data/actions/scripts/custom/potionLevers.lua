@@ -24,7 +24,8 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		elseif not player:addItem(potion.id, potion.charges) then
 			print("[ERROR] ACTION: potions_lever, FUNCTION: addItem, PLAYER: "..player:getName())
 		else
-			player:getPosition():sendMagicEffect(CONST_ME_DRAWBLOOD)
+			player:sendCancelMessage("Você comprou ".. potion.charges .."x ".. potionId:getName() ..".")
+			player:getPosition():sendMagicEffect(29)
 		end
 		
 	else

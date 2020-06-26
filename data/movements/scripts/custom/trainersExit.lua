@@ -4,7 +4,7 @@ local function removeTrainers(position)
 		local trainer = Tile(arrayPos[places]):getTopCreature()
 		if trainer then
 			if trainer:isMonster() then
-				trainer:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+				trainer:getPosition():sendMagicEffect(CONST_ME_POFF)
 				trainer:remove()
 			end
 		end
@@ -18,6 +18,7 @@ function onStepIn(creature, item, position, fromPosition)
 
 	removeTrainers(fromPosition)
 	creature:teleportTo(creature:getTown():getTemplePosition())
+	creature:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	creature:setStorageValue(STORAGEVALUE_TRAINERS, os.time() + 5)
 
 	return true

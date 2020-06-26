@@ -1,12 +1,3 @@
---[[
-CREATE TABLE `exclusive_hunts` (
-  `hunt_id` int(2) NOT NULL AUTO_INCREMENT,
-  `guid_player` VARCHAR(32) NOT NULL,
-  `time` int(11) NOT NULL,
-  `to_time` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1
-]]
-
 SUPERUP = {
 	msg = {
 		naoDisponivel = "Essa cave está ocupada pelo jogador %s até %s.",
