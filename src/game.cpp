@@ -5098,7 +5098,7 @@ bool Game::reload(ReloadTypes_t reloadType)
 	return true;
 }
 
-uint8_t Game::getSpawnRate() const;
+uint8_t Game::getSpawnRate() const
 {
  size_t playersOnline = getPlayersOnline();
 
