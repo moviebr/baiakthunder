@@ -11,6 +11,5 @@ function onSay(player, words, param)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         player:sendCancelMessage("Você não tem dinheiro suficiente.")
     end
-
     return false
 end

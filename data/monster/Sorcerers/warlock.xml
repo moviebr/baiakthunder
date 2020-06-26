@@ -58,10 +58,9 @@
 	</elements>
 	<immunities>
 		<immunity paralyze="1"/>
-		<immunity invisible="1"/>
 	</immunities>
 	<summons maxSummons="1">
-		<summon name="stone golem" interval="2000" chance="10" max="1"/>
+		<summon name="energy elemental" interval="2000" chance="10" max="2"/>
 	</summons>
 	<voices interval="5000" chance="10">
 		<voice sentence="Learn the secret of our magic! YOUR death!"/>

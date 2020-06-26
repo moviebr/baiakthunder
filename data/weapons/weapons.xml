@@ -21,7 +21,7 @@
 	<distance id="8858">
 		<vocation name="Paladin" />
 	</distance>
-	<distance id="7367">
+	<distance id="7367" script="thunderSpear.lua">
 		<vocation name="Paladin" />
 	</distance>
 

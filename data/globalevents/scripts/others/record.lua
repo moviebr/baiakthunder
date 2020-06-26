@@ -1,6 +1,5 @@
 function onRecord(current, old)
 
-	addEvent(function()
 	local file = io.open("data/logs/records/records.txt", "a")
 	if not file then
 		print(">> Error accessing the records file.")
@@ -15,6 +14,5 @@ function onRecord(current, old)
 	io.close(file)
 
 	broadcastMessage("Novo recorde: " .. current .. " players estão online.", MESSAGE_STATUS_DEFAULT)
-	end, 150)
 	return true
 end
