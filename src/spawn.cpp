@@ -319,6 +319,22 @@ void Spawn::removeMonster(Monster* monster)
 	}
 }
 
+uint32_t Spawn::getInterval() const {
+  size_t playersOnline = g_game.getPlayersOnline();
+
+  uint32_t updatedInterval = interval;
+
+  if (playersOnline > 300 && playersOnline < 500) {
+    updatedInterval /= 2;
+  } else if (playersOnline >= 500 && playersOnline < 700) {
+    updatedInterval /= 3;
+  } else if (playersOnline >= 700) {
+    updatedInterval /= 4;
+  }
+
+  return updatedInterval;
+}
+
 void Spawn::stopEvent()
 {
 	if (checkSpawnEvent != 0) {

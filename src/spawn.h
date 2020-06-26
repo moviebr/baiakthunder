@@ -48,9 +48,7 @@ class Spawn
 		bool addMonster(const std::string& name, const Position& pos, Direction dir, uint32_t interval);
 		void removeMonster(Monster* monster);
 
-		uint32_t getInterval() const {
-			return interval;
-		}
+		uint32_t getInterval() const;
 		void startup();
 
 		void startSpawnCheck();
