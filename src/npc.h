@@ -239,6 +239,8 @@ class Npc final : public Creature
 		bool isIdle;
 		bool pushable;
 
+    uint16_t moneyType;
+
 		static NpcScriptInterface* scriptInterface;
 
 		friend class Npcs;

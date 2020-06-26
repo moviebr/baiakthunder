@@ -907,7 +907,7 @@ class Player final : public Creature, public Cylinder
 		}
 		void sendSaleItemList() const {
 			if (client) {
-				client->sendSaleItemList(shopItemList);
+				client->sendSaleItemList(shopItemList, shopOwner ? shopOwner->getMoneyType() : 0);
 			}
 		}
 		void sendCloseShop() const {

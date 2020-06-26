@@ -1292,12 +1292,15 @@ void ProtocolGame::sendCloseShop()
 	writeToOutputBuffer(msg);
 }
 
-void ProtocolGame::sendSaleItemList(const std::list<ShopInfo>& shop)
+void ProtocolGame::sendSaleItemList(const std::list<ShopInfo>& shop, uint16_t moneyType)
 {
 	NetworkMessage msg;
 	msg.addByte(0x7B);
-	msg.add<uint32_t>(player->getMoney());
-
+  if (moneyType == 0) {
+	   msg.add<uint32_t>(player->getMoney());
+  } else {
+     msg.add<uint32_t>(player->getItemCount(moneyType));
+  }
 	std::map<uint16_t, uint32_t> saleMap;
 
 	if (shop.size() <= 5) {
