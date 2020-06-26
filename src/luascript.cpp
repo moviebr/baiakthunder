@@ -1896,6 +1896,7 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod("Game", "getSpectators", LuaScriptInterface::luaGameGetSpectators);
 	registerMethod("Game", "getPlayers", LuaScriptInterface::luaGameGetPlayers);
+  registerMethod("Game", "getSpawnRate", LuaScriptInterface::luaGameGetSpawnRate);
 	registerMethod("Game", "loadMap", LuaScriptInterface::luaGameLoadMap);
 
 	registerMethod("Game", "getExperienceStage", LuaScriptInterface::luaGameGetExperienceStage);
@@ -3976,6 +3977,13 @@ int LuaScriptInterface::luaGameGetPlayers(lua_State* L)
 		setMetatable(L, -1, "Player");
 		lua_rawseti(L, -2, ++index);
 	}
+	return 1;
+}
+
+int LuaScriptInterface::luaGameGetSpawnRate(lua_State* L)
+{
+	// Game.getSpawnRate()
+	lua_pushnumber(L, g_game.getSpawnRate());
 	return 1;
 }
 

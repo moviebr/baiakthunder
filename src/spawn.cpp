@@ -250,21 +250,8 @@ void Spawn::checkSpawn()
 		}
 
 		spawnBlock_t& sb = it.second;
-    std::cout << "Spawn block interval: " << sb.interval << '\n';
-    std::cout << "Spawn monster interval: " << getInterval() << '\n';
 
-    uint32_t spawnBlockInterval = sb.interval;
-
-    size_t playersOnline = g_game.getPlayersOnline();
-    if (playersOnline > 300 && playersOnline < 500) {
-      spawnBlockInterval /= 2;
-    } else if (playersOnline >= 500 && playersOnline < 700) {
-      spawnBlockInterval /= 3;
-    } else if (playersOnline >= 700) {
-      spawnBlockInterval /= 4;
-    }
-
-		if (OTSYS_TIME() >= sb.lastSpawn + spawnBlockInterval) {
+		if (OTSYS_TIME() >= sb.lastSpawn + std::max<uint32_t>(MINSPAWN_INTERVAL, sb.interval / g_game.getSpawnRate())) {
 			spawnMonster(spawnId, sb.mType, sb.pos, sb.direction);
 			if (++spawnCount >= static_cast<uint32_t>(g_config.getNumber(ConfigManager::RATE_SPAWN))) {
 				break;
@@ -333,19 +320,7 @@ void Spawn::removeMonster(Monster* monster)
 }
 
 uint32_t Spawn::getInterval() const {
-  size_t playersOnline = g_game.getPlayersOnline();
-
-  uint32_t updatedInterval = interval;
-
-  if (playersOnline > 300 && playersOnline < 500) {
-    updatedInterval /= 2;
-  } else if (playersOnline >= 500 && playersOnline < 700) {
-    updatedInterval /= 3;
-  } else if (playersOnline >= 700) {
-    updatedInterval /= 4;
-  }
-
-  return updatedInterval;
+  return std::max<uint32_t>(MINSPAWN_INTERVAL, interval / g_game.getSpawnRate());
 }
 
 void Spawn::stopEvent()
