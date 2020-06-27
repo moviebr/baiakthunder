@@ -12,6 +12,9 @@ STORAGEVALUE_LOOT = 47412
 -- Storage Exp Potion
 STORAGEVALUE_POTIONXP_ID = 12345
 STORAGEVALUE_POTIONXP_TEMPO = 12346
+-- Storage Loot Potion
+STORAGEVALUE_LOOT_ID = 12347
+STORAGEVALUE_LOOT_TEMPO = 12348
 -- Storage SuperUP
 STORAGEVALUE_SUPERUP_INDEX = 97147
 STORAGEVALUE_SUPERUP_TEMPO = 97148
@@ -41,9 +44,9 @@ expPotion = {
     [9734] = {exp = 100, tempo = 1} -- exp em %, tempo em horas
 }
 lootPotion = {
-    [10089] = {exp = 25, tempo = 0.1}, -- exp em %, tempo em horas
-    [10760] = {exp = 50, tempo = 0.1}, -- exp em %, tempo em horas
-    [11100] = {exp = 100, tempo = 0.5}, -- exp em %, tempo em horas
+    [10089] = {exp = 25, tempo = 1}, -- exp em %, tempo em horas
+    [10760] = {exp = 50, tempo = 1}, -- exp em %, tempo em horas
+    [11100] = {exp = 100, tempo = 1}, -- exp em %, tempo em horas
 }
 
 ropeSpots = {384, 418, 8278, 8592, 13189, 14435, 14436, 15635, 19518, 24621, 24622, 24623, 24624}

@@ -1,13 +1,13 @@
 local loot = Action()
 
 function loot.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local xpPot = expPotion[item:getId()]
-	if not xpPot then
+	local lootPot = lootPotion[item:getId()]
+	if not lootPot then
 		return false
 	end
 
-	if player:getStorageValue(STORAGEVALUE_POTIONXP_ID) >= 1 or player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) > os.time() then
-		player:sendCancelMessage("Você já possui algum bônus de experiência.")
+	if player:getStorageValue(STORAGEVALUE_LOOT_ID) >= 1 or player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) > os.time() then
+		player:sendCancelMessage("Você já possui algum bônus de loot.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
 	end
@@ -19,20 +19,20 @@ function loot.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end
 
 
-	player:sendCancelMessage("Você ativou um bônus de loot de +".. xpPot.exp .."% por ".. xpPot.tempo .." hora".. (xpPot.tempo > 1 and "s" or "") ..".")
+	player:sendCancelMessage("Você ativou um bônus de loot de +".. lootPot.exp .."% por ".. lootPot.tempo .." hora".. (lootPot.tempo > 1 and "s" or "") ..".")
 	player:getPosition():sendMagicEffect(31)
-	player:setStorageValue(STORAGEVALUE_POTIONXP_ID, item:getId())
-	player:setStorageValue(STORAGEVALUE_POTIONXP_TEMPO, os.time() + xpPot.tempo * 60)
+	player:setStorageValue(STORAGEVALUE_LOOT_ID, item:getId())
+	player:setStorageValue(STORAGEVALUE_LOOT_TEMPO, os.time() + lootPot.tempo * 60)
 	local idPlayer = player:getId()
 	addEvent(function()
 		local player = Player(idPlayer)
 		if player then
-			player:setStorageValue(STORAGEVALUE_POTIONXP_ID, -1)
-			player:setStorageValue(STORAGEVALUE_POTIONXP_TEMPO, -1)
+			player:setStorageValue(STORAGEVALUE_LOOT_ID, -1)
+			player:setStorageValue(STORAGEVALUE_LOOT_TEMPO, -1)
 			player:sendCancelMessage("O seu tempo de loot bônus pela poção acabou!")
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		end
-	end, xpPot.tempo * 60 * 1000)
+	end, lootPot.tempo * 60 * 1000)
 	return true
 end
 

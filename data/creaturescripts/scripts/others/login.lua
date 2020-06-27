@@ -32,14 +32,14 @@ function onLogin(player)
 
 	-- Dodge/Critical System
 	if player:getDodgeLevel() == -1 then
-		player:setDodgeLevel(0) 
+		player:setDodgeLevel(0)
 	end
 	if player:getCriticalLevel() == -1 then
-		player:setCriticalLevel(0) 
+		player:setCriticalLevel(0)
 	end
-	
+
 	player:loadSpecialStorage()
-	
+
 	-- Promotion
 	local vocation = player:getVocation()
 	local promotion = vocation:getPromotion()
@@ -73,6 +73,24 @@ function onLogin(player)
 		end, (player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) - os.time()) * 1000)
 	end
 
+	-- Loot Potion
+	if player:getStorageValue(STORAGEVALUE_LOOT_ID) ~= -1 and player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) <= os.time() then
+		player:setStorageValue(STORAGEVALUE_LOOT_ID, -1)
+		player:setStorageValue(STORAGEVALUE_LOOT_TEMPO, -1)
+		player:sendCancelMessage("O seu tempo de loot bônus pela poção acabou!")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+	elseif player:getStorageValue(STORAGEVALUE_LOOT_ID) ~= -1 and player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) > os.time() then
+		local idPlayer = player:getId()
+		addEvent(function()
+			local player = Player(idPlayer)
+			if player then
+				player:setStorageValue(STORAGEVALUE_LOOT_ID, -1)
+				player:setStorageValue(STORAGEVALUE_LOOT_TEMPO, -1)
+				player:sendCancelMessage("O seu tempo de loot bônus pela poção acabou!")
+				player:getPosition():sendMagicEffect(CONST_ME_POFF)
+			end
+		end, (player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) - os.time()) * 1000)
+	end
 	-- Events
 	player:registerEvent("PlayerDeath")
 	player:registerEvent("AnimationUp")

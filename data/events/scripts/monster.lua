@@ -1,5 +1,5 @@
 function Monster:onDropLoot(corpse)
-	
+
 	local mType = self:getType()
 	if mType:isRewardBoss() then
 		corpse:registerReward()
@@ -16,6 +16,13 @@ function Monster:onDropLoot(corpse)
 		local monsterLoot = mType:getLoot()
 
 		-- Boost Loot
+		local percentLoot = 0
+		if player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) > os.time() then
+			local potion = lootPotion[player:getStorageValue(STORAGEVALUE_LOOT_ID)]
+			if potion then
+				percentLoot = (potion.exp / 100)
+			end
+		end
 
 		-- Boost Creature
 		local percent = 0
@@ -24,7 +31,7 @@ function Monster:onDropLoot(corpse)
 		end
 
 		for i = 1, #monsterLoot do
-			monsterLoot[i].chance = monsterLoot[i].chance + (monsterLoot[i].chance * percent)
+			monsterLoot[i].chance = monsterLoot[i].chance + (monsterLoot[i].chance * percent) + (monsterLoot[i].chance * percentLoot)
 			local item = corpse:createLootItem(monsterLoot[i])
 			if not item then
 				print('[Warning] DropLoot:', 'Could not add loot item to corpse.')

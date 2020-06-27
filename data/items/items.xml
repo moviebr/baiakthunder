@@ -12089,7 +12089,8 @@
 	<item id="7252" article="a" name="baby seal">
 		<attribute key="description" value="It is covered with paint." />
 	</item>
-	<item id="7253" article="a" name="flask with paint">
+	<item id="7253" article="uma" name="poção de experiência">
+		<attribute key="description" value="Ao usar essa poção você ganha +25% de experiência por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item fromid="7254" toid="7255" article="a" name="stone shelf">
@@ -13043,8 +13044,8 @@
 	<item id="7476" article="a" name="white flower">
 		<attribute key="weight" value="10" />
 	</item>
-	<item id="7477" article="a" name="special flask">
-		<attribute key="description" value="It contains the smell of a freshly slain slime." />
+	<item id="7477" article="uma" name="poção de experiência">
+		<attribute key="description" value="Ao usar essa poção você ganha +10% de experiência por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item id="7478" article="a" name="special flask">
@@ -15016,8 +15017,8 @@
 	<item id="8204" name="easily inflammable sulphur">
 		<attribute key="weight" value="50" />
 	</item>
-	<item id="8205" article="a" name="special flask">
-		<attribute key="description" value="It contains highly intensified poison against vermin." />
+	<item id="8205" article="uma" name="poção de experiência">
+		<attribute key="description" value="Ao usar essa poção você ganha +50% de experiência por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item fromid="8206" toid="8207" name="" />
@@ -17037,7 +17038,8 @@
 	<item id="9733" name="the alchemists' formulas">
 		<attribute key="weight" value="200" />
 	</item>
-	<item id="9734" article="an" name="animal cure">
+	<item id="9734" article="uma" name="poção de experiência">
+		<attribute key="description" value="Ao usar essa poção você ganha +100% de experiência por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item id="9735" name="Morik's helmet">
@@ -17929,7 +17931,8 @@
 		<attribute key="containerSize" value="8" />
 		<attribute key="slotType" value="backpack" />
 	</item>
-	<item id="10089" article="an" name="antidote potion">
+	<item id="10089" article="uma" name="poção de loot">
+		<attribute key="description" value="Ao usar essa poção você ganha +25% de loot por 1 hora." />
 		<attribute key="weight" value="175" />
 	</item>
 	<item id="10091" article="a" name="sky key">
@@ -19067,8 +19070,8 @@
 	<item fromid="10741" toid="10743" name="trollhair plants" />
 	<item fromid="10744" toid="10751" article="a" name="plant's hedge" />
 	<item fromid="10752" toid="10759" article="a" name="diabolic's hedge" />
-	<item id="10760" article="a" name="flask of poison">
-		<attribute key="description" value="This poison is meant to weaken the enemy and should be used on the rice fields near Chaochai." />
+	<item id="10760" article="uma" name="poção de loot">
+		<attribute key="description" value="Ao usar essa poção você ganha +50% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item fromid="10761" toid="10762" name="wild wine" />
@@ -19270,8 +19273,8 @@
 		<attribute key="decayTo" value="0" />
 		<attribute key="duration" value="45" />
 	</item>
-	<item id="11100" article="a" name="flask with beaver bait">
-		<attribute key="description" value="It smells like a mixture of wood and fish. Phew." />
+	<item id="11100" article="uma" name="poção de loot">
+		<attribute key="description" value="Ao usar essa poção você ganha +100% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item id="11101" article="a" name="tactical map">
