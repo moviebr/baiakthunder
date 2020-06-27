@@ -11,7 +11,7 @@ function onStepIn(creature, item, position, fromPosition)
     end
 
     if player:getLevel() < Bosses.level.levelMin and Bosses.level.active then
-        player:sendCancelMessage("[Boss] Você precisa ser level " .. FSE.players.levelMin .. " ou maior para entrar no evento.")
+        player:sendCancelMessage("[Boss] Você precisa ser level " .. Bosses.level.levelMin .. " ou maior para entrar no evento.")
         player:teleportTo(fromPosition, true)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return true

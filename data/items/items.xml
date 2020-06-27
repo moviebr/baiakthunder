@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <items>
 	<item id="100" name="vazio" />
 	<item id="101" name="terra" />
@@ -12090,7 +12090,7 @@
 		<attribute key="description" value="It is covered with paint." />
 	</item>
 	<item id="7253" article="uma" name="poção de experiência">
-		<attribute key="description" value="Ao usar essa poção você ganha +25% de experiência por 1 hora." />
+		<attribute key="description" value="Ao usar essa poção você ganha +25% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item fromid="7254" toid="7255" article="a" name="stone shelf">
@@ -13045,7 +13045,7 @@
 		<attribute key="weight" value="10" />
 	</item>
 	<item id="7477" article="uma" name="poção de experiência">
-		<attribute key="description" value="Ao usar essa poção você ganha +10% de experiência por 1 hora." />
+		<attribute key="description" value="Ao usar essa poção você ganha +10% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item id="7478" article="a" name="special flask">
@@ -15018,7 +15018,7 @@
 		<attribute key="weight" value="50" />
 	</item>
 	<item id="8205" article="uma" name="poção de experiência">
-		<attribute key="description" value="Ao usar essa poção você ganha +50% de experiência por 1 hora." />
+		<attribute key="description" value="Ao usar essa poção você ganha +50% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item fromid="8206" toid="8207" name="" />
@@ -17039,7 +17039,7 @@
 		<attribute key="weight" value="200" />
 	</item>
 	<item id="9734" article="uma" name="poção de experiência">
-		<attribute key="description" value="Ao usar essa poção você ganha +100% de experiência por 1 hora." />
+		<attribute key="description" value="Ao usar essa poção você ganha +100% de loot por 1 hora." />
 		<attribute key="weight" value="180" />
 	</item>
 	<item id="9735" name="Morik's helmet">

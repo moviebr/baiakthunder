@@ -2,40 +2,28 @@ local positions = {
     [1] = Position(989, 1211, 7),
     [2] = Position(989, 1208, 7),
     [3] = Position(993, 1208, 7),
-    [4] = Position(993, 1211, 7),
-    [5] = Position(991, 1211, 7)
+    [4] = Position(993, 1211, 7)
 }
-local shot = 29
-local corrida = true
+local shot = 4
+
 
 function onThink(interval)
-    positions[1]:sendDistanceEffect(positions[2], shot)
-    if corrida then
-        positions[5]:sendDistanceEffect(positions[1], shot)
-    end
+
+    positions[1]:sendDistanceEffect(positions[4], shot)
+    positions[3]:sendDistanceEffect(positions[2], shot)
     addEvent(function()
-        positions[2]:sendDistanceEffect(positions[3], shot)
-        if corrida then
-            addEvent(function()
-                positions[2]:sendDistanceEffect(positions[3], shot)
-            end, 70)
-        end
-    end, 300)
+      positions[4]:sendDistanceEffect(positions[3], shot)
+      positions[2]:sendDistanceEffect(positions[1], shot)
+    end, 270)
+
     addEvent(function()
-        positions[3]:sendDistanceEffect(positions[4], shot)
-        if corrida then
-            addEvent(function()
-                positions[3]:sendDistanceEffect(positions[4], shot)
-            end, 70)
-        end
-    end, 600)
+      positions[3]:sendDistanceEffect(positions[2], shot)
+      positions[1]:sendDistanceEffect(positions[4], shot)
+    end, 560)
+
     addEvent(function()
-        positions[4]:sendDistanceEffect(positions[1], shot)
-        if corrida then
-            addEvent(function()
-                positions[4]:sendDistanceEffect(positions[1], shot)
-            end, 70)
-        end
-    end, 900)
-   return true
+      positions[2]:sendDistanceEffect(positions[1], shot)
+      positions[4]:sendDistanceEffect(positions[3], shot)
+    end, 850)
+    return true
 end

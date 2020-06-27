@@ -37,17 +37,19 @@ AUTO_LOOT_MAX_ITEMS = 5
 AUTOLOOT_STORAGE_START = 10000
 AUTOLOOT_STORAGE_END = AUTOLOOT_STORAGE_START + AUTO_LOOT_MAX_ITEMS
 
+-- Inicio -> Exp e Loot Potions [exp em %, tempo em horas]
 expPotion = {
-    [7477] = {exp = 10, tempo = 1}, -- exp em %, tempo em horas
-    [7253] = {exp = 25, tempo = 1}, -- exp em %, tempo em horas
-    [8205] = {exp = 50, tempo = 1}, -- exp em %, tempo em horas
-    [9734] = {exp = 100, tempo = 1} -- exp em %, tempo em horas
+    [7477] = {exp = 10, tempo = 1},
+    [7253] = {exp = 25, tempo = 1},
+    [8205] = {exp = 50, tempo = 1},
+    [9734] = {exp = 100, tempo = 1}
 }
 lootPotion = {
-    [10089] = {exp = 25, tempo = 1}, -- exp em %, tempo em horas
-    [10760] = {exp = 50, tempo = 1}, -- exp em %, tempo em horas
-    [11100] = {exp = 100, tempo = 1}, -- exp em %, tempo em horas
+    [10089] = {exp = 25, tempo = 1},
+    [10760] = {exp = 50, tempo = 1},
+    [11100] = {exp = 100, tempo = 1}
 }
+-- Fim -> Exp e Loot Potions
 
 ropeSpots = {384, 418, 8278, 8592, 13189, 14435, 14436, 15635, 19518, 24621, 24622, 24623, 24624}
 

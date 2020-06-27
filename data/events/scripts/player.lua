@@ -6,7 +6,7 @@ function Player:onLook(thing, position, distance)
        return false
    end
 	local description = "Você vê " .. thing:getDescription(distance)
-	
+
 	if LOOK_MARRIAGE_DESCR and thing:isCreature() then
         if thing:isPlayer() and not thing:getGroup():getAccess() then
             description =  description .. self:getMarriageDescription(thing)
@@ -16,7 +16,7 @@ function Player:onLook(thing, position, distance)
     if thing:isItem() and thing:getCustomAttribute("premiumPoints") then
     	description = description .. "\nEsse item vale " .. thing:getCustomAttribute("premiumPoints") .." pontos."
     end
-	
+
 	if self:getGroup():getAccess() then
 		if thing:isItem() then
 			description = string.format("%s\nItem ID: %d", description, thing:getId())
@@ -71,11 +71,11 @@ function Player:onLook(thing, position, distance)
 		end
 	end
 	self:sendTextMessage(MESSAGE_INFO_DESCR, description)
-	
+
 	if thing:isPlayer() and not self:getGroup():getAccess() then
         thing:sendTextMessage(MESSAGE_STATUS_DEFAULT, self:getName() .. ' está olhando para você.')
     end
-	
+
 end
 
 function Player:onLookInBattleList(creature, distance)
@@ -83,7 +83,7 @@ function Player:onLookInBattleList(creature, distance)
 	if (thing:isCreature() and thing:isNpc() and distance <= minDist) then
        self:say("hi", TALKTYPE_PRIVATE_PN, false, thing)
        self:say("trade", TALKTYPE_PRIVATE_PN, false, thing)
-       return false   
+       return false
    end
 	local description = "Você vê " .. creature:getDescription(distance)
 	if self:getGroup():getAccess() then
@@ -109,11 +109,11 @@ function Player:onLookInBattleList(creature, distance)
 		end
 	end
 	self:sendTextMessage(MESSAGE_INFO_DESCR, description)
-	
+
 	if creature:isPlayer() and not self:getGroup():getAccess() then
         creature:sendTextMessage(MESSAGE_STATUS_DEFAULT, self:getName() .. ' está olhando para você.')
     end
-	
+
 end
 
 function Player:onLookInTrade(partner, item, distance)
@@ -159,7 +159,7 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
                 end
             end
         end
-    end    
+    end
 	return true
 end
 
@@ -320,17 +320,17 @@ function Player:onGainExperience(source, exp, rawExp)
 			exp = exp * 0.5
 		end
 	end
-	
+
 	-- Premium
+	local xpPremium = 0
 	if self:isPremium() then
-		local expPremium = 1.2
-		exp = exp * expPremium
+		xpPremium = exp * 1.2 -- +20% XP
 	end
-	
+
 	-- Castle 24H
-	if self:getGuild() and self:getGuild():getId() == getGuildIdFromCastle() then
-		local expCastle = 1.2 -- 20% a mais de exp
-		exp = exp * expCastle
+	local xpCastle = 0
+	if self:getGuild() and self:getGuild():getId() == CASTLE24H:getGuildIdFromCastle() then
+		xpCastle = exp * 1.2 -- +20% XP
 	end
 
 	-- XP potion
@@ -350,7 +350,7 @@ function Player:onGainExperience(source, exp, rawExp)
 		self:sendTextMessage(MESSAGE_STATUS_DEFAULT, "[Boosted Creature] Você ganhou ".. extraXp .." de experiência.")
 	end
 
-	return exp + extraXp + xpPotion
+	return exp + extraXp + xpPotion + xpPremium + xpCastle
 end
 
 function Player:onLoseExperience(exp)

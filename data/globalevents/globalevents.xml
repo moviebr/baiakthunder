@@ -10,19 +10,19 @@
 	<globalevent name="SuperUP" interval="5000" script="custom/superup.lua" />
 	<globalevent type="startup" name="BoostCreature" script="custom/boostCreature.lua" />
 	<globalevent name="BoostCreatureThink" interval="10800000" script="custom/boostCreature.lua" />
-	
+
 	<!-- Events -->
 	<globalevent name="Lottery" time="15:00:00" script="custom/events/lottery.lua" />
 	<globalevent name="Battlefield" interval="60000" script="custom/events/battlefield.lua" />
 	<globalevent name="SafeZone" interval="60000" script="custom/events/safezone.lua" />
 	<globalevent name="SnowBall" interval="60000" script="custom/events/snowball.lua" />
 	<globalevent name="FireStorm" interval="60000" script="custom/events/firestorm.lua" />
-	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/> 
-	
+	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/>
+
 	<!-- Others -->
 	<globalevent type="startup" name="doCheckHouses" script="others/doCheckHouses.lua" />
 	<globalevent type="startup" name="ServerStartup" script="others/startup.lua" />
 	<globalevent type="record" name="PlayerRecord" script="others/record.lua" />
 	<globalevent name="Server Save" time="05:55:00" script="others/serversave.lua" />
-	
+
 </globalevents>

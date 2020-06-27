@@ -6,6 +6,7 @@
         <parameter key="message_greet" value="Olá |PLAYERNAME|, eu vendo alguns poções especiais, diga {troca} ou {trocar}." />
         <parameter key="module_shop" value="1" />
 		<parameter key="shop_sellable" value="" />
-		<parameter key="shop_buyable" value="picareta,2553,500;" />
+		<parameter key="shop_buyable" value="poção de experiência,7477,500;poção de experiência,9734,500;poção de experiência,8205,500;poção de experiência,7253,500;
+      poção de loot,10089,500;poção de loot,10760,500;poção de loot,11100,500;" />
     </parameters>
 </npc>

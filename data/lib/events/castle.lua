@@ -1,4 +1,4 @@
-CASTLE = {
+CASTLE24H = {
 	castleNome = "[Castle 24H]", -- Prefixo que irá aparecer nas mensagens
 	mensagemPrecisaGuild = "Você não faz parte de nenhuma guild.", -- Mensagem que irá aparecer caso o player não tenha guild
 	mensagemGuildDominante = "O castelo já é da sua guild.", -- Mensagem caso o player tente dominar o castelo mesmo sendo da sua guild
@@ -10,12 +10,12 @@ CASTLE = {
 	tempoAvisar = 10, -- Tempo em SEGUNDOS para não ficar spammando que o player está invadindo
 }
 
-function getGuildIdFromCastle()
+function CASTLE24H:getGuildIdFromCastle()
   local guildId  = -1
   local resultId = db.storeQuery("SELECT `guild_id` FROM `castle`;")
   if (resultId ~= false) then
     guildId = result.getDataInt(resultId, "guild_id")
     result.free(resultId)
   end
-  return guildId  
+  return guildId
 end
