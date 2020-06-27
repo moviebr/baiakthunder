@@ -54,6 +54,25 @@ function onLogin(player)
 		player:setVocation(vocation:getDemotion())
 	end
 
+	-- XP Potion
+	if player:getStorageValue(STORAGEVALUE_POTIONXP_ID) ~= -1 and player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) <= os.time() then
+		player:setStorageValue(STORAGEVALUE_POTIONXP_ID, -1)
+		player:setStorageValue(STORAGEVALUE_POTIONXP_TEMPO, -1)
+		player:sendCancelMessage("O seu tempo de experiência bônus pela poção de experiência acabou!")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+	elseif player:getStorageValue(STORAGEVALUE_POTIONXP_ID) ~= -1 and player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) > os.time() then
+		local idPlayer = player:getId()
+		addEvent(function()
+			local player = Player(idPlayer)
+			if player then
+				player:setStorageValue(STORAGEVALUE_POTIONXP_ID, -1)
+				player:setStorageValue(STORAGEVALUE_POTIONXP_TEMPO, -1)
+				player:sendCancelMessage("O seu tempo de experiência bônus pela poção de experiência acabou!")
+				player:getPosition():sendMagicEffect(CONST_ME_POFF)
+			end
+		end, (player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) - os.time()) * 1000)
+	end
+
 	-- Events
 	player:registerEvent("PlayerDeath")
 	player:registerEvent("AnimationUp")

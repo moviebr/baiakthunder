@@ -15,6 +15,8 @@ function Monster:onDropLoot(corpse)
 	if not player or player:getStamina() > 840 then
 		local monsterLoot = mType:getLoot()
 
+		-- Boost Loot
+
 		-- Boost Creature
 		local percent = 0
 		if (mType:getName():lower() == boostCreature[1].name) then

@@ -7,8 +7,11 @@ tabelaExiva = {}
 
 STORAGEVALUE_PROMOTION = 30018
 STORAGEVALUE_DELAY_LARGE_SEASHELL = 30019
--- Storage Loot
+-- Storage Channel Loot
 STORAGEVALUE_LOOT = 47412
+-- Storage Exp Potion
+STORAGEVALUE_POTIONXP_ID = 12345
+STORAGEVALUE_POTIONXP_TEMPO = 12346
 -- Storage SuperUP
 STORAGEVALUE_SUPERUP_INDEX = 97147
 STORAGEVALUE_SUPERUP_TEMPO = 97148
@@ -30,6 +33,18 @@ STORAGEVALUE_EVENTS = 74861
 AUTO_LOOT_MAX_ITEMS = 5
 AUTOLOOT_STORAGE_START = 10000
 AUTOLOOT_STORAGE_END = AUTOLOOT_STORAGE_START + AUTO_LOOT_MAX_ITEMS
+
+expPotion = {
+    [7477] = {exp = 10, tempo = 1}, -- exp em %, tempo em horas
+    [7253] = {exp = 25, tempo = 1}, -- exp em %, tempo em horas
+    [8205] = {exp = 50, tempo = 1}, -- exp em %, tempo em horas
+    [9734] = {exp = 100, tempo = 1} -- exp em %, tempo em horas
+}
+lootPotion = {
+    [10089] = {exp = 25, tempo = 0.1}, -- exp em %, tempo em horas
+    [10760] = {exp = 50, tempo = 0.1}, -- exp em %, tempo em horas
+    [11100] = {exp = 100, tempo = 0.5}, -- exp em %, tempo em horas
+}
 
 ropeSpots = {384, 418, 8278, 8592, 13189, 14435, 14436, 15635, 19518, 24621, 24622, 24623, 24624}
 

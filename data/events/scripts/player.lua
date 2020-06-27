@@ -239,7 +239,7 @@ function Player:onReportBug(message, position, category)
 end
 
 function Player:onTurn(direction)
-    if self:getGroup() == ACCOUNT_TYPE_GOD and self:getDirection() == direction then
+    if self:getGroup():getAccess() and self:getAccountType() == ACCOUNT_TYPE_GOD and self:getDirection() == direction then
         local nextPosition = self:getPosition()
         nextPosition:getNextPosition(direction)
         self:teleportTo(nextPosition, true)
@@ -333,14 +333,24 @@ function Player:onGainExperience(source, exp, rawExp)
 		exp = exp * expCastle
 	end
 
+	-- XP potion
+	local xpPotion = 0
+	if self:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) > os.time() then
+		local potion = expPotion[self:getStorageValue(STORAGEVALUE_POTIONXP_ID)]
+		if potion then
+			xpPotion = exp * potion.exp / 100
+		end
+	end
+
+	-- Boost Creature
 	local extraXp = 0
 	if (source:getName():lower() == boostCreature[1].name) then
 		local extraPercent = boostCreature[1].exp
-		extraXp = exp + (exp * extraPercent / 100)
+		extraXp = exp * extraPercent / 100
 		self:sendTextMessage(MESSAGE_STATUS_DEFAULT, "[Boosted Creature] Você ganhou ".. extraXp .." de experiência.")
 	end
 
-	return exp + extraXp
+	return exp + extraXp + xpPotion
 end
 
 function Player:onLoseExperience(exp)
