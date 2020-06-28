@@ -9,12 +9,13 @@
 	<action actionid="4189" script="custom/citizenAddon.lua"/>
 	<action fromaid="1515" toaid="1522" script="custom/potionLevers.lua" />
 	<action fromaid="1523" toaid="1528" script="custom/runeLevers.lua" />
-	
+
 	<!-- Events -->
 	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>
 	<action fromaid="61101" toaid="61499" script="custom/events/hunger.lua"/>
 	<action fromaid="62101" toaid="62499" script="custom/events/hunger.lua"/>
 	<action actionid="10103" script="custom/events/snowball.lua"/>
+	<action uniqueid="7123" script="custom/events/castle48.lua"/>
 
 	<!-- Enchanting
 	<action fromid="2146" toid="2147" script="other/enchanting.lua" />
@@ -96,7 +97,7 @@
 	<action itemid="18397" script="other/food.lua" />
 	<action itemid="19737" script="other/food.lua" />
 	<action fromid="20100" toid="20101" script="other/food.lua" />
-	
+
 	<!-- Special Foods -->
 	<action itemid="9992" script="special_foods/rotworm_stew.lua"/>
 	<action itemid="9993" script="special_foods/hydra_tongue_salad.lua"/>
@@ -106,7 +107,7 @@
 	<action itemid="9998" script="special_foods/filled_jalapeno_peppers.lua"/>
 	<action itemid="9999" script="special_foods/blessed_steak.lua"/>
 	<action itemid="10000" script="special_foods/carrot_cake.lua"/>
-	<action itemid="10001" script="special_foods/northern_fishburger.lua"/>	
+	<action itemid="10001" script="special_foods/northern_fishburger.lua"/>
 
 	<!-- Other -->
 	<action itemid="6578" script="other/partyhat.lua" />

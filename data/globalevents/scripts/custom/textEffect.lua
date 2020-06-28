@@ -29,6 +29,9 @@ function onThink(interval)
     {position = Position(471, 1379, 6), text = "Hunts", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(472, 1379, 6), text = "Trainers", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(473, 1379, 6), text = "NPCs", effect = 49, say = true, color = math.random(1,255)},
+    {position = Position(997, 1203, 7), text = "Castle 48H", effect = 40, say = true, color = math.random(1,255)},
+    {position = Position(546, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
+    {position = Position(583, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(477, 1379, 6), text = "Cidades", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(478, 1379, 6), text = "Bosses", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(984, 1212, 7), text = "Rotworms", effect = 57, say = false, color = math.random(1,255)},
@@ -36,8 +39,9 @@ function onThink(interval)
     {position = Position(981, 1204, 8), text = "Boosted Creature\n ", effect = 30, say = true, color = math.random(1,255)},
     {position = Position(980, 1205, 8), text = "+" .. boostCreature[1].exp .."% de EXP", say = true, color = math.random(1,255)},
     {position = Position(982, 1205, 8), text = "+" .. boostCreature[1].loot .."% de Loot", say = true, color = math.random(1,255)},
-     {position = Position(984, 1208, 7), text = "FastSpawn", effect = 37, say = false, color = math.random(1,255)},
-
+    {position = Position(984, 1208, 7), text = "FastSpawn", effect = 37, say = false, color = math.random(1,255)},
+    -- Alavancas
+    {position = Position(982, 1203, 7), text = "AddonDoll", say = false, color = math.random(1,255)},
 }
 
     for i = 1, #effects do

@@ -91,6 +91,7 @@ function onLogin(player)
 			end
 		end, (player:getStorageValue(STORAGEVALUE_LOOT_TEMPO) - os.time()) * 1000)
 	end
+
 	-- Events
 	player:registerEvent("PlayerDeath")
 	player:registerEvent("AnimationUp")

@@ -350,7 +350,14 @@ function Player:onGainExperience(source, exp, rawExp)
 		self:sendTextMessage(MESSAGE_STATUS_DEFAULT, "[Boosted Creature] Você ganhou ".. extraXp .." de experiência.")
 	end
 
-	return exp + extraXp + xpPotion + xpPremium + xpCastle
+	--[[ Castle 48H
+	local xpCastle48 = 0
+	if self:getGuild():getId() == função pra ver id da guild ganhadora then
+		xpCastle48 = exp * Castle48H.plusXP / 100
+	end
+	]]
+
+	return exp + extraXp + xpPotion + xpPremium + xpCastle + xpCastle48
 end
 
 function Player:onLoseExperience(exp)

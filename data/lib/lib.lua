@@ -8,10 +8,13 @@ dofile('data/lib/compat/compat.lua')
 dofile('data/lib/custom/legendaryLever.lua')
 --]]
 
--- Info Storage 
+-- Dodge e Critical
+dofile('data/lib/custom/dodgeCritical.lua')
+
+-- Info Storage
 dofile('data/lib/custom/infoStorage.lua')
 
--- Online Time System 
+-- Online Time System
 dofile('data/lib/custom/onlineTime.lua')
 
 -- Debug Lib
@@ -49,3 +52,6 @@ dofile('data/lib/custom/premiumPoints.lua')
 
 -- Boost Creature
 dofile('data/lib/custom/boostCreature.lua')
+
+-- Boss Room
+dofile('data/lib/custom/bossRoom.lua')

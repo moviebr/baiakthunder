@@ -27,6 +27,7 @@ function talk.onSay(player, words, param)
     if targetPlayer then
       local item = Game.createItem(tonumber(id), tonumber(count))
       targetPlayer:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+      targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você recebeu ".. count .."x ".. ItemType(tonumber(id)):getName() .." no seu mailbox!")
       player:sendCancelMessage("Enviado ".. count .."x ".. ItemType(tonumber(id)):getName() .." para o player ".. targetPlayer:getName())
       return
     end

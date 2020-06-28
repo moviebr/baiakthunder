@@ -168,6 +168,7 @@ enum SpeakClasses : uint8_t {
 };
 
 enum MessageClasses : uint8_t {
+	MESSAGE_STATUS_BLUE_LIGHT = 5,
 	MESSAGE_STATUS_CONSOLE_RED = 18, /*Red message in the console*/
 	MESSAGE_EVENT_ORANGE = 19, /*Orange message in the console*/
 	MESSAGE_STATUS_CONSOLE_ORANGE = 20,  /*Orange message in the console*/

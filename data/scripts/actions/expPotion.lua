@@ -32,7 +32,7 @@ function exp.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			player:sendCancelMessage("O seu tempo de experiência bônus pela poção de experiência acabou!")
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		end
-	end, xpPot.tempo * 60 * 1000)
+	end, xpPot.tempo * 60 * 60 * 1000)
 	return true
 end
 
