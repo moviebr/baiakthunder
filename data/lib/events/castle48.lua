@@ -57,10 +57,6 @@ function Castle48H:useLever(id)
 	return {id = id, time = guildTime}
 end
 
-function Castle48H:setTime(id)
-
-end
-
 function Castle48H:enter(player)
 	table.insert(Castle48H.players, player:getId())
 end
@@ -73,13 +69,19 @@ function Castle48H:exit(player)
 end
 
 function Castle48H:close()
+	local idGuild = db.storeQuery("SELECT guild_id FROM `castle_48` ORDER BY `time` ASC")
+	if not idGuild then
+		return false
+	end
+
+	local resultado = result.getDataInt(idGuild, "guild_id")
+	db.query("UPDATE `castle_48` SET `winner` = 1 WHERE guild_id =".. resultado)
+	local guildWinner = Guild(resultado)
 	Game.setStorageValue(Castle48H.storageGlobal, -1)
 	Game.setStorageValue(Castle48H.storageGuildLever, -1)
 	Game.broadcastMessage(Castle48H.msg.prefix .. Castle48H.msg.endEvent)
-	addEvent(Game.broadcastMessage, 10 * 1000, Castle48H.msg.prefix .. Castle48H.msg.guildWinner:format(guild, Castle48H.plusXP)) -- Revisar
-	addEvent(function()
-		db.query("DELETE FROM `castle_48` WHERE `winner` = 0")
-	end, )
+	addEvent(Game.broadcastMessage, 10 * 1000, Castle48H.msg.prefix .. Castle48H.msg.guildWinner:format(guildWinner:getName(), Castle48H.plusXP))
+	db.query("DELETE FROM `castle_48` WHERE `winner` = 0")
 	for a, id in ipairs(Castle48H.players) do
 		local player = Player(id)
 		if player then

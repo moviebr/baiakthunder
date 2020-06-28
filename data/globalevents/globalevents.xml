@@ -18,8 +18,11 @@
 	<globalevent name="SnowBall" interval="60000" script="custom/events/snowball.lua" />
 	<globalevent name="FireStorm" interval="60000" script="custom/events/firestorm.lua" />
 	<globalevent type="startup" name="HungerGames" script="custom/events/hungerGames.lua"/>
+
+	<!-- Castle 48H -->
 	<globalevent name="Castle48H" interval="60000" script="custom/events/castle48.lua" />
 	<globalevent name="Castle48HLever" interval="60000" script="custom/events/castle48Lever.lua" />
+	<globalevent name="Castle48HEnd" time="20:55" script="custom/events/castle48End.lua" />
 
 	<!-- Others -->
 	<globalevent type="startup" name="doCheckHouses" script="others/doCheckHouses.lua" />
