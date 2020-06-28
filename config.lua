@@ -22,11 +22,11 @@ spoofDailyMaxPlayers = 2050
 spoofNoiseInterval = 1000
 spoofNoise = 0
 spoofTimezone = -1
-spoofInterval = 1 
-spoofChangeChance = 70 
-spoofIncrementChange = 100 
+spoofInterval = 1
+spoofChangeChance = 70
+spoofIncrementChange = 100
 
-ip = "127.0.0.1"
+ip = "35.223.230.84"
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172
@@ -58,8 +58,8 @@ maxMarketOffersAtATimePerPlayer = 100
 
 mysqlHost = "127.0.0.1"
 mysqlUser = "root"
-mysqlPass = ""
-mysqlDatabase = "real_site"
+mysqlPass = "thundernw9MxpSLsP26M9nQCuWF8YUErQUb2q9j"
+mysqlDatabase = "baiak"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"
