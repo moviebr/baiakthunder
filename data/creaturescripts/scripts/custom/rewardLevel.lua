@@ -1,7 +1,8 @@
 local table = {
 	[50] = {type = "bank", id = {5000, 0}, msg = "Foi depositado em seu bank 5000 gold coins por alcançar o level 50!"},
 	[100] = {type = "bank", id = {20000, 0}, msg = "Foi depositado em seu bank 20000 gold coins por alcançar o level 100!"},
-	[200] = {type = "bank", id = {25000, 0}, msg = "Foi depositado em seu bank 25000 gold coins por alcançar o level 200!"},
+	[200] = {type = "item", id = {9693, 1}, msg = "Você ganhou um addon doll por alcançar o level 200!"},
+	[400] = {type = "addon", id = {154, 158}, msg = "Você ganhou p addon Shaman Full por alcançar o level 400!"},
 }
 
 local storage = 15000
@@ -14,7 +15,7 @@ function onAdvance(player, skill, oldLevel, newLevel)
 
 	for level, _ in pairs(table) do
 		if newLevel >= level and player:getStorageValue(storage) < level then
-			if table[level].type == "item" then	
+			if table[level].type == "item" then
 				player:addItem(table[level].id[1], table[level].id[2])
 			elseif table[level].type == "bank" then
 				player:setBankBalance(player:getBankBalance() + table[level].id[1])

@@ -16,6 +16,8 @@ Castle48H = {
 		endingEvent = "O evento irá acabar em %d minutos! Conquistem o trono!"
 		notOpen = "O evento ainda não foi aberto!",
 		notGuild = "Você não possui guild para entrar nesse evento.",
+		alreadyOwner = "A guild dominante já é a sua.",
+		nowOwner = "A guild %s acabou de dominar o evento.",
 	},
 	days = {
 		["Sunday"] = {"20:00"},
@@ -30,6 +32,7 @@ Castle48H = {
 	positionKing = Position(),
 	uniqueIdLever = 7123,
 	storageGlobal = 74641,
+	storageGuildLever = 74642,
 	actionIDEnter = 7197,
 	actionIDExit = 7198,
 
@@ -40,6 +43,22 @@ function Castle48H:open()
 	addEvent(function()
 		Game.setStorageValue(Castle48H.storageGlobal, 1)
 	end, 5 * 60 * 1000)
+end
+
+function Castle48H:useLever(id)
+	local guild = db.storeQuery("SELECT * FROM castle_48 WHERE guild_id = ".. id)
+	if not guild then
+		db.query("INSERT INTO castle48 (`guild_id`, `time`, `winner`) VALUES (".. id ..", 0, 0)")
+		return true
+	end
+
+	local guildTime = result.getDataLong(guild, "time")
+
+	return {id = id, time = guildTime}
+end
+
+function Castle48H:setTime(id)
+
 end
 
 function Castle48H:enter(player)
@@ -55,6 +74,7 @@ end
 
 function Castle48H:close()
 	Game.setStorageValue(Castle48H.storageGlobal, -1)
+	Game.setStorageValue(Castle48H.storageGuildLever, -1)
 	Game.broadcastMessage(Castle48H.msg.prefix .. Castle48H.msg.endEvent)
 	addEvent(Game.broadcastMessage, 10 * 1000, Castle48H.msg.prefix .. Castle48H.msg.guildWinner:format(guild, Castle48H.plusXP)) -- Revisar
 	addEvent(function()
