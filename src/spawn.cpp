@@ -251,6 +251,10 @@ void Spawn::checkSpawn()
 
 		spawnBlock_t& sb = it.second;
 
+		if (sb.mType->info.isBlockable && findPlayer(sb.pos)) {
+			continue;
+		}
+
 		if (OTSYS_TIME() >= sb.lastSpawn + std::max<uint32_t>(MINSPAWN_INTERVAL, sb.interval / g_game.getSpawnRate())) {
 			spawnMonster(spawnId, sb.mType, sb.pos, sb.direction);
 			if (++spawnCount >= static_cast<uint32_t>(g_config.getNumber(ConfigManager::RATE_SPAWN))) {
