@@ -14,7 +14,7 @@ function onSay(player, words, param)
     end
 
     local t = string.split(param, ",")
-    if(not t[2]) then    
+    if(not t[2]) then
             player:sendChannelMessage("", "Not enough param(s).", TALKTYPE_CHANNEL_R1, CHANNEL_GUILD)
             return false
     end
@@ -86,7 +86,7 @@ function onSay(player, words, param)
             local str = ""
             tmp = db.storeQuery("SELECT `guild1`, `status` FROM `guild_wars` WHERE `guild1` IN (" .. guild .. "," .. enemy .. ") AND `guild2` IN (" .. enemy .. "," .. guild .. ") AND `status` IN (0, 1)")
     if(tmp ~= false) then
-                 
+
                     if(result.getDataInt(tmp, "status") == 0) then
                             if(result.getDataInt(tmp, "guild1") == guild) then
                                     str = "You have already invited " .. enemyName .. " to war."
@@ -177,7 +177,7 @@ function onSay(player, words, param)
             broadcastMessage(getPlayerGuildName(player) .. " has signed an armstice declaration on a war with " .. enemyName .. ".", MESSAGE_EVENT_ADVANCE)
             return false
     end
- 
+
     player:sendChannelMessage("", "Currently there's no active war with " .. enemyName .. ".", TALKTYPE_CHANNEL_R1, CHANNEL_GUILD)
     return false
 end
