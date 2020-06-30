@@ -53,5 +53,8 @@ dofile('data/lib/custom/premiumPoints.lua')
 -- Boost Creature
 dofile('data/lib/custom/boostCreature.lua')
 
+-- Castle 48h
+dofile('data/lib/events/castle48.lua')
+
 -- Boss Room
 dofile('data/lib/custom/bossRoom.lua')

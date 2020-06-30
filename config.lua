@@ -26,7 +26,7 @@ spoofInterval = 1
 spoofChangeChance = 70
 spoofIncrementChange = 100
 
-ip = "35.223.230.84"
+ip = "127.0.0.1"
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172
@@ -58,8 +58,8 @@ maxMarketOffersAtATimePerPlayer = 100
 
 mysqlHost = "127.0.0.1"
 mysqlUser = "root"
-mysqlPass = "thundernw9MxpSLsP26M9nQCuWF8YUErQUb2q9j"
-mysqlDatabase = "baiak"
+mysqlPass = ""
+mysqlDatabase = "real_site"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"
@@ -86,7 +86,7 @@ rateSkill = 3
 rateLoot = 2
 rateMagic = 3
 rateSpawn = 2
-spawnMultiplier = 1
+spawnMultiplier = 150
 
 deSpawnRange = 2
 deSpawnRadius = 50

@@ -357,7 +357,7 @@ function Player:onGainExperience(source, exp, rawExp)
 	end
 	]]
 
-	return exp + extraXp + xpPotion + xpPremium + xpCastle + xpCastle48
+	return exp + extraXp + xpPotion + xpPremium + xpCastle
 end
 
 function Player:onLoseExperience(exp)

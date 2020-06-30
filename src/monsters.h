@@ -157,11 +157,10 @@ class MonsterType
 		bool hiddenHealth = false;
 		bool isBoss = false;
 		bool isBlockable = false;
-        bool isRewardBoss = false;
+    bool isRewardBoss = false;
 		bool canWalkOnEnergy = true;
 		bool canWalkOnFire = true;
 		bool canWalkOnPoison = true;
-		bool isBlockable = false;
 
 		MonstersEvent_t eventType = MONSTERS_EVENT_NONE;
 	};
