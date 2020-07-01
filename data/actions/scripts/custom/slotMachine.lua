@@ -1,12 +1,16 @@
 if not slotMachineData then
 	slotMachineData = {
-		needItem = {id = 6527, count = 5},
-		items = vector(7735, 8932, 8929, 8926, 5907),
-		
+		needItem = {id = 9020, count = 5},
+		items = vector(7735),
+
 		positions = {
-			Position(1005, 990, 7),
-			Position(1006, 990, 7),
-			Position(1007, 990, 7)
+			Position(951, 1208, 6),
+			Position(951, 1209, 6),
+			Position(951, 1210, 6)
+		},
+		positionEffectDice = {
+			Position(953, 1208, 6),
+			Position(953, 1210, 6),
 		},
 
 		rolled = vector()
@@ -61,6 +65,9 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	item:transform(item.itemid + 1)
 	player:getPosition():sendMagicEffect(CONST_ME_MAGIC_GREEN)
 	fromPosition:sendMagicEffect(CONST_ME_MAGIC_BLUE)
+	slotMachineData.positionEffectDice[1]:sendMagicEffect(CONST_ME_CRAPS)
+	slotMachineData.positionEffectDice[2]:sendMagicEffect(CONST_ME_CRAPS)
+
 
 	-- clear items
 	for index, position in ipairs(positions) do
@@ -105,24 +112,21 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
                 local targetPlayerGUID = result.getDataInt(resultId, "id")
                 result.free(resultId)
 
-                targetPlayer = Player(targetPlayerGUID, true) -- load from db
+                targetPlayer = Player(targetPlayerGUID, true)
                 if not targetPlayer then
                     return false
                 end
                 local itemSend = Game.createItem(rewardId, 1)
-                targetPlayer:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+                targetPlayer:getInbox():addItemEx(itemSend, INDEX_WHEREEVER, FLAG_NOLIMIT)
                 targetPlayer:delete()
 			end
 		else
-            if win then
-                local inbox = false
-                if player:addItemEx(reward) ~= RETURNVALUE_NOERROR then
-                    local itemMandar = Game.createItem(rewardId, 1)
+			if win then
+					local itemMandar = Game.createItem(rewardId, 1)
                     player:getInbox():addItemEx(itemMandar, INDEX_WHEREEVER, FLAG_NOLIMIT)
-                    local inbox = true
-				end
+					inbox = true
 				local rewardName = reward:getName()
-				player:sendTextMessage(MESSAGE_INFO_DESCR, ('Parabéns, você ganhou 1x %s.%s'):format(rewardName, inbox and ' O item foi enviado para a sua caixa de entrada (inbox) porque você não tinha espaço ou capacidade.' or ''))
+				player:sendTextMessage(MESSAGE_INFO_DESCR, ('Parabéns, você ganhou 1x %s.%s'):format(rewardName, inbox and ' O item foi enviado para a sua caixa de entrada (inbox).' or ''))
 				Game.broadcastMessage(('[Slot Machine]: %s encontrou 1x %s, que sortudo(a).'):format(name, rewardName), MESSAGE_EVENT_ADVANCE)
 			end
 		end
