@@ -10,6 +10,7 @@ function onThink(interval)
     {position = Position(996, 1208, 7), text = "Quests", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(997, 1208, 7), text = "NPCs", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(999, 1208, 7), text = "Cidades", effect = 18, say = true, color = math.random(1,255)},
+    {position = Position(998, 1208, 7), text = "Boss", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(1000, 1208, 7), text = "Depot", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(980, 1215, 7), text = "Mining", effect = 45, color = math.random(1,255)},
     {position = Position(996, 1217, 7), text = "Castle 24H", effect = 7, say = true, color = math.random(1,255)},
