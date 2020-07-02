@@ -5,6 +5,7 @@ function onStartup()
 	db.query("UPDATE `players` SET `online_time` = 0")
 	carregarEvento()
 	Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, CASTLE24H:getGuildIdFromCastle())
+	Game.setGameState(GAME_STATE_CLOSED)
 
 	-- Auction System
 	local days = 7
