@@ -19,7 +19,7 @@
 
 #include "otpch.h"
 
-#include <luajit/lua.hpp>
+#include <lua.hpp>
 
 #include "configmanager.h"
 #include "game.h"

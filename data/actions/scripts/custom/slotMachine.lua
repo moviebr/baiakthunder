@@ -1,7 +1,7 @@
 if not slotMachineData then
 	slotMachineData = {
 		needItem = {id = 9020, count = 5},
-		items = vector(7735),
+		items = vector(12328, 11144, 9693, 12544, 5957, 11421),
 
 		positions = {
 			Position(951, 1208, 6),

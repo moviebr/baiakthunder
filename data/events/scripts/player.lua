@@ -131,6 +131,17 @@ function Player:onLookInShop(itemType, count)
 end
 
 function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, toCylinder)
+	local positionPlayer = self:getPosition()
+	local blockPosition = {Position(951, 1208, 6), Position(951, 1209, 6), Position(951, 1210, 6), Position(952, 1209, 6)}
+	local depotIds = {2589, 2590, 2591}
+	local positionUnderDepot = {
+		Position(positionPlayer.x, positionPlayer.y + 1, positionPlayer.z),
+		Position(positionPlayer.x + 1, positionPlayer.y, positionPlayer.z),
+		Position(positionPlayer.x - 1, positionPlayer.y, positionPlayer.z),
+		Position(positionPlayer.x, positionPlayer.y - 1, positionPlayer.z),
+	}
+
+	local depotLocked = false
 	local antiTrash = true
     local antiTheft = true
     if antiTrash then
@@ -159,7 +170,20 @@ function Player:onMoveItem(item, count, fromPosition, toPosition, fromCylinder, 
                 end
             end
         end
-    end
+	end
+
+	--local depotBlock = Tile(toPosition):getTopDownItem():getId()
+	if depotLocked and isInArray(depotIds, depotBlock) and isInArray(positionUnderDepot, fromPosition) then
+		self:sendCancelMessage("Você não pode jogar itens em um depot.")
+		self:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return false
+	end
+	
+	if isInArray(blockPosition, toPosition) then
+		self:sendCancelMessage("Você não pode jogar um item nessa posição.")
+		self:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return false
+	end
 	return true
 end
 
