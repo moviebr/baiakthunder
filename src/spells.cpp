@@ -36,7 +36,7 @@ extern LuaEnvironment g_luaEnvironment;
 Spells::Spells()
 {
 	scriptInterface.initState();
-	instants.reserve(1000);
+	//instants.reserve(1000);
 }
 
 Spells::~Spells()
