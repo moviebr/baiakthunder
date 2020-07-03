@@ -19,8 +19,29 @@
 	<spawn centerx="1003" centery="1258" centerz="6" radius="1">
 		<monster name="Hunter" x="0" y="0" z="6" spawntime="30" />
 	</spawn>
+	<spawn centerx="1070" centery="1318" centerz="6" radius="1">
+		<npc name="Heitor" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="796" centery="933" centerz="7" radius="1">
 		<monster name="Merlin" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="788" centery="1087" centerz="7" radius="1">
+		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="991" centery="1203" centerz="7" radius="1">
+		<npc name="Felipe" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="952" centery="1216" centerz="7" radius="1">
+		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="983" centery="1217" centerz="7" radius="1">
+		<npc name="Marcelo" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1000" centery="1217" centerz="7" radius="1">
+		<npc name="Gustavo" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="463" centery="1219" centerz="7" radius="1">
+		<npc name="Vanessa" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1041" centery="1234" centerz="7" radius="1">
 		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
@@ -55,6 +76,9 @@
 	<spawn centerx="957" centery="1243" centerz="7" radius="1">
 		<monster name="Deer" x="0" y="0" z="7" spawntime="30" />
 	</spawn>
+	<spawn centerx="583" centery="1244" centerz="7" radius="1">
+		<npc name="Capita Cristina" x="0" y="1" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="991" centery="1245" centerz="7" radius="1">
 		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
 	</spawn>
@@ -69,6 +93,9 @@
 	</spawn>
 	<spawn centerx="986" centery="1255" centerz="7" radius="1">
 		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="697" centery="1368" centerz="7" radius="1">
+		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="982" centery="1146" centerz="8" radius="1">
 		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
@@ -171,6 +198,9 @@
 		<monster name="Slime" x="0" y="0" z="8" spawntime="30" />
 	</spawn>
 	<spawn centerx="979" centery="1203" centerz="8" radius="1" />
+	<spawn centerx="977" centery="1204" centerz="8" radius="1">
+		<npc name="Breno" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1008" centery="1204" centerz="8" radius="1">
 		<monster name="Rotworm" x="0" y="0" z="8" spawntime="30" />
 	</spawn>

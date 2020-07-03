@@ -8,6 +8,8 @@
 	<globalevent name="EffectTemple" interval="1300" script="custom/effectTemple.lua" />
 	<globalevent name="Shop" interval="5000" script="custom/shop.lua" />
 	<globalevent name="SuperUP" interval="5000" script="custom/superup.lua" />
+	<globalevent name="Clean" interval="10800000" script="custom/clean.lua" />
+	<globalevent name="Save" interval="7200000" script="custom/save.lua" />
 	<globalevent type="startup" name="BoostCreature" script="custom/boostCreature.lua" />
 	<globalevent name="BoostCreatureThink" interval="10800000" script="custom/boostCreature.lua" />
 

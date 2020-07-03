@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <npc name="Heitor" script="default.lua" walkinterval="2000" floorchange="0">
 	<health now="100" max="100" />
-	<look type="132" head="20" body="39" legs="45" feet="7" addons="0" />
+	<look type="144" head="0" body="114" legs="88" feet="0" addons="3" />
 	<parameters>
 		<parameter key="module_shop" value="1" />
 		<parameter key="shop_buyable" value="parcel,2595,15;letter,2597,10" />
