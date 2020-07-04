@@ -3,7 +3,7 @@
 # script pra rodar novamente o server automático em caso de crash
 echo "Iniciando o programa"
 
-cd /home/baiak
+cd /home/baiakthunder
 mkdir -p logs
 
 #configs necessárias para o Anti-rollback
