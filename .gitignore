@@ -48,6 +48,7 @@ build/
 .builds
 *.pidb
 *.log
+*.sh
 *.scc
 config.lua
 

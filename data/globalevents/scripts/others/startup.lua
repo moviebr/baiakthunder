@@ -1,7 +1,7 @@
 function onStartup()
 
 	-- New
-	db.query("SET sql_mode = 0;")
+	db.query("SET GLOBAL sql_mode='';")
 	db.query("UPDATE `players` SET `online_time` = 0")
 	carregarEvento()
 	Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, CASTLE24H:getGuildIdFromCastle())
