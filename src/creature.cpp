@@ -763,7 +763,7 @@ void Creature::changeHealth(int32_t healthChange, bool sendHealthChange/* = true
 	if (sendHealthChange && oldHealth != health) {
 		g_game.addCreatureHealth(this);
 	}
-	
+
 	if (health <= 0) {
 		g_dispatcher.addTask(createTask(std::bind(&Game::executeDeath, &g_game, getID())));
 	}
@@ -1355,8 +1355,7 @@ int64_t Creature::getStepDuration() const
 		groundSpeed = 150;
 	}
 
-	double duration = std::floor(1000 * groundSpeed) / stepSpeed;
-	int64_t stepDuration = std::ceil(duration / 50) * 50;
+	int64_t stepDuration = (1000 * groundSpeed) / stepSpeed;
 
 	const Monster* monster = getMonster();
 	if (monster && monster->isTargetNearby() && !monster->isFleeing() && !monster->getMaster()) {
