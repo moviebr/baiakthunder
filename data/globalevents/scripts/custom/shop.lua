@@ -1,5 +1,3 @@
-SHOP_MSG_TYPE = MESSAGE_EVENT_ADVANCE
-
 function onThink(interval)
     local resultId = db.storeQuery("SELECT * FROM z_ots_comunication")
     if resultId ~= false then
