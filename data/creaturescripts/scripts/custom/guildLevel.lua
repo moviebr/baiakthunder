@@ -10,10 +10,7 @@ function onKill(player, target)
 	local guild1 = player:getGuild()
 	local guild2 = target:getGuild()
 
-	print(guild1)
-	print(guild2)
-
-	if guild1 == guild2 then
+	if guild1:getId() == guild2:getId() then
 		return false
 	end
 
@@ -22,8 +19,6 @@ function onKill(player, target)
     guild1:addExperience(xp)
 	guild2:addExperience(- math.ceil(xp / 1.25))
 	
-	player:sendCancelMessage("Você adicionou ".. xp .." de experiência à sua guild por matar ".. target:getName() ..".")
-	print ("Exp guild 1".. guild1:getExperience())
-	print ("Exp guild 2".. guild2:getExperience())
+	player:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Você adicionou ".. xp .." de experiência à sua guild por matar ".. target:getName() ..".")
 	return true
 end
