@@ -183,7 +183,7 @@ std::string Player::getDescription(int32_t lookDistance) const
 
 	s << guildRank->name << " da " << guild->getName();
 	if (!guildNick.empty()) {
-		s << " (" << guildNick << ')' << "\nGuild Level: " << guild->getLevel();
+		s << " (" << guildNick << ')';
 	}
 
 	size_t memberCount = guild->getMemberCount();
@@ -192,6 +192,8 @@ std::string Player::getDescription(int32_t lookDistance) const
 	} else {
 		s << ", que tem " << memberCount << " membros, " << guild->getMembersOnline().size() << " deles online.";
 	}
+
+	s << "\nO nível dessa Guild é: " << guild->getLevel() << ".";
 	return s.str();
 }
 
