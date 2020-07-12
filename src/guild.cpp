@@ -87,12 +87,24 @@ void Guild::addExperience(int64_t points)
 	experience += points;
 
 	uint32_t prevLevel = level;
-	while (experience >= nextLevelExp) {
-		++level;
-		currLevelExp = nextLevelExp;
-		nextLevelExp = Guild::getExpForLevel(level + 1);
-		if (currLevelExp >= nextLevelExp) {
-			break;
+
+	if (experience < currLevelExp) {
+		while (level > 1 && experience < currLevelExp) {
+			--level;
+			currLevelExp = Guild::getExpForLevel(level);
 		}
+	} else {
+		while (experience >= nextLevelExp) {
+			++level;
+			currLevelExp = nextLevelExp;
+			nextLevelExp = Guild::getExpForLevel(level + 1);
+			if (currLevelExp >= nextLevelExp) {
+				break;
+			}
+		}
+	}
+
+	if (prevLevel != level) {
+		IOGuild::saveGuild(this);
 	}
 }
