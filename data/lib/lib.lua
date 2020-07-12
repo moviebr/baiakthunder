@@ -59,5 +59,8 @@ dofile('data/lib/events/castle48.lua')
 -- Boss Room
 dofile('data/lib/custom/bossRoom.lua')
 
+-- Guild Level
+dofile('data/lib/custom/guildLevel.lua')
+
 -- Snake Minigames
 dofile('data/lib/minigames/snake.lua')

@@ -13,6 +13,7 @@
 	<event type="kill" name="Tasks" script="custom/task.lua" />
 	<event type="login" name="FirstItems" script="custom/firstitems.lua" />
 	<event type="think" name="SuperUP" script="custom/superup.lua" />
+	<event type="kill" name="GuildLevel" script="custom/guildLevel.lua" />
 
 	<!-- Reward Chest -->
 	<event type="login" name="LoginBossPlayer" script="custom/reward/reward.lua" />
