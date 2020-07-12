@@ -10076,7 +10076,7 @@ int LuaScriptInterface::luaGuildAddExperience(lua_State* L)
 	// guild:addExperience(points)
 	Guild* guild = getUserdata<Guild>(L, 1);
 	if (guild) {
-		uint32_t points = getNumber<int64_t>(L, 2);
+		int64_t points = getNumber<int64_t>(L, 2);
 		guild->addExperience(points);
 		pushBoolean(L, true);
 	} else {
