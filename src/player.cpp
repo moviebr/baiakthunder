@@ -183,7 +183,7 @@ std::string Player::getDescription(int32_t lookDistance) const
 
 	s << guildRank->name << " da " << guild->getName();
 	if (!guildNick.empty()) {
-		s << " (" << guildNick << ')';
+		s << " (" << guildNick << ')' << "\nGuild Level: " << guild->getLevel();
 	}
 
 	size_t memberCount = guild->getMemberCount();
