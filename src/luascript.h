@@ -20,7 +20,17 @@
 #ifndef FS_LUASCRIPT_H_5344B2BC907E46E3943EA78574A212D8
 #define FS_LUASCRIPT_H_5344B2BC907E46E3943EA78574A212D8
 
+#ifdef __has_include
+#if __has_include(<luajit/lua.hpp>)
+#include <luajit/lua.hpp>
+#elif __has_include(<lua.hpp>)
 #include <lua.hpp>
+#else
+#error "Cannot detect lua library"
+#endif
+#else
+#include <lua.hpp>
+#endif
 
 #if LUA_VERSION_NUM >= 502
 #ifndef LUA_COMPAT_ALL
