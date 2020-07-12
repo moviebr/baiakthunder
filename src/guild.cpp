@@ -74,3 +74,25 @@ void Guild::addRank(uint32_t rankId, const std::string& rankName, uint8_t level)
 {
 	ranks.emplace_front(rankId, rankName, level);
 }
+
+void Guild::addExperience(int64_t points)
+{
+	uint64_t currLevelExp = Guild::getExpForLevel(level);
+	uint64_t nextLevelExp = Guild::getExpForLevel(level + 1);
+
+	if (currLevelExp >= nextLevelExp) {
+		return;
+	}
+
+	experience += points;
+
+	uint32_t prevLevel = level;
+	while (experience >= nextLevelExp) {
+		++level;
+		currLevelExp = nextLevelExp;
+		nextLevelExp = Guild::getExpForLevel(level + 1);
+		if (currLevelExp >= nextLevelExp) {
+			break;
+		}
+	}
+}

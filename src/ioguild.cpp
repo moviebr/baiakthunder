@@ -23,13 +23,23 @@
 #include "guild.h"
 #include "ioguild.h"
 
+bool IOGuild::saveGuild(Guild* guild)
+{
+	Database& db = Database::getInstance();
+	std::ostringstream query;
+	query << "UPDATE `guilds` SET `level` = " << guild->getLevel() << ", `experience` = " << guild->getExperience() << " WHERE `id` = " << guild->getId();
+	return db.executeQuery(query.str());
+}
+
 Guild* IOGuild::loadGuild(uint32_t guildId)
 {
 	Database& db = Database::getInstance();
 	std::ostringstream query;
-	query << "SELECT `name` FROM `guilds` WHERE `id` = " << guildId;
+	query << "SELECT `name`, `level`, `experience` FROM `guilds` WHERE `id` = " << guildId;
 	if (DBResult_ptr result = db.storeQuery(query.str())) {
 		Guild* guild = new Guild(guildId, result->getString("name"));
+		guild->level = result->getNumber<uint32_t>("level");
+		guild->experience = result->getNumber<uint32_t>("experience");
 
 		query.str(std::string());
 		query << "SELECT `id`, `name`, `level` FROM `guild_ranks` WHERE `guild_id` = " << guildId;

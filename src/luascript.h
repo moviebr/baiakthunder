@@ -1001,8 +1001,11 @@ class LuaScriptInterface
 
 		static int luaGuildGetId(lua_State* L);
 		static int luaGuildGetName(lua_State* L);
+		static int luaGuildGetLevel(lua_State* L);
+		static int luaGuildGetExperience(lua_State* L);
 		static int luaGuildGetMembersOnline(lua_State* L);
 
+		static int luaGuildAddExperience(lua_State* L);
 		static int luaGuildAddRank(lua_State* L);
 		static int luaGuildGetRankById(lua_State* L);
 		static int luaGuildGetRankByLevel(lua_State* L);

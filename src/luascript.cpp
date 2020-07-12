@@ -2390,8 +2390,11 @@ void LuaScriptInterface::registerFunctions()
 
 	registerMethod("Guild", "getId", LuaScriptInterface::luaGuildGetId);
 	registerMethod("Guild", "getName", LuaScriptInterface::luaGuildGetName);
+	registerMethod("Guild", "getLevel", LuaScriptInterface::luaGuildGetLevel);
+	registerMethod("Guild", "getExperience", LuaScriptInterface::luaGuildGetExperience);
 	registerMethod("Guild", "getMembersOnline", LuaScriptInterface::luaGuildGetMembersOnline);
 
+	registerMethod("Guild", "addExperience", LuaScriptInterface::luaGuildAddExperience);
 	registerMethod("Guild", "addRank", LuaScriptInterface::luaGuildAddRank);
 	registerMethod("Guild", "getRankById", LuaScriptInterface::luaGuildGetRankById);
 	registerMethod("Guild", "getRankByLevel", LuaScriptInterface::luaGuildGetRankByLevel);
@@ -10023,6 +10026,30 @@ int LuaScriptInterface::luaGuildGetName(lua_State* L)
 	return 1;
 }
 
+int LuaScriptInterface::luaGuildGetLevel(lua_State* L)
+{
+	// guild:getLevel()
+	Guild* guild = getUserdata<Guild>(L, 1);
+	if (guild) {
+		lua_pushnumber(L, guild->getLevel());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaGuildGetExperience(lua_State* L)
+{
+	// guild:getExperience()
+	Guild* guild = getUserdata<Guild>(L, 1);
+	if (guild) {
+		lua_pushnumber(L, guild->getExperience());
+	} else {
+		lua_pushnil(L);
+	}
+	return 1;
+}
+
 int LuaScriptInterface::luaGuildGetMembersOnline(lua_State* L)
 {
 	// guild:getMembersOnline()
@@ -10040,6 +10067,20 @@ int LuaScriptInterface::luaGuildGetMembersOnline(lua_State* L)
 		pushUserdata<Player>(L, player);
 		setMetatable(L, -1, "Player");
 		lua_rawseti(L, -2, ++index);
+	}
+	return 1;
+}
+
+int LuaScriptInterface::luaGuildAddExperience(lua_State* L)
+{
+	// guild:addExperience(points)
+	Guild* guild = getUserdata<Guild>(L, 1);
+	if (guild) {
+		uint32_t points = getNumber<int64_t>(L, 2);
+		guild->addExperience(points);
+		pushBoolean(L, true);
+	} else {
+		lua_pushnil(L);
 	}
 	return 1;
 }

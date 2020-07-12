@@ -45,6 +45,12 @@ class Guild
 		const std::string& getName() const {
 			return name;
 		}
+		uin16_t getLevel() const {
+			return level;
+		}
+		uint64_t getExperience() const {
+			return experience;
+		}
 		const std::list<Player*>& getMembersOnline() const {
 			return membersOnline;
 		}
@@ -54,6 +60,8 @@ class Guild
 		void setMemberCount(uint32_t count) {
 			memberCount = count;
 		}
+
+		void addExperience(int64_t points);
 
 		const std::forward_list<GuildRank>& getRanks() const {
 			return ranks;
@@ -70,13 +78,22 @@ class Guild
 			this->motd = motd;
 		}
 
+		static uint64_t getExpForLevel(int32_t level) {
+			lv--;
+			return ((50ULL * level * level * level) - (150ULL * level * level) + (400ULL * level)) / 3ULL;
+		}
+
 	private:
 		std::list<Player*> membersOnline;
 		std::forward_list<GuildRank> ranks;
 		std::string name;
+		uint16_t level;
+		uint64_t experience;
 		std::string motd;
 		uint32_t id;
 		uint32_t memberCount = 0;
+
+		friend class IOGuild;
 };
 
 #endif
