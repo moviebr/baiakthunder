@@ -45,7 +45,7 @@ class Guild
 		const std::string& getName() const {
 			return name;
 		}
-		uin16_t getLevel() const {
+		uint16_t getLevel() const {
 			return level;
 		}
 		uint64_t getExperience() const {
@@ -79,7 +79,7 @@ class Guild
 		}
 
 		static uint64_t getExpForLevel(int32_t level) {
-			lv--;
+			level--;
 			return ((50ULL * level * level * level) - (150ULL * level * level) + (400ULL * level)) / 3ULL;
 		}
 
