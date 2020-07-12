@@ -104,5 +104,6 @@ function onLogin(player)
 	player:registerEvent("Events")
 	player:registerEvent("Tasks")
 	player:registerEvent("SuperUP")
+	player:registerEvent("GuildLevel")
 	return true
 end
