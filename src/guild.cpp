@@ -36,6 +36,7 @@ void Guild::removeMember(Player* player)
 
 	if (membersOnline.empty()) {
 		g_game.removeGuild(id);
+		IOGuild::saveGuild(this);
 		delete this;
 	}
 }
@@ -84,12 +85,11 @@ void Guild::addExperience(int64_t points)
 		return;
 	}
 
-	experience += points;
+	experience = std::max<int64_t>(0, experience + points);
 
 	uint32_t prevLevel = level;
-
 	if (experience < currLevelExp) {
-		while (level > 1 && experience < currLevelExp) {
+		while (level >= 1 && experience < currLevelExp) {
 			--level;
 			currLevelExp = Guild::getExpForLevel(level);
 		}
@@ -106,5 +106,11 @@ void Guild::addExperience(int64_t points)
 
 	if (prevLevel != level) {
 		IOGuild::saveGuild(this);
+
+		std::ostringstream ss;
+		ss << "Sua guild " << ((level > prevLevel) ? "avançou" : "decaiu") << " do level " << prevLevel << " para o level " << level << '.';
+		for (Player* player : membersOnline) {
+			player->sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
+		}
 	}
 }

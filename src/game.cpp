@@ -178,6 +178,10 @@ void Game::saveGameState(bool crash /*= false*/)
 		IOLoginData::savePlayer(it.second);
 	}
 
+	for (const auto& itt : guilds) {
+		IOGuild::saveGuild(itt.second);
+	}
+
 	Map::save();
 
 	g_databaseTasks.flush();

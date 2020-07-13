@@ -193,7 +193,7 @@ std::string Player::getDescription(int32_t lookDistance) const
 		s << ", que tem " << memberCount << " membros, " << guild->getMembersOnline().size() << " deles online.";
 	}
 
-	s << "\nO nível dessa Guild é: " << guild->getLevel() << ".";
+	s << "\nO nível dessa Guild é " << guild->getLevel() << ".";
 	return s.str();
 }
 
