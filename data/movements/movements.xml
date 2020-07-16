@@ -16,6 +16,9 @@
 	<movevent event="StepIn" actionid="64500" script="custom/events/firestorm.lua" />
 	<movevent event="StepIn" actionid="4247" script="custom/events/bosses.lua" />
 
+	<!-- Mini Games -->
+	<movevent event="StepIn" actionid="26741" script="custom/minigames/snake.lua" />
+
 	<!-- SuperUP -->
 	<movevent event="StepIn" fromaid="20000" toaid="20020" script="custom/superup.lua" />
 

@@ -1,11 +1,10 @@
 SNAKE = {
-	---Snake config
 	itemid=1860,
 	freeglobalstorage=28103,
-	itemFood=6394,
-	controlpos= {x = 28, y = 198, z = 6},
-	exitpos = {x = 36, y = 190, z = 7},
-	centerpos= {x = 27, y = 197, z = 7},
+	itemFood=2674,
+	controlpos= {x = 1656, y = 992, z = 6},
+	exitpos = {x = 1655, y = 983, z = 7},
+	centerpos= {x = 1655, y = 991, z = 7},
 	wallID = 1486,
 	interval = 300,
 	timer =
@@ -37,6 +36,7 @@ SNAKE = {
 			local ret,p,walk = SNAKE.check(pos[1])
 				if ret == 1 or ret == 3 then
 					player:teleportTo(SNAKE.exitpos, false)
+					player:getPosition():sendMagicEffect(11)
 					player:say('Pontos: '..(#pos_-1)..'.', TALKTYPE_MONSTER_SAY)
 					SNAKE.clean()
 					Game.setStorageValue(SNAKE.freeglobalstorage,0)
@@ -59,10 +59,10 @@ SNAKE = {
 		local plpos = player:getPosition()
 	
 		local generated = {
-		{x = 28, y = 197, z = 6},
-		{x = 29, y = 198, z = 6},
-		{x = 28, y = 199, z = 6},
-		{x = 27, y = 198, z = 6}
+		{x = 1656, y = 991, z = 6},
+		{x = 1655, y = 992, z = 6},
+		{x = 1656, y = 993, z = 6},
+		{x = 1657, y = 992, z = 6}
 		}
 			for i,pos in pairs(generated) do
 					if SNAKE.samepos(plpos,pos) then
