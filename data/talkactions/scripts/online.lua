@@ -12,13 +12,13 @@ function onSay(player, words, param)
 	end
 
 	local playersOnline = #onlineList
-	player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, ("%d players online."):format(playersOnline))
+	player:sendTextMessage(MESSAGE_STATUS_BLUE_LIGHT, ("%d players online."):format(playersOnline))
 
 	if player:getAccountType() >= ACCOUNT_TYPE_GOD then
 		for i = 1, playersOnline, maxPlayersPerMessage do
 			local j = math.min(i + maxPlayersPerMessage - 1, playersOnline)
 			local msg = table.concat(onlineList, ", ", i, j) .. "."
-			player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, msg)
+			player:sendTextMessage(MESSAGE_STATUS_BLUE_LIGHT, msg)
 		end
 	end
 	return false

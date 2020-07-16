@@ -6,6 +6,7 @@
 	<movevent event="StepIn" actionid="4537" script="custom/temple.lua" />
 	<movevent event="StepIn" actionid="9168" script="custom/premiumTile.lua" />
 	<movevent event="StepIn" actionid="8294" script="custom/fromPosition.lua" />
+	<movevent event="StepIn" actionid="7731" script="custom/vortexCave.lua" />
 
 	<!-- Eventos -->
 	<movevent event="StepIn" actionid="9414" script="custom/events/castle48.lua" />
