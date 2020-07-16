@@ -18,6 +18,7 @@
 	<talkaction words="!staff" separator=" " script="thunderWand.lua" />
 	<talkaction words="!war" separator=" " script="war.lua"/>
 	<talkaction words="!guildoutfit" script="guildOutfit.lua" />
+	<talkaction words="/attr" separator=" " script="attr.lua" />
 	
 	<!-- Events -->
 	<talkaction words="!join" separator=" " script="join.lua"/>
