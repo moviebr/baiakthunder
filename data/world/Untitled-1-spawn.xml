@@ -327,6 +327,9 @@
 		<monster name="Dragon Lord" x="-1" y="-1" z="6" spawntime="20" />
 		<monster name="Dragon Lord" x="0" y="1" z="6" spawntime="20" />
 	</spawn>
+	<spawn centerx="88" centery="1736" centerz="6" radius="1">
+		<monster name="Dragon Lord" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="193" centery="1749" centerz="6" radius="1">
 		<monster name="Hydra" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
@@ -401,6 +404,9 @@
 	</spawn>
 	<spawn centerx="1035" centery="1248" centerz="7" radius="1">
 		<monster name="Giant Spider" x="0" y="0" z="7" spawntime="30" />
+	</spawn>
+	<spawn centerx="517" centery="1250" centerz="7" radius="1">
+		<monster name="Grim Reaper" x="-1" y="0" z="7" spawntime="60" direction="3" />
 	</spawn>
 	<spawn centerx="1000" centery="1251" centerz="7" radius="1">
 		<monster name="Rabbit" x="0" y="0" z="7" spawntime="30" />
@@ -651,6 +657,42 @@
 	<spawn centerx="74" centery="1868" centerz="7" radius="1">
 		<monster name="Frost Dragon" x="1" y="-1" z="7" spawntime="18" />
 		<monster name="Frost Dragon" x="0" y="1" z="7" spawntime="18" />
+	</spawn>
+	<spawn centerx="50" centery="1912" centerz="7" radius="25">
+		<monster name="Grim Reaper" x="-12" y="-20" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-3" y="-20" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="7" y="-19" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="15" y="-19" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="22" y="-19" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-18" y="-17" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="0" y="-13" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="21" y="-13" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-17" y="-8" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="22" y="-6" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="0" y="-4" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-6" y="2" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="8" y="2" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-17" y="3" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="17" y="3" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="23" y="5" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="1" y="6" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-17" y="12" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="22" y="14" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="0" y="15" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="5" y="16" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-8" y="17" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="15" y="18" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="21" y="21" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-17" y="23" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="0" y="23" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="56" centery="1929" centerz="7" radius="25">
+		<monster name="Grim Reaper" x="16" y="11" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-23" y="14" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="22" y="14" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-8" y="16" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="-16" y="17" z="7" spawntime="60" />
+		<monster name="Grim Reaper" x="24" y="19" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="982" centery="1146" centerz="8" radius="1">
 		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />
@@ -1003,11 +1045,7 @@
 	<spawn centerx="341" centery="1315" centerz="8" radius="30" />
 	<spawn centerx="353" centery="1318" centerz="8" radius="30" />
 	<spawn centerx="228" centery="1327" centerz="8" radius="30" />
-	<spawn centerx="255" centery="1333" centerz="8" radius="30" />
-	<spawn centerx="292" centery="1333" centerz="8" radius="30" />
 	<spawn centerx="280" centery="1336" centerz="8" radius="30" />
-	<spawn centerx="230" centery="1366" centerz="8" radius="30" />
-	<spawn centerx="319" centery="1371" centerz="8" radius="30" />
 	<spawn centerx="364" centery="1373" centerz="8" radius="30" />
 	<spawn centerx="969" centery="1190" centerz="9" radius="1">
 		<monster name="Beholder" x="0" y="0" z="9" spawntime="30" />
