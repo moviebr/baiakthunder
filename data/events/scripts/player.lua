@@ -400,5 +400,34 @@ function Player:onGainSkillTries(skill, tries)
 end
 
 function Player:onSay(message)
+	local msgBlock = {"servegame", "sytes", ".com", ".com.br", ".net", ".org", "ot lixo", "ilusion", "icewar", "revolution", "ddns"}
+	for _, m in ipairs(msgBlock) do
+		if m == nil then -- Crypter -> Tentei colocar ~= e não foi, foi só com ==
+			break
+		end
+
+	local file = io.open("data/logs/messages/block.txt", "a")
+	if not file then
+		print(">> Erro ao tentar encontrar o arquivo de block messages no log.")
+		return
+	end
+
+		local a = string.find(message, m)
+		if a then
+			self:getPosition():sendMagicEffect(CONST_ME_POFF)
+			self:sendTextMessage(MESSAGE_STATUS_DEFAULT, "Você não pode mandar essa mensagem aqui.")
+			local file = io.open("data/logs/messages/block.txt", "a")
+			if not file then
+				print(">> Erro ao tentar encontrar o arquivo de block messages no log.")
+				return
+			end
+			io.output(file)
+			io.write("------------------------------\n")
+			io.write(self:getName() ..": ".. message .."\n")
+			io.close(file)
+			return false
+		end
+	end
+
 	return true
 end
