@@ -3,7 +3,7 @@ function onThink(interval)
     {position = Position(986, 1216, 7), effect = 29},
     {position = Position(988, 1216, 7), effect = 29},
     {position = Position(987, 1217, 7), text = "[PREMIUM]", effect = 40, say = true, color = math.random(1,255)},
-    {position = Position(982, 1208, 7), text = "Arena", effect = 18, say = true, color = math.random(1,255)},
+    {position = Position(982, 1208, 7), text = "MinGames", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(983, 1208, 7), text = "SuperUP", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(985, 1208, 7), text = "Trainers", effect = 18, say = true, color = math.random(1,255)},
     {position = Position(986, 1208, 7), text = "Hunts", effect = 18, say = true, color = math.random(1,255)},
