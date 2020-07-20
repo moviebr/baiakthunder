@@ -11,6 +11,8 @@
 	<action fromaid="1523" toaid="1528" script="custom/runeLevers.lua" />
 	<action uniqueid="48123" script="custom/slotMachine.lua" />
 
+	<action actionid="19876" script="custom/bomberman.lua"/>
+
 	<!-- Events -->
 	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>
 	<action fromaid="61101" toaid="61499" script="custom/events/hunger.lua"/>

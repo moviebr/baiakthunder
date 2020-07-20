@@ -7,6 +7,13 @@ function onStartup()
 	Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, CASTLE24H:getGuildIdFromCastle())
 	Game.setGameState(GAME_STATE_CLOSED)
 
+	-- BomberMan
+	BlockListBomberman = {}
+	BombermanPortal = 0
+	BomberTeam1 = {}
+	BomberTeam2 = {}
+	BombermanOutfit = {}
+
 	-- Auction System
 	local days = 7
 	local expires = os.time() - (days * 86400)

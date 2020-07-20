@@ -19,6 +19,7 @@
 
 	<!-- Mini Games -->
 	<movevent event="StepIn" actionid="26741" script="custom/minigames/snake.lua" />
+	<movevent event="StepIn" fromaid="19001" toaid="19004" script="custom/minigames/bomberman.lua" />
 
 	<!-- SuperUP -->
 	<movevent event="StepIn" fromaid="20000" toaid="20020" script="custom/superup.lua" />
