@@ -43,6 +43,7 @@ class Events
 		int32_t partyOnShareExperience = -1;
 
 		// Player
+		int32_t playerOnSay = -1;
 		int32_t playerOnLook = -1;
 		int32_t playerOnLookInBattleList = -1;
 		int32_t playerOnLookInTrade = -1;
@@ -82,6 +83,7 @@ class Events
 		void eventPartyOnShareExperience(Party* party, uint64_t& exp);
 
 		// Player
+		bool eventPlayerOnSay(Player* player, const std::string& message);
 		void eventPlayerOnLook(Player* player, const Position& position, Thing* thing, uint8_t stackpos, int32_t lookDistance);
 		void eventPlayerOnLookInBattleList(Player* player, Creature* creature, int32_t lookDistance);
 		void eventPlayerOnLookInTrade(Player* player, Player* partner, Item* item, int32_t lookDistance);
