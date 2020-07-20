@@ -30,6 +30,25 @@
 	<spawn centerx="197" centery="1697" centerz="3" radius="1">
 		<monster name="Hydra" x="0" y="0" z="3" spawntime="60" />
 	</spawn>
+	<spawn centerx="1768" centery="1066" centerz="4" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="4" spawntime="60" />
+	</spawn>
+	<spawn centerx="1768" centery="1079" centerz="4" radius="1">
+		<monster name="Guarda do Castelo" x="-1" y="0" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="4" spawntime="60" />
+	</spawn>
+	<spawn centerx="1764" centery="1085" centerz="4" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="4" spawntime="60" />
+	</spawn>
+	<spawn centerx="1768" centery="1099" centerz="4" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="-1" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="4" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="4" spawntime="60" />
+	</spawn>
 	<spawn centerx="216" centery="1687" centerz="4" radius="1">
 		<monster name="Hydra" x="0" y="0" z="4" spawntime="60" />
 	</spawn>
@@ -53,6 +72,16 @@
 	</spawn>
 	<spawn centerx="200" centery="1723" centerz="4" radius="1">
 		<monster name="Hydra" x="0" y="0" z="4" spawntime="60" />
+	</spawn>
+	<spawn centerx="1765" centery="1076" centerz="5" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="-1" z="5" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="5" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="5" spawntime="60" />
+	</spawn>
+	<spawn centerx="1765" centery="1088" centerz="5" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="-1" z="5" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="5" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="5" spawntime="60" />
 	</spawn>
 	<spawn centerx="625" centery="1232" centerz="5" radius="1" />
 	<spawn centerx="641" centery="1233" centerz="5" radius="1" />
@@ -125,11 +154,24 @@
 	<spawn centerx="173" centery="1731" centerz="5" radius="1">
 		<monster name="Hydra" x="0" y="0" z="5" spawntime="60" />
 	</spawn>
-	<spawn centerx="204" centery="1731" centerz="5" radius="1">
-		<monster name="Butterfly" x="0" y="0" z="5" spawntime="60" />
+	<spawn centerx="1768" centery="1073" centerz="6" radius="1">
+		<monster name="Guarda do Castelo" x="-1" y="0" z="6" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="6" spawntime="60" />
 	</spawn>
-	<spawn centerx="207" centery="1733" centerz="5" radius="1">
-		<monster name="Butterfly" x="0" y="0" z="5" spawntime="60" />
+	<spawn centerx="1766" centery="1080" centerz="6" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1766" centery="1082" centerz="6" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1766" centery="1084" centerz="6" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1768" centery="1092" centerz="6" radius="1">
+		<monster name="Guarda do Castelo" x="-1" y="0" z="6" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="6" spawntime="60" />
 	</spawn>
 	<spawn centerx="987" centery="1237" centerz="6" radius="1">
 		<monster name="Witch" x="0" y="0" z="6" spawntime="30" />
@@ -342,8 +384,18 @@
 	<spawn centerx="796" centery="933" centerz="7" radius="1">
 		<monster name="Merlin" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="1768" centery="1065" centerz="7" radius="1">
+		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="788" centery="1087" centerz="7" radius="1">
 		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1768" centery="1102" centerz="7" radius="1">
+		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1067" centery="1191" centerz="7" radius="1">
 		<monster name="Giant Spider" x="-1" y="-1" z="7" spawntime="60" />
@@ -693,6 +745,46 @@
 		<monster name="Grim Reaper" x="-8" y="16" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-16" y="17" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="24" y="19" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1780" centery="1038" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1788" centery="1049" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1784" centery="1056" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1777" centery="1061" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1788" centery="1068" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1778" centery="1087" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1790" centery="1087" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1775" centery="1117" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1793" centery="1117" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1784" centery="1123" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="1" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1810" centery="1126" centerz="8" radius="1">
+		<monster name="Guarda do Castelo" x="0" y="-1" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="982" centery="1146" centerz="8" radius="1">
 		<monster name="Gargoyle" x="0" y="0" z="8" spawntime="30" />

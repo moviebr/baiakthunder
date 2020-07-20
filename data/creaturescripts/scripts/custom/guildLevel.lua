@@ -1,4 +1,8 @@
 function onKill(player, target)
+	if target:isMonster() then
+		return false
+	end
+	
 	if not player:getGuild() or not target:getGuild() then
 		return false
 	end

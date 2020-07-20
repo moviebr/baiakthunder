@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Guarda do Castelo" nameDescription="um guarda" race="blood" experience="0" speed="0" manacost="0">
+	<health now="10000" max="10000"/>
+	<look typeex="9784" corpse="0"/>
+	<targetchange interval="5000" chance="20"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="10"/>
+	</flags>
+	<attacks>
+		<attack name="poison" interval="3000" chance="20" radius="6" target="0" min="-150" max="-200">
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+		<attack name="energy" interval="1500" chance="24" radius="6" target="0" min="-200" max="-300">
+			<attribute key="areaEffect" value="energy"/>
+		</attack>
+	</attacks>
+	<defenses armor="18" defense="14"/>
+	<elements>
+	</elements>
+	<voices interval="5000" chance="10">
+	</voices>
+	<loot>
+	</loot>
+</monster>
