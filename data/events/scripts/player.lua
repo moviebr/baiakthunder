@@ -402,10 +402,6 @@ end
 function Player:onSay(message)
 	local msgBlock = {"servegame", "sytes", ".com", ".com.br", ".net", ".org", "ot lixo", "ilusion", "icewar", "revolution", "ddns"}
 	for _, m in ipairs(msgBlock) do
-		if m == nil then -- Crypter -> Tentei colocar ~= e não foi, foi só com ==
-			break
-		end
-
 		local a = string.find(message, m)
 		if a then
 			self:getPosition():sendMagicEffect(CONST_ME_POFF)
