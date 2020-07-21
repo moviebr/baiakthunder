@@ -406,12 +406,6 @@ function Player:onSay(message)
 			break
 		end
 
-	local file = io.open("data/logs/messages/block.txt", "a")
-	if not file then
-		print(">> Erro ao tentar encontrar o arquivo de block messages no log.")
-		return
-	end
-
 		local a = string.find(message, m)
 		if a then
 			self:getPosition():sendMagicEffect(CONST_ME_POFF)
