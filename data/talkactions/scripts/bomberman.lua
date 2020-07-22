@@ -1,7 +1,8 @@
 function onSay(player, words, param)
 	if not table.contains(BomberTeam1, player) and not table.contains(BomberTeam2, player) then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
-	return true
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
 	end
 	
 	if player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB) < player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) then
