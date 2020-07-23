@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<npc name="Charbel" script="default.lua" walkinterval="2000" floorchange="0">
+<npc name="Charbel" script="bank.lua" walkinterval="2000" floorchange="0">
     <health now="100" max="100"/>
     <look type="367" head="114" body="114" legs="114" feet="114" addons="3"/>
     <parameters>
-        <parameter key="message_greet" value="Olá |PLAYERNAME|, eu vendo alguma coisa, diga {troca} ou {trocar}." />
-        <parameter key="module_shop" value="1" />
-		<parameter key="shop_sellable" value="" />
-		<parameter key="shop_buyable" value="" />
+        <parameter key="message_greet" value="Olá |PLAYERNAME|, diga {troca} ou {trocar}." />
     </parameters>
 </npc>

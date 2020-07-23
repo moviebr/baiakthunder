@@ -66,3 +66,41 @@ end
 function Game.setStorageValue(key, value)
 	globalStorageTable[key] = value
 end
+
+function getMoneyCount(string)
+	local b,
+	e = string:find("%d+")
+	local money = b and e and tonumber(string:sub(b, e)) or -1
+	if isValidMoney(money) then
+		return money
+	end
+	return -1
+end
+
+function getBankMoney(cid, amount)
+	local player = Player(cid)
+	if player:getBankBalance() >= amount then
+		player:setBankBalance(player:getBankBalance() - amount)
+		player:sendTextMessage(MESSAGE_INFO_DESCR, "Paid " .. amount .. " gold from bank account. Your account balance is now " .. player:getBankBalance() .. " gold.")
+		return true
+	end
+	return false
+end
+
+function getMoneyWeight(money)
+	local gold = money
+	local crystal = math.floor(gold / 10000)
+	gold = gold - crystal * 10000
+	local platinum = math.floor(gold / 100)
+	gold = gold - platinum * 100
+	return (ItemType(2160):getWeight() * crystal) + (ItemType(2152):getWeight() * platinum) +
+	(ItemType(2148):getWeight() * gold)
+end
+
+function isValidMoney(money)
+	return isNumber(money) and money > 0 and money < 4294967296
+end
+
+function isNumber(str)
+	return tonumber(str) ~= nil
+end

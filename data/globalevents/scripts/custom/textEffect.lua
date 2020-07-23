@@ -35,6 +35,7 @@ function onThink(interval)
     {position = Position(546, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(583, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(477, 1379, 6), text = "Cidades", effect = 49, say = true, color = math.random(1,255)},
+    {position = Position(633, 1231, 5), text = "Templo", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(478, 1379, 6), text = "Bosses", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(1721, 946, 7), text = "Saída", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(1655, 982, 7), text = "Saída", effect = 49, say = true, color = math.random(1,255)},
