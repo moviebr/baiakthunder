@@ -55,6 +55,11 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
 		<monster name="Guarda do Castelo" x="1" y="0" z="6" spawntime="60" />
 	</spawn>
+	<spawn centerx="511" centery="1222" centerz="6" radius="5" />
+	<spawn centerx="511" centery="1234" centerz="6" radius="5" />
+	<spawn centerx="511" centery="1246" centerz="6" radius="5" />
+	<spawn centerx="511" centery="1258" centerz="6" radius="5" />
+	<spawn centerx="512" centery="1262" centerz="6" radius="5" />
 	<spawn centerx="1768" centery="1062" centerz="7" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
@@ -67,6 +72,9 @@
 		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="1" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1019" centery="1162" centerz="7" radius="1">
+		<npc name="Padre Marcos" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="991" centery="1203" centerz="7" radius="1">
 		<npc name="Felipe" x="0" y="0" z="7" spawntime="60" />
@@ -83,8 +91,136 @@
 	<spawn centerx="1000" centery="1217" centerz="7" radius="1">
 		<npc name="Gustavo" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="511" centery="1221" centerz="7" radius="5" />
+	<spawn centerx="511" centery="1235" centerz="7" radius="10" />
 	<spawn centerx="583" centery="1244" centerz="7" radius="1">
 		<npc name="Capita Cristina" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="512" centery="1256" centerz="7" radius="10">
+		<monster name="Frost Dragon" x="-5" y="-3" z="7" spawntime="60" direction="1" />
+		<monster name="Medusa" x="4" y="0" z="7" spawntime="60" direction="3" />
+	</spawn>
+	<spawn centerx="59" centery="1786" centerz="7" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="194" centery="1819" centerz="7" radius="30">
+		<monster name="Medusa" x="-16" y="-27" z="7" spawntime="60" />
+		<monster name="Medusa" x="-17" y="-20" z="7" spawntime="60" />
+		<monster name="Medusa" x="-4" y="-20" z="7" spawntime="60" />
+		<monster name="Medusa" x="-4" y="-14" z="7" spawntime="60" />
+		<monster name="Medusa" x="-14" y="-13" z="7" spawntime="60" />
+		<monster name="Medusa" x="25" y="-10" z="7" spawntime="60" />
+		<monster name="Medusa" x="-22" y="-9" z="7" spawntime="60" />
+		<monster name="Medusa" x="6" y="-7" z="7" spawntime="60" />
+		<monster name="Medusa" x="12" y="-7" z="7" spawntime="60" />
+		<monster name="Medusa" x="19" y="-7" z="7" spawntime="60" />
+		<monster name="Medusa" x="25" y="-7" z="7" spawntime="60" />
+		<monster name="Medusa" x="0" y="-6" z="7" spawntime="60" />
+		<monster name="Medusa" x="-21" y="-2" z="7" spawntime="60" />
+		<monster name="Medusa" x="-12" y="-2" z="7" spawntime="60" />
+		<monster name="Medusa" x="-8" y="4" z="7" spawntime="60" />
+		<monster name="Medusa" x="4" y="5" z="7" spawntime="60" />
+		<monster name="Medusa" x="21" y="5" z="7" spawntime="60" />
+		<monster name="Medusa" x="-3" y="7" z="7" spawntime="60" />
+		<monster name="Medusa" x="26" y="7" z="7" spawntime="60" />
+		<monster name="Medusa" x="12" y="9" z="7" spawntime="60" />
+		<monster name="Medusa" x="-17" y="10" z="7" spawntime="60" />
+		<monster name="Medusa" x="-9" y="11" z="7" spawntime="60" />
+		<monster name="Medusa" x="5" y="15" z="7" spawntime="60" />
+		<monster name="Medusa" x="22" y="16" z="7" spawntime="60" />
+		<monster name="Medusa" x="-24" y="18" z="7" spawntime="60" />
+		<monster name="Medusa" x="-5" y="18" z="7" spawntime="60" />
+		<monster name="Medusa" x="11" y="18" z="7" spawntime="60" />
+		<monster name="Medusa" x="16" y="21" z="7" spawntime="60" />
+		<monster name="Medusa" x="0" y="22" z="7" spawntime="60" />
+		<monster name="Medusa" x="22" y="23" z="7" spawntime="60" />
+		<monster name="Medusa" x="-27" y="24" z="7" spawntime="60" />
+		<monster name="Medusa" x="10" y="25" z="7" spawntime="60" />
+		<monster name="Medusa" x="26" y="29" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="59" centery="1822" centerz="7" radius="30">
+		<monster name="Frost Dragon" x="-4" y="-30" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="6" y="-29" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="12" y="-25" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-2" y="-22" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="12" y="-17" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="1" y="-13" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="30" y="-12" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="23" y="-11" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="2" y="-7" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="28" y="-4" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="15" y="-3" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-14" y="-2" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="2" y="-2" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="23" y="-1" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-25" y="2" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-5" y="2" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="11" y="3" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-28" y="6" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-15" y="6" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="2" y="7" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="20" y="8" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-20" y="10" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="10" y="10" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-10" y="11" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="27" y="11" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-2" y="12" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-24" y="13" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="22" y="15" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="30" y="18" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="16" y="19" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="6" y="20" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-3" y="24" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="10" y="24" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="25" y="24" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="4" y="28" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="110" centery="1829" centerz="7" radius="20">
+		<monster name="Frost Dragon" x="-12" y="-18" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="3" y="-15" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="11" y="-14" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-19" y="-11" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-2" y="-11" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-11" y="-10" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="4" y="-9" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="12" y="-9" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-6" y="-6" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="0" y="-3" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="7" y="-1" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-5" y="7" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="4" y="7" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="10" y="8" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="5" y="15" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-20" y="17" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-15" y="20" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="76" centery="1850" centerz="7" radius="20">
+		<monster name="Frost Dragon" x="14" y="2" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-4" y="3" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-15" y="8" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-9" y="12" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="-2" y="17" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="212" centery="1854" centerz="7" radius="30">
+		<monster name="Medusa" x="14" y="-28" z="7" spawntime="60" />
+		<monster name="Medusa" x="17" y="-21" z="7" spawntime="60" />
+		<monster name="Medusa" x="20" y="-14" z="7" spawntime="60" />
+		<monster name="Medusa" x="15" y="-9" z="7" spawntime="60" />
+		<monster name="Medusa" x="-10" y="-2" z="7" spawntime="60" />
+		<monster name="Medusa" x="-2" y="-2" z="7" spawntime="60" />
+		<monster name="Medusa" x="12" y="-1" z="7" spawntime="60" />
+		<monster name="Medusa" x="5" y="4" z="7" spawntime="60" />
+		<monster name="Medusa" x="-5" y="6" z="7" spawntime="60" />
+		<monster name="Medusa" x="-13" y="8" z="7" spawntime="60" />
+		<monster name="Medusa" x="8" y="8" z="7" spawntime="60" />
+		<monster name="Medusa" x="13" y="12" z="7" spawntime="60" />
+		<monster name="Medusa" x="-8" y="14" z="7" spawntime="60" />
+		<monster name="Medusa" x="0" y="16" z="7" spawntime="60" />
+		<monster name="Medusa" x="-24" y="17" z="7" spawntime="60" />
+		<monster name="Medusa" x="10" y="17" z="7" spawntime="60" />
+		<monster name="Medusa" x="-15" y="20" z="7" spawntime="60" />
+		<monster name="Medusa" x="-8" y="21" z="7" spawntime="60" />
+		<monster name="Medusa" x="1" y="23" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1780" centery="1038" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
