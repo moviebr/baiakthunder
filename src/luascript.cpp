@@ -2183,8 +2183,10 @@ void LuaScriptInterface::registerFunctions()
 	registerClass("Player", "Creature", LuaScriptInterface::luaPlayerCreate);
 	registerMetaMethod("Player", "__eq", LuaScriptInterface::luaUserdataCompare);
 
+	registerMethod("Player", "sendCreatureSquare", LuaScriptInterface::luaSendCreatureSquare);
+
 	registerMethod("Player", "isPlayer", LuaScriptInterface::luaPlayerIsPlayer);
-  registerMethod("Player", "delete", LuaScriptInterface::luaPlayerDelete);
+	registerMethod("Player", "delete", LuaScriptInterface::luaPlayerDelete);
 
 	registerMethod("Player", "getGuid", LuaScriptInterface::luaPlayerGetGuid);
 	registerMethod("Player", "getIp", LuaScriptInterface::luaPlayerGetIp);
@@ -7562,6 +7564,29 @@ int LuaScriptInterface::luaCreatureGetZone(lua_State* L)
 }
 
 // Player
+
+int LuaScriptInterface::luaSendCreatureSquare(lua_State* L)
+{
+	// player:sendCreatureSquare(creature, color)
+	Player* player = getUserdata<Player>(L, 1);
+	if (!player) {
+    	lua_pushnil(L);
+    return 1;
+	}
+
+	Creature* creature = getUserdata<Creature>(L, 2);
+	if (!creature) {
+    	lua_pushnil(L);
+    return 1;
+	}
+
+	uint32_t color = getNumber<uint32_t>(L, 3, 0);
+
+	player->sendCreatureSquare(creature, static_cast <SquareColor_t>(color));
+	lua_pushboolean(L, true);
+	return 1;
+}
+
 int LuaScriptInterface::luaPlayerCreate(lua_State* L)
 {
 	// Player(id or guid or name or userdata, forceLoad)
