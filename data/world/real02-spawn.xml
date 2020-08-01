@@ -406,27 +406,38 @@
 		<npc name="Gustavo" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="511" centery="1221" centerz="7" radius="5" />
-	<spawn centerx="511" centery="1235" centerz="7" radius="10">
-		<monster name="Dragon Lord" x="5" y="9" z="7" spawntime="60" direction="3" />
-	</spawn>
 	<spawn centerx="583" centery="1244" centerz="7" radius="1">
 		<npc name="Capita Cristina" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="512" centery="1256" centerz="7" radius="10">
-		<monster name="Wyrm" x="-5" y="-9" z="7" spawntime="60" direction="1" />
-		<monster name="Ancient Scarab" x="4" y="-9" z="7" spawntime="60" direction="3" />
-		<monster name="Crystal Spider" x="-5" y="-6" z="7" spawntime="60" direction="1" />
-		<monster name="Grim Reaper" x="4" y="-6" z="7" spawntime="60" direction="3" />
-		<monster name="Frost Dragon" x="-5" y="-3" z="7" spawntime="60" direction="1" />
-		<monster name="Hydra" x="4" y="-3" z="7" spawntime="60" direction="3" />
-		<monster name="Hydra" x="-5" y="0" z="7" spawntime="60" direction="1" />
-		<monster name="Medusa" x="4" y="0" z="7" spawntime="60" direction="3" />
-		<monster name="Dragon Lord" x="-5" y="3" z="7" spawntime="60" direction="1" />
-		<monster name="Demon" x="4" y="3" z="7" spawntime="60" direction="3" />
-		<monster name="Demon" x="-5" y="6" z="7" spawntime="60" direction="1" />
-		<monster name="Demon" x="4" y="6" z="7" spawntime="60" direction="3" />
-		<monster name="Grim Reaper" x="-5" y="9" z="7" spawntime="60" direction="1" />
-		<monster name="Demon" x="4" y="9" z="7" spawntime="60" direction="3" />
+	<spawn centerx="506" centery="1246" centerz="7" radius="2">
+		<monster name="Wyrm" x="1" y="1" z="7" spawntime="60" direction="1" />
+	</spawn>
+	<spawn centerx="517" centery="1246" centerz="7" radius="2">
+		<monster name="Dragon Lord" x="-1" y="-2" z="7" spawntime="60" direction="3" />
+		<monster name="Ancient Scarab" x="-1" y="1" z="7" spawntime="60" direction="3" />
+	</spawn>
+	<spawn centerx="506" centery="1251" centerz="7" radius="2">
+		<monster name="Crystal Spider" x="1" y="-1" z="7" spawntime="60" direction="1" />
+		<monster name="Frost Dragon" x="1" y="2" z="7" spawntime="60" direction="1" />
+	</spawn>
+	<spawn centerx="517" centery="1252" centerz="7" radius="2">
+		<monster name="Grim Reaper" x="-1" y="-2" z="7" spawntime="60" direction="3" />
+		<monster name="Hydra" x="-1" y="1" z="7" spawntime="60" direction="3" />
+	</spawn>
+	<spawn centerx="517" centery="1257" centerz="7" radius="2">
+		<monster name="Medusa" x="-1" y="-1" z="7" spawntime="60" direction="3" />
+		<monster name="Demon" x="-1" y="2" z="7" spawntime="60" direction="3" />
+	</spawn>
+	<spawn centerx="506" centery="1258" centerz="7" radius="2">
+		<monster name="Hydra" x="1" y="-2" z="7" spawntime="60" direction="1" />
+		<monster name="Dragon Lord" x="1" y="1" z="7" spawntime="60" direction="1" />
+	</spawn>
+	<spawn centerx="506" centery="1264" centerz="7" radius="2">
+		<monster name="Demon" x="1" y="-2" z="7" spawntime="60" direction="1" />
+	</spawn>
+	<spawn centerx="517" centery="1264" centerz="7" radius="2">
+		<monster name="Demon" x="-1" y="-2" z="7" spawntime="60" direction="3" />
+		<monster name="Demon" x="-1" y="1" z="7" spawntime="60" direction="3" />
 	</spawn>
 	<spawn centerx="927" centery="1266" centerz="7" radius="1">
 		<monster name="Poison spider" x="0" y="0" z="7" spawntime="60" />
