@@ -58,6 +58,12 @@ function square.onSay(player, words, param)
         return false
     end
 
+    if target:getGuild() and target:getGuild():getId() == guild:getId() then
+        player:sendCancelMessage("Você não pode colocar um alvo da mesma guild da sua.")
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return false
+    end
+
     squareGuild[guild:getId()] = {alvo = param, color = 204}
     repetirSquare(guild:getId(), 204)
     player:setStorageValue(984145, os.time() + 10 * 60)

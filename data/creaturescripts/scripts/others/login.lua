@@ -12,13 +12,15 @@ function onLogin(player)
 	end
 	player:sendTextMessage(MESSAGE_STATUS_BLUE_LIGHT, loginStr)
 
-	if player:isPremium() and player:getAccountType() < ACCOUNT_TYPE_GOD then
+	if player:isPremium() and player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
 		player:say("[PREMIUM]", TALKTYPE_MONSTER_SAY)
 		player:getPosition():sendMagicEffect(50)
 	end
 
 	-- Guild Leaders Destaque
-	guildLeaderSquare(player)
+	if player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
+		guildLeaderSquare(player)
+	end
 
 	-- Stamina
 	nextUseStaminaTime[player.uid] = 0
@@ -121,7 +123,7 @@ function guildLeaderSquare(player)
 
 	spectators = Game.getSpectators(player:getPosition(), true, true, 0, 7, 0, 7)
 	for _, viewers in ipairs(spectators) do
-		if player:getGuildLevel() == 3 and player:getAccountType() < ACCOUNT_TYPE_GOD then
+		if player:getGuildLevel() == 3 then
 			viewers:sendCreatureSquare(player, 215)
 		end
 	end

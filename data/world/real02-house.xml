@@ -1,2 +1,4 @@
 <?xml version="1.0"?>
-<houses />
+<houses>
+	<house name="Baiak City #1" houseid="1" entryx="1002" entryy="1221" entryz="7" rent="0" townid="1" size="23" />
+</houses>
