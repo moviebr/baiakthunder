@@ -1,3 +1,5 @@
+local bless = TalkAction("!bless")
+
 local config = {
 	bless = 5, -- Quantidade de blessing existentes
 	precoPorLevel = 750, -- 500 gps a cada level
@@ -9,7 +11,7 @@ local config = {
 
 }
 
-function onSay(player, words, param)
+function bless.onSay(player, words, param)
 	local precoReal = player:getLevel() * config.precoPorLevel
 	
 	for i = 1, config.bless do
@@ -34,3 +36,5 @@ function onSay(player, words, param)
 		
 	return false
 end
+
+bless:register()

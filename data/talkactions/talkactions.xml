@@ -2,16 +2,10 @@
 <talkactions>
 
 	<!-- Custom -->
-	<talkaction words="/ban" separator=" " script="ban.lua" />
 	<talkaction words="/ipban" separator=" " script="ipban.lua" />
 	<talkaction words="!bank" separator=" " script="bank.lua"/>
 	<talkaction words="!spells" script="spells.lua" />
-	<talkaction words="!aol" script="aol.lua" />
 	<talkaction words="!offer" separator=" " script="auction_system.lua" />
-	<talkaction words="!bless" script="bless.lua" />
-	<talkaction words="!onlinebonus" script="onlineBonus.lua"/>
-	<talkaction words="!dodge" script="dodge.lua"/>
-	<talkaction words="!critical" script="critical.lua"/>
 	<talkaction words="!addon" separator=" " script="addonDoll.lua"/>
 	<talkaction words="!snowball" separator=" " script="snowball.lua" />
 	<talkaction words="!machete" script="machete.lua" />

@@ -5,7 +5,7 @@
 	<monster name="Merlin" file="Boss_System/merlin.xml"/>
 
 	<!-- Custom -->
-	<monster name="Guarda do Castelo" file="custom/Castle.xml"/>
+	<monster name="Guarda do Castelo" file="Custom/Castle.xml"/>
 
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml"/>

@@ -1,4 +1,4 @@
-local auto = TalkAction("!autoadd")
+local auto = TalkAction("!autoaddmovie")
 
 function auto.onSay(player, words, param)
 
@@ -30,7 +30,6 @@ function check.onSay(player, words, param)
 	return true
 end
 
-check:register()
 
 local remove = TalkAction("!autoremove")
 
@@ -46,4 +45,3 @@ function remove.onSay(player, words, param)
 end
 
 remove:separator(" ")
-remove:register()

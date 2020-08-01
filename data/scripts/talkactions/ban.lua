@@ -1,4 +1,6 @@
-function onSay(player, words, param)
+local ban = TalkAction("/ban")
+
+function ban.onSay(player, words, param)
 	if not player:getGroup():getAccess() then
 		return true
 	end
@@ -13,12 +15,12 @@ function onSay(player, words, param)
 	local reason = (split[3])
 	
 	if not name or not tempo or not reason then
-		player:popupFYI("--------- [Ban System] ---------\n\n/ban Name, Time (in days), Reason\n\nExemple:\n/ban Movie, 7, Flood")
+		player:popupFYI("--------- [Ban System] ---------\n\n/ban Nome, Tempo (em dias), Razão\n\nExemplo:\n/ban Movie, 7, Flood")
 		return false
 	end
 
 	if not tonumber(tempo) then
-		player:sendCancelMessage("Write time with numbers only.")
+		player:sendCancelMessage("Escrevo o tempo em números.")
 		return false
 	end
 
@@ -39,9 +41,12 @@ function onSay(player, words, param)
 
 	local target = Player(name)
 	if target then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, target:getName() .. " has been banned.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, target:getName() .. " foi banido.")
 		target:remove()
 	else
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, name .. " has been banned.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, name .. " foi banido.")
 	end
 end
+
+ban:separator(" ")
+ban:register()
