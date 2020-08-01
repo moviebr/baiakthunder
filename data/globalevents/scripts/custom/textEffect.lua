@@ -35,7 +35,7 @@ function onThink(interval)
     {position = Position(546, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(583, 1240, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(477, 1379, 6), text = "Cidades", effect = 49, say = true, color = math.random(1,255)},
-    {position = Position(633, 1231, 5), text = "Templo", effect = 49, say = true, color = math.random(1,255)},
+    {position = Position(633, 1231, 5), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     {position = Position(478, 1379, 6), text = "Bosses", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(1721, 946, 7), text = "Saída", effect = 49, say = true, color = math.random(1,255)},
     {position = Position(1655, 982, 7), text = "Saída", effect = 49, say = true, color = math.random(1,255)},
@@ -46,8 +46,15 @@ function onThink(interval)
     {position = Position(980, 1205, 8), text = "+" .. boostCreature[1].exp .."% de EXP", say = true, color = math.random(1,255)},
     {position = Position(982, 1205, 8), text = "+" .. boostCreature[1].loot .."% de Loot", say = true, color = math.random(1,255)},
     {position = Position(984, 1208, 7), text = "FastSpawn", effect = 37, say = false, color = math.random(1,255)},
+    {position = Position(817, 1424, 7), text = "Snake", effect = 40, say = true, color = math.random(1,255)},
+    {position = Position(819, 1424, 7), text = "Bomberman", effect = 40, say = true, color = math.random(1,255)},
+    {position = Position(821, 1433, 7), text = "Templo", effect = 40, say = true, color = math.random(1,255)},
     -- Alavancas
     {position = Position(982, 1203, 7), text = "AddonDoll", say = false, color = math.random(1,255)},
+    {position = Position(983, 1203, 7), text = "Dodge", say = false, color = math.random(1,255)},
+    {position = Position(984, 1203, 7), text = "Critical", say = false, color = math.random(1,255)},
+    {position = Position(985, 1203, 7), text = "SuperUP", say = false, color = math.random(1,255)},
+    {position = Position(984, 1204, 8), text = "Stamina", say = false, color = math.random(1,255)},
 }
 
     for i = 1, #effects do

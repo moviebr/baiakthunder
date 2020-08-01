@@ -2020,7 +2020,7 @@
 	<item id="2120" article="a" name="rope">
 		<attribute key="weight" value="1800" />
 	</item>
-	<item id="2121" article="a" name="wedding ring">
+	<item id="2121" article="uma" name="aliança de casamento">
 		<attribute key="weight" value="40" />
 		<attribute key="slotType" value="ring" />
 	</item>
@@ -18723,7 +18723,7 @@
 		<attribute key="corpseType" value="undead" />
 	</item>
 	<item id="10501" article="a" name="dead tree" />
-	<item id="10502" article="an" name="engraved wedding ring">
+	<item id="10502" article="um" name="anel de casamento">
 		<attribute key="weight" value="40" />
 		<attribute key="slotType" value="ring" />
 	</item>

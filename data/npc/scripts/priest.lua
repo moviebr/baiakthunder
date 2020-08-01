@@ -142,8 +142,8 @@ local function confirmDivorce(cid, message, keywords, parameters, node)
     return true
 end
 
-local node1 = keywordHandler:addKeyword({'marry'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Voce gostaria de se casar? Certifique-se de ter um anel de casamento com você.'})
-local node1 = keywordHandler:addKeyword({'casa'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Voce gostaria de se casar? Certifique-se de ter um anel de casamento com você.'})
+local node1 = keywordHandler:addKeyword({'marry'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Você gostaria de se casar? Certifique-se de ter um anel de casamento com você.'})
+local node1 = keywordHandler:addKeyword({'casa'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Você gostaria de se casar? Certifique-se de ter um anel de casamento com você.'})
 node1:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, moveup = 1, text = 'Isso é bom.'})
 node1:addChildKeyword({'nao'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, moveup = 1, text = 'Isso é bom.'})
 node1:addChildKeyword({'não'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, moveup = 1, text = 'Isso é bom.'})
