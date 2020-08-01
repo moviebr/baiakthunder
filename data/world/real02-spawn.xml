@@ -152,6 +152,9 @@
 	<spawn centerx="511" centery="1246" centerz="6" radius="5" />
 	<spawn centerx="511" centery="1258" centerz="6" radius="5" />
 	<spawn centerx="512" centery="1262" centerz="6" radius="5" />
+	<spawn centerx="1005" centery="1379" centerz="6" radius="1">
+		<npc name="Vanessa" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="179" centery="1691" centerz="6" radius="30">
 		<monster name="Hydra" x="3" y="-4" z="6" spawntime="60" />
 		<monster name="Hydra" x="23" y="-4" z="6" spawntime="60" />
@@ -472,6 +475,12 @@
 	</spawn>
 	<spawn centerx="933" centery="1283" centerz="7" radius="1">
 		<monster name="Poison spider" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="697" centery="1368" centerz="7" radius="1">
+		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="951" centery="1392" centerz="7" radius="1">
+		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="75" centery="1591" centerz="7" radius="30">
 		<monster name="Demon" x="-24" y="-27" z="7" spawntime="60" />

@@ -17,6 +17,9 @@ function onLogin(player)
 		player:getPosition():sendMagicEffect(50)
 	end
 
+	-- Guild Leaders Destaque
+	guildLeaderSquare(player)
+
 	-- Stamina
 	nextUseStaminaTime[player.uid] = 0
 
@@ -105,5 +108,24 @@ function onLogin(player)
 	player:registerEvent("Tasks")
 	player:registerEvent("SuperUP")
 	player:registerEvent("GuildLevel")
+	return true
+end
+
+function guildLeaderSquare(player)
+	player = Player(player)
+	if not player then
+		return false
+	end
+
+	local playerId = player:getId()
+
+	spectators = Game.getSpectators(player:getPosition(), true, true, 0, 7, 0, 7)
+	for _, viewers in ipairs(spectators) do
+		if player:getGuildLevel() == 3 then
+			viewers:sendCreatureSquare(player, 215)
+		end
+	end
+	
+	addEvent(guildLeaderSquare, 500, playerId)
 	return true
 end
