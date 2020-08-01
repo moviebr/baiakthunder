@@ -4,16 +4,11 @@ function onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 	-- Battlefield
-	local getTeamRed = Game.getStorageValue(BATTLEFIELD.storageTeamRed)
-	local getTeamBlue = Game.getStorageValue(BATTLEFIELD.storageTeamBlue)
-	if player:getStorageValue(BATTLEFIELD.storageTeam) == 1 then
-		Game.setStorageValue(BATTLEFIELD.storageTeamBlue, (getTeamBlue - 1))
-	elseif player:getStorageValue(BATTLEFIELD.storageTeam) == 2 then
-		Game.setStorageValue(BATTLEFIELD.storageTeamRed, (getTeamRed - 1))
-	end
-	player:setStorageValue(BATTLEFIELD.storageTeam, 0)
+	BATTLEFIELD:removePlayer(player:getId())
+
 	-- SafeZone
 	player:setStorageValue(SAFEZONE.storage, 0)
+	
 	-- SnowBall
 	for pos, players in ipairs(CACHE_GAMEPLAYERS) do
 		if player:getId() == players then

@@ -67,6 +67,9 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="5" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="5" spawntime="60" />
 	</spawn>
+	<spawn centerx="951" centery="1210" centerz="5" radius="1">
+		<npc name="Vanessa" x="0" y="0" z="5" spawntime="60" />
+	</spawn>
 	<spawn centerx="952" centery="1216" centerz="5" radius="1">
 		<npc name="Charbel" x="0" y="0" z="5" spawntime="60" />
 	</spawn>

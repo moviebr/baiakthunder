@@ -46,7 +46,7 @@ function onStepIn(creature, item, position, fromPosition)
 		return false
 	end
 
-	if getTeamRed > getTeamBlue then
+--[[	if getTeamRed > getTeamBlue then
 		Game.setStorageValue(BATTLEFIELD.storageTeamBlue, (getTeamBlue + 1))
 		player:setStorageValue(BATTLEFIELD.storageTeam, 1)
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time azul.")
@@ -60,5 +60,9 @@ function onStepIn(creature, item, position, fromPosition)
 	player:setStorageValue(STORAGEVALUE_EVENTS, 1)
 	player:teleportTo(BATTLEFIELD.waitingRoomPosition)
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-	
+
+--]]
+	BATTLEFIELD:insertPlayer(player:getId())
+
+	return true
 end
