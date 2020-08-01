@@ -121,7 +121,7 @@ function guildLeaderSquare(player)
 
 	spectators = Game.getSpectators(player:getPosition(), true, true, 0, 7, 0, 7)
 	for _, viewers in ipairs(spectators) do
-		if player:getGuildLevel() == 3 then
+		if player:getGuildLevel() == 3 and player:getAccountType() < ACCOUNT_TYPE_GOD then
 			viewers:sendCreatureSquare(player, 215)
 		end
 	end
