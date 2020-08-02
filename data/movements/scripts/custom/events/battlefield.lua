@@ -1,7 +1,7 @@
 function onStepIn(creature, item, position, fromPosition)
-	local getTeamRed = Game.getStorageValue(BATTLEFIELD.storageTeamRed)
-	local getTeamBlue = Game.getStorageValue(BATTLEFIELD.storageTeamBlue)
+
 	local player = creature:getPlayer()
+	
 	if not player then
 		return true
 	end
@@ -30,8 +30,9 @@ function onStepIn(creature, item, position, fromPosition)
 		end
 	end
 
-	for _, check in ipairs(Game.getPlayers()) do
-        if player:getIp() == check:getIp() and check:getStorageValue(STORAGEVALUE_EVENTS) > 0 then
+	for a, b in pairs(BATTLEFIELD.players) do
+		local target = Player(b)
+        if player:getIp() == b:getIp() then
             player:sendCancelMessage(BATTLEFIELD.messages.prefix .. "Você já possui um outro player dentro do evento.")
             player:teleportTo(fromPosition, true)
             player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -39,29 +40,13 @@ function onStepIn(creature, item, position, fromPosition)
         end
     end
 
-	if BFcheckPlayers() >= BATTLEFIELD.maxPlayers then
+	if BATTLEFIELD:totalPlayers() >= BATTLEFIELD.maxPlayers then
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."O evento já atingiu o máximo de participantes.")
 		player:teleportTo(fromPosition, true)
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	end
 
---[[	if getTeamRed > getTeamBlue then
-		Game.setStorageValue(BATTLEFIELD.storageTeamBlue, (getTeamBlue + 1))
-		player:setStorageValue(BATTLEFIELD.storageTeam, 1)
-		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time azul.")
-		player:setOutfit(BATTLEFIELD.blueTeamOutfit)
-	else
-		Game.setStorageValue(BATTLEFIELD.storageTeamRed, (getTeamRed + 1))
-		player:setStorageValue(BATTLEFIELD.storageTeam, 2)
-		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time vermelho.")
-		player:setOutfit(BATTLEFIELD.redTeamOutfit)
-	end
-	player:setStorageValue(STORAGEVALUE_EVENTS, 1)
-	player:teleportTo(BATTLEFIELD.waitingRoomPosition)
-	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-
---]]
 	BATTLEFIELD:insertPlayer(player:getId())
 
 	return true

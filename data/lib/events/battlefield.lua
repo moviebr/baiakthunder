@@ -41,10 +41,7 @@ BATTLEFIELD = {
 		["Friday"] = {"15:00"},
 		["Saturday"] = {"15:00"},
 	},
-	players = {
-		["red"] = {playerId = ,},
-		["blue"] = {playerId = ,}
-	},
+	players = {},
 	blueTeamOutfit = {lookType = 134, lookHead = 88, lookBody = 88, lookLegs = 88, lookFeet = 88},
 	redTeamOutfit = {lookType = 143, lookHead = 94, lookBody = 94, lookLegs = 94, lookFeet = 94},
 	idWalls = 3516,
@@ -91,11 +88,11 @@ function BATTLEFIELD:insertPlayer(playerId)
 	local player = Player(playerId)
 
 	if #BATTLEFIELD.players["red"] > #BATTLEFIELD.players["blue"] then
-		BATTLEFIELD.players["blue"] = {playerId = player:getId()}
+		table.insert(BATTLEFIELD.players["blue"], player:getId())
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time azul.")
 		player:setOutfit(BATTLEFIELD.blueTeamOutfit)
 	else
-		BATTLEFIELD.players["red"] = {playerId = player:getId()}
+		table.insert(BATTLEFIELD.players["red"], player:getId())
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."Você entrou para o time vermelho.")
 		player:setOutfit(BATTLEFIELD.redTeamOutfit)
 	end
@@ -103,15 +100,14 @@ function BATTLEFIELD:insertPlayer(playerId)
 	player:setStorageValue(STORAGEVALUE_EVENTS, 1)
 	player:teleportTo(BATTLEFIELD.waitingRoomPosition)
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-
 	return true
 end
 
 function BATTLEFIELD:removePlayer(playerId)
 	local player = Player(playerId)
 	for a, b in pairs(BATTLEFIELD.players) do
-		if b.playerId == player:getId() then
-			b.playerId == nil
+		if b == player:getId() then
+			b == nil
 		end
 	end
 end
@@ -138,14 +134,14 @@ function BATTLEFIELD:checkTeleport()
 					if Game.getStorageValue(BATTLEFIELD.storageEventStatus) ~= 0 then
 						Game.broadcastMessage(BATTLEFIELD.messages.prefix .. BATTLEFIELD.messages.messageTimeEnd, MESSAGE_STATUS_WARNING)
 						Game.setStorageValue(BATTLEFIELD.storageEventStatus, 4)
-						-- terminar evento
+						BATTLEFIELD:finishEvent()
 					end
-			end, BATTLEFIELD.timeEventTotal * 60 * 1000)
-				-- função começar evento
+				end, BATTLEFIELD.timeEventTotal * 60 * 1000)
+				BATTLEFIELD:startEvent()
 			else
 				Game.broadcastMessage(BATTLEFIELD.messages.prefix .. BATTLEFIELD.messages.messageNoStart, MESSAGE_STATUS_WARNING)
 				Game.setStorageValue(BATTLEFIELD.storageEventStatus, 0)
-				-- função retirar players
+				BATTLEFIELD:finishEvent()
 			end
 		else
 			Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageOpen):format(BATTLEFIELD.timeOpenPortal), MESSAGE_STATUS_WARNING)
@@ -161,92 +157,68 @@ function BATTLEFIELD:checkTeleport()
 	end
 end
 
---[[
-function BFcheckAll()
-	local blueTeam = BFcheckBlueTeam()
-	local redTeam = BFcheckRedTeam()
+function BATTLEFIELD:checkStatus()
+	local blueTeam = BATTLEFIELD:bluePlayers()
+	local redTeam = BATTLEFIELD:redPlayers()
 	local gameStatus = Game.getStorageValue(BATTLEFIELD.storageEventStatus)
-	
-	if gameStatus == 5 then
-		if blueTeam > 0 and redTeam == 0 then
-			Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("azul"), MESSAGE_STATUS_WARNING)
-			Game.setStorageValue(BATTLEFIELD.storageEventStatus, 2)
-			BFfinishEvent()
-		elseif redTeam > 0 and blueTeam == 0 then
-			Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("vermelho"), MESSAGE_STATUS_WARNING)
-			Game.setStorageValue(BATTLEFIELD.storageEventStatus, 3)
-			BFfinishEvent()
-		end
+
+	if blueTeam > 0 and redTeam == 0 then
+		Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("azul"), MESSAGE_STATUS_WARNING)
+		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 2)
+		BATTLEFIELD:finishEvent()
+	elseif redTeam > 0 and blueTeam == 0 then
+		Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("vermelho"), MESSAGE_STATUS_WARNING)
+		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 3)
+		BATTLEFIELD:finishEvent()
 	end
+
 	if gameStatus ~= 0 then
-		addEvent(BFcheckAll, 10000)
+		addEvent(BATTLEFIELD:checkStatus, 5000)
 	end
 end
---]]
 
 function BATTLEFIELD:startEvent()
 	if Game.getStorageValue(BATTLEFIELD.storageEventStatus) == 1 then
 		for a, b in ipairs(BATTLEFIELD.players) do
-			local player = Player(b.playerId)
-			if a == "red" and player:getId() == b.playerId then
+			local player = Player(b)
+			if a == "blue" and player:getId() == b then
 				player:teleportTo(BATTLEFIELD.baseBlue)
 				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			else player:getStorageValue(BATTLEFIELD.storageTeam) == 2 then
-				player:teleportTo(BATTLEFIELD.baseRed)
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			end
-		end
-		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 5)
-	end
-	addEvent(BFcheckAll, 30000)
-end
-
-function BFstartEvent()
-	if Game.getStorageValue(BATTLEFIELD.storageEventStatus) == 1 then
-		for _, player in ipairs(Game.getPlayers()) do
-			if player:getStorageValue(BATTLEFIELD.storageTeam) == 1 then
-				player:teleportTo(BATTLEFIELD.baseBlue)
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			elseif player:getStorageValue(BATTLEFIELD.storageTeam) == 2 then
-				player:teleportTo(BATTLEFIELD.baseRed)
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			end
-		end
-		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 5)
-	end
-	addEvent(BFcheckAll, 30000)
-end
-
-function BFfinishEvent()
-	local gameStatus = Game.getStorageValue(BATTLEFIELD.storageEventStatus)
-	if gameStatus == 2 or gameStatus == 3 then
-		for _, player in ipairs(Game.getPlayers()) do
-			player:setStorageValue(STORAGEVALUE_EVENTS, 0)
-			if gameStatus == 2 then
-				if player:getStorageValue(BATTLEFIELD.storageTeam) == 1 then
-					player:addItem(BATTLEFIELD.reward.itemId, BATTLEFIELD.reward.count)
-				end
-					player:setStorageValue(storageTeam, 0)
-					player:teleportTo(player:getTown():getTemplePosition())
-					player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-			elseif gameStatus == 3 then
-				if player:getStorageValue(BATTLEFIELD.storageTeam) == 2 then
-					player:addItem(BATTLEFIELD.reward.itemId, BATTLEFIELD.reward.count)
-				end
-					player:setStorageValue(storageTeam, 0)
-					player:teleportTo(player:getTown():getTemplePosition())
-					player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			else
-				player:setStorageValue(storageTeam, 0)
-				player:teleportTo(player:getTown():getTemplePosition())
+				player:teleportTo(BATTLEFIELD.baseRed)
 				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			end
 		end
-		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 0)
-		Game.setStorageValue(BATTLEFIELD.storageTeamRed, 0)
-		Game.setStorageValue(BATTLEFIELD.storageTeamBlue, 0)
-		BFcheckWalls()
 	end
+	addEvent(BATTLEFIELD:checkStatus, 30000)
+end
+
+function BATTLEFIELD:finishEvent()
+	local gameStatus = Game.getStorageValue(BATTLEFIELD.storageEventStatus)
+	if gameStatus == 0 or gameStatus == 4 then
+		for a, b in pairs(BATTLEFIELD.players) do
+			local player = Player(b)
+			player:teleportTo(player:getTown():getTemplePosition())
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+			player:setStorageValue(STORAGEVALUE_EVENTS, 0)
+			BATTLEFIELD.players[a] = nil
+		end
+	elseif gameStatus == 2 or gameStatus == 3 then
+		for c, d in pairs(BATTLEFIELD.players) do
+			local player = Player(d)
+			if c == "blue" and d == player:getId() and gameStatus == 2 then
+				player:addItem(BATTLEFIELD.reward.itemId, BATTLEFIELD.reward.count)
+			elseif c == "red" and d == player:getId() and gameStatus == 3 then
+				player:addItem(BATTLEFIELD.reward.itemId, BATTLEFIELD.reward.count)
+			end
+			player:setStorageValue(STORAGEVALUE_EVENTS, 0)
+			player:teleportTo(player:getTown():getTemplePosition())
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+			BATTLEFIELD.players[c] = nil
+		end
+	end
+	Game.setStorageValue(BATTLEFIELD.storageEventStatus, 0)
+	BATTLEFIELD:checkWalls()
 end
 
 function BATTLEFIELD:checkWalls()
