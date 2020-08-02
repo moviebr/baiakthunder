@@ -33,7 +33,7 @@ BATTLEFIELD = {
 		[4] = Position(1546, 1098, 6),
 	},
 	days = {
-		["Sunday"] = {"15:00"},
+		["Sunday"] = {"15:20"},
 		["Monday"] = {"15:00"},
 		["Tuesday"] = {"15:00"},
 		["Wednesday"] = {"15:00"},
@@ -152,7 +152,9 @@ function BATTLEFIELD:checkTeleport()
 			if teleport then
 				teleport:setActionId(BATTLEFIELD.actionID)
 			end
-			addEvent(BFcheckTeleport, BATTLEFIELD.timeOpenPortal * 60 * 1000)
+			addEvent(function()
+				BATTLEFIELD:checkTeleport()
+			end, BATTLEFIELD.timeOpenPortal * 60 * 1000)
 			Game.setStorageValue(BATTLEFIELD.storageEventStatus, 0)
 		end
 	end

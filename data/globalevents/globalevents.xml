@@ -23,7 +23,6 @@
 
 	<!-- Castle 48H -->
 	<globalevent name="Castle48H" interval="60000" script="custom/events/castle48.lua" />
-	<globalevent name="Castle48HLever" interval="60000" script="custom/events/castle48Lever.lua" />
 	<globalevent name="Castle48HEnd" time="20:55" script="custom/events/castle48End.lua" />
 
 	<!-- Others -->
