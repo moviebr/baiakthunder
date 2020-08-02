@@ -69,7 +69,7 @@ function Castle48H:close()
 		Game.broadcastMessage(Castle48H.msg.prefix .. Castle48H.msg.guildWinner:format(guild:getName(), Castle48H.plusXP))
 		Game.setStorageValue(STORAGEVALUE_CASTLE48_WINNER, Game.getStorageValue(Castle48H.storageLever))
 		Game.setStorageValue(Castle48H.storageGlobal, -1)
-		Game.setStorageValue(Castle48H.storageLever, -1
+		Game.setStorageValue(Castle48H.storageLever, -1)
 	end, 5 * 60 * 1000)
 end
 
