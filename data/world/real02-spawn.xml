@@ -70,8 +70,11 @@
 	<spawn centerx="951" centery="1210" centerz="5" radius="1">
 		<npc name="Vanessa" x="0" y="0" z="5" spawntime="60" />
 	</spawn>
-	<spawn centerx="952" centery="1216" centerz="5" radius="1">
-		<npc name="Charbel" x="0" y="0" z="5" spawntime="60" />
+	<spawn centerx="952" centery="1217" centerz="5" radius="1">
+		<npc name="Charbel" x="0" y="-1" z="5" spawntime="60" />
+	</spawn>
+	<spawn centerx="625" centery="1239" centerz="5" radius="1">
+		<npc name="Raimunda" x="0" y="0" z="5" spawntime="60" />
 	</spawn>
 	<spawn centerx="625" centery="1243" centerz="5" radius="1">
 		<npc name="Vanessa" x="0" y="0" z="5" spawntime="60" />
@@ -145,6 +148,9 @@
 	<spawn centerx="1768" centery="1084" centerz="6" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
+	<spawn centerx="788" centery="1087" centerz="6" radius="1">
+		<npc name="Charbel" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="1768" centery="1091" centerz="6" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="6" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
@@ -164,8 +170,14 @@
 	<spawn centerx="511" centery="1246" centerz="6" radius="5" />
 	<spawn centerx="511" centery="1258" centerz="6" radius="5" />
 	<spawn centerx="512" centery="1262" centerz="6" radius="5" />
+	<spawn centerx="699" centery="1347" centerz="6" radius="1">
+		<npc name="Raimunda" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="1005" centery="1379" centerz="6" radius="1">
 		<npc name="Vanessa" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="997" centery="1389" centerz="6" radius="1">
+		<npc name="Raimunda" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
 	<spawn centerx="179" centery="1691" centerz="6" radius="30">
 		<monster name="Hydra" x="3" y="-4" z="6" spawntime="60" />
@@ -362,6 +374,9 @@
 		<monster name="Demon" x="-2" y="21" z="6" spawntime="60" />
 		<monster name="Demon" x="17" y="22" z="6" spawntime="60" />
 	</spawn>
+	<spawn centerx="1300" centery="1031" centerz="7" radius="1">
+		<npc name="Raimunda" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="1768" centery="1062" centerz="7" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
@@ -513,6 +528,9 @@
 	<spawn centerx="991" centery="1203" centerz="7" radius="1">
 		<npc name="Felipe" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="953" centery="1205" centerz="7" radius="1">
+		<npc name="Raimunda" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="1003" centery="1211" centerz="7" radius="1">
 		<npc name="Bianca" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
@@ -616,6 +634,9 @@
 	<spawn centerx="517" centery="1252" centerz="7" radius="2">
 		<monster name="Grim Reaper" x="-1" y="-2" z="7" spawntime="60" direction="3" />
 		<monster name="Hydra" x="-1" y="1" z="7" spawntime="60" direction="3" />
+	</spawn>
+	<spawn centerx="579" centery="1252" centerz="7" radius="1">
+		<monster name="Laravel" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="517" centery="1257" centerz="7" radius="2">
 		<monster name="Medusa" x="-1" y="-1" z="7" spawntime="60" direction="3" />

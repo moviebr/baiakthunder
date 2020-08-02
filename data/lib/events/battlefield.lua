@@ -108,7 +108,7 @@ function BATTLEFIELD:removePlayer(playerId)
 	local player = Player(playerId)
 	for a, b in pairs(BATTLEFIELD.players) do
 		if b == player:getId() then
-			b == nil
+			b = nil
 		end
 	end
 end
@@ -174,7 +174,9 @@ function BATTLEFIELD:checkStatus()
 	end
 
 	if gameStatus ~= 0 then
-		addEvent(BATTLEFIELD:checkStatus, 5000)
+		addEvent(function()
+			BATTLEFIELD:checkStatus()
+		end, 5000)
 	end
 end
 
@@ -191,7 +193,9 @@ function BATTLEFIELD:startEvent()
 			end
 		end
 	end
-	addEvent(BATTLEFIELD:checkStatus, 30000)
+	addEvent(function()
+		BATTLEFIELD:checkStatus()
+	end, 30000)
 end
 
 function BATTLEFIELD:finishEvent()

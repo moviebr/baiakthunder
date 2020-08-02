@@ -1,6 +1,6 @@
 BossRoom = {
 	monstros = { -- Nome do boss, tempo em minutos para matar o boss, quantos items para entrar na sala
-		[30000] = {bossName = "Merlin", bossId = 0, killTime = 15, countItem = 10, center = Position(187, 751, 7), x = 6, y = 6,},
+		[30000] = {bossName = "Laravel", bossId = 0, killTime = 15, countItem = 10, center = Position(187, 751, 7), x = 6, y = 6,},
 		[30001] = {bossName = "Merlin", bossId = 0, killTime = 15, countItem = 10, center = Position(786, 934, 7), x = 5, y = 5,},
 		[30002] = {bossName = "Merlin", bossId = 0, killTime = 15, countItem = 10, center = Position(786, 934, 7), x = 5, y = 5,},
 		[30003] = {bossName = "Merlin", bossId = 0, killTime = 15, countItem = 10, center = Position(786, 934, 7), x = 5, y = 5,},

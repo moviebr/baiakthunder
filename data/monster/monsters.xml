@@ -6,6 +6,7 @@
 
 	<!-- Custom -->
 	<monster name="Guarda do Castelo" file="Custom/Castle.xml"/>
+	<monster name="Laravel" file="Custom/Laravel.xml"/>
 
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml"/>
