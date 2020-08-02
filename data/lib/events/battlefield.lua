@@ -41,8 +41,10 @@ BATTLEFIELD = {
 		["Friday"] = {"15:00"},
 		["Saturday"] = {"15:00"},
 	},
-	players["red"] = {},
-	players["blue"] = {},
+	players = {
+		["red"] = {},
+		["blue"] = {},		
+	},
 	blueTeamOutfit = {lookType = 134, lookHead = 88, lookBody = 88, lookLegs = 88, lookFeet = 88},
 	redTeamOutfit = {lookType = 143, lookHead = 94, lookBody = 94, lookLegs = 94, lookFeet = 94},
 	idWalls = 3516,
