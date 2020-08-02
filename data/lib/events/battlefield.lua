@@ -46,7 +46,8 @@ BATTLEFIELD = {
 	redTeamOutfit = {lookType = 143, lookHead = 94, lookBody = 94, lookLegs = 94, lookFeet = 94},
 	idWalls = 3516,
 	actionID = 6489,
-	storageEventStatus = 34873, -- 0 não iniciou, 1 iniciou, 2 iniciou com ganhador azul, 3 iniciou com ganhador red, 4 iniciou sem ganhador
+	storageEventStatus = 34873, 
+	-- 0 não iniciou, 1 iniciou, 2 iniciou com ganhador azul, 3 iniciou com ganhador red, 4 iniciou sem ganhador
 }
 
 function BATTLEFIELD:totalPlayers()
@@ -122,7 +123,7 @@ function BATTLEFIELD:checkTeleport()
 			if BATTLEFIELD:totalPlayers() >= BATTLEFIELD.minPlayers then
 				Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageStart):format(totalPlayers), MESSAGE_STATUS_WARNING)
 				for _, pid in pairs(BATTLEFIELD.players) do
-					local player = Player(pid.playerId)
+					local player = Player(pid)
 					player:sendTextMessage(MESSAGE_INFO_DESCR, BATTLEFIELD.messages.prefix .. "Em ".. BATTLEFIELD.timeRemoveWalls .." segundos os muros de madeira serão removidos!")
 				end
 				Game.setStorageValue(BATTLEFIELD.storageEventStatus, 1)
