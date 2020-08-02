@@ -75,7 +75,7 @@ function BATTLEFIELD:bluePlayers()
 	return x
 end
 
-function BATTLEFIELD:redPlayer()
+function BATTLEFIELD:redPlayers()
 	local y = 0
 	for b, c in pairs(BATTLEFIELD.players) do
 		if b == "red" then

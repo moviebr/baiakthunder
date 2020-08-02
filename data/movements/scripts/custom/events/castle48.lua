@@ -19,11 +19,11 @@ function onStepIn(creature, item, position, fromPosition)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 			return true
 		else
-			Castle48H:enter(player)
+			Castle48H:enter(player:getId())
 			return true
 		end
 	elseif item.actionid == Castle48H.actionIDExit then
-		Castle48H:exit(player)
+		Castle48H:exit(player:getId())
 		return true
 	end
 
