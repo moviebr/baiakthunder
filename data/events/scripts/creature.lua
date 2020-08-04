@@ -50,13 +50,6 @@ function Creature:onTargetCombat(target)
         return RETURNVALUE_NOTPOSSIBLE   
     end
 
-    -- Battlefield
-    if Game.getStorageValue(BATTLEFIELD.storageEventStatus) == 1 then
-    	if self:getStorageValue(BATTLEFIELD.storageTeam) == target:getStorageValue(BATTLEFIELD.storageTeam) then
-    		return RETURNVALUE_NOTPOSSIBLE
-    	end
-    end
-
     if self:isPlayer() then
         if target and target:getName() == staminaBonus.target then
             local name = self:getName()
@@ -66,7 +59,7 @@ function Creature:onTargetCombat(target)
 		end
 	end
 	
-    if(self:getPlayer() and self:getPlayer():getIp() == 0) then
+    if (self:getPlayer() and self:getPlayer():getIp() == 0) then
         self:setTarget(nil)
     end
 	

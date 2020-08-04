@@ -610,50 +610,29 @@
 		<monster name="Swamp Troll" x="-11" y="4" z="7" spawntime="60" />
 		<monster name="Swamp Troll" x="-9" y="9" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="506" centery="1246" centerz="7" radius="2">
-		<monster name="Wyrm" x="1" y="1" z="7" spawntime="60" direction="1" />
-	</spawn>
-	<spawn centerx="517" centery="1246" centerz="7" radius="2">
-		<monster name="Dragon Lord" x="-1" y="-2" z="7" spawntime="60" direction="3" />
-		<monster name="Ancient Scarab" x="-1" y="1" z="7" spawntime="60" direction="3" />
-	</spawn>
+	<spawn centerx="506" centery="1246" centerz="7" radius="2" />
+	<spawn centerx="517" centery="1246" centerz="7" radius="2" />
 	<spawn centerx="969" centery="1249" centerz="7" radius="9">
 		<monster name="Snake" x="-7" y="-8" z="7" spawntime="60" />
 		<monster name="Snake" x="-7" y="6" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="506" centery="1251" centerz="7" radius="2">
-		<monster name="Crystal Spider" x="1" y="-1" z="7" spawntime="60" direction="1" />
-		<monster name="Frost Dragon" x="1" y="2" z="7" spawntime="60" direction="1" />
-	</spawn>
+	<spawn centerx="506" centery="1251" centerz="7" radius="2" />
 	<spawn centerx="991" centery="1251" centerz="7" radius="12">
 		<monster name="Snake" x="1" y="-7" z="7" spawntime="60" />
 		<monster name="Snake" x="-11" y="-2" z="7" spawntime="60" />
 		<monster name="Snake" x="9" y="1" z="7" spawntime="60" />
 		<monster name="Snake" x="4" y="10" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="517" centery="1252" centerz="7" radius="2">
-		<monster name="Grim Reaper" x="-1" y="-2" z="7" spawntime="60" direction="3" />
-		<monster name="Hydra" x="-1" y="1" z="7" spawntime="60" direction="3" />
-	</spawn>
+	<spawn centerx="517" centery="1252" centerz="7" radius="2" />
 	<spawn centerx="579" centery="1252" centerz="7" radius="1">
 		<monster name="Laravel" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="517" centery="1257" centerz="7" radius="2">
 		<monster name="Medusa" x="-1" y="-1" z="7" spawntime="60" direction="3" />
-		<monster name="Demon" x="-1" y="2" z="7" spawntime="60" direction="3" />
 	</spawn>
-	<spawn centerx="506" centery="1258" centerz="7" radius="2">
-		<monster name="Hydra" x="1" y="-2" z="7" spawntime="60" direction="1" />
-		<monster name="Dragon Lord" x="1" y="1" z="7" spawntime="60" direction="1" />
-	</spawn>
-	<spawn centerx="506" centery="1264" centerz="7" radius="2">
-		<monster name="Demon" x="1" y="-2" z="7" spawntime="60" direction="1" />
-		<monster name="Grim Reaper" x="1" y="1" z="7" spawntime="60" direction="1" />
-	</spawn>
-	<spawn centerx="517" centery="1264" centerz="7" radius="2">
-		<monster name="Demon" x="-1" y="-2" z="7" spawntime="60" direction="3" />
-		<monster name="Demon" x="-1" y="1" z="7" spawntime="60" direction="3" />
-	</spawn>
+	<spawn centerx="506" centery="1258" centerz="7" radius="2" />
+	<spawn centerx="506" centery="1264" centerz="7" radius="2" />
+	<spawn centerx="517" centery="1264" centerz="7" radius="2" />
 	<spawn centerx="927" centery="1266" centerz="7" radius="1">
 		<monster name="Poison spider" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
@@ -1693,8 +1672,17 @@
 		<monster name="Carrion Worm" x="-18" y="29" z="8" spawntime="60" />
 		<monster name="Carrion Worm" x="-28" y="30" z="8" spawntime="60" />
 	</spawn>
+	<spawn centerx="1034" centery="1219" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="922" centery="1224" centerz="8" radius="1">
 		<npc name="Vanessa" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1028" centery="1224" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1032" centery="1226" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="935" centery="1230" centerz="8" radius="11">
 		<monster name="Carrion Worm" x="3" y="-10" z="8" spawntime="60" />
@@ -1708,6 +1696,15 @@
 	</spawn>
 	<spawn centerx="955" centery="1232" centerz="8" radius="11">
 		<monster name="Rotworm Queen" x="-7" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1038" centery="1236" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1033" centery="1241" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1039" centery="1246" centerz="8" radius="1">
+		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="947" centery="1250" centerz="8" radius="13">
 		<monster name="Carrion Worm" x="-3" y="-2" z="8" spawntime="60" />

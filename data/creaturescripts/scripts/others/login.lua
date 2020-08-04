@@ -30,9 +30,6 @@ function onLogin(player)
 		player:teleportTo(player:getTown():getTemplePosition())
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
-
-		-- Battlefield
-		player:setStorageValue(BATTLEFIELD.storageTeam, 0)
 	end
 
 	-- Dodge/Critical System
