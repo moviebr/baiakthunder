@@ -4,7 +4,7 @@ BATTLEFIELD = {
 	timeOpenPortal = 5, -- Em minutos
 	timeEventTotal = 30, -- Em minutos
 	timeRemoveWalls = 30, -- Em segundos
-	minPlayers = 2,
+	minPlayers = 5,
 	maxPlayers = 50,
 	level = {
 		active = true,
@@ -32,7 +32,7 @@ BATTLEFIELD = {
 	},
 	days = {
 		["Sunday"] = {"15:00"},
-		["Monday"] = {"21:06"},
+		["Monday"] = {"15:00"},
 		["Tuesday"] = {"15:00"},
 		["Wednesday"] = {"15:00"},
 		["Thursday"] = {"15:00"},

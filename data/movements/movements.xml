@@ -29,6 +29,7 @@
 
 	<!-- Trainers -->
 	<movevent event="StepIn" actionid="1957" script="custom/trainers.lua" />
+	<movevent event="StepIn" actionid="1959" script="custom/trainersPremium.lua" />
 	<movevent event="StepIn" actionid="1958" script="custom/trainersExit.lua" />
 
 
