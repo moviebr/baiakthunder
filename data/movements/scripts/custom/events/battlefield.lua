@@ -30,7 +30,7 @@ function onStepIn(creature, item, position, fromPosition)
 		end
 	end
 
-	--[[
+
 	for a in pairs(BATTLEFIELD["red"].players) do
 		local target = Player(a)
 		if target and player:getIp() == target:getIp() then
@@ -39,8 +39,18 @@ function onStepIn(creature, item, position, fromPosition)
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 			return true
 		end
+	end
+	
+	for b in pairs(BATTLEFIELD["blue"].players) do
+		local target = Player(b)
+		if target and player:getIp() == target:getIp() then
+			player:sendCancelMessage(BATTLEFIELD.messages.prefix .. "Você já possui um outro player dentro do evento.")
+			player:teleportTo(fromPosition, true)
+			player:getPosition():sendMagicEffect(CONST_ME_POFF)
+			return true
+		end
     end
---]]
+
 	if BATTLEFIELD:totalPlayers() >= BATTLEFIELD.maxPlayers then
 		player:sendCancelMessage(BATTLEFIELD.messages.prefix .."O evento já atingiu o máximo de participantes.")
 		player:teleportTo(fromPosition, true)

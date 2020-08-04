@@ -31,8 +31,8 @@ BATTLEFIELD = {
 		[4] = Position(1546, 1098, 6),
 	},
 	days = {
-		["Sunday"] = {"20:08"},
-		["Monday"] = {"20:53"},
+		["Sunday"] = {"15:00"},
+		["Monday"] = {"21:06"},
 		["Tuesday"] = {"15:00"},
 		["Wednesday"] = {"15:00"},
 		["Thursday"] = {"15:00"},
