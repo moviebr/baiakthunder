@@ -52,8 +52,8 @@ function Castle48H:close()
 	addEvent(Game.broadcastMessage, 3 * 60 * 1000, Castle48H.msg.prefix .. Castle48H.msg.endingEvent:format(3, "s"))
 	addEvent(Game.broadcastMessage, 4 * 60 * 1000, Castle48H.msg.prefix .. Castle48H.msg.endingEvent:format(1, ""))
 	addEvent(function()
-		for a, b in ipairs(Castle48H.players) do
-			local player = Player(b)
+		for a in ipairs(Castle48H.players) do
+			local player = Player(a)
 			player:teleportTo(player:getTown():getTemplePosition())
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			Castle48H.players[a] = nil
@@ -110,23 +110,13 @@ function Castle48H:useLever(playerId)
 end
 
 function Castle48H:enter(playerId)
-	local player = Player(playerId)
-	if not player then
-		return false
-	end
-
-	table.insert(Castle48H.players, player:getId())
+	Castle48H.players[playerId] = {}
 end
 
 function Castle48H:exit(playerId)
-	local player = Player(playerId)
-	if not player then
-		return false
-	end
-
-	for a, b in ipairs(Castle48H.players) do
-		if b == player:getId() then
-			table.remove(Castle48H.players, player:getId())
+	for a in pairs(Castle48H.players) do
+		if a == playerId then
+			Castle48H.players[a] = nil
 		end
 	end
 end

@@ -33,8 +33,9 @@ function onStepIn(creature, item, position, fromPosition)
         end
     end
 
-    for _, check in ipairs(Game.getPlayers()) do
-        if player:getIp() == check:getIp() and check:getStorageValue(STORAGEVALUE_EVENTS) > 0 then
+    for a in pairs(SAFEZONE.players) do
+        target = Player(a)
+        if player:getIp() == target:getIp() then
             player:sendCancelMessage(SAFEZONE.messages.prefix .. "Você já possui um outro player dentro do evento.")
             player:teleportTo(fromPosition, true)
             player:getPosition():sendMagicEffect(CONST_ME_POFF)
@@ -58,6 +59,7 @@ function onStepIn(creature, item, position, fromPosition)
     player:setStorageValue(STORAGEVALUE_EVENTS, 1)
     player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
     player:setStorageValue(SAFEZONE.storage, 3)
+    SAFEZONE:insertPlayer(player:getId())
 
     return true
 end

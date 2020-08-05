@@ -10,6 +10,7 @@ SAFEZONE = {
 	minPlayers = 5,
 	maxPlayers = 50,
 	reward = {9020, 5},
+	players = {},
 	days = {
 		["Sunday"] = {"20:00"},
 		["Monday"] = {"20:00"},
@@ -73,22 +74,31 @@ function safezoneTeleportCheck()
 end
 
 function safezoneRemovePlayers()
-	for _, player in ipairs(Game.getPlayers()) do
-		if player:getStorageValue(SAFEZONE.storage) > 0 then
-			player:setStorageValue(SAFEZONE.storage, 0)
-			player:setStorageValue(STORAGEVALUE_EVENTS, 0)
-			player:teleportTo(player:getTown():getTemplePosition())
-			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+	for a in pairs(SAFEZONE.players) do
+		local player = Player(a)
+		player:setStorageValue(SAFEZONE.storage, 0)
+		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
+		player:teleportTo(player:getTown():getTemplePosition())
+		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+	end
+end
+
+function SAFEZONE:insertPlayer(playerId)
+	SAFEZONE.players[playerId] = {}
+end
+
+function SAFEZONE:removePlayer(playerId)
+	for a in pairs(SAFEZONE.players) do
+		if a == playerId then
+			SAFEZONE.players[a] = nil
 		end
 	end
 end
 
 function safezoneTotalPlayers()
 	local x = 0
-	for _, player in ipairs(Game.getPlayers()) do
-		if player:getStorageValue(SAFEZONE.storage) > 0 then
-			x = x + 1
-		end
+	for a in pairs(SAFEZONE.players) do
+		x = x + 1
 	end
 	return x
 end
@@ -105,9 +115,11 @@ end
 function createProtectionTiles()
 	local totalPlayers = safezoneTotalPlayers()
 	if safezoneTotalPlayers() == 1 then
-		for _, player in ipairs(Game.getPlayers()) do
+		for a in pairs(SAFEZONE.players) do
+			local player = Player(a)
 			if player:getStorageValue(SAFEZONE.storage) > 0 then
 				player:setStorageValue(SAFEZONE.storage, 0)
+				SAFEZONE.players[a] = nil
 				player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 				player:teleportTo(player:getTown():getTemplePosition())
 				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
@@ -169,7 +181,8 @@ end
 
 function checkPlayersinProtectionTiles()
 	local protectionTileId = SAFEZONE.protectionTileId
-	for _, player in ipairs(Game.getPlayers()) do
+	for a in pairs(SAFEZONE.players) do
+		local player = Player(a)
 		if player:getStorageValue(SAFEZONE.storage) > 0 then
 			local tile = Tile(player:getPosition())
 			if tile then
@@ -185,6 +198,7 @@ function checkPlayersinProtectionTiles()
 						player:setStorageValue(SAFEZONE.storage, 0)
 						player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 						player:getPosition():sendMagicEffect(CONST_ME_FIREAREA)
+						SAFEZONE.players[player:getId()] = nil
 
 						local outfit = player:getSex() == 0 and 136 or 128
 						if lifes == 1 then

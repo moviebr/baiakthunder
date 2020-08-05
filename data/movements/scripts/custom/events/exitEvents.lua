@@ -8,6 +8,7 @@ function onStepIn(creature, item, position, fromPosition)
 
 	-- SafeZone
 	player:setStorageValue(SAFEZONE.storage, 0)
+	SAFEZONE:removePlayer(player:getId())
 	
 	-- SnowBall
 	for pos, players in ipairs(CACHE_GAMEPLAYERS) do
