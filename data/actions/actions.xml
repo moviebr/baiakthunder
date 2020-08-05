@@ -10,6 +10,7 @@
 	<action fromaid="1515" toaid="1522" script="custom/potionLevers.lua" />
 	<action fromaid="1523" toaid="1528" script="custom/runeLevers.lua" />
 	<action uniqueid="48123" script="custom/slotMachine.lua" />
+	<action actionid="55787" script="custom/foodLever.lua"/>
 
 	<action actionid="19876" script="custom/bomberman.lua"/>
 
@@ -19,6 +20,11 @@
 	<action fromaid="62101" toaid="62499" script="custom/events/hunger.lua"/>
 	<action actionid="10103" script="custom/events/snowball.lua"/>
 	<action uniqueid="7123" script="custom/events/castle48.lua"/>
+
+	<!-- Canivete -->
+	<action itemid="10511" script="tools/toolgear.lua" />
+	<action itemid="10513" script="tools/toolgear.lua" />
+	<action itemid="10515" script="tools/toolgear.lua" />
 
 	<!-- Enchanting
 	<action fromid="2146" toid="2147" script="other/enchanting.lua" />

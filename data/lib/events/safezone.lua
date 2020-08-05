@@ -38,26 +38,26 @@ SAFEZONE = {
 	positionEvent = {firstTile = {x = 1538, y = 951, z = 7}, tilesX = 15, tilesY = 11}
 }
 
-function safezoneTeleportCheck()
+function SAFEZONE:teleportCheck()
 	local tile = Tile(SAFEZONE.positionTeleportOpen)
 	if tile then
 		local item = tile:getItemById(1387)
 		if item then
 			item:remove()
 
-			local totalPlayers = safezoneTotalPlayers()
+			local totalPlayers = SAFEZONE:totalPlayers()
 			if totalPlayers >= SAFEZONE.minPlayers then
 				Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageStart:format(totalPlayers), MESSAGE_STATUS_WARNING)
-				createProtectionTiles()
+				SAFEZONE:createProtectionTiles()
 				addEvent(function()
 					if totalPlayers > 0 then
 						Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageTime, MESSAGE_STATUS_WARNING)
-						safezoneRemovePlayers()
+						SAFEZONE:removePlayers()
 					end
 				end, SAFEZONE.eventTimeTotal * 60 * 1000)
 			else
 				Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageNoStart, MESSAGE_STATUS_WARNING)
-				safezoneRemovePlayers()
+				SAFEZONE:removePlayers()
 			end
 		else
 			Game.broadcastMessage(SAFEZONE.messages.prefix .. SAFEZONE.messages.messageOpen:format(SAFEZONE.teleportTimeClose), MESSAGE_STATUS_WARNING)
@@ -68,12 +68,14 @@ function safezoneTeleportCheck()
 			if teleport then
 				teleport:setActionId(SAFEZONE.actionId)
 			end
-			addEvent(safezoneTeleportCheck, SAFEZONE.teleportTimeClose * 60000)
+			addEvent(function()
+				SAFEZONE:teleportCheck()
+			end, SAFEZONE.teleportTimeClose * 60000)
 		end
 	end
 end
 
-function safezoneRemovePlayers()
+function SAFEZONE:removePlayers()
 	for a in pairs(SAFEZONE.players) do
 		local player = Player(a)
 		player:setStorageValue(SAFEZONE.storage, 0)
@@ -95,7 +97,7 @@ function SAFEZONE:removePlayer(playerId)
 	end
 end
 
-function safezoneTotalPlayers()
+function SAFEZONE:totalPlayers()
 	local x = 0
 	for a in pairs(SAFEZONE.players) do
 		x = x + 1
@@ -103,8 +105,8 @@ function safezoneTotalPlayers()
 	return x
 end
 
-local function totalProtectionTile()
-	local totalPlayers = safezoneTotalPlayers()
+function SAFEZONE:totalProtectionTile()
+	local totalPlayers = SAFEZONE:totalPlayers()
 	if totalPlayers >= 10 then
 		return totalPlayers - 3
 	else
@@ -112,9 +114,9 @@ local function totalProtectionTile()
 	end
 end
 
-function createProtectionTiles()
-	local totalPlayers = safezoneTotalPlayers()
-	if safezoneTotalPlayers() == 1 then
+function SAFEZONE:createProtectionTiles()
+	local totalPlayers = SAFEZONE:totalPlayers()
+	if SAFEZONE:totalPlayers() == 1 then
 		for a in pairs(SAFEZONE.players) do
 			local player = Player(a)
 			if player:getStorageValue(SAFEZONE.storage) > 0 then
@@ -134,7 +136,7 @@ function createProtectionTiles()
 		end
 
 	elseif totalPlayers >= SAFEZONE.minPlayers then
-		local createTiles, totalTiles = 0, totalProtectionTile()
+		local createTiles, totalTiles = 0, SAFEZONE:totalProtectionTile()
 		local tileX = SAFEZONE.positionEvent.firstTile.x
 		local tileY = SAFEZONE.positionEvent.firstTile.y
 		local tileZ = SAFEZONE.positionEvent.firstTile.z
@@ -156,19 +158,27 @@ function createProtectionTiles()
 					local tileProtection = Game.createItem(randomTile, 1, newPosition)
 					if tileProtection then
 						tileProtection:getPosition():sendMagicEffect(CONST_ME_ENERGYHIT)
-						addEvent(deleteProtectionTiles, 5000, newPosition, randomTile)
+						addEvent(function()
+							SAFEZONE:deleteProtectionTiles(newPosition, randomTile)
+						end, 5000)
 						createTiles = createTiles + 1
 					end
 				end
 			end
 		end
-		addEvent(safezoneEffectArea, 5000, SAFEZONE.positionEvent.firstTile, SAFEZONE.positionEvent.tilesX, SAFEZONE.positionEvent.tilesY)
-		addEvent(checkPlayersinProtectionTiles, 4000)
-		addEvent(createProtectionTiles, 6000)
+		addEvent(function()
+			SAFEZONE:effectArea(SAFEZONE.positionEvent.firstTile, SAFEZONE.positionEvent.tilesX, SAFEZONE.positionEvent.tilesY)
+		end, 5000)
+		addEvent(function()
+			SAFEZONE:checkPlayersinProtectionTiles()
+		end, 4000)
+		addEvent(function()
+			SAFEZONE:createProtectionTiles()
+		end, 6000)
 	end
 end
 
-function deleteProtectionTiles(position, tileId)
+function SAFEZONE:deleteProtectionTiles(position, tileId)
 	local tile = Tile(position)
 	if tile then
 		local item = tile:getItemById(tileId)
@@ -179,7 +189,7 @@ function deleteProtectionTiles(position, tileId)
 	end
 end
 
-function checkPlayersinProtectionTiles()
+function SAFEZONE:checkPlayersinProtectionTiles()
 	local protectionTileId = SAFEZONE.protectionTileId
 	for a in pairs(SAFEZONE.players) do
 		local player = Player(a)
@@ -223,7 +233,7 @@ function checkPlayersinProtectionTiles()
 	end
 end
 
-function safezoneEffectArea(firstTile, tilesX, tilesY)
+function SAFEZONE:effectArea(firstTile, tilesX, tilesY)
 	local fromPosition = firstTile
 	local toPositionX = fromPosition.x + tilesX
 	local toPositionY = fromPosition.y + tilesY
