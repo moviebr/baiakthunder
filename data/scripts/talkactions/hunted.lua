@@ -49,7 +49,7 @@ function hunted.onSay(player, words, param)
         return false
     end
 
-    if not target then
+    if comando == "add" and not target then
         player:sendCancelMessage("[Hunted System] Esse jogador precisa estar online ou ele não existe.")
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
@@ -72,13 +72,13 @@ function hunted.onSay(player, words, param)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
     end
-
+--[[
     if comando == "cancel" and not target then
         player:sendCancelMessage("[Hunted System] Esse jogador precisa estar online ou ele não existe.")
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
     end
-
+--]]
     if comando == "cancel" and config or qnt then
         player:sendCancelMessage("[Hunted System] Excesso de parâmetros.")
         player:getPosition():sendMagicEffect(CONST_ME_POFF)

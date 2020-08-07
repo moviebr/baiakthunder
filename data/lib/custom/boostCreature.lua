@@ -22,5 +22,5 @@ function BoostedCreature:start()
 end
 
 function BoostedCreature:mensagem()
-	Game.broadcastMessage(BoostedCreature.msg.showBoost:format(firstToUpper(boostCreature[1].name), boostCreature[1].loot, boostCreature[1].exp))
+	Game.broadcastMessage(BoostedCreature.msg.showBoost:format(boostCreature[1].name, tonumber(boostCreature[1].loot), tonumber(boostCreature[1].exp)))
 end

@@ -610,29 +610,49 @@
 		<monster name="Swamp Troll" x="-11" y="4" z="7" spawntime="60" />
 		<monster name="Swamp Troll" x="-9" y="9" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="506" centery="1246" centerz="7" radius="2" />
-	<spawn centerx="517" centery="1246" centerz="7" radius="2" />
+	<spawn centerx="506" centery="1246" centerz="7" radius="2">
+		<monster name="Warlock" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="517" centery="1246" centerz="7" radius="2">
+		<monster name="War Golem" x="-1" y="1" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="969" centery="1249" centerz="7" radius="9">
 		<monster name="Snake" x="-7" y="-8" z="7" spawntime="60" />
 		<monster name="Snake" x="-7" y="6" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="506" centery="1251" centerz="7" radius="2" />
+	<spawn centerx="506" centery="1251" centerz="7" radius="2">
+		<monster name="Warlock" x="1" y="-1" z="7" spawntime="60" />
+		<monster name="Warlock" x="1" y="2" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="991" centery="1251" centerz="7" radius="12">
 		<monster name="Snake" x="1" y="-7" z="7" spawntime="60" />
 		<monster name="Snake" x="-11" y="-2" z="7" spawntime="60" />
 		<monster name="Snake" x="9" y="1" z="7" spawntime="60" />
 		<monster name="Snake" x="4" y="10" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="517" centery="1252" centerz="7" radius="2" />
+	<spawn centerx="517" centery="1252" centerz="7" radius="2">
+		<monster name="Water Elemental" x="-1" y="-2" z="7" spawntime="60" />
+		<monster name="Werewolf" x="-1" y="1" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="579" centery="1252" centerz="7" radius="1">
 		<monster name="Laravel" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="517" centery="1257" centerz="7" radius="2">
-		<monster name="Medusa" x="-1" y="-1" z="7" spawntime="60" direction="3" />
+		<monster name="Serpent Spawn" x="-1" y="-1" z="7" spawntime="60" />
+		<monster name="Dragon Lord" x="-1" y="2" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="506" centery="1258" centerz="7" radius="2" />
-	<spawn centerx="506" centery="1264" centerz="7" radius="2" />
-	<spawn centerx="517" centery="1264" centerz="7" radius="2" />
+	<spawn centerx="506" centery="1258" centerz="7" radius="2">
+		<monster name="Dragon Lord" x="1" y="-2" z="7" spawntime="60" />
+		<monster name="Dragon" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="506" centery="1264" centerz="7" radius="2">
+		<monster name="Carniphila" x="1" y="-2" z="7" spawntime="60" />
+		<monster name="Cyclops" x="1" y="1" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="517" centery="1264" centerz="7" radius="2">
+		<monster name="Dragon" x="-1" y="-2" z="7" spawntime="60" />
+		<monster name="Blue Djinn" x="-1" y="1" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="927" centery="1266" centerz="7" radius="1">
 		<monster name="Poison spider" x="0" y="0" z="7" spawntime="60" />
 	</spawn>

@@ -90,11 +90,7 @@ function SAFEZONE:insertPlayer(playerId)
 end
 
 function SAFEZONE:removePlayer(playerId)
-	for a in pairs(SAFEZONE.players) do
-		if a == playerId then
-			SAFEZONE.players[a] = nil
-		end
-	end
+	SAFEZONE.players[playerId] = nil
 end
 
 function SAFEZONE:totalPlayers()
