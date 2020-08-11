@@ -46,26 +46,26 @@ function onThink(interval, lastExecution)
 		local realTime = hourToNumber(os.date("%H:%M:%S"))
 		if eventTime >= realTime then
 	    	if #spectators > 0 then
-        			local tile = Tile(position)
-        			if tile then
-        				local item = tile:getItemById(1387)
-        				if item then
-                  if item:getActionId() == Bosses.actionIdTp then
-                    spectators[1]:say("[BOSS] ".. Bosses:getBossName() .."!", TALKTYPE_MONSTER_SAY, false, spectators[1], position)
-                    position:sendMagicEffect(56)
+        		local tile = Tile(position)
+        		if tile then
+        			local item = tile:getItemById(1387)
+        			if item then
+                		if item:getActionId() == Bosses.actionIdTp then
+                    		spectators[1]:say("[BOSS] ".. Bosses:getBossName() .."!", TALKTYPE_MONSTER_SAY, false, spectators[1], position)
+                    		position:sendMagicEffect(56)
           					position:sendMagicEffect(57)
-                  else
+                		else
           					spectators[1]:say("Participe agora\ndo evento!", TALKTYPE_MONSTER_SAY, false, spectators[1], position)
           					position:sendMagicEffect(56)
           					position:sendMagicEffect(57)
-                  end
-                  return true
-        				else
-        					spectators[1]:say("Próximo evento:\n"..b.name.." às "..b.time..".", TALKTYPE_MONSTER_SAY, false, spectators[1], position)
-        					position:sendMagicEffect(40)
-        					return true
-        				end
-              end
+                		end
+                  		return true
+        			else
+        				spectators[1]:say("Próximo evento:\n"..b.name.." às "..b.time..".", TALKTYPE_MONSTER_SAY, false, spectators[1], position)
+        				position:sendMagicEffect(40)
+        				return true
+        			end
+            	end
         	end
 	    end
  	end

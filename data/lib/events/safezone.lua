@@ -82,6 +82,7 @@ function SAFEZONE:removePlayers()
 		player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 		player:teleportTo(player:getTown():getTemplePosition())
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		SAFEZONE.players[player:getId()] = nil
 	end
 end
 

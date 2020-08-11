@@ -1,7 +1,3 @@
-local function clean()
-	cleanMap()
-end
-
 function Player.warnClean(self, x)
     if x <= 0 then
 		return
@@ -31,7 +27,7 @@ function onThink(interval)
 			player:warnClean(30)
 		end
 	end, 270000)
-	addEvent(clean, 5 * 60 * 1000)
+	addEvent(cleanMap, 5 * 60 * 1000)
 	addEvent(Game.broadcastMessage, 5 * 60 * 1000, 'O servidor foi limpo, bom jogo. Próxima limpeza em 3 horas.', MESSAGE_STATUS_WARNING)
 	return true
 end

@@ -3,7 +3,7 @@
 # script pra rodar novamente o server automático em caso de crash
 echo "Iniciando o programa"
 
-cd /home/baiakthunder
+cd ../home/baiakthunder
 mkdir -p logs
 
 #configs necessárias para o Anti-rollback
@@ -19,7 +19,7 @@ do
 		echo "Exit code 0, aguardando 3 minutos..."	 #pra ser usado no backup do banco de dados
 		sleep 180	#3 minutos						
 	else											
-		echo "Crash!! Reiniciando o servidor em 5 segundos (O arquivo de log está guardado na pasta logs)"
+		echo "Crash!! Reiniciando o servidor em 5 segundos (O arquivo de log est� guardado na pasta logs)"
 		echo "Se quiser encerrar o servidor, pressione CTRL + C..."		
 		sleep 5										
 	fi												

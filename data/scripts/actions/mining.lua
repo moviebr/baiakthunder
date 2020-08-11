@@ -27,7 +27,12 @@ local configMining = {
 		{itemid = 2158, chancePickNormal = 2, chancePickEspecial = 5},
 		{itemid = 2153, chancePickNormal = 2, chancePickEspecial = 5},
 	},
-	hit = {danoMin = 300, danoMax = 500, chance = 4},
+	hit = {
+		active = true,
+		danoMin = 300, 
+		danoMax = 500, 
+		chance = 4
+	},
 	idPick = 2553,
 	idPickEspecial = 11421,
 	actionIdPedras = 34561,
@@ -44,7 +49,7 @@ function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end
 
 	if item.itemid == configMining.idPick or item.itemid == configMining.idPickEspecial then
-		if configMining.hit.chance >= math.random(1,100) then
+		if configMining.hit.active and configMining.hit.chance >= math.random(1,100) then
 			player:getPosition():sendMagicEffect(CONST_ME_STONES)
 			player:getPosition():sendMagicEffect(1)
 			player:addHealth(- randHit)

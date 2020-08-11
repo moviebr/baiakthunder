@@ -6,9 +6,6 @@ BoostedCreature = {
 	exp = {20, 45},
 	loot = {20, 45},
 	position = Position(981, 1204, 8),
-	msg = {
-		showBoost = "[Boosted Creature] A criatura %s foi a escolhida, adicionado +%d% de loot e +%d% de experiência.",
-	}
 }
 
 function BoostedCreature:start()
@@ -22,5 +19,5 @@ function BoostedCreature:start()
 end
 
 function BoostedCreature:mensagem()
-	Game.broadcastMessage(BoostedCreature.msg.showBoost:format(boostCreature[1].name, tonumber(boostCreature[1].loot), tonumber(boostCreature[1].exp)))
+	Game.broadcastMessage("[Boosted Creature] A criatura ".. boostCreature[1].name .." foi a escolhida, adicionado +".. tonumber(boostCreature[1].loot) .."% de loot e +".. tonumber(boostCreature[1].exp) .."% de experiência.")
 end
