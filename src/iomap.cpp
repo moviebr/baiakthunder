@@ -150,7 +150,7 @@ bool IOMap::loadMap(Map* map, const std::string& fileName)
 		}
 	}
 
-	std::cout << "> Map loading time: " << (OTSYS_TIME() - start) / (1000.) << " seconds." << std::endl;
+	std::cout << "> Tempo de carregamento do mapa: " << (OTSYS_TIME() - start) / (1000.) << " segundos." << std::endl;
 	return true;
 }
 

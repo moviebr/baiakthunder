@@ -167,7 +167,7 @@ void Game::saveGameState(bool crash /*= false*/)
 		setGameState(GAME_STATE_MAINTAIN);
 	}
 
-	std::cout << "Saving server..." << std::endl;
+	std::cout << "Salvando servidor..." << std::endl;
 
 	for (const auto& it : players) {
 		if (crash) {
@@ -1494,19 +1494,31 @@ void Game::addMoney(Cylinder* cylinder, uint64_t money, uint32_t flags /*= 0*/)
 		return;
 	}
 
+	uint64_t goldIngot = money / 1000000;
+	while (money > 0) {
+	const uint32_t count = std::min<uint32_t>(100, goldIngot);
+
+	Item* remaindItem = Item::CreateItem(ITEM_GOLD_INGOT, goldIngot);
+	ReturnValue ret = internalAddItem(cylinder, remaindItem, INDEX_WHEREEVER, flags);
+		if (ret != RETURNVALUE_NOERROR) {
+			internalAddItem(cylinder->getTile(), remaindItem, INDEX_WHEREEVER, FLAG_NOLIMIT);
+		}
+
+		goldIngot -= count;
+	}
+
 	uint32_t crystalCoins = money / 10000;
 	money -= crystalCoins * 10000;
-	while (crystalCoins > 0) {
-		const uint16_t count = std::min<uint32_t>(100, crystalCoins);
+	if (crystalCoins != 0) {
 
-		Item* remaindItem = Item::CreateItem(ITEM_CRYSTAL_COIN, count);
+		Item* remaindItem = Item::CreateItem(ITEM_CRYSTAL_COIN, crystalCoins);
 
 		ReturnValue ret = internalAddItem(cylinder, remaindItem, INDEX_WHEREEVER, flags);
 		if (ret != RETURNVALUE_NOERROR) {
 			internalAddItem(cylinder->getTile(), remaindItem, INDEX_WHEREEVER, FLAG_NOLIMIT);
 		}
 
-		crystalCoins -= count;
+		crystalCoins -= crystalCoins * 10000;
 	}
 
 	uint16_t platinumCoins = money / 100;
@@ -2341,7 +2353,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 
 	Player* tradePartner = getPlayerByID(tradePlayerId);
 	if (!tradePartner || tradePartner == player) {
-		player->sendTextMessage(MESSAGE_INFO_DESCR, "Desculpe, não ê possêvel.");
+		player->sendTextMessage(MESSAGE_INFO_DESCR, "Desculpe, não é possível.");
 		return;
 	}
 
@@ -2396,18 +2408,18 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 		for (const auto& it : tradeItems) {
 			Item* item = it.first;
 			if (tradeItem == item) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jê está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
 				return;
 			}
 
 			if (tradeItemContainer->isHoldingItem(item)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jê está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
 				return;
 			}
 
 			Container* container = item->getContainer();
 			if (container && container->isHoldingItem(tradeItem)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jê está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
 				return;
 			}
 		}
@@ -2415,13 +2427,13 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 		for (const auto& it : tradeItems) {
 			Item* item = it.first;
 			if (tradeItem == item) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jê está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
 				return;
 			}
 
 			Container* container = item->getContainer();
 			if (container && container->isHoldingItem(tradeItem)) {
-				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item jê está sendo negociado.");
+				player->sendTextMessage(MESSAGE_INFO_DESCR, "Este item já está sendo negociado.");
 				return;
 			}
 		}
@@ -2460,7 +2472,7 @@ bool Game::internalStartTrade(Player* player, Player* tradePartner, Item* tradeI
 
 	if (tradePartner->tradeState == TRADE_NONE) {
 		std::ostringstream ss;
-		ss << player->getName() << " quer trocar com você.";
+		ss << player->getName() << " quer fazer uma troca com você.";
 		tradePartner->sendTextMessage(MESSAGE_EVENT_ADVANCE, ss.str());
 		tradePartner->tradeState = TRADE_ACKNOWLEDGE;
 		tradePartner->tradePartner = player;
@@ -2571,7 +2583,7 @@ std::string Game::getTradeErrorDescription(ReturnValue ret, Item* item)
 	if (item) {
 		if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
 			std::ostringstream ss;
-			ss << "Você não tem capacidade suficiente para transportar";
+			ss << "Você não tem espaço suficiente para transportar";
 
 			if (item->isStackable() && item->getItemCount() > 1) {
 				ss << " esses objetos.";
@@ -2583,7 +2595,7 @@ std::string Game::getTradeErrorDescription(ReturnValue ret, Item* item)
 			return ss.str();
 		} else if (ret == RETURNVALUE_NOTENOUGHROOM || ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
 			std::ostringstream ss;
-			ss << "Você não tem espaêo suficiente para carregar";
+			ss << "Você não tem espaço suficiente para carregar";
 
 			if (item->isStackable() && item->getItemCount() > 1) {
 				ss << " esses objetos.";
@@ -3223,7 +3235,7 @@ bool Game::playerYell(Player* player, const std::string& text)
 	uint32_t minimumLevel = g_config.getNumber(ConfigManager::YELL_MINIMUM_LEVEL);
 	if (player->getLevel() < minimumLevel) {
 		std::ostringstream ss;
-		ss << "Você não pode gritar a menos que tenha atingido o nêvel " << minimumLevel;
+		ss << "Você não pode gritar a menos que tenha atingido o nível " << minimumLevel;
 		if (g_config.getBoolean(ConfigManager::YELL_ALLOW_PREMIUM)) {
 			if (player->isPremium()) {
 				internalCreatureSay(player, TALKTYPE_YELL, asUpperCaseString(text), false);
@@ -3249,6 +3261,7 @@ bool Game::playerYell(Player* player, const std::string& text)
 bool Game::playerSpeakTo(Player* player, SpeakClasses type, const std::string& receiver,
                          const std::string& text)
 {
+	const Position& playerPos = player->getPosition();
 	Player* toPlayer = getPlayerByName(receiver);
 	if (!toPlayer) {
 		player->sendTextMessage(MESSAGE_STATUS_SMALL, "O player com esse nome não está online.");
@@ -3257,6 +3270,7 @@ bool Game::playerSpeakTo(Player* player, SpeakClasses type, const std::string& r
 
 	if(player->getLevel() < 150) {
 		player->sendTextMessage(MESSAGE_STATUS_SMALL, "Você precisa ser level 150+ para enviar enviar mensagens privadas.");
+		addMagicEffect(playerPos, CONST_ME_POFF);
 	return false;
 	}
 
@@ -3770,7 +3784,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 				Player* tmpPlayer = spectator->getPlayer();
 				if (tmpPlayer == attackerPlayer && attackerPlayer != targetPlayer) {
 					ss.str({});
-					ss << "Você cura " << target->getNameDescription() << " para " << damageString;
+					ss << "Você curou " << damageString << " no " << target->getNameDescription();
 					message.type = MESSAGE_STATUS_DEFAULT;
 					message.text = ss.str();
 				} else if (tmpPlayer == targetPlayer) {
@@ -3780,9 +3794,8 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 					} else if (targetPlayer == attackerPlayer) {
 						ss << "Você se curou";
 					} else {
-						ss << "Você foi curado por " << attacker->getNameDescription();
+						ss << "Você recebeu uma cura de " << damageString << " por " << attacker->getNameDescription();
 					}
-					ss << " para " << damageString;
 					message.type = MESSAGE_STATUS_DEFAULT;
 					message.text = ss.str();
 				} else {
@@ -3877,7 +3890,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 
 					if (tmpPlayer == attackerPlayer && attackerPlayer != targetPlayer) {
 						ss.str({});
-						ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString + " mana devido ao seu ataque.";
+						ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString + " mana pelo seu ataque.";
 						message.type = MESSAGE_STATUS_DEFAULT;
 						message.text = ss.str();
 					} else if (tmpPlayer == targetPlayer) {
@@ -3886,9 +3899,9 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 						if (!attacker) {
 							ss << '.';
 						} else if (targetPlayer == attackerPlayer) {
-							ss << " devido ao seu próprio ataque.";
+							ss << " pelo seu próprio ataque.";
 						} else {
-							ss << " devido a um ataque de " << attacker->getNameDescription() << '.';
+							ss << " pelo ataque de " << attacker->getNameDescription() << '.';
 						}
 						message.type = MESSAGE_STATUS_DEFAULT;
 						message.text = ss.str();
@@ -3897,11 +3910,11 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 							ss.str({});
 							ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString + " mana";
 							if (attacker) {
-								ss << " devido a ";
+								ss << " pelo ";
 								if (attacker == target) {
 									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
 								} else {
-									ss << "um ataque de " << attacker->getNameDescription();
+									ss << "ataque de " << attacker->getNameDescription();
 								}
 							}
 							ss << '.';
@@ -4000,7 +4013,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 
 				if (tmpPlayer == attackerPlayer && attackerPlayer != targetPlayer) {
 					ss.str({});
-					ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString << " devido ao seu ataque.";
+					ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString << " pelo seu ataque.";
 					message.type = MESSAGE_STATUS_DEFAULT;
 					message.text = ss.str();
 				} else if (tmpPlayer == targetPlayer) {
@@ -4009,9 +4022,9 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 					if (!attacker) {
 						ss << '.';
 					} else if (targetPlayer == attackerPlayer) {
-						ss << " devido ao seu próprio ataque.";
+						ss << " pelo seu próprio ataque.";
 					} else {
-						ss << " devido a um ataque de " << attacker->getNameDescription() << '.';
+						ss << " pelo ataque de " << attacker->getNameDescription() << '.';
 					}
 					message.type = MESSAGE_STATUS_DEFAULT;
 					message.text = ss.str();
@@ -4022,7 +4035,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 						ss.str({});
 						ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString;
 						if (attacker) {
-							ss << " devido a ";
+							ss << " pelo ";
 							if (attacker == target) {
 								if (targetPlayer) {
 									ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
@@ -4030,7 +4043,7 @@ bool Game::combatChangeHealth(Creature* attacker, Creature* target, CombatDamage
 									ss << "seu próprio ataque";
 								}
 							} else {
-								ss << "um ataque de " << attacker->getNameDescription();
+								ss << "ataque de " << attacker->getNameDescription();
 							}
 						}
 						ss << '.';
@@ -4149,7 +4162,7 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 			Player* tmpPlayer = spectator->getPlayer();
 			if (tmpPlayer == attackerPlayer && attackerPlayer != targetPlayer) {
 				ss.str({});
-				ss << ucfirst(target->getNameDescription()) << " perde " << damageString << " mana due to your attack.";
+				ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString << " mana pelo seu ataque.";
 				message.type = MESSAGE_STATUS_DEFAULT;
 				message.text = ss.str();
 			} else if (tmpPlayer == targetPlayer) {
@@ -4158,22 +4171,22 @@ bool Game::combatChangeMana(Creature* attacker, Creature* target, CombatDamage& 
 				if (!attacker) {
 					ss << '.';
 				} else if (targetPlayer == attackerPlayer) {
-					ss << " devido ao seu próprio ataque.";
+					ss << " pelo seu próprio ataque.";
 				} else {
-					ss << " mana devido a um ataque de " << attacker->getNameDescription() << '.';
+					ss << " mana pelo ataque de " << attacker->getNameDescription() << '.';
 				}
 				message.type = MESSAGE_STATUS_DEFAULT;
 				message.text = ss.str();
 			} else {
 				if (spectatorMessage.empty()) {
 					ss.str({});
-					ss << ucfirst(target->getNameDescription()) << " perde " << damageString << " mana";
+					ss << ucfirst(target->getNameDescription()) << " perdeu " << damageString << " mana";
 					if (attacker) {
-						ss << " devido a ";
+						ss << " pelo ";
 						if (attacker == target) {
 							ss << (targetPlayer->getSex() == PLAYERSEX_FEMALE ? "seu próprio ataque" : "seu próprio ataque");
 						} else {
-							ss << "um ataque de " << attacker->getNameDescription();
+							ss << "ataque de " << attacker->getNameDescription();
 						}
 					}
 					ss << '.';
@@ -4394,7 +4407,7 @@ LightInfo Game::getWorldLightInfo() const
 
 void Game::shutdown()
 {
-	std::cout << ">> Shutting down...\n> " << std::flush;
+	std::cout << ">> Desligando...\n> " << std::flush;
 
 	saveGameState();
 	g_scheduler.shutdown();
@@ -4411,7 +4424,7 @@ void Game::shutdown()
 
 	ConnectionManager::getInstance().closeAll();
 
-	std::cout << "> Done!" << std::endl;
+	std::cout << "> Feito!" << std::endl;
 }
 
 void Game::cleanup()
@@ -4683,7 +4696,7 @@ void Game::playerInviteToParty(uint32_t playerId, uint32_t invitedId)
 
 	if (invitedPlayer->getParty()) {
 		std::ostringstream ss;
-		ss << invitedPlayer->getName() << " jê está em uma party.";
+		ss << invitedPlayer->getName() << " já está em uma party.";
 		player->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 		return;
 	}
@@ -4716,7 +4729,7 @@ void Game::playerJoinParty(uint32_t playerId, uint32_t leaderId)
 	}
 
 	if (player->getParty()) {
-		player->sendTextMessage(MESSAGE_INFO_DESCR, "Você jê está em uma party.");
+		player->sendTextMessage(MESSAGE_INFO_DESCR, "Você já está em uma party.");
 		return;
 	}
 
