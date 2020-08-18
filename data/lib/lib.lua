@@ -53,6 +53,9 @@ dofile('data/lib/custom/premiumPoints.lua')
 -- Boost Creature
 dofile('data/lib/custom/boostCreature.lua')
 
+-- Monster Hunt
+dofile('data/lib/custom/monsterHunt.lua')
+
 -- Castle 48h
 dofile('data/lib/events/castle48.lua')
 

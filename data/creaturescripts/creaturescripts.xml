@@ -14,6 +14,7 @@
 	<event type="login" name="FirstItems" script="custom/firstitems.lua" />
 	<event type="think" name="SuperUP" script="custom/superup.lua" />
 	<event type="kill" name="GuildLevel" script="custom/guildLevel.lua" />
+	<event type="death" name="MonsterHunt" script="custom/monsterHunt.lua" />
 
 	<!-- Reward Chest -->
 	<event type="login" name="LoginBossPlayer" script="custom/reward/reward.lua" />
