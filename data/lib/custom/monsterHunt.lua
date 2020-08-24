@@ -15,7 +15,7 @@ MONSTER_HUNT = {
 		init = "O monstro escolhido pelo sistema foi %s. Você tem 1 hora para matar a maior quantidade desse monstro.",
 		warnEnd = "Faltam %d minuto%s para acabar o evento. Se apressem!",
 		final = "O jogador %s foi o ganhador do evento! Parabéns.",
-		reward = "Você recebeu o seu prêmio no mailbox!"
+		reward = "Você recebeu o seu prêmio no mailbox!",
 		kill = "Você já matou %d do evento.",
 	},
 	rewards = {
@@ -57,7 +57,7 @@ function MONSTER_HUNT:endEvent()
 		for a, b in spairs(MONSTER_HUNT.players, function(t,a,b) return t[b] < t[a] end) do
 			local player = Player(a[1])
 			if player then
-				Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.final:format(player:getName())
+				Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.final:format(player:getName()))
 				player:setStorageValue(MONSTER_HUNT.storages.player, -1)
 				for c, d in ipairs(MONSTER_HUNT.rewards) do
 					local item = Game.createItem(d.id, d.count)
@@ -72,7 +72,7 @@ function MONSTER_HUNT:endEvent()
 					return false
 				end
 
-				Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.final:format(player:getName())
+				Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.final:format(player:getName()))
 				player:setStorageValue(MONSTER_HUNT.storages.player, -1)
 				for c, d in ipairs(MONSTER_HUNT.rewards) do
 					local item = Game.createItem(d.id, d.count)
