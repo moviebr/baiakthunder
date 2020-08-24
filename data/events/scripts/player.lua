@@ -348,13 +348,13 @@ function Player:onGainExperience(source, exp, rawExp)
 	-- Premium
 	local xpPremium = 0
 	if self:isPremium() then
-		xpPremium = exp * 1.2 -- +20% XP
+		xpPremium = exp * 0.2 -- +20% XP
 	end
 
 	-- Castle 24H
 	local xpCastle = 0
 	if self:getGuild() and self:getGuild():getId() == CASTLE24H:getGuildIdFromCastle() then
-		xpCastle = exp * 1.2 -- +20% XP
+		xpCastle = exp * 0.2 -- +20% XP
 	end
 
 	-- XP potion
