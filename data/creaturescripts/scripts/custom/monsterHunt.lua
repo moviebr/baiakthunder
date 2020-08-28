@@ -1,10 +1,10 @@
 function onDeath(creature, corpse, lasthitkiller, mostdamagekiller, lasthitunjustified, mostdamageunjustified)
 	if Game.getStorageValue(MONSTER_HUNT.storages.monster) <= 0 then
-		return false
+		return true
 	end
 
 	if not mostdamagekiller:isPlayer() then
-		return false
+		return true
 	end
 
 	if mostdamagekiller:getStorageValue(MONSTER_HUNT.storages.player) == -1 then
