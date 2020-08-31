@@ -704,6 +704,36 @@
 	<spawn centerx="933" centery="1283" centerz="7" radius="1">
 		<monster name="Poison spider" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="1418" centery="1284" centerz="7" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1426" centery="1284" centerz="7" radius="1">
+		<monster name="Rotworm" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1418" centery="1286" centerz="7" radius="1">
+		<monster name="Dragon" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1426" centery="1286" centerz="7" radius="1">
+		<monster name="Dragon" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1418" centery="1288" centerz="7" radius="1">
+		<monster name="Dragon Lord Hatchling" x="-1" y="0" z="7" spawntime="60" />
+		<monster name="Dragon Lord" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1418" centery="1290" centerz="7" radius="1">
+		<monster name="Hero" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1418" centery="1292" centerz="7" radius="1">
+		<monster name="Hydra" x="-1" y="0" z="7" spawntime="60" />
+		<monster name="Medusa" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1426" centery="1292" centerz="7" radius="1">
+		<monster name="Dragon Lord" x="0" y="0" z="7" spawntime="60" />
+		<monster name="Dragon" x="1" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1418" centery="1294" centerz="7" radius="1">
+		<monster name="Medusa" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="697" centery="1368" centerz="7" radius="1">
 		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
@@ -1838,6 +1868,54 @@
 		<monster name="Hydra" x="-5" y="-4" z="8" spawntime="60" />
 		<monster name="Hydra" x="2" y="-3" z="8" spawntime="60" />
 		<monster name="Hydra" x="3" y="1" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1419" centery="1318" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1421" centery="1318" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1423" centery="1318" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1425" centery="1318" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1415" centery="1322" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1429" centery="1322" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1415" centery="1324" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1429" centery="1324" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1415" centery="1326" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1429" centery="1326" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1415" centery="1328" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1429" centery="1328" centerz="9" radius="1">
+		<monster name="Frost Dragon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1419" centery="1333" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1421" centery="1333" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1423" centery="1333" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
+	</spawn>
+	<spawn centerx="1425" centery="1333" centerz="9" radius="1">
+		<monster name="Demon" x="0" y="0" z="9" spawntime="60" />
 	</spawn>
 	<spawn centerx="204" centery="1709" centerz="9" radius="30">
 		<monster name="Hydra" x="14" y="-26" z="9" spawntime="60" />
