@@ -1,5 +1,6 @@
 function onPrepareDeath(player, killer)
-	if Game.getStorageValue(BATTLEFIELD.storageEventStatus) >= 1 then
+
+	if Game.getStorageValue(BATTLEFIELD.storageEventStatus) ~= nil and Game.getStorageValue(BATTLEFIELD.storageEventStatus) >= 1 then
 		BATTLEFIELD:removePlayer(player:getId())
 	end
 

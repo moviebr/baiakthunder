@@ -40,6 +40,11 @@ function onLogin(player)
 		player:setCriticalLevel(0)
 	end
 
+	-- Monster Hunt
+	if Game.getStorageValue(MONSTER_HUNT.storages.monster) == nil then
+		player:setStorageValue(MONSTER_HUNT.storages.player, 0)
+	end
+
 	player:loadSpecialStorage()
 
 	-- Promotion
@@ -115,7 +120,7 @@ end
 function guildLeaderSquare(player)
 	player = Player(player)
 	if not player then
-		return false
+		return true
 	end
 
 	local playerId = player:getId()
