@@ -49,7 +49,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	
 	for pos = 1, 10 do
 		local creature = Tile(config.fromPositions[pos]):getTopCreature()
-		if creature then
+		if creature and creature:isPlayer() then
 			table.insert(players, creature)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "É necessário 10 jogadores para iniciar o bomberman.")
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)

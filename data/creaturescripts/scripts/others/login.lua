@@ -45,6 +45,12 @@ function onLogin(player)
 		player:setStorageValue(MONSTER_HUNT.storages.player, 0)
 	end
 
+	-- Mining
+	if player:getStorageValue(81056) == -1 then
+		player:setStorageValue(81056, 0) -- Tentativas
+		player:setStorageValue(81057, 1) -- Level
+	end
+
 	player:loadSpecialStorage()
 
 	--[[ Promotion

@@ -81,13 +81,10 @@ function explosion(position, bombsize, player)
 end
 
 function checktile(position)
-	local player = Player(player)
 	local block = Tile(position):getItemById(9421)
 	if block then
 		block:remove()
-		-- blocos no mapa atual: 471
 		local portalFinal
-		-- o portal pode ser criado quando 90% dos blocos forem destruidos, ou se o time adversario estiver morto
 		if (#BlockListBomberman >= (471*0.9) and BombermanPortal == 0) or (#BomberTeam1 == 0 or #BomberTeam2 == 0) and BombermanPortal == 0 then
 			if math.random(1, 10) > 7 or #BlockListBomberman == 471 then 
 				BombermanPortal = 2
@@ -96,7 +93,6 @@ function checktile(position)
 			end
 		end
 		
-		-- guardar blocos destruidos para reconstruir o mapa
 		if not table.contains(BlockListBomberman, position) then
 			table.insert(BlockListBomberman, position)
 		end
@@ -131,12 +127,10 @@ function checktile(position)
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature)-creature:getSpeed())
 			creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e perdeu suas habilidades.")
 		else
-		-- segundo hit: Se nao tiver powerUps, sai da partida
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, -1)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, -1)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, -1)
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature)-creature:getSpeed())
-			-- posicao que o player eh expulso
 			creature:teleportTo(Position(1721, 942, 7))
 			creature:getPosition():sendMagicEffect(CONST_ME_FIREAREA)
 			creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e morreu por estar sem habilidades.")
@@ -156,29 +150,8 @@ function checktile(position)
 				end
 			end	
 		end
-	else
-		-- remover o comentario da parte abaixo se quiser permitir monstros comuns na arena
-		--[[if creature then
-			if table.contains(BomberTeam1, creature) then
-				for i = 1, #BomberTeam1 do
-					if BomberTeam1[i] == creature then
-					table.remove(BomberTeam1, i)
-					end
-				end
-			end
-			if table.contains(BomberTeam2, creature) then
-				for i = 1, #BomberTeam2 do
-					if BomberTeam2[i] == creature then
-					table.remove(BomberTeam2, i)
-					end
-				end
-			end
-			creature:teleportTo(Position(1057, 923, 5))
-		end]]
 	end
 	
-	--[[limits from 1009, 905, 5 to 1036, 929, 5]]
-	-- aqui peguei o menor e maior ponto em X, e Y do mapa. O que estiver dentro desse raio, solta o efeito de explosao da bomba
 	if position.x >= 1708 and position.x <= 1736 and position.y >= 902 and position.y <= 928 then 
 		position:sendMagicEffect(CONST_ME_FIREAREA)
 	end
