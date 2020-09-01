@@ -54,6 +54,9 @@ function MONSTER_HUNT:endEvent()
 		Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.warnEnd:format(1, ""))
 	end, 4 * 60 * 1000)
 	addEvent(function()
+		if #MONSTER_HUNT.players == nil then
+			return
+		end
 		table.sort(MONSTER_HUNT.players, function(a,b) return a[2] > b[2] end)
 		local player = Player(MONSTER_HUNT.players[1][1])
 		if player then

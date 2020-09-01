@@ -10,31 +10,31 @@ function onStepIn(creature, item, position, fromPosition)
 			return true
 		end
 		player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE) + 1)
-		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora sua bomba atinge até "..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE).." sqm.")
+		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora sua bomba atinge ate "..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE).." sqm.")
 		item:remove()
 	elseif item:getActionId() == 19002 then
 		if player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) == 10 then
-			player:sendTextMessage(MESSAGE_INFO_DESCR, "Você pode soltar o número máximo (+10) de bombas.")
+			player:sendTextMessage(MESSAGE_INFO_DESCR, "Voce pode soltar o numero máximo (+10) de bombas.")
 			return true
 		end
 		player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) + 1)
-		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora você pode soltar até "..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB).." bombas.")
+		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora voce pode soltar ate "..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB).." bombas.")
 		item:remove()	
 	elseif item:getActionId() == 19003 then
 		if player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED) == 10 then
-			player:sendTextMessage(MESSAGE_INFO_DESCR, "Você esta com a speed (+10) máxima.")
+			player:sendTextMessage(MESSAGE_INFO_DESCR, "Voce esta com a velocidade (+10) maxima.")
 			return true
 		end
 	
 		local speed = player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED)
 		if speed >= 0 and speed < 11 then
 			player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED) + 1)
-		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora sua speed esta +("..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED)..") points.")
+		player:sendTextMessage(MESSAGE_INFO_DESCR, "Agora sua velocidade esta +("..player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED)..") points.")
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature))
 		end
 		item:remove()	
 	elseif item:getActionId() == 19004 then
-		exitPosition = Position(1721, 944, 7)
+		exitPosition = Position(1721, 942, 7)
 		local team1, team2 = #BomberTeam1, #BomberTeam2
 		if team1 == 0 or team2 == 0 then
 			stopEvent(bombermanEnd)
@@ -77,7 +77,7 @@ function onStepIn(creature, item, position, fromPosition)
 		item:remove()
 		else
 			-- o portal so pode ser usado se o time adversario estiver morto
-			player:sendTextMessage(MESSAGE_INFO_DESCR, "[MiniGames] Restam integrantes do time adversário.")
+			player:sendTextMessage(MESSAGE_INFO_DESCR, "Restam integrantes do time adversário.")
 		end
 	end
 	return true

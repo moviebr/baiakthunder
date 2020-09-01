@@ -47,7 +47,7 @@ function onLogin(player)
 
 	player:loadSpecialStorage()
 
-	-- Promotion
+	--[[ Promotion
 	local vocation = player:getVocation()
 	local promotion = vocation:getPromotion()
 	if player:isPremium() then
@@ -60,6 +60,7 @@ function onLogin(player)
 	elseif not promotion then
 		player:setVocation(vocation:getDemotion())
 	end
+--]]
 
 	-- XP Potion
 	if player:getStorageValue(STORAGEVALUE_POTIONXP_ID) ~= -1 and player:getStorageValue(STORAGEVALUE_POTIONXP_TEMPO) <= os.time() then
@@ -103,7 +104,6 @@ function onLogin(player)
 	player:registerEvent("PlayerDeath")
 	player:registerEvent("AnimationUp")
 	player:registerEvent("DropLoot")
-	player:registerEvent("HungerGames")
 	player:registerEvent("DodgeCriticalSystem")
 	player:registerEvent("DodgeManaSystem")
 	player:registerEvent("MonsterHunt")

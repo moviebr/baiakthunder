@@ -5,7 +5,7 @@ function onStartup()
 	db.query("UPDATE `players` SET `online_time` = 0")
 	carregarEvento()
 	Game.setStorageValue(STORAGEVALUE_CASTLE_DOMINADO, CASTLE24H:getGuildIdFromCastle())
-	Game.setGameState(GAME_STATE_CLOSED)
+	addEvent(Game.setGameState, 1 * 60 * 1000, GAME_STATE_CLOSED)
 
 	-- BomberMan
 	BlockListBomberman = {}

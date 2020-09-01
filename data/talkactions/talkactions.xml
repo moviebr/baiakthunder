@@ -14,11 +14,7 @@
 	<talkaction words="!guildoutfit" script="guildOutfit.lua" />
 	<talkaction words="/attr" separator=" " script="attr.lua" />
 
-	<talkaction words="!bomb" script="bomberman.lua" />
-	
-	<!-- Events -->
-	<talkaction words="!join" separator=" " script="join.lua"/>
-	<talkaction words="!ragequit" separator=" " script="leave.lua"/> 
+	<talkaction words="!bomb" separator=" " script="bomberman.lua" />
 	
 	<!-- commands -->
 	<talkaction words="/unban" separator=" " script="unban.lua" />

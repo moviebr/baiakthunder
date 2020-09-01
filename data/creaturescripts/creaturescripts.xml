@@ -23,8 +23,6 @@
     <event type="think" name="BossThink" script="custom/reward/reward.lua" />
 	
 	<!-- Events -->
-	<event type="logout" name="eventlogout" script="custom/events/eventLogout.lua" />
-	<event type="death" name="HungerGames" script="custom/events/hungerGames.lua" />
 	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
 
 	<!-- Others -->

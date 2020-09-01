@@ -2,12 +2,12 @@ function onSay(player, words, param)
 	if not table.contains(BomberTeam1, player) and not table.contains(BomberTeam2, player) then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Só é permitido soltar bombas dentro e durante a partida.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
-		return true
+		return false
 	end
 	
 	if player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB) < player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) then
 		local bombsize = player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE)
-		local item = Game.createItem(26142, 1, player:getPosition())
+		local item = Game.createItem(9468, 1, player:getPosition())
 		player:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB, player:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_ACTIVEBOMB) + 1)
 		addEvent(explosion, 2 * 1 * 1000, player:getPosition(), bombsize, player.uid)
 	end
@@ -15,9 +15,9 @@ end
 
 function explosion(position, bombsize, player)
 	local player = Player(player)
-	local BombItem = Tile(position):getItemById(26142)
+	local BombItem = Tile(position):getItemById(9468)
 	if BombItem then
-		local centerPosition = position		
+		local centerPosition = position
 		local limit1, limit2, limit3, limit4 = 0, 0, 0, 0
 		for i = 1, bombsize do	
 			if Tile(Position(centerPosition.x, centerPosition.y - i, centerPosition.z)) then
@@ -98,19 +98,17 @@ function checktile(position)
 		
 		-- guardar blocos destruidos para reconstruir o mapa
 		if not table.contains(BlockListBomberman, position) then
-		table.insert(BlockListBomberman, position)
+			table.insert(BlockListBomberman, position)
 		end
 		
 		if BombermanPortal == 2 then
-		-- quando criar o portal nao criar item
 			BombermanPortal = 1
 		else
 			local randomizer = math.random(0, 100)
-			if randomizer > 75 then -- 25% de chance de dropar
+			if randomizer > 75 then
 				local premio = math.random(1, 10)
 				local dropaction, drop, a, b
 				if premio >= 1 and premio < 6 then
-				-- a = id do item, pode ser alterado, b = Action Id do item, nao deve ser alterado
 					a, b = 2684, 19001
 				elseif premio >= 6 and premio < 9 then
 					a, b = 4852, 19002
@@ -126,7 +124,6 @@ function checktile(position)
 	local creature = Tile(position):getTopCreature()
 	if creature and creature:isPlayer() then
 		position:sendMagicEffect(CONST_ME_TELEPORT)
-		-- primeiro hit: se tiver algum powerUP, nao morre, apenas perde os power ups
 		if creature:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE) > 1 or creature:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB) > 1 or creature:getStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED) > 1 then
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_MAXBOMB, 1)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SIZE, 1)
@@ -140,21 +137,21 @@ function checktile(position)
 			creature:setStorageValue(STORAGEVALUE_MINIGAME_BOMBERMAN_SPEED, -1)
 			doChangeSpeed(creature, getCreatureBaseSpeed(creature)-creature:getSpeed())
 			-- posicao que o player eh expulso
-			creature:teleportTo(Position(1057, 923, 5))
+			creature:teleportTo(Position(1721, 942, 7))
 			creature:getPosition():sendMagicEffect(CONST_ME_FIREAREA)
 			creature:sendTextMessage(MESSAGE_INFO_DESCR, "Você foi atingido, e morreu por estar sem habilidades.")
 			creature:setOutfit(BombermanOutfit[creature:getGuid()])
 			if table.contains(BomberTeam1, creature) then
 				for i = 1, #BomberTeam1 do
 					if BomberTeam1[i] == creature then
-					table.remove(BomberTeam1, i)
+						table.remove(BomberTeam1, i)
 					end
 				end
 			end
 			if table.contains(BomberTeam2, creature) then
 				for i = 1, #BomberTeam2 do
 					if BomberTeam2[i] == creature then
-					table.remove(BomberTeam2, i)
+						table.remove(BomberTeam2, i)
 					end
 				end
 			end	
@@ -182,7 +179,7 @@ function checktile(position)
 	
 	--[[limits from 1009, 905, 5 to 1036, 929, 5]]
 	-- aqui peguei o menor e maior ponto em X, e Y do mapa. O que estiver dentro desse raio, solta o efeito de explosao da bomba
-	if position.x >= 1709 and position.x <= 1735 and position.y >= 903 and position.y <= 927 then 
+	if position.x >= 1708 and position.x <= 1736 and position.y >= 902 and position.y <= 928 then 
 		position:sendMagicEffect(CONST_ME_FIREAREA)
 	end
 end

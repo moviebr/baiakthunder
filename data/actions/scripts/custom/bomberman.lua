@@ -5,13 +5,13 @@ local config = {
 	},
 	
 	fromPositions = {
-		-- A
+	-- aqui colocar os 5 sqm de entrada do time A
 		[1] = Position(1719, 937, 7),
 		[2] = Position(1720, 937, 7),
 		[3] = Position(1721, 937, 7),
 		[4] = Position(1722, 937, 7),
 		[5] = Position(1723, 937, 7),
-		-- B
+	--aqui colocar os 5 sqm de entrada do time B
 		[6] = Position(1719, 939, 7),
 		[7] = Position(1720, 939, 7),
 		[8] = Position(1721, 939, 7),
@@ -39,7 +39,8 @@ local config = {
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	if #BomberTeam1 > 0 or #BomberTeam2 > 0 then
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "[MiniGames] Existe uma partida de BomberMan em andamento.")
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Existe uma partida em andamento.")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
 	end
 	
@@ -48,30 +49,32 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	
 	for pos = 1, 10 do
 		local creature = Tile(config.fromPositions[pos]):getTopCreature()
-		if creature and creature:isPlayer() then
+		if creature then
 			table.insert(players, creature)
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "É necessário 10 jogadores para iniciar o bomberman.")
+			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		end
 	end
 	
 	if #players == 10 then
 		for i = 1, 10 do
-			if players[i]:isPlayer() then
-				BombermanOutfit[players[i]:getGuid()] = players[i]:getOutfit()
-	    	end
-		players[i]:teleportTo(config.toPositions[i])
+		if players[i]:isPlayer() then
+			BombermanOutfit[players[i]:getGuid()] = players[i]:getOutfit()
+	    end
+			players[i]:teleportTo(config.toPositions[i])
 			if isPlayer(players[i]) then
 				getPlayerPosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
 				if i <= 5 then
-					players[i]:setOutfit({lookBody = 88, lookAddons = 0, lookType = 619, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})	
+					players[i]:setOutfit({lookBody = 88, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})	
 				else
-					players[i]:setOutfit({lookBody = 94, lookAddons = 0, lookType = 619, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})
+					players[i]:setOutfit({lookBody = 94, lookAddons = 0, lookType = 128, lookHead = 114, lookMount = 0, lookLegs = 114, lookFeet = 114})
 				end
-			elseif isMonster(players[i]) then
+				elseif isMonster(players[i]) then
 				getCreaturePosition(players[i]):sendMagicEffect(CONST_ME_TELEPORT)
 			end		
 			if i <= 5 then
 				table.insert(BomberTeam1, players[i])
-			else
+				else
 				table.insert(BomberTeam2, players[i])
 			end
 			if isPlayer(players[i]) then
@@ -82,7 +85,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		end
 		
 		bombermanEnd = addEvent(endGame, 60 * 10 * 1000)
-		broadcastMessage("[MiniGames] A partida de Bomberman acaba em 10 minutos.", MESSAGE_EVENT_ADVANCE)
+		broadcastMessage("A partida de Bomberman acaba em 10 minutos.", MESSAGE_EVENT_ADVANCE)
 	end
 	
 	item:transform(config.levers[item.itemid])
@@ -91,8 +94,8 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 end
 
 function endGame()
-	exitPosition = Position(1721, 944, 7)
-	broadcastMessage("[MiniGames] A partida de bomberman acabou. Nenhum time venceu", MESSAGE_EVENT_ADVANCE)
+	exitPosition = Position(1721, 942, 7)
+	broadcastMessage("A partida de bomberman acabou. Nenhum time venceu.", MESSAGE_EVENT_ADVANCE)
 	for i = 1, #BomberTeam1 do
 		if isPlayer(BomberTeam1[i]) then
 			resetplayerbomberman(BomberTeam1[i])
@@ -108,19 +111,19 @@ function endGame()
 		BomberTeam2[i]:teleportTo(Position(exitPosition))
 	end
 	
-	for i = 1, #BlockListBomberman do	-- limpar e reconstruir mapa para proxima partida		
-		local powerItens = {2684, 4852, 2642}
-		for pointer = 1, 3 do
-			if Tile(BlockListBomberman[i]):getItemById(powerItens[pointer]) then --removendo powerups da partida anterior
-				remover = Tile(BlockListBomberman[i]):getItemById(powerItens[pointer])
-				remover:remove()
+	for i = 1, #BlockListBomberman do	
+			local powerItens = {2684, 4852, 2642}
+			for pointer = 1, 3 do
+				if Tile(BlockListBomberman[i]):getItemById(powerItens[pointer]) then
+					remover = Tile(BlockListBomberman[i]):getItemById(powerItens[pointer])
+					remover:remove()
+				end
+			end
+			if not Tile(BlockListBomberman[i]):getItemById(9421) then
+				Game.createItem(9421, 1, BlockListBomberman[i])
 			end
 		end
-		if not Tile(BlockListBomberman[i]):getItemById(9421) then
-			Game.createItem(9421, 1, BlockListBomberman[i])
-		end
-	end
-	BomberTeam1, BomberTeam2 = {}, {} -- zerando todos os parametros para proxima partida
+	BomberTeam1, BomberTeam2 = {}, {}
 	BlockListBomberman = {}
 	BombermanPortal = 0
 end
