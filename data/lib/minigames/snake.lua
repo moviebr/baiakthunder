@@ -1,5 +1,6 @@
 SNAKE = {
 	itemid=1860,
+	premio = 9020,
 	freeglobalstorage=28103,
 	itemFood=2674,
 	controlpos= {x = 1656, y = 992, z = 6},
@@ -38,6 +39,15 @@ SNAKE = {
 					player:teleportTo(SNAKE.exitpos, false)
 					player:getPosition():sendMagicEffect(11)
 					player:say('Pontos: '..(#pos_-1)..'.', TALKTYPE_MONSTER_SAY)
+					if #pos_-1 >= 20 and #pos_-1 < 30 then
+						player:addItem(SNAKE.premio, 1)
+					elseif #pos_-1 >= 30 and #pos_-1 < 40 then
+						player:addItem(SNAKE.premio, 2)
+					elseif #pos_-1 >= 40 and #pos_-1 < 50 then
+						player:addItem(SNAKE.premio, 3)
+					elseif #pos_-1 >= 50 then
+						player:addItem(SNAKE.premio, 4)
+					end 
 					SNAKE.clean()
 					Game.setStorageValue(SNAKE.freeglobalstorage,0)
 					return

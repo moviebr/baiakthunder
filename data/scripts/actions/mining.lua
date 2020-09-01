@@ -16,16 +16,16 @@ local configMining = {
 		[3] = {qntMin = 200}
 	},
 	itens = {
-		{itemid = 2147, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 2146, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 2150, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 9970, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 2149, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 2145, chancePickNormal = 8, chancePickEspecial = 20},
-		{itemid = 2156, chancePickNormal = 2, chancePickEspecial = 5},
-		{itemid = 2155, chancePickNormal = 2, chancePickEspecial = 5},
-		{itemid = 2158, chancePickNormal = 2, chancePickEspecial = 5},
-		{itemid = 2153, chancePickNormal = 2, chancePickEspecial = 5},
+		{itemid = 2147, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 2146, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 2150, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 9970, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 2149, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 2145, chancePickNormal = 1, chancePickEspecial = 1.5},
+		{itemid = 2156, chancePickNormal = 0.2, chancePickEspecial = 0.5},
+		{itemid = 2155, chancePickNormal = 0.2, chancePickEspecial = 0.5},
+		{itemid = 2158, chancePickNormal = 0.2, chancePickEspecial = 0.5},
+		{itemid = 2153, chancePickNormal = 0.2, chancePickEspecial = 0.5},
 	},
 	hit = {
 		active = true,
@@ -66,6 +66,9 @@ function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			player:addItem(rand.itemid, 1)
 			player:sendTextMessage(22, string.format(configMining.msg.minerouWin, name:getName()))
 			return true
+		else
+			Game.sendAnimatedText("Falha!", toPosition, math.random(255))
+			toPosition:sendMagicEffect(4)
 		end
 	
 		if rand.chancePickEspecial >= math.random(1,100) and item.itemid == configMining.idPickEspecial then
@@ -80,6 +83,9 @@ function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 				player:say(configMining.msg.especial, TALKTYPE_MONSTER_SAY, true)
 			end
 			return true
+		else
+			Game.sendAnimatedText("Falha!", toPosition, math.random(255))
+			toPosition:sendMagicEffect(4)
 		end	
 	else
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)

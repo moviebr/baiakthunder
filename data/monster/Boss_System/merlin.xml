@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <monster name="Merlin" nameDescription="Merlin" race="venom" experience="25000" speed="420" script="rewardboss.lua" manacost="0">
 	<health now="25000" max="25000"/>
 	<look type="229" corpse="6078"/>
@@ -64,7 +64,7 @@
 		<event name="MerlinLife" />
 	</script>
 	<voices interval="5000" chance="20">
-		<voice sentence="EU IREI MATAR TODOS VOCÊS!" yell="1"/>
+		<voice sentence="EU IREI MATAR TODOS VOC�S!" yell="1"/>
 		<voice sentence="EU SINTO A MAGIA!" yell="1"/>
 	</voices>
 	<loot>

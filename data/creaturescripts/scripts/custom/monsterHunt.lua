@@ -1,6 +1,6 @@
 function onKill(player, target)
 
-	if Game.getStorageValue(MONSTER_HUNT.storages.monster) <= 0 or Game.getStorageValue(MONSTER_HUNT.storages.monster) == nil then
+	if Game.getStorageValue(MONSTER_HUNT.storages.monster) == nil then
 		return true
 	end
 
