@@ -97,4 +97,70 @@
 	<house name="Thunder City #95" houseid="95" entryx="960" entryy="1209" entryz="4" rent="0" townid="1" size="32" />
 	<house name="Thunder City #96" houseid="96" entryx="957" entryy="1210" entryz="3" rent="0" townid="1" size="30" />
 	<house name="Thunder City #97" houseid="97" entryx="957" entryy="1208" entryz="3" rent="0" townid="1" size="13" />
+	<house name="Jamila Island #1" houseid="98" entryx="712" entryy="1396" entryz="7" rent="0" townid="2" size="30" />
+	<house name="Jamila Island #2" houseid="99" entryx="0" entryy="0" entryz="0" rent="0" townid="2" size="39" />
+	<house name="Jamila Island #3" houseid="100" entryx="723" entryy="1405" entryz="7" rent="0" townid="2" size="24" />
+	<house name="Jamila Island #4" houseid="101" entryx="0" entryy="0" entryz="0" rent="0" townid="2" size="45" />
+	<house name="Jamila Island #5" houseid="102" entryx="700" entryy="1400" entryz="7" rent="0" townid="2" size="20" />
+	<house name="Jamila Island #6" houseid="103" entryx="692" entryy="1400" entryz="7" rent="0" townid="2" size="15" />
+	<house name="Jamila Island #7" houseid="104" entryx="687" entryy="1400" entryz="7" rent="0" townid="2" size="12" />
+	<house name="Jamila Island #8" houseid="105" entryx="687" entryy="1396" entryz="7" rent="0" townid="2" size="19" />
+	<house name="Jamila Island #9" houseid="106" entryx="678" entryy="1396" entryz="7" rent="0" townid="2" size="20" />
+	<house name="Jamila Island #10" houseid="107" entryx="678" entryy="1387" entryz="7" rent="0" townid="2" size="20" />
+	<house name="Jamila Island #11" houseid="108" entryx="691" entryy="1375" entryz="7" rent="0" townid="2" size="36" />
+	<house name="Jamila Island #12" houseid="109" entryx="699" entryy="1375" entryz="7" rent="0" townid="2" size="28" />
+	<house name="Jamila Island #13" houseid="110" entryx="722" entryy="1384" entryz="7" rent="0" townid="2" size="19" />
+	<house name="Jamila Island #14" houseid="111" entryx="718" entryy="1371" entryz="7" rent="0" townid="2" size="43" />
+	<house name="Jamila Island #15" houseid="112" entryx="675" entryy="1365" entryz="7" rent="0" townid="2" size="10" />
+	<house name="Jamila Island #16" houseid="113" entryx="675" entryy="1359" entryz="7" rent="0" townid="2" size="10" />
+	<house name="Jamila Island #17" houseid="114" entryx="680" entryy="1353" entryz="7" rent="0" townid="2" size="12" />
+	<house name="Jamila Island #18" houseid="115" entryx="687" entryy="1353" entryz="7" rent="0" townid="2" size="12" />
+	<house name="Jamila Island #19" houseid="116" entryx="687" entryy="1352" entryz="6" rent="0" townid="2" size="10" />
+	<house name="Jamila Island #20" houseid="117" entryx="680" entryy="1352" entryz="6" rent="0" townid="2" size="10" />
+	<house name="Jamila Island #21" houseid="118" entryx="674" entryy="1358" entryz="6" rent="0" townid="2" size="7" />
+	<house name="Jamila Island #22" houseid="119" entryx="674" entryy="1364" entryz="6" rent="0" townid="2" size="7" />
+	<house name="Bhark #1" houseid="120" entryx="1232" entryy="1310" entryz="6" rent="0" townid="5" size="15" />
+	<house name="Bhark #2" houseid="121" entryx="1245" entryy="1310" entryz="6" rent="0" townid="5" size="15" />
+	<house name="Bhark #3" houseid="122" entryx="1248" entryy="1307" entryz="6" rent="0" townid="5" size="5" />
+	<house name="Bhark #4" houseid="123" entryx="1228" entryy="1307" entryz="6" rent="0" townid="5" size="5" />
+	<house name="Bhark #5" houseid="124" entryx="1235" entryy="1292" entryz="6" rent="0" townid="5" size="19" />
+	<house name="Bhark #6" houseid="125" entryx="1235" entryy="1289" entryz="6" rent="0" townid="5" size="19" />
+	<house name="Bhark #7" houseid="126" entryx="1246" entryy="1298" entryz="6" rent="0" townid="5" size="40" />
+	<house name="Bhark #8" houseid="127" entryx="1250" entryy="1298" entryz="6" rent="0" townid="5" size="7" />
+	<house name="Bhark #9" houseid="128" entryx="1259" entryy="1298" entryz="6" rent="0" townid="5" size="28" />
+	<house name="Bhark #10" houseid="129" entryx="1265" entryy="1298" entryz="6" rent="0" townid="5" size="22" />
+	<house name="Bhark #11" houseid="130" entryx="1257" entryy="1295" entryz="5" rent="0" townid="5" size="29" />
+	<house name="Bhark #12" houseid="131" entryx="1209" entryy="1307" entryz="6" rent="0" townid="5" size="4" />
+	<house name="Bhark #13" houseid="132" entryx="1216" entryy="1307" entryz="6" rent="0" townid="5" size="17" />
+	<house name="Bhark #14" houseid="133" entryx="1216" entryy="1306" entryz="6" rent="0" townid="5" size="6" />
+	<house name="Bhark #15" houseid="134" entryx="1216" entryy="1304" entryz="5" rent="0" townid="5" size="10" />
+	<house name="Bhark #16" houseid="135" entryx="1235" entryy="1293" entryz="5" rent="0" townid="5" size="13" />
+	<house name="Bhark #17" houseid="136" entryx="1206" entryy="1284" entryz="5" rent="0" townid="5" size="33" />
+	<house name="Bhark #18" houseid="137" entryx="1205" entryy="1287" entryz="5" rent="0" townid="5" size="17" />
+	<house name="Bhark #19" houseid="138" entryx="1221" entryy="1280" entryz="4" rent="0" townid="5" size="24" />
+	<house name="Bhark #20" houseid="139" entryx="1227" entryy="1273" entryz="4" rent="0" townid="5" size="11" />
+	<house name="Bhark #21" houseid="140" entryx="1250" entryy="1277" entryz="6" rent="0" townid="5" size="12" />
+	<house name="Bhark #22" houseid="141" entryx="1254" entryy="1279" entryz="6" rent="0" townid="5" size="7" />
+	<house name="Bhark #23" houseid="142" entryx="1260" entryy="1278" entryz="5" rent="0" townid="5" size="7" />
+	<house name="Bhark #24" houseid="143" entryx="1258" entryy="1273" entryz="5" rent="0" townid="5" size="17" />
+	<house name="Bhark #25" houseid="144" entryx="1267" entryy="1272" entryz="5" rent="0" townid="5" size="9" />
+	<house name="Bhark #26" houseid="145" entryx="1258" entryy="1266" entryz="4" rent="0" townid="5" size="10" />
+	<house name="Bhark #27" houseid="146" entryx="1242" entryy="1260" entryz="6" rent="0" townid="5" size="6" />
+	<house name="Bhark #28" houseid="147" entryx="1237" entryy="1265" entryz="6" rent="0" townid="5" size="6" />
+	<house name="Bhark #29" houseid="148" entryx="1258" entryy="1264" entryz="6" rent="0" townid="5" size="23" />
+	<house name="Bhark #30" houseid="149" entryx="1247" entryy="1265" entryz="6" rent="0" townid="5" size="36" />
+	<house name="Bhark #31" houseid="150" entryx="1250" entryy="1273" entryz="7" rent="0" townid="5" size="10" />
+	<house name="Bhark #32" houseid="151" entryx="1250" entryy="1268" entryz="7" rent="0" townid="5" size="10" />
+	<house name="Bhark #33" houseid="152" entryx="1250" entryy="1263" entryz="7" rent="0" townid="5" size="7" />
+	<house name="Bhark #34" houseid="153" entryx="0" entryy="0" entryz="0" rent="0" townid="5" size="7" />
+	<house name="Bhark #35" houseid="154" entryx="1253" entryy="1268" entryz="7" rent="0" townid="5" size="10" />
+	<house name="Bhark #36" houseid="155" entryx="1253" entryy="1273" entryz="7" rent="0" townid="5" size="10" />
+	<house name="Bhark #37" houseid="156" entryx="1197" entryy="1316" entryz="7" rent="0" townid="5" size="14" />
+	<house name="Bhark #38" houseid="157" entryx="1282" entryy="1240" entryz="7" rent="0" townid="5" size="10" />
+	<house name="Bhark #39" houseid="158" entryx="1276" entryy="1237" entryz="7" rent="0" townid="5" size="15" />
+	<house name="Bhark #40" houseid="159" entryx="1288" entryy="1236" entryz="7" rent="0" townid="5" size="29" />
+	<house name="Bhark #41" houseid="161" entryx="1276" entryy="1311" entryz="7" rent="0" townid="5" size="14" />
+	<house name="Bhark #42" houseid="162" entryx="1254" entryy="1309" entryz="6" rent="0" townid="5" size="16" />
+	<house name="Bhark #43" houseid="163" entryx="1248" entryy="1320" entryz="6" rent="0" townid="5" size="5" />
+	<house name="Bhark #44" houseid="164" entryx="1228" entryy="1320" entryz="6" rent="0" townid="5" size="5" />
 </houses>
