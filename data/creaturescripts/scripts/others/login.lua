@@ -46,9 +46,9 @@ function onLogin(player)
 	end
 
 	-- Mining
-	if player:getStorageValue(81056) == -1 then
-		player:setStorageValue(81056, 0) -- Tentativas
-		player:setStorageValue(81057, 1) -- Level
+	if player:getStorageValue(configMining.level.storageTentativas) == -1 then
+		player:setStorageValue(configMining.level.storageTentativas, 0) -- Tentativas
+		player:setStorageValue(configMining.level.storageNivel, 1) -- Level
 	end
 
 	player:loadSpecialStorage()

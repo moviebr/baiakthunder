@@ -62,6 +62,9 @@ dofile('data/lib/events/castle48.lua')
 -- Boss Room
 dofile('data/lib/custom/bossRoom.lua')
 
+-- Mining
+dofile('data/lib/custom/mining.lua')
+
 -- Guild Level
 dofile('data/lib/custom/guildLevel.lua')
 

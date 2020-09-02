@@ -1,0 +1,43 @@
+configMining = {
+	msg = {
+		naoLocal = "Você não pode minerar aqui.",
+		naoPick = "Você consegue minerar somente com pick.",
+		minerouWin = "Você ganhou uma %s.",
+		dano = "As pedras desabaram e você levou um hit.",
+		fail = "Falha!",
+		upNivel = "Você subiu de nível na mineração! Agora você é %s. Parabéns!",
+		usarEspecial = true,
+		especial = "[PREMIUM]",
+	},
+	level = {
+		active = true,
+		storageTentativas = 81056,
+		storageNivel = 81057,
+		[1] = {name = "Iniciante", qntMin = 0, qntMax = 50},
+		[2] = {name = "Intermediário", qntMin = 51, qntMax = 199},
+		[3] = {name = "Avançado", qntMin = 200, qntMax = 399},
+		[4] = {name = "Experiente", qntMin = 400},
+	},
+	itens = {
+		{itemid = 2147, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 2146, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 2150, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 9970, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 2149, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 2145, chancePickNormal = 100, chancePickEspecial = 9500},
+		{itemid = 2156, chancePickNormal = 20, chancePickEspecial = 9000},
+		{itemid = 2155, chancePickNormal = 20, chancePickEspecial = 9000},
+		{itemid = 2158, chancePickNormal = 20, chancePickEspecial = 9000},
+		{itemid = 2153, chancePickNormal = 20, chancePickEspecial = 9000},
+		{itemid = 11421, chancePickNormal = 1, chancePickEspecial = 2, level = true, nivelMin = 3},
+	},
+	hit = {
+		active = true,
+		danoMin = 300, 
+		danoMax = 500, 
+		chance = 400
+	},
+	idPick = 2553,
+	idPickEspecial = 11421,
+	actionIdPedras = 34561,
+}

@@ -11,7 +11,9 @@ function Player:onLook(thing, position, distance)
         if thing:isPlayer() and not thing:getGroup():getAccess() then
             description =  description .. self:getMarriageDescription(thing)
         end
-    end
+	end
+	
+	description = description .. "\nNível de Mining: " .. configMining.level[thing:getStorageValue(configMining.level.storageNivel)].name .."."
 
     if thing:isItem() and thing:getCustomAttribute("premiumPoints") then
     	description = description .. "\nEsse item vale " .. thing:getCustomAttribute("premiumPoints") .." pontos."
