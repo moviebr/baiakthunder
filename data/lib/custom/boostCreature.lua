@@ -6,6 +6,10 @@ BoostedCreature = {
 	exp = {20, 45},
 	loot = {20, 45},
 	position = Position(981, 1204, 8),
+	messages = {
+		prefix = "[Boosted Creature] ",
+		escolhida = "A criatura escolhida foi %s. Ao matar você recebe +%d de experiência e +%d de loot.",
+	},
 }
 
 function BoostedCreature:start()
@@ -16,8 +20,4 @@ function BoostedCreature:start()
 	table.insert(boostCreature, {name = monsterRand:lower(), exp = expRand, loot = lootRand})
 	local monster = Game.createMonster(boostCreature[1].name, BoostedCreature.position, false, true)
 	monster:setDirection(SOUTH)
-end
-
-function BoostedCreature:mensagem()
-	Game.broadcastMessage("[Boosted Creature] A criatura ".. boostCreature[1].name .." foi a escolhida, adicionado +".. tonumber(boostCreature[1].loot) .."% de loot e +".. tonumber(boostCreature[1].exp) .."% de experiência.")
 end

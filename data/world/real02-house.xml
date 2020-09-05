@@ -7,7 +7,6 @@
 	<house name="Thunder City #5" houseid="5" entryx="960" entryy="1221" entryz="7" rent="0" townid="1" size="26" />
 	<house name="Thunder City #6" houseid="6" entryx="948" entryy="1221" entryz="7" rent="0" townid="1" size="22" />
 	<house name="Thunder City #7" houseid="7" entryx="1002" entryy="1213" entryz="6" rent="0" townid="1" size="7" />
-	<house name="Thunder City #8" houseid="8" entryx="0" entryy="0" entryz="0" rent="0" townid="1" size="24" />
 	<house name="Thunder City #9" houseid="9" entryx="991" entryy="1209" entryz="6" rent="0" townid="1" size="28" />
 	<house name="Thunder City #10" houseid="10" entryx="989" entryy="1211" entryz="6" rent="0" townid="1" size="38" />
 	<house name="Thunder City #11" houseid="11" entryx="980" entryy="1209" entryz="6" rent="0" townid="1" size="24" />
@@ -163,4 +162,5 @@
 	<house name="Bhark #42" houseid="162" entryx="1254" entryy="1309" entryz="6" rent="0" townid="5" size="16" />
 	<house name="Bhark #43" houseid="163" entryx="1248" entryy="1320" entryz="6" rent="0" townid="5" size="5" />
 	<house name="Bhark #44" houseid="164" entryx="1228" entryy="1320" entryz="6" rent="0" townid="5" size="5" />
+	<house name="Thunder City #8" houseid="165" entryx="1003" entryy="1164" entryz="7" rent="0" townid="1" size="22" />
 </houses>

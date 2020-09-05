@@ -49,7 +49,7 @@
 			<flag canbroadcast="1" />
 		</flags>
 	</group>
-	<group id="5" name="developer" access="1" maxdepotitems="0" maxvipentries="200" >
+	<group id="5" name="desenvolvedor" access="1" maxdepotitems="0" maxvipentries="200" >
 		<flags>
 			<flag cannotusecombat="0" />
 			<flag cannotattackplayer="0" />

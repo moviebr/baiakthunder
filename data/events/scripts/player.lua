@@ -13,7 +13,9 @@ function Player:onLook(thing, position, distance)
         end
 	end
 	
-	description = description .. "\nNível de Mining: " .. configMining.level[thing:getStorageValue(configMining.level.storageNivel)].name .."."
+	if thing:isPlayer() then
+		description = description .. "\nNível de Mining: " .. configMining.level[thing:getStorageValue(configMining.level.storageNivel)].name .."."
+	end
 
     if thing:isItem() and thing:getCustomAttribute("premiumPoints") then
     	description = description .. "\nEsse item vale " .. thing:getCustomAttribute("premiumPoints") .." pontos."
@@ -402,7 +404,7 @@ function Player:onGainSkillTries(skill, tries)
 end
 
 function Player:onSay(message)
-	local msgBlock = {"servegame", "sytes", ".com", ".com.br", ".net", ".org", "ot lixo", "ilusion", "icewar", "revolution", "ddns"}
+	local msgBlock = {}
 	for _, m in ipairs(msgBlock) do
 		local a = string.find(message, m)
 		if a then

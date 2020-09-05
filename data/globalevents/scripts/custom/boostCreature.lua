@@ -7,6 +7,6 @@ function onStartup()
 end
 
 function onThink(interval)
-	BoostedCreature:mensagem()
+	Game.broadcastMessage(BoostedCreature.messages.prefix .. BoostedCreature.messages.escolhida:format(firstToUpper(boostCreature[1].name), boostCreature[1].exp, boostCreature[1].loot))
 	return true
 end
