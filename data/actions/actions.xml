@@ -14,6 +14,8 @@
 
 	<action actionid="19876" script="custom/bomberman.lua"/>
 
+	<action actionid="7171" script="quests/quests.lua" />
+
 	<!-- Events -->
 	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>
 	<action fromaid="61101" toaid="61499" script="custom/events/hunger.lua"/>
@@ -32,11 +34,6 @@
 	<action itemid="2342" script="other/enchanting.lua" />
 	<action fromid="7759" toid="7762" script="other/enchanting.lua" />
 	<action itemid="24739" script="other/enchanting.lua" /-->
-
-	<!-- Quests -->
-	<action itemid="1740" script="quests/quests.lua" />
-	<action fromid="1747" toid="1749" script="quests/quests.lua" />
-	<action uniqueid="30015" script="quests/annihilator.lua" />
 
 	<!-- Tools -->
 	<action itemid="2420" script="tools/machete.lua" />

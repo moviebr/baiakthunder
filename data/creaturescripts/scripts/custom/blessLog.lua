@@ -11,16 +11,11 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
     end
     
     db.query("INSERT INTO `player_deaths` (`bless`) VALUES (" .. playerBless .. "")
+	
+	local amulet = player:getSlotItem(CONST_SLOT_NECKLACE)
+	if amulet and amulet.itemid == ITEM_AMULETOFLOSS then
+		db.query("INSERT INTO `player_deaths` (`aol`) VALUES ('true'")
+	end
 
     return true
 end
-
---[[ COMANDO SQL
-
-ALTER TABLE `player_deaths` ADD `bless` INT(11) NOT NULL DEFAULT '0';
-
-TAG Creaturescript
-
-<event type="death" name="BlessLog" script="blessLog.lua" />
-
---]]

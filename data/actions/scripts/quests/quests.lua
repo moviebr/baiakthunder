@@ -1,42 +1,74 @@
-local annihilatorReward = {1990, 2400, 2431, 2494}
-function onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if item.uid <= 1250 or item.uid >= 30000 then
-		return false
-	end
+config = {
+        quests = {
+            [7172] = { -- ActionID que será colocado no baú
+                name = "dos Crystal Coins", -- Nome da quest
+                rewards = {
+                    {id = 2160, count = 100}, -- Prêmio: ID - Count
+                },
+                level = {
+                    active = true, -- Level minimo para pegar?
+                    min = 150, -- Se true, qual o minimo
+                },
+                storage = {
+                    active = true, -- Player poderá pegar somente uma vez?
+                    key = 91143, -- Apenas uma key por quest
+                },
+                effectWin = 30, -- Efeito que vai aparecer quando fizer a quest
+            },
+            [7171] = { -- ActionID que será colocado no baú
+                name = "dos Coins", -- Nome da quest
+                rewards = {
+                    {id = 2160, count = 100}, -- Prêmio: ID - Count
+                    {id = 2152, count = 100}, -- Prêmio: ID - Count
+                },
+                level = {
+                    active = true, -- Level minimo para pegar?
+                    min = 150, -- Se true, qual o minimo
+                },
+                storage = {
+                    active = true, -- Player poderá pegar somente uma vez?
+                    key = 91140, -- Apenas uma key por quest
+                },
+                effectWin = 29, -- Efeito que vai aparecer quando fizer a quest
+            },
+        },
+    messages = {
+        notExist = "Essa quest não existe.",
+        win = "Você fez a quest %s.",
+        notWin = "Você já fez a quest %s.",
+        level = "Você precisa de level %d ou maior para fazer a quest %s.",
+    },
+}
 
-	local itemType = ItemType(item.uid)
-	if itemType:getId() == 0 then
-		return false
-	end
+function onUse(cid, item, fromPosition, target, toPosition, isHotkey)
+    local player = Player(cid)
+    local choose = config.quests[item.actionid]
 
-	local itemWeight = itemType:getWeight()
-	local playerCap = player:getFreeCapacity()
-	if table.contains(annihilatorReward, item.uid) then
-		if player:getStorageValue(30015) == -1 then
-			if playerCap >= itemWeight then
-				if item.uid == 1990 then
-					player:addItem(1990, 1):addItem(2326, 1)
-				else
-					player:addItem(item.uid, 1)
-				end
-				player:sendTextMessage(MESSAGE_INFO_DESCR, 'You have found a ' .. itemType:getName() .. '.')
-				player:setStorageValue(30015, 1)
-			else
-				player:sendTextMessage(MESSAGE_INFO_DESCR, 'You have found a ' .. itemType:getName() .. ' weighing ' .. itemWeight .. ' oz it\'s too heavy.')
-			end
-		else
-			player:sendTextMessage(MESSAGE_INFO_DESCR, "It is empty.")
-		end
-	elseif player:getStorageValue(item.uid) == -1 then
-		if playerCap >= itemWeight then
-			player:sendTextMessage(MESSAGE_INFO_DESCR, 'You have found a ' .. itemType:getName() .. '.')
-			player:addItem(item.uid, 1)
-			player:setStorageValue(item.uid, 1)
-		else
-			player:sendTextMessage(MESSAGE_INFO_DESCR, 'You have found a ' .. itemType:getName() .. ' weighing ' .. itemWeight .. ' oz it\'s too heavy.')
-		end
-	else
-		player:sendTextMessage(MESSAGE_INFO_DESCR, "It is empty.")
-	end
-	return true
+    if not choose then
+        player:sendCancelMessage(config.messages.notExist)
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return true
+    end
+
+    if choose.level.active and player:getLevel() < choose.level.min then
+        player:sendCancelMessage(config.messages.level:format(choose.level.min, choose.name))
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return true
+    end
+
+    if choose.storage.active and player:getStorageValue(choose.storage.key) >= 0 then
+        player:sendCancelMessage(config.messages.notWin:format(choose.name))
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return true
+    end
+
+    for i = 1, #choose.rewards do
+        player:addItem(choose.rewards[i].id, choose.rewards[i].count)
+    end
+
+    player:setStorageValue(choose.storage.key, 1)
+    player:sendCancelMessage(config.messages.win:format(choose.name))
+    player:getPosition():sendMagicEffect(choose.effectWin)
+
+    return true
 end
