@@ -46,7 +46,7 @@ function onLogin(player)
 	end
 
 	-- Mining
-	if player:getStorageValue(configMining.level.storageTentativas) == -1 then
+	if player:getStorageValue(configMining.level.storageTentativas) == -1 or player:getStorageValue(configMining.level.storageNivel) == -1 then
 		player:setStorageValue(configMining.level.storageTentativas, 0) -- Tentativas
 		player:setStorageValue(configMining.level.storageNivel, 1) -- Level
 	end
@@ -114,7 +114,6 @@ function onLogin(player)
 	player:registerEvent("DodgeManaSystem")
 	player:registerEvent("MonsterHunt")
 	player:registerEvent("AutoLoot")
-	player:registerEvent("BlessLog")
 	player:registerEvent("Exiva")
 	player:registerEvent("Events")
 	player:registerEvent("Tasks")

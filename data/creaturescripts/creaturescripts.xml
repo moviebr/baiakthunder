@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <creaturescripts>
 
+	<!-- Others -->
+	<event type="login" name="PlayerLogin" script="others/login.lua" />
+	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
+	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />
+	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
+	<event type="death" name="DropLoot" script="others/droploot.lua" />
+
 	<!-- Custom -->
 	<event type="login" name="FreeBless" script="custom/freeBless.lua" />
 	<event type="login" name="OnlineBonus" script="custom/onlineBonus.lua" />
@@ -11,7 +18,6 @@
 	<event type="kill" name="AutoLoot" script="custom/autoLoot.lua" />
 	<event type="kill" name="Exiva" script="custom/exiva.lua" />
 	<event type="kill" name="Tasks" script="custom/task.lua" />
-	<event type="death" name="BlessLog" script="custom/blessLog.lua" />
 	<event type="login" name="FirstItems" script="custom/firstitems.lua" />
 	<event type="think" name="SuperUP" script="custom/superup.lua" />
 	<event type="kill" name="GuildLevel" script="custom/guildLevel.lua" />
@@ -25,14 +31,6 @@
 	
 	<!-- Events -->
 	<event type="preparedeath" name="Events" script="custom/events/events.lua" />
-
-	<!-- Others -->
-	<event type="login" name="PlayerLogin" script="others/login.lua" />
-	<event type="logout" name="PlayerLogout" script="others/logout.lua" />
-	<event type="login" name="RegenerateStamina" script="others/regeneratestamina.lua" />
-	<event type="death" name="PlayerDeath" script="others/playerdeath.lua" />
-	<event type="death" name="DropLoot" script="others/droploot.lua" />
-	<event type="extendedopcode" name="ExtendedOpcode" script="others/extendedopcode.lua" />
 
 	<!-- Monsters -->
 	<event type="death" name="MerlinDeath" script="monsters/merlin.lua" />

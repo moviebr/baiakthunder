@@ -1,5 +1,6 @@
 local deathListEnabled = true
 local maxDeathRecords = 5
+local maxBless = 5
 
 function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDamageUnjustified)
 	local playerId = player:getId()
@@ -12,6 +13,21 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 	if not deathListEnabled then
 		return
 	end
+
+	playerBless = 0
+	aolLog = 0
+
+	local amulet = player:getSlotItem(CONST_SLOT_NECKLACE)
+    if amulet and amulet.itemid == ITEM_AMULETOFLOSS then
+        aolLog = 1
+	end
+
+    for i = 1, maxBless do
+        if player:hasBlessing(i) then
+            local count = i * i
+            playerBless = playerBless + count
+        end
+    end
 
 	local byPlayer = 0
 	local killerName
@@ -48,7 +64,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 	end
 
 	local playerGuid = player:getGuid()
-	db.query("INSERT INTO `player_deaths` (`player_id`, `time`, `level`, `killed_by`, `is_player`, `mostdamage_by`, `mostdamage_is_player`, `unjustified`, `mostdamage_unjustified`) VALUES (" .. playerGuid .. ", " .. os.time() .. ", " .. player:getLevel() .. ", " .. db.escapeString(killerName) .. ", " .. byPlayer .. ", " .. db.escapeString(mostDamageName) .. ", " .. byPlayerMostDamage .. ", " .. (unjustified and 1 or 0) .. ", " .. (mostDamageUnjustified and 1 or 0) .. ")")
+	db.query("INSERT INTO `player_deaths` (`player_id`, `time`, `level`, `killed_by`, `is_player`, `mostdamage_by`, `mostdamage_is_player`, `unjustified`, `mostdamage_unjustified`, `bless`, `aol`) VALUES (" .. playerGuid .. ", " .. os.time() .. ", " .. player:getLevel() .. ", " .. db.escapeString(killerName) .. ", " .. byPlayer .. ", " .. db.escapeString(mostDamageName) .. ", " .. byPlayerMostDamage .. ", " .. (unjustified and 1 or 0) .. ", " .. (mostDamageUnjustified and 1 or 0) .. ", ".. playerBless ..", ".. aolLog ..")")
 	local resultId = db.storeQuery("SELECT `player_id` FROM `player_deaths` WHERE `player_id` = " .. playerGuid)
 
 	local deathRecords = 0
