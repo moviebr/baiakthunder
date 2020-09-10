@@ -3,6 +3,9 @@
 	<spawn centerx="441" centery="1707" centerz="2" radius="5">
 		<monster name="Hydra" x="1" y="-1" z="2" spawntime="60" />
 	</spawn>
+	<spawn centerx="1152" centery="1026" centerz="3" radius="1">
+		<monster name="Black Knight" x="0" y="0" z="3" spawntime="60" />
+	</spawn>
 	<spawn centerx="440" centery="1706" centerz="3" radius="5">
 		<monster name="Hydra" x="1" y="-2" z="3" spawntime="60" />
 		<monster name="Hydra" x="1" y="4" z="3" spawntime="60" />
@@ -17,6 +20,12 @@
 		<monster name="Hydra" x="-5" y="-2" z="3" spawntime="60" />
 		<monster name="Hydra" x="5" y="-1" z="3" spawntime="60" />
 		<monster name="Hydra" x="-5" y="1" z="3" spawntime="60" />
+	</spawn>
+	<spawn centerx="1154" centery="1026" centerz="4" radius="1">
+		<monster name="Orc Warlord" x="0" y="0" z="4" spawntime="60" />
+	</spawn>
+	<spawn centerx="1152" centery="1027" centerz="4" radius="1">
+		<monster name="Orc Warlord" x="0" y="0" z="4" spawntime="60" />
 	</spawn>
 	<spawn centerx="1768" centery="1079" centerz="4" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="4" spawntime="60" />
@@ -46,6 +55,9 @@
 	<spawn centerx="433" centery="1733" centerz="4" radius="5">
 		<monster name="Hydra" x="0" y="-3" z="4" spawntime="60" />
 	</spawn>
+	<spawn centerx="1153" centery="1026" centerz="5" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="5" spawntime="60" />
+	</spawn>
 	<spawn centerx="1768" centery="1066" centerz="5" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="-1" z="5" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="5" spawntime="60" />
@@ -66,6 +78,9 @@
 	<spawn centerx="1768" centery="1099" centerz="5" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="5" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="5" spawntime="60" />
+	</spawn>
+	<spawn centerx="1094" centery="1105" centerz="5" radius="1">
+		<monster name="Bat" x="0" y="0" z="5" spawntime="60" />
 	</spawn>
 	<spawn centerx="951" centery="1210" centerz="5" radius="1">
 		<npc name="Vanessa" x="0" y="0" z="5" spawntime="60" />
@@ -137,6 +152,75 @@
 		<monster name="Hydra" x="-3" y="1" z="5" spawntime="60" />
 	</spawn>
 	<spawn centerx="182" centery="1748" centerz="5" radius="30" />
+	<spawn centerx="1138" centery="1019" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1150" centery="1020" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1124" centery="1021" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1126" centery="1022" centerz="6" radius="1">
+		<monster name="Crazed Beggar" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1153" centery="1026" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1150" centery="1028" centerz="6" radius="1">
+		<monster name="Crazed Beggar" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1135" centery="1029" centerz="6" radius="1">
+		<monster name="Crazed Beggar" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1151" centery="1032" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1140" centery="1035" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1149" centery="1040" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1133" centery="1042" centerz="6" radius="1">
+		<monster name="Crazed Beggar" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1132" centery="1045" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1121" centery="1046" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1148" centery="1048" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1132" centery="1051" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1110" centery="1052" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1130" centery="1053" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1113" centery="1055" centerz="6" radius="1">
+		<monster name="Crazed Beggar" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1150" centery="1055" centerz="6" radius="1">
+		<monster name="Orc Leader" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1140" centery="1060" centerz="6" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1090" centery="1066" centerz="6" radius="1">
+		<monster name="Black Sheep" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1100" centery="1066" centerz="6" radius="1">
+		<monster name="Bat" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1105" centery="1073" centerz="6" radius="1">
+		<monster name="Black Sheep" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="1768" centery="1073" centerz="6" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="6" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
@@ -147,6 +231,9 @@
 	</spawn>
 	<spawn centerx="1768" centery="1082" centerz="6" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1074" centery="1083" centerz="6" radius="1">
+		<monster name="Black Sheep" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
 	<spawn centerx="1768" centery="1084" centerz="6" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
@@ -159,7 +246,12 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="6" spawntime="60" />
 		<monster name="Guarda do Castelo" x="1" y="0" z="6" spawntime="60" />
 	</spawn>
-	<spawn centerx="634" centery="1156" centerz="6" radius="5" />
+	<spawn centerx="1080" centery="1092" centerz="6" radius="1">
+		<monster name="Bat" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1108" centery="1098" centerz="6" radius="1">
+		<monster name="Black Sheep" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
 	<spawn centerx="1079" centery="1164" centerz="6" radius="1">
 		<monster name="Cyclops Smith" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
@@ -169,12 +261,11 @@
 	<spawn centerx="1090" centery="1165" centerz="6" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
-	<spawn centerx="634" centery="1168" centerz="6" radius="5" />
-	<spawn centerx="634" centery="1180" centerz="6" radius="5" />
-	<spawn centerx="634" centery="1192" centerz="6" radius="5" />
-	<spawn centerx="635" centery="1196" centerz="6" radius="5" />
 	<spawn centerx="1205" centery="1266" centerz="6" radius="1">
 		<npc name="Charbel" x="0" y="0" z="6" spawntime="60" />
+	</spawn>
+	<spawn centerx="1100" centery="1340" centerz="6" radius="1">
+		<npc name="Vanessa" x="0" y="0" z="6" spawntime="60" />
 	</spawn>
 	<spawn centerx="699" centery="1347" centerz="6" radius="1">
 		<npc name="Raimunda" x="0" y="0" z="6" spawntime="60" />
@@ -380,24 +471,166 @@
 		<monster name="Demon" x="-2" y="21" z="6" spawntime="60" />
 		<monster name="Demon" x="17" y="22" z="6" spawntime="60" />
 	</spawn>
+	<spawn centerx="951" centery="997" centerz="7" radius="1">
+		<monster name="Tarantula" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1136" centery="1018" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1125" centery="1022" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1140" centery="1023" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1133" centery="1029" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="1300" centery="1031" centerz="7" radius="1">
 		<npc name="Raimunda" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1140" centery="1034" centerz="7" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1124" centery="1038" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1145" centery="1038" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1118" centery="1040" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1144" centery="1042" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1133" centery="1043" centerz="7" radius="1">
+		<monster name="Orc" x="-1" y="-1" z="7" spawntime="60" />
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1122" centery="1044" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1119" centery="1046" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1137" centery="1049" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1111" centery="1051" centerz="7" radius="1">
+		<monster name="Orc Shaman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1143" centery="1051" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1109" centery="1052" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1118" centery="1052" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1150" centery="1052" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1137" centery="1055" centerz="7" radius="1">
+		<monster name="Orc Warrior" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1145" centery="1055" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1149" centery="1056" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1127" centery="1057" centerz="7" radius="1">
+		<monster name="Orc" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1089" centery="1059" centerz="7" radius="1">
+		<monster name="Bear" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1123" centery="1059" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1136" centery="1059" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1768" centery="1062" centerz="7" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="1" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="1143" centery="1063" centerz="7" radius="1">
+		<monster name="Orc Spearman" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1080" centery="1068" centerz="7" radius="1">
+		<monster name="Badger" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1082" centery="1073" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1058" centery="1076" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1094" centery="1081" centerz="7" radius="1">
+		<monster name="Badger" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="788" centery="1087" centerz="7" radius="1">
 		<npc name="Heitor" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1047" centery="1089" centerz="7" radius="1">
+		<monster name="Barbarian Skullhunter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1057" centery="1089" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1042" centery="1092" centerz="7" radius="1">
+		<monster name="Barbarian Headsplitter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1064" centery="1100" centerz="7" radius="1">
+		<monster name="Barbarian Skullhunter" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1768" centery="1105" centerz="7" radius="1">
 		<monster name="Guarda do Castelo" x="-1" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="0" z="7" spawntime="60" />
 		<monster name="Guarda do Castelo" x="1" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="1052" centery="1107" centerz="7" radius="1">
+		<monster name="Barbarian Brutetamer" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1030" centery="1108" centerz="7" radius="1">
+		<monster name="Barbarian Bloodwalker" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1034" centery="1114" centerz="7" radius="1">
+		<monster name="Barbarian Headsplitter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1056" centery="1117" centerz="7" radius="1">
+		<monster name="Barbarian Headsplitter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1041" centery="1119" centerz="7" radius="1">
+		<monster name="Barbarian Skullhunter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1073" centery="1119" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1031" centery="1120" centerz="7" radius="1">
+		<monster name="Barbarian Headsplitter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1037" centery="1120" centerz="7" radius="1">
+		<monster name="Barbarian Bloodwalker" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1060" centery="1127" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1050" centery="1128" centerz="7" radius="1">
+		<monster name="Barbarian Headsplitter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1040" centery="1130" centerz="7" radius="1">
+		<monster name="Barbarian Skullhunter" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
 	<spawn centerx="1100" centery="1135" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
+	</spawn>
+	<spawn centerx="1067" centery="1136" centerz="7" radius="1">
+		<monster name="Bandit" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1089" centery="1137" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
@@ -438,7 +671,6 @@
 	<spawn centerx="1103" centery="1153" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="634" centery="1155" centerz="7" radius="5" />
 	<spawn centerx="1097" centery="1155" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
@@ -487,25 +719,11 @@
 	<spawn centerx="1067" centery="1171" centerz="7" radius="1">
 		<monster name="Snake" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
-	<spawn centerx="629" centery="1180" centerz="7" radius="2">
-		<monster name="Warlock" x="1" y="1" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="640" centery="1180" centerz="7" radius="2">
-		<monster name="War Golem" x="-1" y="1" z="7" spawntime="60" />
-	</spawn>
 	<spawn centerx="1177" centery="1180" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1183" centery="1181" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="629" centery="1185" centerz="7" radius="2">
-		<monster name="Warlock" x="1" y="-1" z="7" spawntime="60" />
-		<monster name="Warlock" x="1" y="2" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="640" centery="1186" centerz="7" radius="2">
-		<monster name="Water Elemental" x="-1" y="-2" z="7" spawntime="60" />
-		<monster name="Werewolf" x="-1" y="1" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="1175" centery="1188" centerz="7" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="7" spawntime="60" />
@@ -545,22 +763,6 @@
 		<monster name="Snake" x="-9" y="9" z="7" spawntime="60" />
 		<monster name="Swamp Troll" x="-12" y="12" z="7" spawntime="60" />
 		<monster name="Snake" x="1" y="13" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="640" centery="1191" centerz="7" radius="2">
-		<monster name="Serpent Spawn" x="-1" y="-1" z="7" spawntime="60" />
-		<monster name="Dragon Lord" x="-1" y="2" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="629" centery="1192" centerz="7" radius="2">
-		<monster name="Dragon Lord" x="1" y="-2" z="7" spawntime="60" />
-		<monster name="Dragon" x="1" y="1" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="629" centery="1198" centerz="7" radius="2">
-		<monster name="Carniphila" x="1" y="-2" z="7" spawntime="60" />
-		<monster name="Cyclops" x="1" y="1" z="7" spawntime="60" />
-	</spawn>
-	<spawn centerx="640" centery="1198" centerz="7" radius="2">
-		<monster name="Dragon" x="-1" y="-2" z="7" spawntime="60" />
-		<monster name="Blue Djinn" x="-1" y="1" z="7" spawntime="60" />
 	</spawn>
 	<spawn centerx="991" centery="1203" centerz="7" radius="1">
 		<npc name="Felipe" x="0" y="0" z="7" spawntime="60" />
@@ -1609,8 +1811,26 @@
 		<monster name="Demon" x="8" y="18" z="7" spawntime="60" />
 		<monster name="Demon" x="-1" y="19" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="1207" centery="1016" centerz="8" radius="1">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1209" centery="1019" centerz="8" radius="1">
+		<monster name="spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1205" centery="1022" centerz="8" radius="1">
+		<monster name="spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1204" centery="1029" centerz="8" radius="1">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1209" centery="1030" centerz="8" radius="1">
+		<monster name="spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1780" centery="1038" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1207" centery="1041" centerz="8" radius="1">
+		<monster name="Tarantula" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="1788" centery="1049" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
@@ -1621,8 +1841,41 @@
 	<spawn centerx="1781" centery="1064" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
+	<spawn centerx="1139" centery="1067" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1255" centery="1067" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1245" centery="1071" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1133" centery="1073" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1783" centery="1075" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1148" centery="1076" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1243" centery="1076" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1270" centery="1079" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1269" centery="1082" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1117" centery="1085" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1154" centery="1085" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1225" centery="1087" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="1777" centery="1087" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
@@ -1632,6 +1885,39 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
 	</spawn>
+	<spawn centerx="1231" centery="1093" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1120" centery="1095" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1199" centery="1096" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1210" centery="1096" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1131" centery="1097" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1169" centery="1097" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1115" centery="1098" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1142" centery="1099" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1258" centery="1099" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1218" centery="1101" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1200" centery="1102" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1782" centery="1106" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
@@ -1640,8 +1926,44 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
 	</spawn>
+	<spawn centerx="1237" centery="1108" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1182" centery="1110" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1177" centery="1113" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1255" centery="1115" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1101" centery="1118" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1193" centery="1119" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1784" centery="1119" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1123" centery="1120" centerz="8" radius="1">
+		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1218" centery="1121" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1251" centery="1121" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1276" centery="1121" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1161" centery="1122" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1099" centery="1123" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="1796" centery="1124" centerz="8" radius="1">
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
@@ -1656,11 +1978,116 @@
 		<monster name="Guarda do Castelo" x="0" y="0" z="8" spawntime="60" />
 		<monster name="Guarda do Castelo" x="0" y="1" z="8" spawntime="60" />
 	</spawn>
+	<spawn centerx="1174" centery="1128" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1215" centery="1128" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1260" centery="1129" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1232" centery="1132" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1208" centery="1133" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1293" centery="1133" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1288" centery="1134" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1108" centery="1137" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1242" centery="1140" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1287" centery="1142" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1098" centery="1144" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1174" centery="1145" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1209" centery="1145" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1127" centery="1147" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1177" centery="1147" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1260" centery="1149" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1202" centery="1151" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1114" centery="1153" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1140" centery="1153" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1167" centery="1153" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1172" centery="1159" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1274" centery="1159" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1291" centery="1159" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1186" centery="1162" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1240" centery="1163" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1221" centery="1164" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1119" centery="1166" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1152" centery="1166" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1139" centery="1167" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1179" centery="1169" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1150" centery="1171" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
 	<spawn centerx="1201" centery="1171" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1262" centery="1171" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1156" centery="1175" centerz="8" radius="1">
+		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1111" centery="1176" centerz="8" radius="1">
 		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="1206" centery="1176" centerz="8" radius="1">
 		<monster name="Cyclops" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="1127" centery="1177" centerz="8" radius="1">
+		<monster name="Cyclops Smith" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="1175" centery="1178" centerz="8" radius="1">
 		<monster name="Cyclops Drone" x="0" y="0" z="8" spawntime="60" />
@@ -1838,6 +2265,87 @@
 	</spawn>
 	<spawn centerx="911" centery="1290" centerz="8" radius="1">
 		<monster name="Giant Spider" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="754" centery="1327" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="755" centery="1330" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="729" centery="1332" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="699" centery="1333" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="748" centery="1334" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="764" centery="1334" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="689" centery="1335" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="712" centery="1343" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="736" centery="1343" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="762" centery="1343" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="718" centery="1345" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="747" centery="1347" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="696" centery="1350" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="765" centery="1350" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="736" centery="1351" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="748" centery="1351" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="692" centery="1353" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="718" centery="1353" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="760" centery="1354" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="719" centery="1355" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="765" centery="1359" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="721" centery="1363" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="731" centery="1363" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="689" centery="1364" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="693" centery="1368" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="708" centery="1371" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
+	</spawn>
+	<spawn centerx="688" centery="1372" centerz="8" radius="1">
+		<monster name="Slime" x="0" y="0" z="8" spawntime="60" />
 	</spawn>
 	<spawn centerx="226" centery="1687" centerz="8" radius="10">
 		<monster name="Hydra" x="-1" y="0" z="8" spawntime="60" />
