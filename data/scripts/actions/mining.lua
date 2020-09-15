@@ -1,7 +1,7 @@
 local mining = Action()
 
 function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	local randBase = math.random(10000)
+	local randBase = math.random()
 	local rand = configMining.itens[math.random(#configMining.itens)]
 	local randHit = math.random(configMining.hit.danoMin,configMining.hit.danoMax)
 
