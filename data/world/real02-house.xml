@@ -249,4 +249,23 @@
 	<house name="Shadow Wood #11" houseid="249" entryx="1270" entryy="1065" entryz="7" rent="0" townid="7" size="9" />
 	<house name="Shadow Wood #12" houseid="250" entryx="1260" entryy="1057" entryz="7" rent="0" townid="7" size="6" />
 	<house name="Shadow Wood #13" houseid="251" entryx="1294" entryy="1051" entryz="6" rent="0" townid="7" size="51" />
+	<house name="Fork Village #1" houseid="252" entryx="818" entryy="1252" entryz="7" rent="0" townid="1" size="12" />
+	<house name="Fork Village #2" houseid="253" entryx="818" entryy="1251" entryz="7" rent="0" townid="1" size="20" />
+	<house name="Fork Village #3" houseid="254" entryx="818" entryy="1251" entryz="6" rent="0" townid="1" size="14" />
+	<house name="Fork Village #4" houseid="255" entryx="818" entryy="1250" entryz="6" rent="0" townid="1" size="16" />
+	<house name="Fork Village #5" houseid="256" entryx="827" entryy="1253" entryz="7" rent="0" townid="1" size="28" />
+	<house name="Fork Village #6" houseid="257" entryx="825" entryy="1252" entryz="6" rent="0" townid="1" size="19" />
+	<house name="Fork Village #7" houseid="258" entryx="840" entryy="1250" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Fork Village #8" houseid="259" entryx="841" entryy="1251" entryz="7" rent="0" townid="1" size="10" />
+	<house name="Fork Village #9" houseid="260" entryx="845" entryy="1242" entryz="7" rent="0" townid="1" size="15" />
+	<house name="Fork Village #10" houseid="261" entryx="838" entryy="1237" entryz="7" rent="0" townid="1" size="38" />
+	<house name="Fork Village #11" houseid="262" entryx="838" entryy="1236" entryz="6" rent="0" townid="1" size="17" />
+	<house name="Fork Village #12" houseid="263" entryx="840" entryy="1250" entryz="6" rent="0" townid="1" size="15" />
+	<house name="Fork Village #13" houseid="264" entryx="839" entryy="1252" entryz="6" rent="0" townid="1" size="8" />
+	<house name="Thunder Hut #1" houseid="265" entryx="913" entryy="1193" entryz="7" rent="0" townid="1" size="10" />
+	<house name="Thunder Hut #2" houseid="266" entryx="913" entryy="1187" entryz="7" rent="0" townid="1" size="10" />
+	<house name="Thunder Hut #3" houseid="267" entryx="913" entryy="1181" entryz="7" rent="0" townid="1" size="10" />
+	<house name="Thunder Hut #4" houseid="268" entryx="918" entryy="1181" entryz="7" rent="0" townid="1" size="7" />
+	<house name="Thunder Hut #5" houseid="269" entryx="918" entryy="1187" entryz="7" rent="0" townid="1" size="7" />
+	<house name="Premia #1" houseid="270" entryx="455" entryy="1361" entryz="6" rent="0" townid="8" size="360" />
 </houses>

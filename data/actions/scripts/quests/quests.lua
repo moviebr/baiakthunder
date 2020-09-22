@@ -1,47 +1,24 @@
 config = {
         quests = {
-            [7172] = { -- ActionID que será colocado no baú
-                name = "dos Crystal Coins", -- Nome da quest
+            [46571] = {
+                name = { active = false, value = "do Crusader Helmet.",},
                 rewards = {
-                    {id = 2160, count = 100}, -- Prêmio: ID - Count
+                    {id = 2497, count = 1},
                 },
-                level = {
-                    active = true, -- Level minimo para pegar?
-                    min = 150, -- Se true, qual o minimo
-                },
-                storage = {
-                    active = true, -- Player poderá pegar somente uma vez?
-                    key = 91143, -- Apenas uma key por quest
-                },
-                effectWin = 30, -- Efeito que vai aparecer quando fizer a quest
-            },
-            [7171] = { -- ActionID que será colocado no baú
-                name = "dos Coins", -- Nome da quest
-                rewards = {
-                    {id = 2160, count = 100}, -- Prêmio: ID - Count
-                    {id = 2152, count = 100}, -- Prêmio: ID - Count
-                },
-                level = {
-                    active = true, -- Level minimo para pegar?
-                    min = 150, -- Se true, qual o minimo
-                },
-                storage = {
-                    active = true, -- Player poderá pegar somente uma vez?
-                    key = 91140, -- Apenas uma key por quest
-                },
-                effectWin = 29, -- Efeito que vai aparecer quando fizer a quest
+                level = { active = false, min = 150,},
+                storage = { active = true, key = 91143,},
+                effect = { active = false, effectWin = 30,},
             },
         },
     messages = {
         notExist = "Essa quest não existe.",
         win = "Você fez a quest %s.",
-        notWin = "Você já fez a quest %s.",
-        level = "Você precisa de level %d ou maior para fazer a quest %s.",
+        notWin = "Você já fez essa quest.",
+        level = "Você precisa de level %d ou maior para fazer essa quest.",
     },
 }
 
-function onUse(cid, item, fromPosition, target, toPosition, isHotkey)
-    local player = Player(cid)
+function onUse(player, item, fromPosition, target, toPosition, isHotkey)
     local choose = config.quests[item.actionid]
 
     if not choose then
@@ -51,13 +28,13 @@ function onUse(cid, item, fromPosition, target, toPosition, isHotkey)
     end
 
     if choose.level.active and player:getLevel() < choose.level.min then
-        player:sendCancelMessage(config.messages.level:format(choose.level.min, choose.name))
+        player:sendCancelMessage(config.messages.level:format(choose.level.min))
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return true
     end
 
     if choose.storage.active and player:getStorageValue(choose.storage.key) >= 0 then
-        player:sendCancelMessage(config.messages.notWin:format(choose.name))
+        player:sendCancelMessage(config.messages.notWin)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return true
     end
@@ -67,8 +44,14 @@ function onUse(cid, item, fromPosition, target, toPosition, isHotkey)
     end
 
     player:setStorageValue(choose.storage.key, 1)
-    player:sendCancelMessage(config.messages.win:format(choose.name))
-    player:getPosition():sendMagicEffect(choose.effectWin)
+
+    if choose.effect.active then
+        player:getPosition():sendMagicEffect(choose.effectWin)
+    end
+
+    if choose.name.active then
+        player:sendCancelMessage(config.messages.win:format(choose.name.value))
+    end
 
     return true
 end
