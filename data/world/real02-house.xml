@@ -268,4 +268,34 @@
 	<house name="Thunder Hut #4" houseid="268" entryx="918" entryy="1181" entryz="7" rent="0" townid="1" size="7" />
 	<house name="Thunder Hut #5" houseid="269" entryx="918" entryy="1187" entryz="7" rent="0" townid="1" size="7" />
 	<house name="Premia #1" houseid="270" entryx="455" entryy="1361" entryz="6" rent="0" townid="8" size="360" />
+	<house name="Premia #2" houseid="271" entryx="455" entryy="1369" entryz="6" rent="0" townid="8" size="415" />
+	<house name="Premia #3" houseid="272" entryx="455" entryy="1390" entryz="6" rent="0" townid="8" size="242" />
+	<house name="Premia #4" houseid="273" entryx="470" entryy="1390" entryz="6" rent="0" townid="8" size="242" />
+	<house name="Premia #5" houseid="274" entryx="485" entryy="1390" entryz="6" rent="0" townid="8" size="242" />
+	<house name="Premia #6" houseid="275" entryx="500" entryy="1389" entryz="6" rent="0" townid="8" size="368" />
+	<house name="Premia #7" houseid="276" entryx="502" entryy="1379" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #8" houseid="277" entryx="502" entryy="1366" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #9" houseid="278" entryx="502" entryy="1349" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #10" houseid="279" entryx="499" entryy="1338" entryz="6" rent="0" townid="8" size="509" />
+	<house name="Premia #11" houseid="280" entryx="476" entryy="1330" entryz="6" rent="0" townid="8" size="206" />
+	<house name="Premia #12" houseid="281" entryx="460" entryy="1330" entryz="6" rent="0" townid="8" size="250" />
+	<house name="Premia #13" houseid="282" entryx="460" entryy="1341" entryz="6" rent="0" townid="8" size="630" />
+	<house name="Premia #14" houseid="283" entryx="486" entryy="1349" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #15" houseid="284" entryx="486" entryy="1366" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #16" houseid="285" entryx="486" entryy="1379" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #17" houseid="286" entryx="462" entryy="1403" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia #18" houseid="287" entryx="478" entryy="1403" entryz="6" rent="0" townid="8" size="154" />
+	<house name="Premia Subsolo #1" houseid="288" entryx="444" entryy="1352" entryz="7" rent="0" townid="8" size="40" />
+	<house name="Premia Subsolo #2" houseid="289" entryx="448" entryy="1352" entryz="7" rent="0" townid="8" size="40" />
+	<house name="Premia Subsolo #3" houseid="290" entryx="444" entryy="1342" entryz="7" rent="0" townid="8" size="40" />
+	<house name="Premia Subsolo #4" houseid="291" entryx="448" entryy="1342" entryz="7" rent="0" townid="8" size="40" />
+	<house name="Premia Subsolo #5" houseid="292" entryx="474" entryy="1347" entryz="7" rent="0" townid="8" size="85" />
+	<house name="Premia Subsolo #6" houseid="293" entryx="477" entryy="1337" entryz="7" rent="0" townid="8" size="49" />
+	<house name="Premia Subsolo #7" houseid="294" entryx="477" entryy="1328" entryz="7" rent="0" townid="8" size="59" />
+	<house name="Premia Subsolo #8" houseid="295" entryx="485" entryy="1354" entryz="7" rent="0" townid="8" size="147" />
+	<house name="Premia Subsolo #9" houseid="296" entryx="486" entryy="1373" entryz="7" rent="0" townid="8" size="89" />
+	<house name="Premia Subsolo #10" houseid="297" entryx="486" entryy="1381" entryz="7" rent="0" townid="8" size="89" />
+	<house name="Premia Subsolo #11" houseid="298" entryx="486" entryy="1389" entryz="7" rent="0" townid="8" size="89" />
+	<house name="Premia Subsolo #12" houseid="299" entryx="462" entryy="1394" entryz="7" rent="0" townid="8" size="186" />
+	<house name="Thunder Farm #1" houseid="300" entryx="958" entryy="1251" entryz="7" rent="0" townid="1" size="143" />
 </houses>

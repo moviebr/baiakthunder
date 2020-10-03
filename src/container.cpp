@@ -267,8 +267,10 @@ ReturnValue Container::queryAdd(int32_t index, const Thing& thing, uint32_t coun
 
 			cylinder = cylinder->getParent();
 		}
-
-		if (index == INDEX_WHEREEVER && size() >= capacity()) {
+		std::cout << "container query add size " << size() << std::endl;
+		std::cout << "container query add index " << index << std::endl;
+		if (index == INDEX_WHEREEVER && size() >= (capacity() - 1)) {
+			std::cout << "container query add capacity " << capacity() << std::endl;
 			return RETURNVALUE_CONTAINERNOTENOUGHROOM;
 		}
 	} else {

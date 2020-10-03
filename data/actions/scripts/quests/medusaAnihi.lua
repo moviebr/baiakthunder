@@ -13,6 +13,17 @@ local config = {
 		[4] = Position(940, 1429, 8),
 		[5] = Position(939, 1429, 8),
 	},
+	monsterSpawn = {
+		[1] = Position(940, 1426, 8),
+		[2] = Position(942, 1426, 8),
+		[3] = Position(944, 1426, 8),
+		[4] = Position(939, 1432, 8),
+		[5] = Position(941, 1432, 8),
+		[6] = Position(943, 1432, 8),
+		[7] = Position(944, 1429, 8),
+		[8] = Position(945, 1429, 8),
+	},
+	monsterName = "Serpent Spawn",
 	players = {},
 	tempoCooldown = 4, -- Em horas
 	storageTempo = 717141,
@@ -49,6 +60,11 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			Position(config.oldPosition[i]):sendMagicEffect(CONST_ME_POFF)
 			targetPlayer:teleportTo(config.newPosition[i], false)
 			targetPlayer:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		end
+
+		for v, c in ipairs(config.monsterSpawn) do
+			Game.createMonster(config.monsterName, c, false, true)
+			Position(config.monsterSpawn[i]):sendMagicEffect(CONST_ME_TELEPORT)
 		end
 
 		Game.setStorageValue(config.storageTempo, config.tempoCooldown * 60 * 60)

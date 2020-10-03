@@ -14,12 +14,12 @@
 
 	<action actionid="19876" script="custom/bomberman.lua"/>
 
+	<action actionid="57591" script="quests/medusaAnihi.lua"/>
+	<action fromaid="34589" toaid="34592" script="quests/medusaAnihiPremio.lua" />
+
 	<action actionid="7171" script="quests/quests.lua" />
 
 	<!-- Events -->
-	<action fromaid="60101" toaid="60499" script="custom/events/hunger.lua"/>
-	<action fromaid="61101" toaid="61499" script="custom/events/hunger.lua"/>
-	<action fromaid="62101" toaid="62499" script="custom/events/hunger.lua"/>
 	<action actionid="10103" script="custom/events/snowball.lua"/>
 	<action uniqueid="7123" script="custom/events/castle48.lua"/>
 

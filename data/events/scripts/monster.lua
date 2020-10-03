@@ -40,14 +40,15 @@ function Monster:onDropLoot(corpse)
 
 		if player then
 			local text = ("Loot de %s: %s"):format(mType:getNameDescription(), corpse:getContentDescription())
-			if player:getStorageValue(STORAGEVALUE_LOOT) == 1 then
-				sendChannelMessage(11, TALKTYPE_CHANNEL_O, text)
-			else
-				player:sendTextMessage(MESSAGE_INFO_DESCR, text)
-			end
 			local party = player:getParty()
 			if party then
 				party:broadcastPartyLoot(text)
+			else
+				if player:getStorageValue(STORAGEVALUE_LOOT) == 1 then
+					sendChannelMessage(11, TALKTYPE_CHANNEL_O, text)
+				else
+					player:sendTextMessage(MESSAGE_INFO_DESCR, text)
+				end
 			end
 		end
 	else
@@ -56,7 +57,11 @@ function Monster:onDropLoot(corpse)
 		if party then
 			party:broadcastPartyLoot(text)
 		else
-			player:sendTextMessage(MESSAGE_INFO_DESCR, text)
+			if player:getStorageValue(STORAGEVALUE_LOOT) == 1 then
+				sendChannelMessage(11, TALKTYPE_CHANNEL_O, text)
+			else
+				player:sendTextMessage(MESSAGE_INFO_DESCR, text)
+			end
 		end
 	end
 end

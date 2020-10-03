@@ -156,7 +156,7 @@ class Container : public Item, public Cylinder
 		void startDecaying() final;
 
 	protected:
-		ItemDeque itemlist;
+		ItemDeque itemlist = {};
 
 		bool unlocked;
 

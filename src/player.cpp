@@ -2275,11 +2275,11 @@ ReturnValue Player::queryAdd(int32_t index, const Thing& thing, uint32_t count, 
 		}
 
 		case CONST_SLOT_BACKPACK: {
-			if (slotPosition & SLOTP_BACKPACK) {
-				ret = RETURNVALUE_NOERROR;
-			}
-			break;
-		}
+            if (slotPosition & SLOTP_BACKPACK) {
+                ret = containerQueryAdd(item, static_cast<slots_t>(index));
+            }
+            break;
+        }
 
 		case CONST_SLOT_ARMOR: {
 			if (slotPosition & SLOTP_ARMOR) {
@@ -2405,7 +2405,7 @@ ReturnValue Player::queryAdd(int32_t index, const Thing& thing, uint32_t count, 
 		}
 
 		case CONST_SLOT_WHEREEVER:
-		case -1:
+		case INDEX_WHEREEVER:
 			ret = RETURNVALUE_NOTENOUGHROOM;
 			break;
 
@@ -2424,6 +2424,7 @@ ReturnValue Player::queryAdd(int32_t index, const Thing& thing, uint32_t count, 
 	}
 
 	ret = g_moveEvents->onPlayerEquip(const_cast<Player*>(this), const_cast<Item*>(item), static_cast<slots_t>(index), true);
+	std::cout << "aqui " << ret << std::endl;
 	if (ret != RETURNVALUE_NOERROR) {
 		return ret;
 	}
@@ -2439,6 +2440,30 @@ ReturnValue Player::queryAdd(int32_t index, const Thing& thing, uint32_t count, 
 		return RETURNVALUE_NOTENOUGHROOM;
 	}
 	return ret;
+}
+
+ReturnValue Player::containerQueryAdd(const Item* item, slots_t slot) const
+{
+    if (!item) {
+        return RETURNVALUE_NOTPOSSIBLE;
+    }
+
+	std::cout << "containerQueryAdd " << slot << std::endl;
+
+    if (slot != CONST_SLOT_BACKPACK && slot > CONST_SLOT_WHEREEVER) {
+        return RETURNVALUE_NOERROR;
+    }
+
+    Item *bp = getInventoryItem(CONST_SLOT_BACKPACK);
+    if (!bp) {
+        return RETURNVALUE_NOERROR;
+    }
+    
+    if (Container *container = bp->getContainer()){
+        return container->queryAdd(INDEX_WHEREEVER, *item, 1, 0);
+    }
+
+    return RETURNVALUE_NOERROR;
 }
 
 ReturnValue Player::queryMaxCount(int32_t index, const Thing& thing, uint32_t count, uint32_t& maxQueryCount,

@@ -61,7 +61,7 @@ void IOMapSerialize::loadHouseItems(Map* map)
 			loadItem(propStream, tile);
 		}
 	} while (result->next());
-	std::cout << "> Loaded house items in: " << (OTSYS_TIME() - start) / (1000.) << " s" << std::endl;
+	std::cout << "> Itens de casas carregados em: " << (OTSYS_TIME() - start) / (1000.) << " s" << std::endl;
 }
 
 bool IOMapSerialize::saveHouseItems()
@@ -108,7 +108,7 @@ bool IOMapSerialize::saveHouseItems()
 
 	//End the transaction
 	bool success = transaction.commit();
-	std::cout << "> Saved house items in: " <<
+	std::cout << "> Itens de casas salvos em: " <<
 	          (OTSYS_TIME() - start) / (1000.) << " s" << std::endl;
 	return success;
 }

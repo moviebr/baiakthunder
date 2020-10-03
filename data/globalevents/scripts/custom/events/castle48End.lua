@@ -1,4 +1,4 @@
 function onTime(interval)
-		Castle48H:close()
+		Castle48H.close()
 	return true
 end

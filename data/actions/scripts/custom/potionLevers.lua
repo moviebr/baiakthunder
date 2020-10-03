@@ -15,6 +15,12 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
+	if player:getStorageValue(77124) >= os.time() then
+		player:sendCancelMessage("Você precisa esperar 2 segundos entre uma compra e outa.")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
+
 	local potionId = ItemType(potion.id)
 	local itemWeight = potionId:getWeight() * potion.charges
 	if player:getFreeCapacity() >= itemWeight then
@@ -25,6 +31,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			print("[ERROR] ACTION: potions_lever, FUNCTION: addItem, PLAYER: "..player:getName())
 		else
 			player:sendCancelMessage("Você comprou ".. potion.charges .."x ".. potionId:getName() ..".")
+			player:setStorageValue(77124, os.time() + 2)
 			player:getPosition():sendMagicEffect(29)
 		end
 		

@@ -195,3 +195,29 @@ function hourToNumber(str)
     end
     return hour
 end
+
+sendMailbox = function(playerId, id, count)
+    local player = Player(playerId)
+
+    if not id then
+        print("Erro falta id (sendMailbox) - global.lua")
+        return false
+    elseif not count then
+        print("Erro falta count (sendMailbox) - global.lua")
+        return false
+    end
+
+    local item = Game.createItem(tonumber(id), tonumber(count))
+
+    if player then
+        player:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você recebeu ".. tonumber(count).. "x ".. ItemType(tonumber(id)):getName() .." no Mailbox! Confira no seu Depot!")
+        player:save()
+    else
+        player = Player(playerId, true)
+        player:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
+        player:save()
+        player:delete()
+    end
+    return true
+end

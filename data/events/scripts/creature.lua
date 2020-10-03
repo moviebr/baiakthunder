@@ -13,10 +13,11 @@ end
 
 local staminaBonus = {
 	target = 'Trainer',
-	period = 180000, -- time on miliseconds
+	period = 180000,
     periodPremium = 120000,
-	bonus = 1, -- gain stamina
-	events = {}
+	bonus = 1,
+    events = {},
+    players = {},
 }
 
 local function addStamina(name)
@@ -39,10 +40,29 @@ local function addStamina(name)
 	end
 end
 
+checkIp = function(name)
+    local player = Player(name)
+    if not player then
+        ipPlayers[name] = nil
+    else
+        if player:getIp() == 0 then
+            player:setTarget(nil)
+            player:teleportTo(player:getTown():getTemplePosition())
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+        end
+
+        ipPlayers[name] = addEvent(checkIp, 10000, player:getName())
+    end
+end
+
 function Creature:onTargetCombat(target)
+    ipPlayers = {}
+
    if not self then
         return true
     end
+
+    local name = self:getName()
 
     if (self:isPlayer() and target:isNpc()) then
         self:say("hi", TALKTYPE_PRIVATE_PN, false, target)
@@ -52,15 +72,14 @@ function Creature:onTargetCombat(target)
 
     if self:isPlayer() then
         if target and target:getName() == staminaBonus.target then
-            local name = self:getName()
             if not staminaBonus.events[name] then
                 staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
             end
 		end
-	end
-	
-    if (self:getPlayer() and self:getPlayer():getIp() == 0) then
-        self:setTarget(nil)
+    end
+
+    if self:isPlayer() and target and target:getName() == staminaBonus.target and not ipPlayers[name] then
+        ipPlayers[name] = addEvent(checkIp, 10000, name)
     end
 	
 end

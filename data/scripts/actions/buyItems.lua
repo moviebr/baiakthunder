@@ -1,10 +1,10 @@
 local items = Action()
 local levers = {
-	[2655] = {id = 9693, value = 45},
-	[2656] = {id = 12411, value = 50},
-	[2657] = {id = 12640, value = 100},
-	[2658] = {id = 8978, value = 80},
-	[2659] = {id = 12544, value = 190},
+	[2655] = {id = 9693, count = 1, value = 45},
+	[2656] = {id = 12411, count = 1, value = 50},
+	[2657] = {id = 12640, count = 1, value = 100},
+	[2658] = {id = 8978, count = 1, value = 0},
+	[2659] = {id = 12544, count = 1, value = 190},
 }
 
 function items.onUse(player, item, fromPosition, target, toPosition, isHotkey)
@@ -15,10 +15,16 @@ function items.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return false
 	end
 
-	local userItem = ItemType(choose.id)
-	local itemWeight = userItem:getWeight()
+	if player:getStorageValue(77124) >= os.time() then
+		player:sendCancelMessage("Você precisa esperar 2 segundos entre uma compra e outa.")
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
+		return true
+	end
 
-	if not player:getFreeCapacity() < itemWeight then
+	local userItem = ItemType(choose.id)
+	local itemWeight = userItem:getWeight() * choose.count
+
+	if player:getFreeCapacity() < itemWeight then
 		player:sendCancelMessage("Você não tem espaço suficiente.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
@@ -29,10 +35,18 @@ function items.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
 	end
+	
+	local buy = Game.createItem(choose.id, choose.count)
+	local itemE = player:addItemEx(buy)
+	print(itemE)
+	if itemE == RETURNVALUE_CONTAINERNOTENOUGHROOM then
+		sendMailbox(player:getId(), choose.id, choose.count)
+		player:sendTextMessage(MESSAGE_STATUS_BLUE_LIGHT, "Você não possui espaço em sua backpack e seu item foi enviado para o mailbox.")
+	end
 
-	player:addItem(choose.id)
-	player:sendCancelMessage("Você comprou ".. userItem:getName() ..".")
+	player:sendCancelMessage("Você comprou ".. choose.count .."x ".. userItem:getName() ..".")
 	player:getPosition():sendMagicEffect(29)
+	--player:setStorageValue(77124, os.time() + 2)
 
 	item:transform(item.itemid == 1945 and 1946 or 1945)
 

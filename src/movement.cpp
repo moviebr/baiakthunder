@@ -429,11 +429,12 @@ uint32_t MoveEvents::onCreatureMove(Creature* creature, const Tile* tile, MoveEv
 
 ReturnValue MoveEvents::onPlayerEquip(Player* player, Item* item, slots_t slot, bool isCheck)
 {
-	MoveEvent* moveEvent = getEvent(item, MOVE_EVENT_EQUIP, slot);
-	if (!moveEvent) {
-		return RETURNVALUE_NOERROR;
-	}
-	return moveEvent->fireEquip(player, item, slot, isCheck);
+    MoveEvent* moveEvent = getEvent(item, MOVE_EVENT_EQUIP, slot);
+    if (!moveEvent) {
+		std::cout << "onPlayerEquip " << std::endl;
+        return player->containerQueryAdd(item, slot);
+    }
+    return moveEvent->fireEquip(player, item, slot, isCheck);
 }
 
 ReturnValue MoveEvents::onPlayerDeEquip(Player* player, Item* item, slots_t slot)
@@ -681,8 +682,8 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 	}
 
 	if (isCheck) {
-		return RETURNVALUE_NOERROR;
-	}
+        return player->containerQueryAdd(item, slot);
+    }
 
 	if (player->isItemAbilityEnabled(slot)) {
 		return RETURNVALUE_NOERROR;
@@ -925,17 +926,19 @@ bool MoveEvent::executeStep(Creature* creature, Item* item, const Position& pos)
 
 ReturnValue MoveEvent::fireEquip(Player* player, Item* item, slots_t slot, bool isCheck)
 {
-	if (scripted) {
-		if (!equipFunction || equipFunction(this, player, item, slot, isCheck) == RETURNVALUE_NOERROR) {
-			if (executeEquip(player, item, slot, isCheck)) {
-				return RETURNVALUE_NOERROR;
-			}
-			return RETURNVALUE_CANNOTBEDRESSED;
-		}
-		return equipFunction(this, player, item, slot, isCheck);
-	} else {
-		return equipFunction(this, player, item, slot, isCheck);
-	}
+    ReturnValue ret = RETURNVALUE_NOERROR;
+
+    if (equipFunction) {
+        ret = equipFunction(this, player, item, slot, isCheck);
+    }
+
+    if (scripted && ret == RETURNVALUE_NOERROR) {
+        executeEquip(player, item, slot, isCheck);
+    } else if (scripted) {
+        return RETURNVALUE_CANNOTBEDRESSED;
+    }
+
+    return ret;
 }
 
 bool MoveEvent::executeEquip(Player* player, Item* item, slots_t slot, bool isCheck)

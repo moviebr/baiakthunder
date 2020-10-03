@@ -1015,6 +1015,7 @@ class Player final : public Creature, public Cylinder
 		void learnInstantSpell(const std::string& spellName);
 		void forgetInstantSpell(const std::string& spellName);
 		bool hasLearnedInstantSpell(const std::string& spellName) const;
+		ReturnValue containerQueryAdd(const Item* item, slots_t slot) const;
 
 	private:
 		std::vector<Condition*> getMuteConditions() const;
