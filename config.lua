@@ -86,7 +86,7 @@ rateSkill = 3
 rateLoot = 2
 rateMagic = 3
 rateSpawn = 2
-spawnMultiplier = 1
+spawnMultiplier = 150
 
 deSpawnRange = 2
 deSpawnRadius = 50
