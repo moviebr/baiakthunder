@@ -298,4 +298,6 @@
 	<house name="Premia Subsolo #11" houseid="298" entryx="486" entryy="1389" entryz="7" rent="0" townid="8" size="89" />
 	<house name="Premia Subsolo #12" houseid="299" entryx="462" entryy="1394" entryz="7" rent="0" townid="8" size="186" />
 	<house name="Thunder Farm #1" houseid="300" entryx="958" entryy="1251" entryz="7" rent="0" townid="1" size="143" />
+	<house name="Thunder House #98" houseid="301" entryx="1001" entryy="1209" entryz="6" rent="0" townid="1" size="24" />
+	<house name="Thunder House #99" houseid="302" entryx="976" entryy="1219" entryz="7" rent="0" townid="1" size="7" />
 </houses>

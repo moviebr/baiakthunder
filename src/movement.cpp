@@ -431,7 +431,6 @@ ReturnValue MoveEvents::onPlayerEquip(Player* player, Item* item, slots_t slot, 
 {
     MoveEvent* moveEvent = getEvent(item, MOVE_EVENT_EQUIP, slot);
     if (!moveEvent) {
-		std::cout << "onPlayerEquip " << std::endl;
         return player->containerQueryAdd(item, slot);
     }
     return moveEvent->fireEquip(player, item, slot, isCheck);

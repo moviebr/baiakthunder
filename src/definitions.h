@@ -22,7 +22,7 @@
 
 static constexpr auto STATUS_SERVER_NAME = "Baiak Thunder";
 static constexpr auto STATUS_SERVER_VERSION = "1.3";
-static constexpr auto STATUS_SERVER_DEVELOPERS = "Movie, Felipe & Crypter (Gustavo)";
+static constexpr auto STATUS_SERVER_DEVELOPERS = "Movie, Felipe & Crypter";
 
 static constexpr auto CLIENT_VERSION_MIN = 860;
 static constexpr auto CLIENT_VERSION_MAX = 860;

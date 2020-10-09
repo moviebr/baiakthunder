@@ -4,10 +4,6 @@ dofile('data/lib/core/core.lua')
 -- Compatibility library for our old Lua API
 dofile('data/lib/compat/compat.lua')
 
---[[ Legendary Lever
-dofile('data/lib/custom/legendaryLever.lua')
---]]
-
 -- Dodge e Critical
 dofile('data/lib/custom/dodgeCritical.lua')
 

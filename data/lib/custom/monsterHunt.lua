@@ -15,6 +15,7 @@ MONSTER_HUNT = {
 		init = "O monstro escolhido pelo sistema foi %s. Você tem 1 hora para matar a maior quantidade desse monstro.",
 		warnEnd = "Faltam %d minuto%s para acabar o evento. Se apressem!",
 		final = "O jogador %s foi o ganhador do evento! Parabéns.",
+		noWinner = "Não houve ganhadores no evento.",
 		reward = "Você recebeu o seu prêmio no mailbox!",
 		kill = "Você já matou {%d} %s do evento.",
 	},
@@ -55,6 +56,7 @@ function MONSTER_HUNT:endEvent()
 	end, 4 * 60 * 1000)
 	addEvent(function()
 		if #MONSTER_HUNT.players == nil then
+			Game.broadcastMessage(MONSTER_HUNT.messages.prefix .. MONSTER_HUNT.messages.noWinner)
 			return
 		end
 		table.sort(MONSTER_HUNT.players, function(a,b) return a[2] > b[2] end)

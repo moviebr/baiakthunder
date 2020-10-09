@@ -65,7 +65,7 @@ bool ScriptingManager::loadScriptSystems()
 	}
 
 	g_scripts = new Scripts();
-	std::cout << ">> Loading lua libs" << std::endl;
+	std::cout << ">> Carregando libs" << std::endl;
 	if (!g_scripts->loadScripts("scripts/lib", true, false)) {
 		std::cout << "> ERROR: Unable to load lua libs!" << std::endl;
 		return false;

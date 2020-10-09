@@ -23,7 +23,6 @@ function mining.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			player:getPosition():sendMagicEffect(1)
 			player:addHealth(- randHit)
 			player:sendTextMessage(22, configMining.msg.dano)
-			return true
 		end
 	
 		if rand.chancePickNormal >= randBase and item.itemid == configMining.idPick then

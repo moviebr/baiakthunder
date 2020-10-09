@@ -8698,43 +8698,35 @@ int LuaScriptInterface::luaPlayerAddItem(lua_State* L)
 
 int LuaScriptInterface::luaPlayerAddItemEx(lua_State* L)
 {
-	// player:addItemEx(item[, canDropOnMap = false[, index = INDEX_WHEREEVER[, flags = 0]]])
-	// player:addItemEx(item[, canDropOnMap = true[, slot = CONST_SLOT_WHEREEVER]])
-	Item* item = getUserdata<Item>(L, 2);
-	if (!item) {
-		reportErrorFunc(getErrorDesc(LUA_ERROR_ITEM_NOT_FOUND));
-		pushBoolean(L, false);
-		return 1;
-	}
+    // player:addItemEx(item[, canDropOnMap, slot = CONST_SLOT_WHEREEVER]])
+    Item* item = getUserdata<Item>(L, 2);
+    if (!item) {
+        reportErrorFunc(getErrorDesc(LUA_ERROR_ITEM_NOT_FOUND));
+        pushBoolean(L, false);
+        return 1;
+    }
 
-	Player* player = getUserdata<Player>(L, 1);
-	if (!player) {
-		lua_pushnil(L);
-		return 1;
-	}
+    Player* player = getUserdata<Player>(L, 1);
+    if (!player) {
+        lua_pushnil(L);
+        return 1;
+    }
 
-	if (item->getParent() != VirtualCylinder::virtualCylinder) {
-		reportErrorFunc("Item already has a parent");
-		pushBoolean(L, false);
-		return 1;
-	}
+    if (item->getParent() != VirtualCylinder::virtualCylinder) {
+        reportErrorFunc("Item already has a parent");
+        pushBoolean(L, false);
+        return 1;
+    }
 
-	bool canDropOnMap = getBoolean(L, 3, false);
-	ReturnValue returnValue;
-	if (canDropOnMap) {
-		slots_t slot = getNumber<slots_t>(L, 4, CONST_SLOT_WHEREEVER);
-		returnValue = g_game.internalPlayerAddItem(player, item, true, slot);
-	} else {
-		int32_t index = getNumber<int32_t>(L, 4, INDEX_WHEREEVER);
-		uint32_t flags = getNumber<uint32_t>(L, 5, 0);
-		returnValue = g_game.internalAddItem(player, item, index, flags);
-	}
+    bool canDropOnMap = getBoolean(L, 3, false);
+  slots_t slot = getNumber<slots_t>(L, 4, CONST_SLOT_WHEREEVER);
+  ReturnValue returnValue = g_game.internalPlayerAddItem(player, item, canDropOnMap, slot);
 
-	if (returnValue == RETURNVALUE_NOERROR) {
-		ScriptEnvironment::removeTempItem(item);
-	}
-	lua_pushnumber(L, returnValue);
-	return 1;
+    if (returnValue == RETURNVALUE_NOERROR) {
+        ScriptEnvironment::removeTempItem(item);
+    }
+    lua_pushnumber(L, returnValue);
+    return 1;
 }
 
 int LuaScriptInterface::luaPlayerRemoveItem(lua_State* L)

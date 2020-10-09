@@ -37,16 +37,14 @@ function items.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end
 	
 	local buy = Game.createItem(choose.id, choose.count)
-	local itemE = player:addItemEx(buy)
-	print(itemE)
-	if itemE == RETURNVALUE_CONTAINERNOTENOUGHROOM then
+	if player:addItemEx(buy) == RETURNVALUE_CONTAINERNOTENOUGHROOM then
 		sendMailbox(player:getId(), choose.id, choose.count)
 		player:sendTextMessage(MESSAGE_STATUS_BLUE_LIGHT, "Você não possui espaço em sua backpack e seu item foi enviado para o mailbox.")
 	end
 
 	player:sendCancelMessage("Você comprou ".. choose.count .."x ".. userItem:getName() ..".")
 	player:getPosition():sendMagicEffect(29)
-	--player:setStorageValue(77124, os.time() + 2)
+	player:setStorageValue(77124, os.time() + 2)
 
 	item:transform(item.itemid == 1945 and 1946 or 1945)
 

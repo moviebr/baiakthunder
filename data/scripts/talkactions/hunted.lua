@@ -1,5 +1,5 @@
 --[[
-    !hunted add, Player, item, nome do item
+    !hunted add, Player, item, nome ou id do item
     !hunted add, Player, points, 10
     !hunted add, Player, gold, 10000000
     !hunted cancel, Player
@@ -13,6 +13,34 @@ CREATE TABLE `hunted_system` (
     `count` INT(11) NOT NULL
 ) ENGINE = InnoDB;")
 --]]
+
+local HuntedSystem = {
+    messages = {
+        prefix = "[Hunted System] ",
+        notParam = "Aprenda os comandos do sistema no nosso site.",
+        levelMin = "Você precisa de level %d+ para usar esse sistema.",
+        enoughParam = "Faltam parâmetros.",
+        noComand = "Esse comando não existe.",
+        noTarget = "Esse jogador não existe ou não está online.",
+        noType = "Você precisa informar o tipo de pagamento (gold, points ou item).",
+        noQnt = "Você precisa informar %s.",
+        notNumber = "Você precisa informar apenas números.",
+        noItem = "Esse item não existe.",
+        hunted = "O jogador %s agora está hunted.",
+        target = "Sua morte foi colocada em jogo. Boa sorte.",
+        maxGolds = "O máximo que você pode informar é %s.",
+        blockItem = "Esse item não pode ser fornecido.",
+    },
+    maxGold = 5000000,
+    maxPoints = 500,
+    minLevel = 150,
+    storageLimit = {
+        value = 52371,
+        free = 3,
+        premium = 5,
+    },
+    blockItems = {2160},
+}
 
 local function checkHunteds(targetName)
     local resultId = db.storeQuery(string.format('SELECT * FROM `hunted_system` WHERE `target` = %s', targetName))
@@ -31,121 +59,151 @@ end
 local hunted = TalkAction("!hunted")
 
 function hunted.onSay(player, words, param)
+
+    if player:getLevel < HuntedSystem.minLevel then
+        player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.levelMin:format(HuntedSystem.minLevel))
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return false
+    end
+
+    if not param then
+        player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.notParam)
+        player:getPosition():sendMagicEffect(CONST_ME_POFF)
+        return false
+    end
+
+    param = param:lower()
     local split = param:split(",")
     local comando = split[1]
-    local target = Player(split[2])
-    local config = split[3]
+    local target = split[2]
+    local tipo = split[3]
     local qnt = split[4]
 
-    if not param then
-        player:sendCancelMessage("[Hunted System] Faltam parâmetros.")
+    if not comando then
+        player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.enoughParam)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
-    end
-
-    if comando ~= "add" or comando ~= "cancel" then
-        player:sendCancelMessage("[Hunted System] Você precisa específicar o tipo da ação (add ou cancel).")
+    elseif not target then
+        player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.enoughParam)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
-    end
-
-    if comando == "add" and not target then
-        player:sendCancelMessage("[Hunted System] Esse jogador precisa estar online ou ele não existe.")
-        player:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-    end
-
-    if comando == "add" and config ~= "item" or config ~= "pontos" or config ~= "gold" then
-        player:sendCancelMessage("[Hunted System] Os tipos possíveis são item ou pontos ou gold.")
-        player:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-    end
-    
-    if comando == "add" and config ~= "item" and not tonumber(qnt) then
-        player:sendCancelMessage("[Hunted System] Informe a quantidade em números.")
-        player:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-    end
-
-    if comando == "add" and config == "item" and not ItemType(qnt) then
-        player:sendCancelMessage("[Hunted System] O item com esse nome ou id não existe.")
-        player:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-    end
---[[
-    if comando == "cancel" and not target then
-        player:sendCancelMessage("[Hunted System] Esse jogador precisa estar online ou ele não existe.")
-        player:getPosition():sendMagicEffect(CONST_ME_POFF)
-        return false
-    end
---]]
-    if comando == "cancel" and config or qnt then
-        player:sendCancelMessage("[Hunted System] Excesso de parâmetros.")
+    elseif comando ~= "add" or comando ~= "cancel" then
+        player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noComand)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         return false
     end
 
     if comando == "add" then
-        if type == "item" then
-            local item = ItemType(item)
-            local slot = player:getSlotItem(CONST_SLOT_AMMO)
-            if slot then
-                if slot:getId() == item:getId() then
-                    item:remove()
-                    player:sendCancelMessage("[Hunted System] O player ".. target:getName() .." está hunted.")
-                    player:getPosition():sendMagicEffect(14)
-                    target:getPosition():sendMagicEffect(6)
-                    db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. type .."', '".. tonumber(count).. "')")
-                end
-            end
-        elseif type == "pontos" then
-            if player:removePremiumPoints(tonumber(count)) then
-                player:sendCancelMessage("[Hunted System] O player ".. target:getName() .." está hunted.")
-                player:getPosition():sendMagicEffect(14)
-                target:getPosition():sendMagicEffect(6)
-                db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. type .."', '".. tonumber(count).. "')")
-            end
-        elseif type == "gold" then
-            if player:removeMoney(tonumber(count)) then
-                player:sendCancelMessage("[Hunted System] O player ".. target:getName() .." está hunted.")
-                player:getPosition():sendMagicEffect(14)
-                target:getPosition():sendMagicEffect(6)
-                db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. type .."', '".. tonumber(count).. "')")
-            end
+        if not tipo or not qnt then
+            player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.enoughParam)
+            player:getPosition():sendMagicEffect(CONST_ME_POFF)
+            return false
         end
-    elseif comando == "cancel" then
-        local check = checkHunteds(target:getName())
-        if not check then
-            player:sendCancelMessage("[Hunted System] Não foi achado nenhum player no sistema.")
+        
+        if tipo ~= "item" or tipo ~= "gold" or tipo ~= "points" then
+            player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.enoughParam)
             player:getPosition():sendMagicEffect(CONST_ME_POFF)
             return false
         end
 
-        if check.type == "item" then
-            local item = Game.createItem(ItemType(check.count), 1)
-            local itemReceber = player:getInbox():addItemEx(item, INDEX_WHEREEVER, FLAG_NOLIMIT)
-            if itemReceber == RETURNVALUE_NOERROR then
-                player:sendCancelMessage("[Hunted System] O jogador ".. check.target .." foi retirado do sistema. O seu item chegou no mailbox.")
-                player:getPosition():sendMagicEffect(14)
-                db.query("DELETE FROM `hunted_system` WHERE target =".. check.target)
-                return true
+        target = Player(target)
+
+        if not target then
+            player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noTarget)
+            player:getPosition():sendMagicEffect(CONST_ME_POFF)
+            return false
+        end
+
+        if tipo == "item" then
+            if not qnt then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noQnt:format("o nome do item ou seu id"))
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
             end
-        elseif check.type == "pontos" then
-            if player:addPremiumPoints(tonumber(check.count)) then
-                player:sendCancelMessage("[Hunted System] O jogador ".. check.target .." foi retirado do sistema. O seu item chegou no mailbox.")
-                player:getPosition():sendMagicEffect(14)
-                db.query("DELETE FROM `hunted_system` WHERE target =".. check.target)
-                return true
+
+            local item = ItemType(qnt)
+            if not item then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noItem)
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
             end
-        elseif check.type == "gold" then
-            if player:addMoney(tonumber(check.count)) then
-                player:sendCancelMessage("[Hunted System] O jogador ".. check.target .." foi retirado do sistema. O seu item chegou no mailbox.")
+
+            if isInArray(HuntedSystem.blockItems, item:getId()) then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.blockItem)
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            local sql = db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. tipo .."', '".. item:getId() .. "')")
+            if sql == RETURNVALUE_NOERROR and item:remove() then
                 player:getPosition():sendMagicEffect(14)
-                db.query("DELETE FROM `hunted_system` WHERE target =".. check.target)
-                return true
+                target:getPosition():sendMagicEffect(6)
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.hunted:format(target:getName()))
+                target:sendTextMessage(MESSAGE_EVENT_ADVANCE, HuntedSystem.messages.prefix .. HuntedSystem.messages.target)
+                return false
+            end
+
+        elseif tipo == "gold" then
+
+            if not qnt then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noQnt:format("a quantidade de golds."))
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            if not tonumber(qnt) then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.notNumber)
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            if tonumber(qnt) > HuntedSystem.maxGold then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.maxGolds:format(HuntedSystem.maxGold))
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            local sql = db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. tipo .."', '".. tonumber(qnt).. "')")
+            if sql == RETURNVALUE_NOERROR and player:removeMoney(tonumber(qnt)) then
+                player:getPosition():sendMagicEffect(14)
+                target:getPosition():sendMagicEffect(6)
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.hunted:format(target:getName()))
+                target:sendTextMessage(MESSAGE_EVENT_ADVANCE, HuntedSystem.messages.prefix .. HuntedSystem.messages.target)
+                return false
+            end
+
+        elseif tipo == "points" then
+            if not qnt then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.noQnt:format("a quantidade de pontos."))
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            if not tonumber(qnt) then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.notNumber)
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            if tonumber(qnt) > HuntedSystem.maxPoints then
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.maxGolds:format(HuntedSystem.maxPoints))
+                player:getPosition():sendMagicEffect(CONST_ME_POFF)
+                return false
+            end
+
+            local sql = db.query("INSERT INTO `hunted_system` (`player`, `target`, `type`, `count`) VALUES ('".. player:getName().. "', '".. target:getName() .."', '".. tipo .."', '".. tonumber(qnt).. "')")
+            if sql == RETURNVALUE_NOERROR and player:removePremiumPoints(tonumber(qnt)) then
+                player:getPosition():sendMagicEffect(14)
+                target:getPosition():sendMagicEffect(6)
+                player:sendCancelMessage(HuntedSystem.messages.prefix .. HuntedSystem.messages.hunted:format(target:getName()))
+                target:sendTextMessage(MESSAGE_EVENT_ADVANCE, HuntedSystem.messages.prefix .. HuntedSystem.messages.target)
+                return false
             end
         end
+    elseif comando == "cancel" then
+        
     end
+
     return false
 end
 

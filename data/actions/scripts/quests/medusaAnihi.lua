@@ -64,7 +64,7 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 
 		for v, c in ipairs(config.monsterSpawn) do
 			Game.createMonster(config.monsterName, c, false, true)
-			Position(config.monsterSpawn[i]):sendMagicEffect(CONST_ME_TELEPORT)
+			Position(config.monsterSpawn[v]):sendMagicEffect(CONST_ME_TELEPORT)
 		end
 
 		Game.setStorageValue(config.storageTempo, config.tempoCooldown * 60 * 60)

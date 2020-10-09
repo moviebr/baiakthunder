@@ -35,7 +35,7 @@ configMining = {
 		active = true,
 		danoMin = 300, 
 		danoMax = 500, 
-		chance = 400
+		chance = 0.02
 	},
 	idPick = 2553,
 	idPickEspecial = 11421,

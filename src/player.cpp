@@ -2424,7 +2424,6 @@ ReturnValue Player::queryAdd(int32_t index, const Thing& thing, uint32_t count, 
 	}
 
 	ret = g_moveEvents->onPlayerEquip(const_cast<Player*>(this), const_cast<Item*>(item), static_cast<slots_t>(index), true);
-	std::cout << "aqui " << ret << std::endl;
 	if (ret != RETURNVALUE_NOERROR) {
 		return ret;
 	}
@@ -2448,20 +2447,22 @@ ReturnValue Player::containerQueryAdd(const Item* item, slots_t slot) const
         return RETURNVALUE_NOTPOSSIBLE;
     }
 
-	std::cout << "containerQueryAdd " << slot << std::endl;
-
     if (slot != CONST_SLOT_BACKPACK && slot > CONST_SLOT_WHEREEVER) {
-        return RETURNVALUE_NOERROR;
+      return RETURNVALUE_NOERROR;
     }
 
+    bool isBackpack = item->getSlotPosition() & SLOTP_BACKPACK;
     Item *bp = getInventoryItem(CONST_SLOT_BACKPACK);
-    if (!bp) {
-        return RETURNVALUE_NOERROR;
+      if (!bp && !isBackpack) {
+          return RETURNVALUE_NOTENOUGHROOM;
+    }
+    else if (isBackpack) {
+      return RETURNVALUE_NOERROR;
     }
     
-    if (Container *container = bp->getContainer()){
-        return container->queryAdd(INDEX_WHEREEVER, *item, 1, 0);
-    }
+      if (Container *container = bp->getContainer()){
+          return container->queryAdd(INDEX_WHEREEVER, *item, 1, 0);
+      }
 
     return RETURNVALUE_NOERROR;
 }

@@ -46,12 +46,14 @@ checkIp = function(name)
         ipPlayers[name] = nil
     else
         if player:getIp() == 0 then
+            ipPlayers[name] = nil
             player:setTarget(nil)
             player:teleportTo(player:getTown():getTemplePosition())
-			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+            player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+            return
         end
 
-        ipPlayers[name] = addEvent(checkIp, 10000, player:getName())
+        ipPlayers[name] = addEvent(checkIp, 30000, player:getName())
     end
 end
 
@@ -72,14 +74,13 @@ function Creature:onTargetCombat(target)
 
     if self:isPlayer() then
         if target and target:getName() == staminaBonus.target then
+            if not ipPlayers[name] then
+                ipPlayers[name] = addEvent(checkIp, 30000, name)
+            end
             if not staminaBonus.events[name] then
                 staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
             end
 		end
-    end
-
-    if self:isPlayer() and target and target:getName() == staminaBonus.target and not ipPlayers[name] then
-        ipPlayers[name] = addEvent(checkIp, 10000, name)
     end
 	
 end
