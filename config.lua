@@ -36,6 +36,7 @@ maxPlayers = 1900
 motd = "Bem-vindo ao Baiak Thunder!"
 onePlayerOnlinePerAccount = true
 allowClones = false
+allowWalkthrough = true
 serverName = "Baiak Thunder"
 statusTimeout = 5000
 replaceKickOnLogin = true
@@ -81,6 +82,14 @@ serverSaveNotifyDuration = 5
 serverSaveCleanMap = false
 serverSaveClose = false
 serverSaveShutdown = true
+
+experienceStages = {
+	{ minlevel = 1, maxlevel = 8, multiplier = 7 },
+	{ minlevel = 9, maxlevel = 20, multiplier = 6 },
+	{ minlevel = 21, maxlevel = 50, multiplier = 5 },
+	{ minlevel = 51, maxlevel = 100, multiplier = 4 },
+	{ minlevel = 101, multiplier = 3 }
+}
 
 rateExp = 5
 rateSkill = 3
