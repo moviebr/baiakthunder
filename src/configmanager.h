@@ -53,6 +53,7 @@ class ConfigManager
 			FORCE_MONSTERTYPE_LOAD,
 			SPOOF_ENABLED,
 			GM_FULL_LIGHT_ON_EQUIP_ITEM,
+			CLOSED_WORLD,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
@@ -91,7 +92,7 @@ class ConfigManager
 			RATE_LOOT,
 			RATE_MAGIC,
 			RATE_SPAWN,
-      SPAWN_MULTIPLIER,
+      		SPAWN_MULTIPLIER,
 			HOUSE_PRICE,
 			KILLS_TO_RED,
 			KILLS_TO_BLACK,

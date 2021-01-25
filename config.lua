@@ -1,4 +1,5 @@
 GMFullLightOnEquipItem = true
+closedWorld = true
 
 worldType = "pvp"
 hotkeyAimbotEnabled = true
@@ -59,7 +60,7 @@ maxMarketOffersAtATimePerPlayer = 100
 mysqlHost = "127.0.0.1"
 mysqlUser = "root"
 mysqlPass = ""
-mysqlDatabase = "real_site"
+mysqlDatabase = "gesior_downgrade"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"

@@ -174,6 +174,7 @@ bool ConfigManager::load()
 	boolean[FORCE_MONSTERTYPE_LOAD] = getGlobalBoolean(L, "forceMonsterTypesOnLoad", true);
 	boolean[SPOOF_ENABLED] = getGlobalBoolean(L, "spoofEnabled", false);
 	boolean[GM_FULL_LIGHT_ON_EQUIP_ITEM] = getGlobalBoolean(L, "GMFullLightOnEquipItem", false);
+	boolean[CLOSED_WORLD] = getGlobalBoolean(L, "closedWorld", false);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

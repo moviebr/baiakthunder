@@ -50,7 +50,7 @@ function SUPERUP:freeCave()
 	freeCaves = {}
 	local db = db.storeQuery("SELECT `hunt_id`, `to_time`, `guid_player` FROM exclusive_hunts")
 	if not db then
-		return false
+		return
 	end
 
 	repeat
