@@ -178,7 +178,7 @@ class MoveEvent final : public Event
 		void addUniqueId(uint32_t id) {
 			uniqueIdRange.emplace_back(id);
 		}
-		std::vector<Position> getPosList() {
+		std::vector<Position>& getPosList() {
 			return posList;
 		}
 		void addPosList(Position pos) {
@@ -188,7 +188,7 @@ class MoveEvent final : public Event
 			return slotName;
 		}
 		void setSlotName(std::string name) {
-			slotName = name;
+			slotName = std::move(name);
 		}
 		void setSlot(uint32_t s) {
 			slot = s;

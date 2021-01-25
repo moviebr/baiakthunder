@@ -53,6 +53,7 @@ std::unique_lock<std::mutex> g_loaderUniqueLock(g_loaderLock);
 void startupErrorMessage(const std::string& errorStr)
 {
 	std::cout << "> ERROR: " << errorStr << std::endl;
+	getchar();
 	g_loaderSignal.notify_all();
 }
 

@@ -1419,9 +1419,10 @@ bool Game::removeMoney(Cylinder* cylinder, uint64_t money, uint32_t flags /*= 0*
 		return true;
 	}
 
+	std::multimap<uint32_t, Item*> moneyMap;
 	std::vector<Container*> containers;
+	containers.reserve(32);
 
-	std::multimap<uint64_t, Item*> moneyMap;
 	uint64_t moneyCount = 0;
 
 	for (size_t i = cylinder->getFirstIndex(), j = cylinder->getLastIndex(); i < j; ++i) {

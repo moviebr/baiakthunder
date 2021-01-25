@@ -232,7 +232,7 @@ void Map::moveCreature(Creature& creature, Tile& newTile, bool forceTeleport/* =
 	Position oldPos = oldTile.getPosition();
 	Position newPos = newTile.getPosition();
 
-	bool teleport = forceTeleport || !newTile.getGround() || !Position::areInRange<1, 1, 0>(oldPos, newPos);
+	bool teleport = forceTeleport || !newTile.getGround() || !Position::areInRange<1, 1, 1>(oldPos, newPos);
 
 	SpectatorVec spectators, newPosSpectators;
 	getSpectators(spectators, oldPos, true);
