@@ -19,3 +19,7 @@ Use the GitHub tools to request an issue or make a pull request.
 @moviebr (Breno Alves) <br>
 @tyxer (Felipe) <br>
 @Crypter (Gustavo)
+
+## Supported
+This project is supported by [TibiaKing](https://tibiaking.com/)
+
