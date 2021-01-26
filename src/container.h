@@ -156,16 +156,20 @@ class Container : public Item, public Cylinder
 		void startDecaying() final;
 
 	protected:
-		ItemDeque itemlist = {};
 
-		bool unlocked;
-
-	private:
 		std::ostringstream& getContentDescription(std::ostringstream& os) const;
 
 		uint32_t maxSize;
 		uint32_t totalWeight = 0;
+		ItemDeque itemlist = {};
 		uint32_t serializationCount = 0;
+
+		bool unlocked;
+
+		friend class ContainerIterator;
+		friend class IOMapSerialize;
+
+	private:
 
 		void onAddContainerItem(Item* item);
 		void onUpdateContainerItem(uint32_t index, Item* oldItem, Item* newItem);
@@ -173,9 +177,6 @@ class Container : public Item, public Cylinder
 
 		Container* getParentContainer();
 		void updateItemWeight(int32_t diff);
-
-		friend class ContainerIterator;
-		friend class IOMapSerialize;
 };
 
 #endif

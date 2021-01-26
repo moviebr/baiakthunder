@@ -914,7 +914,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) || !item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
 		player->sendCancelMessage(RETURNVALUE_NOTMOVEABLE);
 		return;
 	}
@@ -1002,7 +1002,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && (Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
+	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) || (Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
 	        (Position::getDistanceY(playerPos, mapToPos) > item->getThrowRange()) ||
 	        (Position::getDistanceZ(mapFromPos, mapToPos) * 4 > item->getThrowRange())) {
 		player->sendCancelMessage(RETURNVALUE_DESTINATIONOUTOFREACH);
