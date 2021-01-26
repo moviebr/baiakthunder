@@ -344,7 +344,7 @@ class Game
 		void playerOpenPrivateChannel(uint32_t playerId, std::string& receiver);
 		void playerCloseNpcChannel(uint32_t playerId);
 		void playerReceivePing(uint32_t playerId);
-		void playerAutoWalk(uint32_t playerId, const std::forward_list<Direction>& listDir);
+		void playerAutoWalk(uint32_t playerId, const std::vector<Direction>& listDir);
 		void playerStopAutoWalk(uint32_t playerId);
 		void playerUseItemEx(uint32_t playerId, const Position& fromPos, uint8_t fromStackPos,
 		                     uint16_t fromSpriteId, const Position& toPos, uint8_t toStackPos, uint16_t toSpriteId);
@@ -486,8 +486,6 @@ class Game
 		Raids raids;
 		Quests quests;
 
-		std::forward_list<Item*> toDecayItems;
-
 	private:
 		bool playerSaySpell(Player* player, SpeakClasses type, const std::string& text);
 		void playerWhisper(Player* player, const std::string& text);
@@ -507,8 +505,10 @@ class Game
 		std::unordered_map<uint16_t, Item*> uniqueItems;
 		std::map<uint32_t, uint32_t> stages;
 
-		std::list<Item*> decayItems[EVENT_DECAY_BUCKETS];
-		std::list<Creature*> checkCreatureLists[EVENT_CREATURECOUNT];
+		std::vector<Item*> decayItems[EVENT_DECAY_BUCKETS];
+		std::vector<Creature*> checkCreatureLists[EVENT_CREATURECOUNT];
+
+		std::vector<Item*> toDecayItems;
 
 		std::vector<Creature*> ToReleaseCreatures;
 		std::vector<Item*> ToReleaseItems;

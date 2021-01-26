@@ -689,7 +689,7 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 
 	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !Position::areInRange<1, 1, 0>(movingCreatureOrigPos, player->getPosition())) {
 		//need to walk to the creature first before moving it
-		std::forward_list<Direction> listDir;
+		std::vector<Direction> listDir;
 		if (player->getPathTo(movingCreatureOrigPos, listDir, 0, 1, true, true)) {
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), listDir)));
@@ -928,7 +928,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 
 	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !Position::areInRange<1, 1>(playerPos, mapFromPos)) {
 		//need to walk to the item first before using it
-		std::forward_list<Direction> listDir;
+		std::vector<Direction> listDir;
 		if (player->getPathTo(item->getPosition(), listDir, 0, 1, true, true)) {
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), listDir)));
@@ -987,7 +987,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 				internalGetPosition(moveItem, itemPos, itemStackPos);
 			}
 
-			std::forward_list<Direction> listDir;
+			std::vector<Direction> listDir;
 			if (player->getPathTo(walkPos, listDir, 0, 0, true, true)) {
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				                                this, player->getID(), listDir)));
@@ -1203,7 +1203,7 @@ ReturnValue Game::internalMoveItem(Cylinder* fromCylinder, Cylinder* toCylinder,
 		if (moveItem->getDecaying() != DECAYING_TRUE) {
 			moveItem->incrementReferenceCounter();
 			moveItem->setDecaying(DECAYING_TRUE);
-			toDecayItems.push_front(moveItem);
+			toDecayItems.push_back(moveItem);
 		}
 	}
 
@@ -1294,7 +1294,7 @@ ReturnValue Game::internalAddItem(Cylinder* toCylinder, Item* item, int32_t inde
 	if (item->getDuration() > 0) {
 		item->incrementReferenceCounter();
 		item->setDecaying(DECAYING_TRUE);
-		toDecayItems.push_front(item);
+		toDecayItems.push_back(item);
 	}
 
 	return RETURNVALUE_NOERROR;
@@ -1329,9 +1329,6 @@ ReturnValue Game::internalRemoveItem(Item* item, int32_t count /*= -1*/, bool te
 
 		if (item->isRemoved()) {
 			item->onRemoved();
-			if (item->canDecay()) {
-				decayItems->remove(item);
-			}
 			ReleaseItem(item);
 		}
 
@@ -1673,7 +1670,7 @@ Item* Game::transformItem(Item* item, uint16_t newId, int32_t newCount /*= -1*/)
 		if (newItem->getDecaying() != DECAYING_TRUE) {
 			newItem->incrementReferenceCounter();
 			newItem->setDecaying(DECAYING_TRUE);
-			toDecayItems.push_front(newItem);
+			toDecayItems.push_back(newItem);
 		}
 	}
 
@@ -1757,7 +1754,7 @@ void Game::playerMove(uint32_t playerId, Direction direction)
 	player->resetIdleTime();
 	player->setNextWalkActionTask(nullptr);
 
-	player->startAutoWalk(std::forward_list<Direction> { direction });
+	player->startAutoWalk(std::vector<Direction> { direction });
 }
 
 bool Game::playerBroadcastMessage(Player* player, const std::string& text) const
@@ -1919,7 +1916,7 @@ void Game::playerReceivePing(uint32_t playerId)
 	player->receivePing();
 }
 
-void Game::playerAutoWalk(uint32_t playerId, const std::forward_list<Direction>& listDir)
+void Game::playerAutoWalk(uint32_t playerId, const std::vector<Direction>& listDir)
 {
 	Player* player = getPlayerByID(playerId);
 	if (!player) {
@@ -1994,7 +1991,7 @@ void Game::playerUseItemEx(uint32_t playerId, const Position& fromPos, uint8_t f
 				internalGetPosition(moveItem, itemPos, itemStackPos);
 			}
 
-			std::forward_list<Direction> listDir;
+			std::vector<Direction> listDir;
 			if (player->getPathTo(walkToPos, listDir, 0, 1, true, true)) {
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk, this, player->getID(), listDir)));
 
@@ -2053,7 +2050,7 @@ void Game::playerUseItem(uint32_t playerId, const Position& pos, uint8_t stackPo
 	ReturnValue ret = g_actions->canUse(player, pos);
 	if (ret != RETURNVALUE_NOERROR) {
 		if (ret == RETURNVALUE_TOOFARAWAY) {
-			std::forward_list<Direction> listDir;
+			std::vector<Direction> listDir;
 			if (player->getPathTo(pos, listDir, 0, 1, true, true)) {
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				                                this, player->getID(), listDir)));
@@ -2148,7 +2145,7 @@ void Game::playerUseWithCreature(uint32_t playerId, const Position& fromPos, uin
 				internalGetPosition(moveItem, itemPos, itemStackPos);
 			}
 
-			std::forward_list<Direction> listDir;
+			std::vector<Direction> listDir;
 			if (player->getPathTo(walkToPos, listDir, 0, 1, true, true)) {
 				g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 				                                this, player->getID(), listDir)));
@@ -2248,7 +2245,7 @@ void Game::playerRotateItem(uint32_t playerId, const Position& pos, uint8_t stac
 	}
 
 	if (pos.x != 0xFFFF && !Position::areInRange<1, 1, 0>(pos, player->getPosition())) {
-		std::forward_list<Direction> listDir;
+		std::vector<Direction> listDir;
 		if (player->getPathTo(pos, listDir, 0, 1, true, true)) {
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), listDir)));
@@ -2392,7 +2389,7 @@ void Game::playerRequestTrade(uint32_t playerId, const Position& pos, uint8_t st
 	}
 
 	if (!Position::areInRange<1, 1>(tradeItemPosition, playerPosition)) {
-		std::forward_list<Direction> listDir;
+		std::vector<Direction> listDir;
 		if (player->getPathTo(pos, listDir, 0, 1, true, true)) {
 			g_dispatcher.addTask(createTask(std::bind(&Game::playerAutoWalk,
 			                                this, player->getID(), listDir)));
@@ -3488,9 +3485,9 @@ void Game::checkCreatures(size_t index)
 	g_scheduler.addEvent(createSchedulerTask(EVENT_CHECK_CREATURE_INTERVAL, std::bind(&Game::checkCreatures, this, (index + 1) % EVENT_CREATURECOUNT)));
 
 	auto& checkCreatureList = checkCreatureLists[index];
-	auto it = checkCreatureList.begin(), end = checkCreatureList.end();
-	while (it != end) {
-		Creature* creature = *it;
+	size_t it = 0, end = checkCreatureList.size();
+	while (it < end) {
+		Creature* creature = checkCreatureList[it];
 		if (creature->creatureCheck) {
 			if (creature->getHealth() > 0) {
 				creature->onThink(EVENT_CREATURE_THINK_INTERVAL);
@@ -3500,8 +3497,12 @@ void Game::checkCreatures(size_t index)
 			++it;
 		} else {
 			creature->inCheckCreaturesVector = false;
-			it = checkCreatureList.erase(it);
 			ReleaseCreature(creature);
+
+			std::swap(checkCreatureList[it], checkCreatureList.back());
+			checkCreatureList.pop_back();
+			--end;
+
 		}
 	}
 
@@ -4286,7 +4287,7 @@ void Game::startDecay(Item* item)
 	if (item->getDuration() > 0) {
 		item->incrementReferenceCounter();
 		item->setDecaying(DECAYING_TRUE);
-		toDecayItems.push_front(item);
+		toDecayItems.push_back(item);
 	} else {
 		internalDecayItem(item);
 	}
@@ -4312,13 +4313,16 @@ void Game::checkDecay()
 
 	size_t bucket = (lastBucket + 1) % EVENT_DECAY_BUCKETS;
 
-	auto it = decayItems[bucket].begin(), end = decayItems[bucket].end();
-	while (it != end) {
-		Item* item = *it;
+	auto& checkDecayList = decayItems[bucket];
+	size_t it = 0, end = checkDecayList.size();
+	while (it < end) {
+		Item* item = checkDecayList[it];
 		if (!item->canDecay()) {
 			item->setDecaying(DECAYING_FALSE);
 			ReleaseItem(item);
-			it = decayItems[bucket].erase(it);
+			std::swap(checkDecayList[it], checkDecayList.back());
+			checkDecayList.pop_back();
+			--end;
 			continue;
 		}
 
@@ -4329,11 +4333,16 @@ void Game::checkDecay()
 		item->decreaseDuration(decreaseTime);
 
 		if (duration <= 0) {
-			it = decayItems[bucket].erase(it);
 			internalDecayItem(item);
 			ReleaseItem(item);
+			std::swap(checkDecayList[it], checkDecayList.back());
+			checkDecayList.pop_back();
+			--end;
 		} else if (duration < EVENT_DECAYINTERVAL * EVENT_DECAY_BUCKETS) {
-			it = decayItems[bucket].erase(it);
+			std::swap(checkDecayList[it], checkDecayList.back());
+			checkDecayList.pop_back();
+			--end;
+
 			size_t newBucket = (bucket + ((duration + EVENT_DECAYINTERVAL / 2) / 1000)) % EVENT_DECAY_BUCKETS;
 			if (newBucket == bucket) {
 				internalDecayItem(item);
