@@ -42,3 +42,4 @@
 #include <boost/asio.hpp>
 
 #include <pugixml.hpp>
+#include "simd.h"
