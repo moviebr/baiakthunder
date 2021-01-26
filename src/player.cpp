@@ -58,18 +58,21 @@ Player::~Player()
 	for (Item* item : inventory) {
 		if (item) {
 			item->setParent(nullptr);
+			item->stopDecaying();
 			item->decrementReferenceCounter();
 		}
 	}
 
 	for (const auto& it : depotChests) {
 		if (!it.second->getRealParent()) {
+			it.second->stopDecaying();
 			it.second->decrementReferenceCounter();
 		}
 	}
 
 	for (const auto& it : depotLockerMap) {
 		it.second->removeInbox(inbox);
+		it.second->stopDecaying();
 		it.second->decrementReferenceCounter();
 	}
 
@@ -77,6 +80,7 @@ Player::~Player()
 		it.second->decrementReferenceCounter();
 	}
 
+	inbox->stopDecaying();
 	inbox->decrementReferenceCounter();
 
 	setWriteItem(nullptr);
