@@ -1423,6 +1423,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnum(ITEM_ATTRIBUTE_CHARGES)
 	registerEnum(ITEM_ATTRIBUTE_FLUIDTYPE)
 	registerEnum(ITEM_ATTRIBUTE_DOORID)
+	registerEnum(ITEM_ATTRIBUTE_DURATION_TIMESTAMP)
 	registerEnum(ITEM_ATTRIBUTE_SPECIAL)
 
 	registerEnum(ITEM_TYPE_DEPOT)
@@ -6003,6 +6004,10 @@ int LuaScriptInterface::luaItemGetAttribute(lua_State* L)
 	}
 
 	if (ItemAttributes::isIntAttrType(attribute)) {
+		if (attribute == ITEM_ATTRIBUTE_DURATION) {
+			lua_pushnumber(L, item->getDuration());
+			return 1;
+		}
 		lua_pushnumber(L, item->getIntAttr(attribute));
 	} else if (ItemAttributes::isStrAttrType(attribute)) {
 		pushString(L, item->getStrAttr(attribute));
@@ -6031,13 +6036,38 @@ int LuaScriptInterface::luaItemSetAttribute(lua_State* L)
 	}
 
 	if (ItemAttributes::isIntAttrType(attribute)) {
-		if (attribute == ITEM_ATTRIBUTE_UNIQUEID) {
-			reportErrorFunc("Attempt to set protected key \"uid\"");
-			pushBoolean(L, false);
-			return 1;
+		switch (attribute) {
+			case ITEM_ATTRIBUTE_UNIQUEID: {
+				reportErrorFunc("Attempt to set protected key \"uid\"");
+				pushBoolean(L, false);
+				return 1;
+			}
+			case ITEM_ATTRIBUTE_DECAYSTATE: {
+				ItemDecayState_t decayState = getNumber<ItemDecayState_t>(L, 3);
+				if (decayState == DECAYING_FALSE || decayState == DECAYING_STOPPING) {
+					g_game.stopDecay(item);
+				} else {
+					g_game.startDecay(item);
+				}
+				pushBoolean(L, true);
+				return 1;
+			}
+			case ITEM_ATTRIBUTE_DURATION: {
+				item->setDecaying(DECAYING_PENDING);
+				item->setDuration(getNumber<int32_t>(L, 3));
+				g_game.startDecay(item);
+				pushBoolean(L, true);
+				return 1;
+			}
+			case ITEM_ATTRIBUTE_DURATION_TIMESTAMP: {
+				reportErrorFunc("Attempt to set protected key \"duration timestamp\"");
+				pushBoolean(L, false);
+				return 1;
+			}
+			default: break;
 		}
 
-		item->setIntAttr(attribute, getNumber<int32_t>(L, 3));
+		item->setIntAttr(attribute, getNumber<int64_t>(L, 3));
 		pushBoolean(L, true);
 	} else if (ItemAttributes::isStrAttrType(attribute)) {
 		item->setStrAttr(attribute, getString(L, 3));
@@ -6066,9 +6096,14 @@ int LuaScriptInterface::luaItemRemoveAttribute(lua_State* L)
 		attribute = ITEM_ATTRIBUTE_NONE;
 	}
 
-	bool ret = attribute != ITEM_ATTRIBUTE_UNIQUEID;
+	bool ret = (attribute != ITEM_ATTRIBUTE_UNIQUEID);
 	if (ret) {
-		item->removeAttribute(attribute);
+		ret = (attribute != ITEM_ATTRIBUTE_DURATION_TIMESTAMP);
+		if (ret) {
+			item->removeAttribute(attribute);
+		} else {
+			reportErrorFunc("Attempt to erase protected key \"duration timestamp\"");
+		}
 	} else {
 		reportErrorFunc("Attempt to erase protected key \"uid\"");
 	}
@@ -6281,10 +6316,11 @@ int LuaScriptInterface::luaItemDecay(lua_State* L)
 	Item* item = getUserdata<Item>(L, 1);
 	if (item) {
 		if (isNumber(L, 2)) {
-			item->setDecayTo(getNumber<int32_t>(L, 2));
+			ItemType& it = Item::items.getItemType(item->getID());
+			it.decayTo = getNumber<int32_t>(L, 2);
 		}
 
-		g_game.startDecay(item);
+		item->startDecaying();
 		pushBoolean(L, true);
 	} else {
 		lua_pushnil(L);

@@ -38,6 +38,10 @@ class DepotChest final : public Container
 		bool canRemove() const override {
 			return false;
 		}
+
+		bool isRemoved() const override {
+			return false;
+		}
 };
 
 #endif
