@@ -239,7 +239,10 @@ function Player:onReportRuleViolation(targetName, reportType, reportReason, comm
 end
 
 function Player:onReportBug(message, position, category)
-	if self:getAccountType() == ACCOUNT_TYPE_NORMAL then
+
+	if self:getStorageValue(98191) >= os.time() then
+		self:sendCancelMessage("Você só pode reportar bugs a cada 1 hora.")
+		self:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return false
 	end
 
@@ -251,18 +254,17 @@ function Player:onReportBug(message, position, category)
 		return true
 	end
 
+
 	io.output(file)
 	io.write("------------------------------\n")
 	io.write("Nome: " .. name)
-	if category == BUG_CATEGORY_MAP then
-		io.write(" [Posição no mapa: " .. position.x .. ", " .. position.y .. ", " .. position.z .. "]")
-	end
 	local playerPosition = self:getPosition()
 	io.write(" [Posição do Player: " .. playerPosition.x .. ", " .. playerPosition.y .. ", " .. playerPosition.z .. "]\n")
 	io.write("Comentário: " .. message .. "\n")
 	io.close(file)
 
 	self:sendTextMessage(MESSAGE_EVENT_DEFAULT, "Seu report foi enviado para " .. configManager.getString(configKeys.SERVER_NAME) .. ".")
+	self:setStorageValue(98191, os.time() + 3600)
 	return true
 end
 

@@ -60,6 +60,7 @@ class ConfigManager
 			SPOOF_ENABLED,
 			GM_FULL_LIGHT_ON_EQUIP_ITEM,
 			CLOSED_WORLD,
+			SHOW_MONSTER_EXIVA,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};

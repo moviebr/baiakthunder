@@ -1,5 +1,6 @@
 GMFullLightOnEquipItem = true
-closedWorld = true
+closedWorld = false
+showMonsterExiva = true
 
 worldType = "pvp"
 hotkeyAimbotEnabled = true
@@ -96,7 +97,7 @@ rateSkill = 3
 rateLoot = 2
 rateMagic = 3
 rateSpawn = 2
-spawnMultiplier = 150
+spawnMultiplier = 1
 
 deSpawnRange = 2
 deSpawnRadius = 50

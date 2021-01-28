@@ -1889,6 +1889,7 @@ void LuaScriptInterface::registerFunctions()
 	registerEnumIn("configKeys", ConfigManager::MAX_PACKETS_PER_SECOND)
 
 	registerEnumIn("configKeys", ConfigManager::CLOSED_WORLD)
+	registerEnumIn("configKeys", ConfigManager::SHOW_MONSTER_EXIVA)
 
 	// os
 	registerMethod("os", "mtime", LuaScriptInterface::luaSystemTime);

@@ -248,6 +248,7 @@ bool ConfigManager::load()
 	boolean[SPOOF_ENABLED] = getGlobalBoolean(L, "spoofEnabled", false);
 	boolean[GM_FULL_LIGHT_ON_EQUIP_ITEM] = getGlobalBoolean(L, "GMFullLightOnEquipItem", false);
 	boolean[CLOSED_WORLD] = getGlobalBoolean(L, "closedWorld", false);
+	boolean[SHOW_MONSTER_EXIVA] = getGlobalBoolean(L, "showMonsterExiva", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

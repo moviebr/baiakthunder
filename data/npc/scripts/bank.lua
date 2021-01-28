@@ -19,9 +19,7 @@ npcHandler:onThink()
 end
 
 local voices = { {text = 'Não se esqueça de depositar seu dinheiro aqui no Banco antes de sair para a aventura.'} }
-if VoiceModule then
-	npcHandler:addModule(VoiceModule:new(voices))
-end
+npcHandler:addModule(VoiceModule:new(voices))
 --------------------------------guild bank-----------------------------------------------
 local receiptFormat = 'Data: %s\nType: %s\nQuantidade: %d\nReceipt Owner: %s\nRecipient: %s\n\n%s'
 local function getReceipt(info)

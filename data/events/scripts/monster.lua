@@ -34,7 +34,7 @@ function Monster:onDropLoot(corpse)
 			monsterLoot[i].chance = monsterLoot[i].chance + (monsterLoot[i].chance * percent) + (monsterLoot[i].chance * percentLoot)
 			local item = corpse:createLootItem(monsterLoot[i])
 			if not item then
-				print('[Warning] DropLoot:', 'Could not add loot item to corpse.')
+				print(string.format('[Warning] DropLoot: Could not add loot item to corpse. [Monster: %s]', item, mType:getName()))
 			end
 		end
 

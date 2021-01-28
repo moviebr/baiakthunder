@@ -1,4 +1,4 @@
-local monstro = true
+local monstro = configManager.getBoolean(configKeys.SHOW_MONSTER_EXIVA)
 local LEVEL_LOWER = 1
 local LEVEL_SAME = 2
 local LEVEL_HIGHER = 3

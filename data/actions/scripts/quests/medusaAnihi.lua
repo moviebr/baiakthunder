@@ -26,13 +26,17 @@ local config = {
 	monsterName = "Serpent Spawn",
 	players = {},
 	tempoCooldown = 4, -- Em horas
-	storageTempo = 717141,
+	storageTempo = 86475,
 }
 
 function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	
+	if Game.getStorageValue(config.storageTempo) == -1 or not Game.getStorageValue(config.storageTempo) then
+		Game.setStorageValue(config.storageTempo, 0)
+	end
+
 	if Game.getStorageValue(config.storageTempo) >= os.time() then
-		player:sendCancelMessage("O seu time precisa esperar ".. string.diff((os.time() - config.storageTempo), true) .. " para fazer essa quest.")
+		player:sendCancelMessage("O seu time precisa esperar ".. string.diff((Game.getStorageValue(config.storageTempo) - os.time()), true) .. " para fazer essa quest.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return true
 	end
@@ -41,8 +45,8 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		for i = 1, #config.oldPosition do
 			local topPlayer = Tile(config.oldPosition[i]):getTopCreature()
 			if not topPlayer or not topPlayer:isPlayer() then
-				player:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
-				return false
+				player:sendCancelMessage("Seu time precisa de pelo menos ".. #config.oldPosition .. " players para fazer essa quest.")
+				return true
 			end
 			config.players[#config.players + 1] = topPlayer
 		end
@@ -67,14 +71,24 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 			Position(config.monsterSpawn[v]):sendMagicEffect(CONST_ME_TELEPORT)
 		end
 
-		Game.setStorageValue(config.storageTempo, config.tempoCooldown * 60 * 60)
+		Game.setStorageValue(config.storageTempo, os.time() + config.tempoCooldown * 60 * 60)
 		item:transform(1946)
+		local spectator = Game.getSpectators(Position(942, 1429, 8), false, false, 0, 4, 0, 4)
 		addEvent(function()
+			if #spectator > 0 then
+				for a, b in ipairs(spectator) do
+					local creature = Creature(b)
+					if creature:isMonster() then
+						creature:remove()
+					end
+				end
+			end
 			item:transform(1945)
 		end, 30 * 60 * 60 * 1000)
 
 	elseif item.itemid == 1946 then
 		player:sendCancelMessage(RETURNVALUE_NOTPOSSIBLE)
+		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 	end
 	return true
 end
