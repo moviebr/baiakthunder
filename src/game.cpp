@@ -41,6 +41,7 @@
 #include "talkaction.h"
 #include "weapons.h"
 #include "script.h"
+#include "webhook.h"
 
 extern ConfigManager g_config;
 extern Actions* g_actions;
@@ -4372,6 +4373,8 @@ LightInfo Game::getWorldLightInfo() const
 
 void Game::shutdown()
 {
+	webhook_send_message("Server is shutting down", "Shutting down...", 0xFF0000);
+	
 	std::cout << ">> Desligando...\n> " << std::flush;
 
 	saveGameState();
