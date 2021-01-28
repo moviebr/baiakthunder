@@ -7,6 +7,15 @@ This repository uses version 1.3 of The Forgotten Server (TFS) in a downgrade to
 
 * [Compiling](https://github.com/otland/forgottenserver/wiki/Compiling)
 
+**Extra**
+
+To use the integration of discord + server it is necessary to install these two additional libraries at the time of compilation.
+
+```
+sudo apt-get install libcurl4-openssl-dev
+sudo apt-get install libjsoncpp-dev
+```
+
 ## Issues and Pull Requests
 Use the GitHub tools to request an issue or make a pull request.
 
