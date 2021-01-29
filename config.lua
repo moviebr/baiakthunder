@@ -99,8 +99,10 @@ rateMagic = 3
 rateSpawn = 2
 spawnMultiplier = 1
 
+-- removeOnDespawn will remove the monster if true or teleport it back to its spawn position if false
 deSpawnRange = 2
 deSpawnRadius = 50
+removeOnDespawn = true
 
 staminaSystem = true
 

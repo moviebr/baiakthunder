@@ -61,6 +61,7 @@ class ConfigManager
 			GM_FULL_LIGHT_ON_EQUIP_ITEM,
 			CLOSED_WORLD,
 			SHOW_MONSTER_EXIVA,
+			REMOVE_ON_DESPAWN,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
