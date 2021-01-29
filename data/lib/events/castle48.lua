@@ -104,7 +104,7 @@ Castle48H.close = function()
 		Game.setStorageValue(Castle48H.storageLever, -1)
 		Game.setStorageValue(Castle48H.storageVoteFinal, -1)
 		Castle48H.endEvent()
-		db.query('UPDATE `player_storage SET `0` WHERE `key` ='.. Castle48H.playerStorageVote)
+		db.query('UPDATE `player_storage SET `0` WHERE `key` = '.. Castle48H.playerStorageVote)
 	end, 5 * 60 * 1000)
 end
 

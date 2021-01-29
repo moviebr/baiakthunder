@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Boss Tower" nameDescription="a boss tower" race="blood" experience="5000" speed="0" manacost="670">
+	<health now="10000" max="10000"/>
+	<look typeex="9788" corpse="0"/>
+	<targetchange interval="3000" chance="40"/>
+	<strategy attack="100" defense="50"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="0"/>
+		<flag convinceable="1"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="0"/>
+		<flag staticattack="90"/>
+		<flag targetdistance="1"/>
+		<flag runonhealth="0"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="1500" skill="120" attack="120"/>
+		<attack name="fire" interval="2500" chance="50" range="4" radius="7" min="-320" max="-460">
+			<attribute key="areaEffect" value="fireattack"/>
+		</attack>
+		<attack name="energy" interval="2500" chance="40" range="4" radius="7" min="-420" max="-660">
+			<attribute key="areaEffect" value="energyarea"/>
+		</attack>
+		<attack name="firecondition" interval="3000" chance="20" range="7" radius="7" target="1" min="-200" max="-300">
+			<attribute key="shootEffect" value="fire"/>
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+		<attack name="firefield" interval="1000" chance="25" range="7" radius="2" target="1">
+			<attribute key="shootEffect" value="fire"/>
+		</attack>
+	</attacks>
+	<defenses armor="35" defense="55"/>
+	<elements>
+		<element firePercent="20"/>
+		<element icePercent="20"/>
+		<element earthPercent="20"/>
+		<element energyPercent="20"/>
+		<element holyPercent="20"/>
+		<element deathPercent="20"/>
+		<element drownPercent="20"/>
+		<element lifedrainPercent="20"/>
+		<element manadrainPercent="20"/>
+	</elements>
+	<immunities>
+		<immunity lifedrain="1"/>
+		<immunity paralyze="1"/>
+		<immunity drown="1"/>
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Gaaahhh!"/>
+		<voice sentence="Tssss!"/>
+	</voices>
+	<loot>
+	</loot>
+</monster>

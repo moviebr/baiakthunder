@@ -8,6 +8,10 @@
 	<monster name="Guarda do Castelo" file="Custom/Castle.xml"/>
 	<monster name="Laravel" file="Custom/Laravel.xml"/>
 
+	<!-- Quests -->
+	<monster name="Boss Tower" file="Quests/bossTower.xml"/>
+	<monster name="Drogorion" file="Quests/bossAkravi.xml"/>
+
 	<!-- Amazons -->
 	<monster name="Amazon" file="Amazons/amazon.xml"/>
 	<monster name="Valkyrie" file="Amazons/valkyrie.xml"/>

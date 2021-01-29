@@ -39,6 +39,16 @@ SNAKE = {
 					player:teleportTo(SNAKE.exitpos, false)
 					player:getPosition():sendMagicEffect(11)
 					player:say('Pontos: '..(#pos_-1)..'.', TALKTYPE_MONSTER_SAY)
+
+					if not player:getStorageValue(97814) or player:getStorageValue(97814) == -1 then
+						player:setStorageValue(97814, 0)
+					end
+
+					if #pos_-1 > player:getStorageValue(97814) then
+						player:setStorageValue(97814, #pos_-1)
+						SNAKE:setPlayerPoints(player:getGuid(), tonumber(#pos_-1))
+					end
+
 					if #pos_-1 >= 20 and #pos_-1 < 30 then
 						player:addItem(SNAKE.premio, 1)
 					elseif #pos_-1 >= 30 and #pos_-1 < 40 then
@@ -179,3 +189,22 @@ SNAKE = {
 		return true
 		end
 	}
+
+function SNAKE:setPlayerPoints(guid, amount)
+	if SNAKE:getPlayerPoints(guid) >= 0 then
+		db.query(string.format("UPDATE `snake_game` SET `points` = %d WHERE `guid` = %d", amount, guid))
+	else
+		db.query(string.format("INSERT INTO `snake_game` (`id`, `guid`, `points`) VALUES ('', '%d', '%d')", guid, amount))
+	end
+end
+
+function SNAKE:getPlayerPoints(guid)
+    local resultId = db.storeQuery(string.format('SELECT points FROM `snake_game` WHERE `guid` = %d', guid))
+    if not resultId then
+        return -1
+    end
+
+    local value = result.getNumber(resultId, "points")
+    result.free(resultId)
+    return true and value
+end

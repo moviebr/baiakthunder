@@ -73,8 +73,8 @@ function onUse(player, item, fromPosition, target, toPosition, isHotkey)
 
 		Game.setStorageValue(config.storageTempo, os.time() + config.tempoCooldown * 60 * 60)
 		item:transform(1946)
-		local spectator = Game.getSpectators(Position(942, 1429, 8), false, false, 0, 4, 0, 4)
 		addEvent(function()
+			local spectator = Game.getSpectators(Position(942, 1429, 8), false, false, 0, 4, 0, 4)
 			if #spectator > 0 then
 				for a, b in ipairs(spectator) do
 					local creature = Creature(b)
