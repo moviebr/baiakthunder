@@ -1,6 +1,6 @@
 /**
  * The Forgotten Server - a free and open-source MMORPG server emulator
- * Copyright (C) 2019  Mark Samman <mark.samman@gmail.com>
+ * Copyright (C) 2020  Mark Samman <mark.samman@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,113 +23,70 @@
 
 void Scheduler::threadMain()
 {
-	std::unique_lock<std::mutex> eventLockUnique(eventLock, std::defer_lock);
-	while (getState() != THREAD_STATE_TERMINATED) {
-		std::cv_status ret = std::cv_status::no_timeout;
-
-		eventLockUnique.lock();
-		if (eventList.empty()) {
-			eventSignal.wait(eventLockUnique);
-		} else {
-			ret = eventSignal.wait_until(eventLockUnique, eventList.top()->getCycle());
-		}
-
-		// the mutex is locked again now...
-		if (ret == std::cv_status::timeout && !eventList.empty()) {
-			// ok we had a timeout, so there has to be an event we have to execute...
-			SchedulerTask* task = eventList.top();
-			eventList.pop();
-
-			// check if the event was stopped
-			auto it = eventIds.find(task->getEventId());
-			if (it == eventIds.end()) {
-				eventLockUnique.unlock();
-				delete task;
-				continue;
-			}
-			eventIds.erase(it);
-			eventLockUnique.unlock();
-
-			task->setDontExpire();
-			g_dispatcher.addTask(task, true);
-		} else {
-			eventLockUnique.unlock();
-		}
-	}
+	io_service.run();
 }
 
-uint32_t Scheduler::addEvent(SchedulerTask* task)
+uint64_t Scheduler::addEvent(SchedulerTask* task)
 {
-	eventLock.lock();
-
-	if (getState() != THREAD_STATE_RUNNING) {
-		eventLock.unlock();
-		delete task;
-		return 0;
-	}
-
-	// check if the event has a valid id
 	if (task->getEventId() == 0) {
-		// if not generate one
-		if (++lastEventId == 0) {
-			lastEventId = 1;
-		}
-
-		task->setEventId(lastEventId);
+		task->setEventId(++lastEventId);
 	}
 
-	// insert the event id in the list of active events
-	uint32_t eventId = task->getEventId();
-	eventIds.insert(eventId);
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this, task]() {
+		auto res = eventIds.emplace(std::piecewise_construct, std::forward_as_tuple(task->getEventId()), std::forward_as_tuple(io_service));
 
-	// add the event to the queue
-	eventList.push(task);
+		boost::asio::deadline_timer& timer = res.first->second;
+		timer.expires_from_now(boost::posix_time::milliseconds(task->getDelay()));
+		timer.async_wait([this, task](const boost::system::error_code& error) {
+			eventIds.erase(task->getEventId());
 
-	// if the list was empty or this event is the top in the list
-	// we have to signal it
-	bool do_signal = (task == eventList.top());
+			if (error == boost::asio::error::operation_aborted || getState() == THREAD_STATE_TERMINATED) {
+				delete task;
+				return;
+			}
 
-	eventLock.unlock();
+			g_dispatcher.addTask(task);
+		});
+	});
 
-	if (do_signal) {
-		eventSignal.notify_one();
-	}
-
-	return eventId;
+	return task->getEventId();
 }
 
-bool Scheduler::stopEvent(uint32_t eventId)
+void Scheduler::stopEvent(uint64_t eventId)
 {
-	if (eventId == 0) {
-		return false;
-	}
-
-	std::lock_guard<std::mutex> lockClass(eventLock);
-
-	// search the event id..
-	auto it = eventIds.find(eventId);
-	if (it == eventIds.end()) {
-		return false;
-	}
-
-	eventIds.erase(it);
-	return true;
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this, eventId]() {
+		auto it = eventIds.find(eventId);
+		if (it != eventIds.end()) {
+			it->second.cancel();
+		}
+	});
 }
 
 void Scheduler::shutdown()
 {
 	setState(THREAD_STATE_TERMINATED);
-	eventLock.lock();
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this]() {
+		for (auto& it : eventIds) {
+			it.second.cancel();
+		}
 
-	//this list should already be empty
-	while (!eventList.empty()) {
-		delete eventList.top();
-		eventList.pop();
-	}
-
-	eventIds.clear();
-	eventLock.unlock();
-	eventSignal.notify_one();
+		work.reset();
+	});
 }
 
 SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void (void)> f)

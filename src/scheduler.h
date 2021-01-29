@@ -1,6 +1,6 @@
 /**
  * The Forgotten Server - a free and open-source MMORPG server emulator
- * Copyright (C) 2019  Mark Samman <mark.samman@gmail.com>
+ * Copyright (C) 2020  Mark Samman <mark.samman@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,8 +21,7 @@
 #define FS_SCHEDULER_H_2905B3D5EAB34B4BA8830167262D2DC1
 
 #include "tasks.h"
-#include <unordered_set>
-#include <queue>
+#include <atomic>
 
 #include "thread_holder_base.h"
 
@@ -31,38 +30,38 @@ static constexpr int32_t SCHEDULER_MINTICKS = 50;
 class SchedulerTask : public Task
 {
 	public:
-		void setEventId(uint32_t id) {
+		void setEventId(uint64_t id) {
 			eventId = id;
 		}
-		uint32_t getEventId() const {
+		uint64_t getEventId() const {
 			return eventId;
 		}
-
-		std::chrono::system_clock::time_point getCycle() const {
-			return expiration;
+		uint32_t getDelay() const {
+			return delay;
 		}
 
 	private:
-		SchedulerTask(uint32_t delay, std::function<void (void)>&& f) : Task(delay, std::move(f)) {}
+		SchedulerTask(uint32_t delay, std::function<void (void)>&& f) : Task(std::move(f)), delay(delay) {}
 
-		uint32_t eventId = 0;
+		uint64_t eventId = 0;
+		uint32_t delay = 0;
 
 		friend SchedulerTask* createSchedulerTask(uint32_t, std::function<void (void)>);
 };
 
 SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void (void)> f);
 
-struct TaskComparator {
-	bool operator()(const SchedulerTask* lhs, const SchedulerTask* rhs) const {
-		return lhs->getCycle() > rhs->getCycle();
-	}
-};
-
 class Scheduler : public ThreadHolder<Scheduler>
 {
 	public:
-		uint32_t addEvent(SchedulerTask* task);
-		bool stopEvent(uint32_t eventId);
+		#if BOOST_VERSION >= 106600
+		Scheduler() : work(boost::asio::make_work_guard(io_service)) {}
+		#else
+		Scheduler() : work(std::make_shared<boost::asio::io_service::work>(io_service)) {}
+		#endif
+
+		uint64_t addEvent(SchedulerTask* task);
+		void stopEvent(uint64_t eventId);
 
 		void shutdown();
 
@@ -70,12 +69,14 @@ class Scheduler : public ThreadHolder<Scheduler>
 
 	private:
 		std::thread thread;
-		std::mutex eventLock;
-		std::condition_variable eventSignal;
-
-		uint32_t lastEventId {0};
-		std::priority_queue<SchedulerTask*, std::deque<SchedulerTask*>, TaskComparator> eventList;
-		std::unordered_set<uint32_t> eventIds;
+		std::atomic<uint64_t> lastEventId {0};
+		std::map<uint64_t, boost::asio::deadline_timer> eventIds;
+		boost::asio::io_service io_service;
+		#if BOOST_VERSION >= 106600
+		boost::asio::executor_work_guard<boost::asio::io_context::executor_type> work;
+		#else
+		std::shared_ptr<boost::asio::io_service::work> work;
+		#endif
 };
 
 extern Scheduler g_scheduler;
