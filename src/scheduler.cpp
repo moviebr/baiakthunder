@@ -1,6 +1,6 @@
 /**
  * The Forgotten Server - a free and open-source MMORPG server emulator
- * Copyright (C) 2019  Mark Samman <mark.samman@gmail.com>
+ * Copyright (C) 2020  Mark Samman <mark.samman@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,46 +20,53 @@
 #include "otpch.h"
 
 #include "scheduler.h"
-#include <boost/asio/post.hpp>
-#include <memory>
 
-uint32_t Scheduler::addEvent(SchedulerTask* task)
+void Scheduler::threadMain()
 {
-	// check if the event has a valid id
+	io_service.run();
+}
+
+uint64_t Scheduler::addEvent(SchedulerTask* task)
+{
 	if (task->getEventId() == 0) {
 		task->setEventId(++lastEventId);
 	}
 
-	// insert the event id in the list of active events
-	auto it = eventIdTimerMap.emplace(task->getEventId(), boost::asio::deadline_timer{ io_context });
-	auto& timer = it.first->second;
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this, task]() {
+		auto res = eventIds.emplace(std::piecewise_construct, std::forward_as_tuple(task->getEventId()), std::forward_as_tuple(io_service));
 
-	timer.expires_from_now(boost::posix_time::milliseconds(task->getDelay()));
-	timer.async_wait([this, task](const boost::system::error_code& error) {
-		eventIdTimerMap.erase(task->getEventId());
+		boost::asio::deadline_timer& timer = res.first->second;
+		timer.expires_from_now(boost::posix_time::milliseconds(task->getDelay()));
+		timer.async_wait([this, task](const boost::system::error_code& error) {
+			eventIds.erase(task->getEventId());
 
-		if (error == boost::asio::error::operation_aborted || getState() == THREAD_STATE_TERMINATED) {
-			// the timer has been manually cancelled(timer->cancel()) or Scheduler::shutdown has been called
-			delete task;
-			return;
-		}
+			if (error == boost::asio::error::operation_aborted || getState() == THREAD_STATE_TERMINATED) {
+				delete task;
+				return;
+			}
 
-		g_dispatcher.addTask(task, true);
+			g_dispatcher.addTask(task);
+		});
 	});
 
 	return task->getEventId();
 }
 
-void Scheduler::stopEvent(uint32_t eventId)
+void Scheduler::stopEvent(uint64_t eventId)
 {
-	if (eventId == 0) {
-		return;
-	}
-
-	boost::asio::post(io_context, [this, eventId]() {
-		// search the event id..
-		auto it = eventIdTimerMap.find(eventId);
-		if (it != eventIdTimerMap.end()) {
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this, eventId]() {
+		auto it = eventIds.find(eventId);
+		if (it != eventIds.end()) {
 			it->second.cancel();
 		}
 	});
@@ -68,17 +75,21 @@ void Scheduler::stopEvent(uint32_t eventId)
 void Scheduler::shutdown()
 {
 	setState(THREAD_STATE_TERMINATED);
-	boost::asio::post(io_context, [this]() {
-		// cancel all active timers
-		for (auto& it : eventIdTimerMap) {
+	#if BOOST_VERSION >= 106600
+	boost::asio::post(io_service,
+	#else
+	io_service.post(
+	#endif
+	[this]() {
+		for (auto& it : eventIds) {
 			it.second.cancel();
 		}
 
-		io_context.stop();
+		work.reset();
 	});
 }
 
-SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void(void)> f)
+SchedulerTask* createSchedulerTask(uint32_t delay, std::function<void (void)> f)
 {
 	return new SchedulerTask(delay, std::move(f));
 }
