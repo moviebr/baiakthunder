@@ -7,3 +7,16 @@ function onPrepareDeath(player, killer)
 	player:setStorageValue(STORAGEVALUE_EVENTS, 0)
 	return true
 end
+
+function onKill(player, target)
+
+	if not player or not target:isPlayer() then
+		return true
+	end
+
+	if Game.getStorageValue(BATTLEFIELD.storageEventStatus) ~= 0 then
+		BATTLEFIELD:checkStatus()
+	end
+
+	return true
+end

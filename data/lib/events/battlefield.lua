@@ -169,7 +169,6 @@ end
 function BATTLEFIELD:checkStatus()
 	local blueTeam = BATTLEFIELD:bluePlayers()
 	local redTeam = BATTLEFIELD:redPlayers()
-	local gameStatus = Game.getStorageValue(BATTLEFIELD.storageEventStatus)
 	if blueTeam > 0 and redTeam == 0 then
 		Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("azul"))
 		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 2)
@@ -178,12 +177,6 @@ function BATTLEFIELD:checkStatus()
 		Game.broadcastMessage(BATTLEFIELD.messages.prefix .. (BATTLEFIELD.messages.messageFinish):format("vermelho"))
 		Game.setStorageValue(BATTLEFIELD.storageEventStatus, 3)
 		BATTLEFIELD:finishEvent()
-	end
-
-	if gameStatus ~= 0 then
-		addEvent(function()
-			BATTLEFIELD:checkStatus()
-		end, 5000)
 	end
 end
 
@@ -202,7 +195,6 @@ function BATTLEFIELD:startEvent()
 			player:sendTextMessage(MESSAGE_INFO_DESCR, BATTLEFIELD.messages.prefix .. "Em ".. BATTLEFIELD.timeRemoveWalls .." segundos os muros de madeira serão removidos!")
 		end
 	end
-	BATTLEFIELD:checkStatus()
 end
 
 function BATTLEFIELD:finishEvent()
