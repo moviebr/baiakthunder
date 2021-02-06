@@ -711,7 +711,7 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 	//check throw distance
 	const Position& movingCreaturePos = movingCreature->getPosition();
 	const Position& toPos = toTile->getPosition();
-	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && ((Position::getDistanceX(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceY(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceZ(movingCreaturePos, toPos) * 4 > movingCreature->getThrowRange()))) {
+	if ((!player->hasFlag(PlayerFlag_CanMoveAllThings)) && ((Position::getDistanceX(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceY(movingCreaturePos, toPos) > movingCreature->getThrowRange()) || (Position::getDistanceZ(movingCreaturePos, toPos) * 4 > movingCreature->getThrowRange()))) {
 		player->sendCancelMessage(RETURNVALUE_DESTINATIONOUTOFREACH);
 		return;
 	}
@@ -914,7 +914,7 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) || !item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID)) {
+	if ((!player->hasFlag(PlayerFlag_CanMoveAllThings)) && (!item->isPushable() || item->hasAttribute(ITEM_ATTRIBUTE_UNIQUEID))) {
 		player->sendCancelMessage(RETURNVALUE_NOTMOVEABLE);
 		return;
 	}
@@ -1002,9 +1002,9 @@ void Game::playerMoveItem(Player* player, const Position& fromPos,
 		}
 	}
 
-	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) || (Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
+	if (((!player->hasFlag(PlayerFlag_CanMoveAllThings)) && ((Position::getDistanceX(playerPos, mapToPos) > item->getThrowRange()) ||
 	        (Position::getDistanceY(playerPos, mapToPos) > item->getThrowRange()) ||
-	        (Position::getDistanceZ(mapFromPos, mapToPos) * 4 > item->getThrowRange())) {
+	        (Position::getDistanceZ(mapFromPos, mapToPos) * 4 > item->getThrowRange())))) {
 		player->sendCancelMessage(RETURNVALUE_DESTINATIONOUTOFREACH);
 		return;
 	}
