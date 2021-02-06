@@ -55,6 +55,18 @@ void ProtocolGame::release()
 
 void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingSystem_t operatingSystem)
 {
+
+	// OTCv8 features and extended opcodes
+	if (otclientV8 || operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
+		if(otclientV8)
+			sendFeatures();
+		NetworkMessage opcodeMessage;
+		opcodeMessage.addByte(0x32);
+		opcodeMessage.addByte(0x00);
+		opcodeMessage.add<uint16_t>(0x00);
+		writeToOutputBuffer(opcodeMessage);
+	}
+
 	//dispatcher thread
 	Player* foundPlayer = g_game.getPlayerByName(name);
 	if (!foundPlayer || g_config.getBoolean(ConfigManager::ALLOW_CLONES)) {
@@ -255,14 +267,6 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	enableXTEAEncryption();
 	setXTEAKey(std::move(key));
 
-	if (operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
-		NetworkMessage opcodeMessage;
-		opcodeMessage.addByte(0x32);
-		opcodeMessage.addByte(0x00);
-		opcodeMessage.add<uint16_t>(0x00);
-		writeToOutputBuffer(opcodeMessage);
-	}
-
 	msg.skipBytes(1); // gamemaster flag
 
 	std::string accountName = msg.getString();
@@ -279,6 +283,12 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	if (challengeTimestamp != timeStamp || challengeRandom != randNumber) {
 		disconnect();
 		return;
+	}
+
+	// OTCv8 version detection
+	uint16_t otcV8StringLength = msg.get<uint16_t>();
+	if(otcV8StringLength == 5 && msg.getString(5) == "OTCv8") {
+		otclientV8 = msg.get<uint16_t>(); // 253, 260, 261, ...
 	}
 
 	if (version < CLIENT_VERSION_MIN || version > CLIENT_VERSION_MAX) {
@@ -2273,4 +2283,27 @@ void ProtocolGame::parseExtendedOpcode(NetworkMessage& msg)
 
 	// process additional opcodes via lua script event
 	addGameTask(&Game::parsePlayerExtendedOpcode, player->getID(), opcode, buffer);
+}
+
+// OTCv8
+void ProtocolGame::sendFeatures()
+{
+	if(!otclientV8) 
+		return;
+
+	std::map<GameFeature, bool> features;
+	// place for non-standard OTCv8 features
+	features[GameExtendedOpcode] = true;
+
+	if(features.empty())
+		return;
+
+	NetworkMessage msg;
+	msg.addByte(0x43);
+	msg.add<uint16_t>(features.size());
+	for(auto& feature : features) {
+		msg.addByte((uint8_t)feature.first);
+		msg.addByte(feature.second ? 1 : 0);
+	}
+	writeToOutputBuffer(msg);
 }
