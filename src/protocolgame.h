@@ -267,6 +267,9 @@ class ProtocolGame final : public Protocol
 		//OTCv8
 		void sendFeatures();
 
+		void parseNewPing(NetworkMessage& msg);
+		void sendNewPing(uint32_t pingId);
+
 		friend class Player;
 
 		// Helpers so we don't need to bind every time

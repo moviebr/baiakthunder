@@ -20,18 +20,23 @@
 #include "otpch.h"
 #include <algorithm>
 
-#ifdef __has_include
-
-#if __has_include(<luajit/lua.hpp>)
-#include <luajit/lua.hpp>
-#elif __has_include(<lua.hpp>)
-#include <lua.hpp>
+#if defined(_MSC_VER)
+extern "C"
+{
+	#include <luajit/lua.h>
+	#include <luajit/lualib.h>
+	#include <luajit/lauxlib.h>
+}
 #else
-#error "Cannot detect lua library"
-#endif
-
-#else
-#include <lua.hpp>
+	#ifdef __has_include
+		#if __has_include(<luajit/lua.hpp>)
+			#include <luajit/lua.hpp>
+		#elif __has_include(<lua.hpp>)
+			#include <lua.hpp>
+		#else
+			#error "Cannot detect lua library"
+		#endif
+	#endif
 #endif
 
 #include "configmanager.h"
@@ -250,6 +255,7 @@ bool ConfigManager::load()
 	boolean[CLOSED_WORLD] = getGlobalBoolean(L, "closedWorld", false);
 	boolean[SHOW_MONSTER_EXIVA] = getGlobalBoolean(L, "showMonsterExiva", true);
 	boolean[REMOVE_ON_DESPAWN] = getGlobalBoolean(L, "removeOnDespawn", true);
+	boolean[PACKET_COMPRESSION] = getGlobalBoolean(L, "packetCompression", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

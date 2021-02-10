@@ -24,3 +24,12 @@ function onLogin(player)
     end
     return true
 end
+
+function onLogout(player)
+
+    if event[player:getId()] then
+        event[player:getId()] = nil
+    end
+
+    return true
+end

@@ -62,6 +62,7 @@ class ConfigManager
 			CLOSED_WORLD,
 			SHOW_MONSTER_EXIVA,
 			REMOVE_ON_DESPAWN,
+			PACKET_COMPRESSION,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};

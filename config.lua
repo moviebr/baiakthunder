@@ -42,6 +42,7 @@ serverName = "Baiak Thunder"
 statusTimeout = 5000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 475
+packetCompression = true
 
 deathLosePercent = -1
 
@@ -85,11 +86,19 @@ serverSaveClose = false
 serverSaveShutdown = true
 
 experienceStages = {
-	{ minlevel = 1, maxlevel = 8, multiplier = 7 },
-	{ minlevel = 9, maxlevel = 20, multiplier = 6 },
-	{ minlevel = 21, maxlevel = 50, multiplier = 5 },
-	{ minlevel = 51, maxlevel = 100, multiplier = 4 },
-	{ minlevel = 101, multiplier = 3 }
+	{ minlevel = 1, maxlevel = 100, multiplier = 400 },
+	{ minlevel = 101, maxlevel = 200, multiplier = 300 },
+	{ minlevel = 201, maxlevel = 250, multiplier = 150 },
+	{ minlevel = 251, maxlevel = 320, multiplier = 75 },
+	{ minlevel = 321, maxlevel = 390, multiplier = 35 },
+	{ minlevel = 391, maxlevel = 420, multiplier = 15 },
+	{ minlevel = 421, maxlevel = 480, multiplier = 4 },
+	{ minlevel = 481, maxlevel = 500, multiplier = 2 },
+	{ minlevel = 501, maxlevel = 550, multiplier = 1 },
+	{ minlevel = 551, maxlevel = 600, multiplier = 0.5 },
+	{ minlevel = 601, maxlevel = 670, multiplier = 0.1 },
+	{ minlevel = 671, multiplier = 0.05 },
+
 }
 
 rateExp = 5

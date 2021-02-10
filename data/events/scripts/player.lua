@@ -65,7 +65,8 @@ function Player:onLook(thing, position, distance)
 
 		if thing:isCreature() then
 			if thing:isPlayer() then
-				description = string.format("%s\nIP: %s.", description, Game.convertIpToString(thing:getIp()))
+				local client = thing:getClient()
+				description = string.format("%s\nIP: %s PING: %i FPS: %i.", description, Game.convertIpToString(thing:getIp()), client.ping, client.fps)
 			end
 		end
 	end
@@ -104,7 +105,8 @@ function Player:onLookInBattleList(creature, distance)
 		)
 
 		if creature:isPlayer() then
-			description = string.format("%s\nIP: %s", description, Game.convertIpToString(creature:getIp()))
+			local client = thing:getClient()
+    		description = string.format("%s\nIP: %s PING: %i FPS: %i.", description, Game.convertIpToString(thing:getIp()), client.ping, client.fps)
 		end
 	end
 	if thing:isCreature() then
