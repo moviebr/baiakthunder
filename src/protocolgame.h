@@ -232,6 +232,9 @@ class ProtocolGame final : public Protocol
 		//inventory
 		void sendInventoryItem(slots_t slot, const Item* item);
 
+		// other
+		void sendProgressbar(uint32_t id, uint32_t duration, bool ltr = true);
+
 		//Help functions
 
 		// translate a tile to clientreadable format

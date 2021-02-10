@@ -483,6 +483,8 @@ class Game
 
 		bool reload(ReloadTypes_t reloadType);
 
+		void startProgressbar(Creature* creature, uint32_t duration, bool ltr = true);
+
 		Groups groups;
 		Map map;
 		Raids raids;

@@ -988,6 +988,12 @@ class Player final : public Creature, public Cylinder
 			}
 		}
 
+		void sendProgressbar(uint32_t id, uint32_t duration, bool ltr = true) {
+            if (client) {
+                client->sendProgressbar(id, duration, ltr);
+            }
+        }
+
 		void receivePing() {
 			lastPong = OTSYS_TIME();
 		}

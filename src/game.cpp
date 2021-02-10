@@ -5036,6 +5036,17 @@ bool Game::reload(ReloadTypes_t reloadType)
 	return true;
 }
 
+void Game::startProgressbar(Creature* creature, uint32_t duration, bool ltr)
+{
+    SpectatorVec spectators;
+    map.getSpectators(spectators, creature->getPosition(), false, true);
+    for (Creature* spectator : spectators) {
+        if (Player* tmpPlayer = spectator->getPlayer()) {
+            tmpPlayer->sendProgressbar(creature->getID(), duration, ltr);
+        }
+    }
+}
+
 uint8_t Game::getSpawnRate() const
 {
  size_t playersOnline = getPlayersOnline();
