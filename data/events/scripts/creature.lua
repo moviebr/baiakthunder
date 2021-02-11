@@ -45,7 +45,7 @@ checkIp = function(name)
     if not player then
         ipPlayers[name] = nil
     else
-        if player:getIp() == 0 then
+        if player:getIp() == 0 or Game.convertIpToString(player:getIp()) == 0.0.0.0 then
             ipPlayers[name] = nil
             player:setTarget(nil)
             player:teleportTo(player:getTown():getTemplePosition())
