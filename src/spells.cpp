@@ -251,12 +251,15 @@ CombatSpell::~CombatSpell()
 {
 	if (!scripted) {
 		delete combat;
+	} else {
+		combat->decrementReferenceCounter();
 	}
 }
 
 bool CombatSpell::loadScriptCombat()
 {
 	combat = g_luaEnvironment.getCombatObject(g_luaEnvironment.lastCombatId);
+	combat->incrementReferenceCounter();
 	return combat != nullptr;
 }
 
