@@ -77,7 +77,7 @@ CombatDamage Combat::getCombatDamage(Creature* creature, Creature* target) const
 	return damage;
 }
 
-void Combat::getCombatArea(const Position& centerPos, const Position& targetPos, const AreaCombat* area, std::forward_list<Tile*>& list)
+void Combat::getCombatArea(const Position& centerPos, const Position& targetPos, const AreaCombat* area, std::vector<Tile*>& list)
 {
 	if (targetPos.z >= MAP_MAX_LAYERS) {
 		return;
@@ -91,7 +91,7 @@ void Combat::getCombatArea(const Position& centerPos, const Position& targetPos,
 			tile = new StaticTile(targetPos.x, targetPos.y, targetPos.z);
 			g_game.map.setTile(targetPos, tile);
 		}
-		list.push_front(tile);
+		list.push_back(tile);
 	}
 }
 
@@ -723,7 +723,7 @@ void Combat::doCombat(Creature* caster, const Position& position) const
 		CombatDamage damage = getCombatDamage(caster, nullptr);
 		doAreaCombat(caster, position, area.get(), damage, params);
 	} else {
-		std::forward_list<Tile*> tileList;
+		std::vector<Tile*> tileList;
 
 		if (caster) {
 			getCombatArea(caster->getPosition(), position, area.get(), tileList);
@@ -858,7 +858,7 @@ void Combat::doTargetCombat(Creature* caster, Creature* target, CombatDamage& da
 
 void Combat::doAreaCombat(Creature* caster, const Position& position, const AreaCombat* area, CombatDamage& damage, const CombatParams& params)
 {
-	std::forward_list<Tile*> tileList;
+	std::vector<Tile*> tileList;
 
 	if (caster) {
 		getCombatArea(caster->getPosition(), position, area, tileList);
@@ -1145,7 +1145,7 @@ AreaCombat::AreaCombat(const AreaCombat& rhs)
 	}
 }
 
-void AreaCombat::getList(const Position& centerPos, const Position& targetPos, std::forward_list<Tile*>& list) const
+void AreaCombat::getList(const Position& centerPos, const Position& targetPos, std::vector<Tile*>& list) const
 {
 	const MatrixArea* area = getArea(centerPos, targetPos);
 	if (!area) {
@@ -1166,7 +1166,7 @@ void AreaCombat::getList(const Position& centerPos, const Position& targetPos, s
 						tile = new StaticTile(tmpPos.x, tmpPos.y, tmpPos.z);
 						g_game.map.setTile(tmpPos, tile);
 					}
-					list.push_front(tile);
+					list.push_back(tile);
 				}
 			}
 			tmpPos.x++;
