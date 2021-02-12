@@ -29,6 +29,7 @@ class ProtocolLogin : public Protocol
 {
 	public:
 		// static protocol information
+		uint16_t otclientV8 = 0;
 		enum {server_sends_first = false};
 		enum {protocol_identifier = 0x01};
 		enum {use_checksum = true};
