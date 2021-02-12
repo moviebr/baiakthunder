@@ -774,11 +774,8 @@ doPlayerSendTutorial = doSendTutorial
 function doAddMapMark(cid, pos, type, description) local p = Player(cid) return p and p:addMapMark(pos, type, description or "") or false end
 doPlayerAddMapMark = doAddMapMark
 function doPlayerSendTextMessage(cid, type, text, ...) local p = Player(cid) return p and p:sendTextMessage(type, text, ...) or false end
-if(CLIENT_VERSION < 900) then
 function doSendAnimatedText(pos, text, color, player) Game.sendAnimatedText(text, pos, color, player) return true end
-else
-function doSendAnimatedText() debugPrint("Deprecated function(doSendAnimatedText).") return true end
-end
+
 function doPlayerAddExp(cid, exp, useMult, ...)
 	local player = Player(cid)
 	if player == nil then
