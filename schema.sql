@@ -305,7 +305,156 @@ CREATE TABLE IF NOT EXISTS `towns` (
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;
 
+CREATE TABLE IF NOT EXISTS `z_ots_comunication` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `param1` varchar(255) NOT NULL,
+  `param2` varchar(255) NOT NULL,
+  `param3` varchar(255) NOT NULL,
+  `param4` varchar(255) NOT NULL,
+  `param5` varchar(255) NOT NULL,
+  `param6` varchar(255) NOT NULL,
+  `param7` varchar(255) NOT NULL,
+  `delete_it` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_ots_guildcomunication` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `action` varchar(255) NOT NULL,
+  `param1` varchar(255) NOT NULL,
+  `param2` varchar(255) NOT NULL,
+  `param3` varchar(255) NOT NULL,
+  `param4` varchar(255) NOT NULL,
+  `param5` varchar(255) NOT NULL,
+  `param6` varchar(255) NOT NULL,
+  `param7` varchar(255) NOT NULL,
+  `delete_it` int(2) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_polls` (
+  `id` int(11) NOT NULL,
+  `question` varchar(255) NOT NULL,
+  `end` int(11) NOT NULL,
+  `start` int(11) NOT NULL,
+  `answers` int(11) NOT NULL,
+  `votes_all` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_polls_answers` (
+  `poll_id` int(11) NOT NULL,
+  `answer_id` int(11) NOT NULL,
+  `answer` varchar(255) NOT NULL,
+  `votes` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shopguild_history_item` (
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT '0',
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `offer_id` int(11) NOT NULL DEFAULT '0',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT '0',
+  `trans_real` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shopguild_history_pacc` (
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT '0',
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `pacc_days` int(11) NOT NULL DEFAULT '0',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT '0',
+  `trans_real` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shopguild_offer` (
+  `id` int(11) NOT NULL,
+  `points` int(11) NOT NULL DEFAULT '0',
+  `itemid1` int(11) NOT NULL DEFAULT '0',
+  `count1` int(11) NOT NULL DEFAULT '0',
+  `itemid2` int(11) NOT NULL DEFAULT '0',
+  `count2` int(11) NOT NULL DEFAULT '0',
+  `offer_type` varchar(255) DEFAULT NULL,
+  `offer_description` text NOT NULL,
+  `offer_name` varchar(255) NOT NULL,
+  `pid` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `desc` varchar(255) NOT NULL,
+  `button` varchar(50) NOT NULL,
+  `hide` int(11) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_donates` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  `reference` varchar(50) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `price` varchar(20) NOT NULL,
+  `points` int(11) NOT NULL,
+  `coins` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_donate_confirm` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `donate_id` int(11) NOT NULL,
+  `msg` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_history_item` (
+  `id` int(11) NOT NULL,
+  `to_name` varchar(255) NOT NULL DEFAULT '0',
+  `to_account` int(11) NOT NULL DEFAULT '0',
+  `from_nick` varchar(255) NOT NULL,
+  `from_account` int(11) NOT NULL DEFAULT '0',
+  `price` int(11) NOT NULL DEFAULT '0',
+  `offer_id` varchar(255) NOT NULL DEFAULT '',
+  `trans_state` varchar(255) NOT NULL,
+  `trans_start` int(11) NOT NULL DEFAULT '0',
+  `trans_real` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_offer` (
+  `id` int(11) NOT NULL,
+  `category` int(11) NOT NULL,
+  `points` int(11) NOT NULL DEFAULT '0',
+  `coins` int(11) NOT NULL DEFAULT '0',
+  `price` varchar(50) NOT NULL DEFAULT '',
+  `itemid` int(11) NOT NULL DEFAULT '0',
+  `mount_id` varchar(100) NOT NULL DEFAULT '',
+  `addon_name` varchar(100) NOT NULL DEFAULT '',
+  `count` int(11) NOT NULL DEFAULT '0',
+  `offer_type` varchar(255) DEFAULT NULL,
+  `offer_description` text NOT NULL,
+  `offer_name` varchar(255) NOT NULL DEFAULT '',
+  `offer_date` int(11) NOT NULL,
+  `default_image` varchar(50) NOT NULL DEFAULT '',
+  `hide` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 INSERT INTO `server_config` (`config`, `value`) VALUES ('db_version', '24'), ('motd_hash', ''), ('motd_num', '0'), ('players_record', '0');
+
+INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
+(2, 'Extra Services', 'Compre um servi&ccedil;o extra para alterar o nome ou o sexo do personagem, alterar o nome da sua conta ou obter uma nova chave de recupera&ccedil;&atilde;o.', '_sbutton_getextraservice.gif', 0),
+(3, 'Outfits', 'Compre para seus personagens um ou mais outfits oferecidas aqui.', '_sbutton_getoutfit.gif', 0),
+(4, 'Items', 'Compre itens para o seu personagem e seja mais forte no jogo.', '_sbutton_getextraservice.gif', 0);
 
 DROP TRIGGER IF EXISTS `ondelete_players`;
 DROP TRIGGER IF EXISTS `oncreate_guilds`;
