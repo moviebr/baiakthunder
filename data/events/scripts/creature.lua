@@ -1,5 +1,5 @@
 function Creature:onChangeOutfit(outfit)
-    if self:getStorageValue(STORAGEVALUE_EVENTS) >= 1 then
+    if self:isPlayer() and self:getStorageValue(STORAGEVALUE_EVENTS) >= 1 then
         self:sendTextMessage(MESSAGE_INFO_DESCR, "Você não pode trocar de outfit enquanto estiver dentro de um evento.")
         return false
     end

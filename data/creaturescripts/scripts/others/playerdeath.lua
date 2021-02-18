@@ -105,6 +105,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 	end
 	
 	if killer and killer:isPlayer() then
+		sendChannelMessage(12, TALKTYPE_CHANNEL_O, "O jogador ".. player:getName() .. " ["..player:getLevel().."] morreu pelo jogador ".. killer:getName() .." ["..killer:getLevel().."].")
 		Game.broadcastMessage(player:getName().." ["..player:getLevel().."] acabou de ser morto pelo jogador "..killer:getName().." ["..killer:getLevel().."].", MESSAGE_STATUS_SMALL)
 	end
 	

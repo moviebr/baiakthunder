@@ -8,4 +8,5 @@
 	<channel id="8" name="Gamemaster" script="gamemaster.lua" />
 	<channel id="10" name="Líderes de Guild" script="guildleaders.lua" />
 	<channel id="11" name="Loot" script="loot.lua" />
+	<channel id="12" name="Mortes" script="death.lua" />
 </channels>
