@@ -444,7 +444,7 @@ if Modules == nil then
 		if player:isPremium() or not shop_premium[cid] then
 			if not player:removeTotalMoney(cost) then
 				npcHandler:say("You do not have enough money!", cid)
-			elseif player:isPzLocked(cid) then
+			elseif player:isPzLocked() then
 				npcHandler:say("Get out of there with this blood.", cid)
 			else
 				npcHandler:say("It was a pleasure doing business with you.", cid)
