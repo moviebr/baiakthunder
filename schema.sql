@@ -449,6 +449,454 @@ CREATE TABLE IF NOT EXISTS `z_shop_offer` (
   `hide` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE IF NOT EXISTS `z_forum` (
+  `id` int(11) NOT NULL,
+  `first_post` int(11) NOT NULL DEFAULT '0',
+  `last_post` int(11) NOT NULL DEFAULT '0',
+  `section` int(3) NOT NULL DEFAULT '0',
+  `replies` int(20) NOT NULL DEFAULT '0',
+  `views` int(20) NOT NULL DEFAULT '0',
+  `author_aid` int(20) NOT NULL DEFAULT '0',
+  `author_guid` int(20) NOT NULL DEFAULT '0',
+  `post_text` text NOT NULL,
+  `post_topic` varchar(255) NOT NULL,
+  `post_smile` tinyint(1) NOT NULL DEFAULT '0',
+  `post_date` int(20) NOT NULL DEFAULT '0',
+  `last_edit_aid` int(20) NOT NULL DEFAULT '0',
+  `edit_date` int(20) NOT NULL DEFAULT '0',
+  `post_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0',
+  `icon_id` int(11) NOT NULL,
+  `news_icon` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `accounts_options` (
+  `account_id` int(11) NOT NULL,
+  `options` text COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+CREATE TABLE IF NOT EXISTS `announcements` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `atr_wikki_category` (
+  `id_atr_wikki_category` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `descricao` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `dta_insert` datetime NOT NULL DEFAULT current_timestamp(),
+  `dta_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `dta_deleted` datetime DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id_atr_wikki_category`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `atr_wikki_subcategory` (
+  `id_atr_wikki_subcategory` int(11) NOT NULL AUTO_INCREMENT,
+  `id_atr_wikki_category` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `text` text NOT NULL,
+  `dta_insert` datetime NOT NULL DEFAULT current_timestamp(),
+  `dta_update` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `dta_deleted` datetime DEFAULT NULL,
+  `is_active` tinyint(4) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id_atr_wikki_subcategory`),
+  KEY `FK_ID_WIKKI_CATEGORY_idx` (`id_atr_wikki_category`),
+  CONSTRAINT `FK_ID_WIKKI_CATEGORY` FOREIGN KEY (`id_atr_wikki_category`) REFERENCES `atr_wikki_category` (`id_atr_wikki_category`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `blessings_history` (
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `blessing` tinyint(4) NOT NULL,
+  `loss` tinyint(1) NOT NULL,
+  `timestamp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `daily_reward_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `streak` smallint(2) NOT NULL DEFAULT 0,
+  `event` varchar(255) DEFAULT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp(),
+  `instant` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `player_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `player_id` (`player_id`),
+  CONSTRAINT `daily_reward_history_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `global_storage` (
+  `key` varchar(32) NOT NULL,
+  `world_id` tinyint(4) unsigned NOT NULL DEFAULT 0,
+  `value` text NOT NULL,
+  UNIQUE KEY `key` (`key`,`world_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `highscores` (
+  `id` tinyint(4) NOT NULL,
+  `name` tinyint(4) NOT NULL,
+  `account_id` tinyint(4) NOT NULL,
+  `group_id` tinyint(4) NOT NULL,
+  `level` tinyint(4) NOT NULL,
+  `experience` tinyint(4) NOT NULL,
+  `vocation` tinyint(4) NOT NULL,
+  `rank` tinyint(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `snake_game` (
+  `id` int(11) NOT NULL,
+  `guid` int(11) NOT NULL,
+  `points` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `snowballwar` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `score` int(11) NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `hora` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `store_history` (
+  `account_id` int(11) NOT NULL,
+  `mode` smallint(2) NOT NULL,
+  `description` varchar(3500) NOT NULL,
+  `coin_amount` int(12) NOT NULL,
+  `time` bigint(20) UNSIGNED NOT NULL,
+  `timestamp` int(11) NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL,
+  `coins` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `s_attributes` (
+  `item_id` int(11) NOT NULL,
+  `attack` varchar(11) DEFAULT NULL,
+  `armor` varchar(11) DEFAULT NULL,
+  `defense` varchar(11) DEFAULT NULL,
+  `extraDef` varchar(4) DEFAULT NULL,
+  `range` varchar(11) DEFAULT NULL,
+  `speed` varchar(4) DEFAULT NULL,
+  `elementFire` varchar(11) DEFAULT NULL,
+  `elementIce` varchar(11) DEFAULT NULL,
+  `elementEarth` varchar(11) DEFAULT NULL,
+  `elementEnergy` varchar(11) DEFAULT NULL,
+  `skillShield` varchar(4) DEFAULT NULL,
+  `skillDist` varchar(4) DEFAULT NULL,
+  `skillFist` varchar(4) DEFAULT NULL,
+  `skillClub` varchar(4) DEFAULT NULL,
+  `skillAxe` varchar(4) DEFAULT NULL,
+  `skillSword` varchar(4) DEFAULT NULL,
+  `magicLevelPoints` varchar(4) DEFAULT NULL,
+  `absorbPercentAll` varchar(3) DEFAULT NULL,
+  `absorbPercentFire` varchar(3) DEFAULT NULL,
+  `absorbPercentEarth` varchar(3) DEFAULT NULL,
+  `absorbPercentEnergy` varchar(3) DEFAULT NULL,
+  `absorbPercentIce` varchar(3) DEFAULT NULL,
+  `absorbPercentDeath` varchar(3) DEFAULT NULL,
+  `absorbPercentHoly` varchar(3) DEFAULT NULL,
+  `absorbPercentPhysical` varchar(3) DEFAULT NULL,
+  `absorbPercentManaDrain` varchar(3) DEFAULT NULL,
+  `absorbPercentLifeDrain` varchar(3) DEFAULT NULL,
+  `charges` varchar(11) DEFAULT NULL,
+  `duration` varchar(11) DEFAULT NULL,
+  `preventDrop` varchar(11) DEFAULT NULL,
+  `containerSize` varchar(11) DEFAULT NULL,
+  `hitChance` varchar(11) DEFAULT NULL,
+  `shootType` varchar(12) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `s_items` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `descr` text DEFAULT NULL,
+  `weight` int(11) NOT NULL,
+  `itemid` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `tickets` (
+  `ticket_id` int(11) NOT NULL,
+  `ticket_subject` varchar(45) NOT NULL DEFAULT '',
+  `ticket_author` varchar(255) NOT NULL DEFAULT '',
+  `ticket_author_acc_id` int(11) NOT NULL,
+  `ticket_last_reply` varchar(45) NOT NULL DEFAULT '',
+  `ticket_admin_reply` int(11) NOT NULL,
+  `ticket_date` datetime NOT NULL,
+  `ticket_ended` varchar(45) NOT NULL DEFAULT '',
+  `ticket_status` varchar(45) NOT NULL DEFAULT '',
+  `ticket_category` varchar(45) NOT NULL DEFAULT '',
+  `ticket_description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `tickets_reply` (
+  `ticket_replyid` int(11) NOT NULL,
+  `ticket_id` int(11) NOT NULL,
+  `reply_author` varchar(255) NOT NULL,
+  `reply_message` varchar(255) NOT NULL,
+  `reply_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `videos` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descricao` text NOT NULL,
+  `categoria` int(11) NOT NULL,
+  `link` varchar(11) NOT NULL,
+  `ativo` int(1) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `videos_categorias` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `videos_comentarios` (
+  `id` int(11) NOT NULL,
+  `mensagem` text NOT NULL,
+  `character` varchar(255) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `topico` int(11) NOT NULL,
+  `data` timestamp NOT NULL DEFAULT current_timestamp(),
+  `ativo` int(1) NOT NULL DEFAULT 1
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_changelogs` (
+  `id_changelog` int(11) UNSIGNED NOT NULL,
+  `date` date NOT NULL,
+  `description` text NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `z_helpdesk` (
+  `account` varchar(255) NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `priority` int(11) NOT NULL,
+  `reply` int(11) NOT NULL,
+  `who` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `tag` int(11) NOT NULL,
+  `registered` timestamp NOT NULL DEFAULT current_timestamp(),
+  `t_id` varchar(11) NOT NULL,
+  `c_name` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_network_box` (
+  `id` int(11) NOT NULL,
+  `network_name` varchar(10) NOT NULL,
+  `network_link` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_news_tickers` (
+  `date` int(11) NOT NULL DEFAULT 1,
+  `author` int(11) NOT NULL,
+  `image_id` int(3) NOT NULL DEFAULT 0,
+  `text` text NOT NULL,
+  `hide_ticker` tinyint(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `z_shop_payment` (
+  `id` int(11) NOT NULL,
+  `ref` varchar(10) NOT NULL,
+  `account_name` varchar(50) NOT NULL,
+  `service_id` int(11) NOT NULL,
+  `service_category_id` int(11) NOT NULL,
+  `payment_method_id` int(11) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `points` int(11) UNSIGNED NOT NULL,
+  `coins` int(11) UNSIGNED NOT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'waiting',
+  `date` int(11) NOT NULL,
+  `gift` int(11) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `pagseguro` (
+  `date` datetime NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `reference` varchar(200) NOT NULL,
+  `type` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `lastEventDate` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `pagsegurotransacoes` (
+  `TransacaoID` varchar(36) NOT NULL,
+  `VendedorEmail` varchar(200) NOT NULL,
+  `Referencia` varchar(200) DEFAULT NULL,
+  `TipoFrete` char(2) DEFAULT NULL,
+  `ValorFrete` decimal(10,2) DEFAULT NULL,
+  `Extras` decimal(10,2) DEFAULT NULL,
+  `Anotacao` text DEFAULT NULL,
+  `TipoPagamento` varchar(50) NOT NULL,
+  `StatusTransacao` varchar(50) NOT NULL,
+  `CliNome` varchar(200) NOT NULL,
+  `CliEmail` varchar(200) NOT NULL,
+  `CliEndereco` varchar(200) NOT NULL,
+  `CliNumero` varchar(10) DEFAULT NULL,
+  `CliComplemento` varchar(100) DEFAULT NULL,
+  `CliBairro` varchar(100) NOT NULL,
+  `CliCidade` varchar(100) NOT NULL,
+  `CliEstado` char(2) NOT NULL,
+  `CliCEP` varchar(9) NOT NULL,
+  `CliTelefone` varchar(14) DEFAULT NULL,
+  `NumItens` int(11) NOT NULL,
+  `Data` datetime NOT NULL,
+  `ProdQuantidade_x` int(5) NOT NULL,
+  `status` tinyint(1) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `pagseguro_transactions` (
+  `transaction_code` varchar(36) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `name` varchar(200) CHARACTER SET latin1 DEFAULT NULL,
+  `payment_method` varchar(50) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `status` varchar(50) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `item_count` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `payment_amount` float DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `paypal_transactions` (
+  `id` int(11) NOT NULL,
+  `payment_status` varchar(70) NOT NULL DEFAULT '',
+  `date` datetime NOT NULL,
+  `payer_email` varchar(255) NOT NULL DEFAULT '',
+  `payer_id` varchar(255) NOT NULL DEFAULT '',
+  `item_number1` varchar(255) NOT NULL DEFAULT '',
+  `mc_gross` float NOT NULL,
+  `mc_currency` varchar(5) NOT NULL DEFAULT '',
+  `txn_id` varchar(255) NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `newsticker` (
+  `id` int(11) NOT NULL,
+  `date` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `icon` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `market_offers` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `sale` tinyint(1) NOT NULL DEFAULT 0,
+  `itemtype` int(10) UNSIGNED NOT NULL,
+  `amount` smallint(5) UNSIGNED NOT NULL,
+  `created` bigint(20) UNSIGNED NOT NULL,
+  `anonymous` tinyint(1) NOT NULL DEFAULT 0,
+  `price` int(10) UNSIGNED NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `market_history` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `sale` tinyint(1) NOT NULL DEFAULT 0,
+  `itemtype` int(10) UNSIGNED NOT NULL,
+  `amount` smallint(5) UNSIGNED NOT NULL,
+  `price` int(10) UNSIGNED NOT NULL DEFAULT 0,
+  `expires_at` bigint(20) UNSIGNED NOT NULL,
+  `inserted` bigint(20) UNSIGNED NOT NULL,
+  `state` tinyint(1) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `live_casts` (
+  `player_id` int(11) NOT NULL,
+  `cast_name` varchar(255) NOT NULL,
+  `password` tinyint(1) NOT NULL DEFAULT 0,
+  `description` varchar(255) DEFAULT NULL,
+  `spectators` smallint(5) DEFAULT 0,
+  `version` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `links` (
+  `account_id` int(11) NOT NULL,
+  `code` varchar(50) NOT NULL,
+  `code_date` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `hunted_system` (
+  `playerGuid` varchar(255) NOT NULL,
+  `targetGuid` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `exclusive_hunts` (
+  `hunt_id` int(2) NOT NULL,
+  `guid_player` varchar(32) NOT NULL,
+  `time` int(11) NOT NULL,
+  `to_time` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `castle_48` (
+  `guild_id` int(3) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `castle` (
+  `name` varchar(255) NOT NULL,
+  `guild_id` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `boss_room` (
+  `room_id` int(2) NOT NULL,
+  `guid_player` varchar(32) NOT NULL,
+  `time` int(11) NOT NULL,
+  `to_time` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `boost_creature` (
+  `name` varchar(255) NOT NULL,
+  `exp` int(11) NOT NULL DEFAULT 0,
+  `loot` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `auction_system` (
+  `id` int(11) NOT NULL,
+  `player_id` int(11) NOT NULL,
+  `item_name` varchar(255) NOT NULL,
+  `item_id` smallint(6) NOT NULL,
+  `count` smallint(5) NOT NULL,
+  `value` int(7) NOT NULL,
+  `date` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `account_credentials` (
+  `id_credential` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `key` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `account_character_sale` (
+  `id` int(11) NOT NULL,
+  `id_account` int(11) NOT NULL,
+  `id_player` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `price_type` tinyint(4) NOT NULL,
+  `price_coins` int(11) DEFAULT NULL,
+  `price_gold` int(11) DEFAULT NULL,
+  `dta_insert` datetime NOT NULL,
+  `dta_valid` datetime NOT NULL,
+  `dta_sale` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `account_character_sale_history` (
+  `id` int(11) NOT NULL,
+  `id_old_account` int(11) DEFAULT NULL,
+  `id_player` int(11) DEFAULT NULL,
+  `id_new_account` int(11) DEFAULT NULL,
+  `price_type` tinyint(1) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `char_id` int(11) DEFAULT NULL,
+  `dta_insert` datetime NOT NULL DEFAULT current_timestamp(),
+  `dta_sale` datetime DEFAULT NULL,
+  `extornada` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 INSERT INTO `server_config` (`config`, `value`) VALUES ('db_version', '24'), ('motd_hash', ''), ('motd_num', '0'), ('players_record', '0');
 
 INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
