@@ -1312,7 +1312,7 @@ void ProtocolGame::sendSaleItemList(const std::list<ShopInfo>& shop)
 
   uint16_t moneyType = player->shopOwner ? player->shopOwner->getMoneyType() : 0;
   if (moneyType == 0) {
-	   msg.add<uint32_t>(player->getMoney());
+	   msg.add<uint32_t>(player->getMoney() + player->getBankBalance());
   } else {
      msg.add<uint32_t>(player->getItemTypeCount(moneyType));
   }
