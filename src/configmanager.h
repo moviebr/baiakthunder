@@ -63,6 +63,7 @@ class ConfigManager
 			SHOW_MONSTER_EXIVA,
 			REMOVE_ON_DESPAWN,
 			PACKET_COMPRESSION,
+			DEFAULT_WORLD_LIGHT,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
