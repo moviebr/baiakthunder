@@ -459,9 +459,8 @@ class LuaScriptInterface
 
 		//get world info
 		static int luaGetWorldTime(lua_State* L);
-		static int luaGetWorldUpTime(lua_State* L);
 		static int luaGetWorldLight(lua_State* L);
-		static int luaSetWorldLight(lua_State* L);
+		static int luaGetWorldUpTime(lua_State* L);
 
 		//type validation
 		static int luaIsDepot(lua_State* L);

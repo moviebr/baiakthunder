@@ -71,11 +71,8 @@ void Game::start(ServiceManager* manager)
 	lastSpoofUpdateTime = 0;
 
 	serviceManager = manager;
-	updateWorldTime();
 
-	if (g_config.getBoolean(ConfigManager::DEFAULT_WORLD_LIGHT)) {
-		g_scheduler.addEvent(createSchedulerTask(EVENT_LIGHTINTERVAL, std::bind(&Game::checkLight, this)));
-	}
+	g_scheduler.addEvent(createSchedulerTask(EVENT_LIGHTINTERVAL, std::bind(&Game::checkLight, this)));
 	g_scheduler.addEvent(createSchedulerTask(EVENT_CREATURE_THINK_INTERVAL, std::bind(&Game::checkCreatures, this, 0)));
 }
 
@@ -3221,11 +3218,11 @@ bool Game::playerSaySpell(Player* player, SpeakClasses type, const std::string& 
 void Game::playerWhisper(Player* player, const std::string& text)
 {
 	SpectatorVec spectators;
-	const Position& pos = player->getPosition();
-	map.getSpectatorsInternal(spectators, pos, Map::maxClientViewportX, Map::maxClientViewportX,
-			Map::maxClientViewportY, Map::maxClientViewportY, pos.z, pos.z, false);
+	map.getSpectators(spectators, player->getPosition(), false, false,
+	              Map::maxClientViewportX, Map::maxClientViewportX,
+	              Map::maxClientViewportY, Map::maxClientViewportY);
 
-	//send to client + event method
+	//send to client
 	for (Creature* spectator : spectators) {
 		if (Player* spectatorPlayer = spectator->getPlayer()) {
 			if (!Position::areInRange<1, 1>(player->getPosition(), spectatorPlayer->getPosition())) {
@@ -3234,6 +3231,10 @@ void Game::playerWhisper(Player* player, const std::string& text)
 				spectatorPlayer->sendCreatureSay(player, TALKTYPE_WHISPER, text);
 			}
 		}
+	}
+
+	//event method
+	for (Creature* spectator : spectators) {
 		spectator->onCreatureSay(player, TALKTYPE_WHISPER, text);
 	}
 }
@@ -3365,26 +3366,27 @@ bool Game::internalCreatureSay(Creature* creature, SpeakClasses type, const std:
 		// used (hopefully the compiler will optimize away the construction of
 		// the temporary when it's not used).
 		if (type != TALKTYPE_YELL && type != TALKTYPE_MONSTER_YELL) {
-			map.getSpectatorsInternal(spectators, *pos, Map::maxClientViewportX, Map::maxClientViewportX,
-					Map::maxClientViewportY, Map::maxClientViewportY, pos->z, pos->z, false);
+			map.getSpectators(spectators, *pos, false, false,
+			              Map::maxClientViewportX, Map::maxClientViewportX,
+			              Map::maxClientViewportY, Map::maxClientViewportY);
 		} else {
-			if (pos->z < 8) {
-				map.getSpectatorsInternal(spectators, *pos, 18, 18, 14, 14, 0, 7, false);
-			} else {
-				map.getSpectatorsInternal(spectators, *pos, 18, 18, 14, 14, pos->z, pos->z, false);
-			}
+			map.getSpectators(spectators, *pos, true, false, 18, 18, 14, 14);
 		}
 	} else {
-		spectators = std::move(*spectatorsPtr);
+		spectators = (*spectatorsPtr);
 	}
 
-	//send to client + event method
+	//send to client
 	for (Creature* spectator : spectators) {
 		if (Player* tmpPlayer = spectator->getPlayer()) {
 			if (!ghostMode || tmpPlayer->canSeeCreature(creature)) {
 				tmpPlayer->sendCreatureSay(creature, type, text, pos);
 			}
 		}
+	}
+
+	//event method
+	for (Creature* spectator : spectators) {
 		spectator->onCreatureSay(creature, type, text);
 		if (creature != spectator) {
 			g_events->eventCreatureOnHear(spectator, creature, text, type);
@@ -4334,31 +4336,59 @@ void Game::internalDecayItem(Item* item)
 void Game::checkLight()
 {
 	g_scheduler.addEvent(createSchedulerTask(EVENT_LIGHTINTERVAL, std::bind(&Game::checkLight, this)));
-	updateWorldLightLevel();
-	LightInfo lightInfo = getWorldLightInfo();
 
-	for (const auto& it : players) {
-		it.second->sendWorldLight(lightInfo);
+	lightHour += lightHourDelta;
+
+	if (lightHour > 1440) {
+		lightHour -= 1440;
+	}
+
+	if (std::abs(lightHour - SUNRISE) < 2 * lightHourDelta) {
+		lightState = LIGHT_STATE_SUNRISE;
+	} else if (std::abs(lightHour - SUNSET) < 2 * lightHourDelta) {
+		lightState = LIGHT_STATE_SUNSET;
+	}
+
+	int32_t newLightLevel = lightLevel;
+	bool lightChange = false;
+
+	switch (lightState) {
+		case LIGHT_STATE_SUNRISE: {
+			newLightLevel += (LIGHT_LEVEL_DAY - LIGHT_LEVEL_NIGHT) / 30;
+			lightChange = true;
+			break;
+		}
+		case LIGHT_STATE_SUNSET: {
+			newLightLevel -= (LIGHT_LEVEL_DAY - LIGHT_LEVEL_NIGHT) / 30;
+			lightChange = true;
+			break;
+		}
+		default:
+			break;
+	}
+
+	if (newLightLevel <= LIGHT_LEVEL_NIGHT) {
+		lightLevel = LIGHT_LEVEL_NIGHT;
+		lightState = LIGHT_STATE_NIGHT;
+	} else if (newLightLevel >= LIGHT_LEVEL_DAY) {
+		lightLevel = LIGHT_LEVEL_DAY;
+		lightState = LIGHT_STATE_DAY;
+	} else {
+		lightLevel = newLightLevel;
+	}
+
+	if (lightChange) {
+		LightInfo lightInfo = getWorldLightInfo();
+
+		for (const auto& it : players) {
+			it.second->sendWorldLight(lightInfo);
+		}
 	}
 }
 
-void Game::updateWorldLightLevel()
+LightInfo Game::getWorldLightInfo() const
 {
-	if (getWorldTime() >= GAME_SUNRISE && getWorldTime() <= GAME_DAYTIME) {
-		lightLevel = ((GAME_DAYTIME - GAME_SUNRISE) - (GAME_DAYTIME - getWorldTime())) * float(LIGHT_CHANGE_SUNRISE) + LIGHT_NIGHT;
-	} else if (getWorldTime() >= GAME_SUNSET && getWorldTime() <= GAME_NIGHTTIME) {
-		lightLevel = LIGHT_DAY - ((getWorldTime() - GAME_SUNSET) * float(LIGHT_CHANGE_SUNSET));
-	} else if (getWorldTime() >= GAME_NIGHTTIME || getWorldTime() < GAME_SUNRISE) {
-		lightLevel = LIGHT_NIGHT;
-	}
-}
-
-void Game::updateWorldTime()
-{
-	g_scheduler.addEvent(createSchedulerTask(EVENT_WORLDTIMEINTERVAL, std::bind(&Game::updateWorldTime, this)));
-	time_t osTime = time(nullptr);
-	tm* timeInfo = localtime(&osTime);
-	worldTime = (timeInfo->tm_sec + (timeInfo->tm_min * 60)) / 2.5f;
+	return {lightLevel, 0xD7};
 }
 
 void Game::shutdown()

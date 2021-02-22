@@ -2284,6 +2284,7 @@
 	<spawn centerx="855" centery="662" centerz="7" radius="1">
 		<monster name="Dwarf Guard" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="162" centery="663" centerz="7" radius="5" />
 	<spawn centerx="825" centery="665" centerz="7" radius="1">
 		<monster name="Dwarf" x="0" y="0" z="7" spawntime="60" />
 	</spawn>
@@ -2347,6 +2348,7 @@
 		<monster name="Grim Reaper" x="1" y="21" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="21" y="21" z="7" spawntime="60" />
 	</spawn>
+	<spawn centerx="173" centery="683" centerz="7" radius="5" />
 	<spawn centerx="162" centery="685" centerz="7" radius="5">
 		<monster name="Grim Reaper" x="5" y="1" z="7" spawntime="60" />
 		<monster name="Grim Reaper" x="-2" y="2" z="7" spawntime="60" />
@@ -2539,7 +2541,7 @@
 	</spawn>
 	<spawn centerx="307" centery="907" centerz="7" radius="30">
 		<monster name="Frost Dragon" x="24" y="-8" z="7" spawntime="60" />
-		<monster name="Frost Dragon" x="11" y="-7" z="7" spawntime="60" />
+		<monster name="Frost Dragon" x="11" y="-7" z="7" spawntime="0" />
 		<monster name="Frost Dragon" x="11" y="-6" z="7" spawntime="60" />
 		<monster name="Crystal Spider" x="12" y="-2" z="7" spawntime="60" />
 		<monster name="Crystal Spider" x="28" y="-1" z="7" spawntime="60" />
