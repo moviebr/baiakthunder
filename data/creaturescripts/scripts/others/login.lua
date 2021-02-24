@@ -52,7 +52,7 @@ function onLogin(player)
 	end
 
 	-- PVP Balance
-	if configManager.getBoolean(configKeys.CLOSED_WORLD) then
+	if configManager.getBoolean(configKeys.PVP_BALANCE) then
 		player:registerEvent("PvpBalance")
     	player:registerEvent("PvpBalanceMA")
 	end
