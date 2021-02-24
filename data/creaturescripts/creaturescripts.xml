@@ -11,6 +11,7 @@
 	<!-- Custom -->
 	<event type="login" name="FreeBless" script="custom/freeBless.lua" />
 	<event type="login" name="OnlineBonus" script="custom/onlineBonus.lua" />
+	<event type="logout" name="OnlineBonusLogout" script="custom/onlineBonus.lua" />
 	<event type="advance" name="RewardLevel" script="custom/rewardLevel.lua" />
 	<event type="advance" name="AnimationUp" script="custom/animationUp.lua" />
 	<event type="healthchange" name="DodgeCriticalSystem" script="custom/dodgeCritical.lua"/>
@@ -22,6 +23,8 @@
 	<event type="think" name="SuperUP" script="custom/superup.lua" />
 	<event type="kill" name="GuildLevel" script="custom/guildLevel.lua" />
 	<event type="kill" name="MonsterHunt" script="custom/monsterHunt.lua" />
+	<event type="healthchange" name="PvpBalance" script="custom/pvpBalance.lua" />
+	<event type="manachange" name="PvpBalanceMA" script="custom/pvpBalance.lua" />
 
 	<!-- Reward Chest -->
 	<event type="login" name="LoginBossPlayer" script="custom/reward/reward.lua" />

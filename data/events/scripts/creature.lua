@@ -60,7 +60,7 @@ end
 function Creature:onTargetCombat(target)
     ipPlayers = {}
 
-   if not self then
+    if not self then
         return true
     end
 
@@ -81,6 +81,11 @@ function Creature:onTargetCombat(target)
                 staminaBonus.events[name] = addEvent(addStamina, staminaBonus.period, name)
             end
 		end
+    end
+
+    if configManager.getBoolean(configKeys.PVP_BALANCE) then
+        target:registerEvent("PvpBalance")
+        target:registerEvent("PvpBalanceMA")
     end
 	
 end

@@ -19,6 +19,7 @@ end
 
 function onLogin(player)
 	player:registerEvent("OnlineBonus")
+    player:registerEvent("OnlineBonusLogout")
 	if event[player:getId()] == nil then
 		event[player:getId()] = addEvent(addOnlineToken, 60 * 60 * 1000, player:getId())    
     end

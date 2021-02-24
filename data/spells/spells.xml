@@ -18,6 +18,17 @@
 		<vocation name="Ancient Druid" />
 	</rune>
 
+	<instant group="support" spellid="136" name="Exura Sio Party" words="utura sio party" level="250" mana="200" premium="0" aggressive="0" selftarget="1" exhaustion="5000" groupcooldown="2000" needlearn="0" script="party/exura_sio_party.lua">
+		<vocation name="Druid" />
+		<vocation name="Elder Druid" />
+		<vocation name="Ancient Druid" />
+	</instant>
+	<instant group="attack" spellid="137" name="Utato Fire" words="utato fire" level="180" mana="90" premium="0" exhaustion="3000" groupcooldown="2000" needlearn="0" script="attack/fire_utato.lua">
+		<vocation name="Sorcerer" />
+		<vocation name="Master Sorcerer" />
+		<vocation name="Masterful Sorcerer" />
+	</instant>
+
 	<!-- Attack Spells -->
 	<instant group="attack" spellid="80" name="Berserk" words="exori" level="35" mana="115" premium="0" needweapon="1" exhaustion="4000" groupcooldown="2000" needlearn="0" script="attack/berserk.lua">
 		<vocation name="Knight" />

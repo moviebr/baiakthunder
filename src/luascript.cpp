@@ -1891,6 +1891,9 @@ void LuaScriptInterface::registerFunctions()
 
 	registerEnumIn("configKeys", ConfigManager::CLOSED_WORLD)
 	registerEnumIn("configKeys", ConfigManager::SHOW_MONSTER_EXIVA)
+	registerEnumIn("configKeys", ConfigManager::ANTI_BOT)
+	registerEnumIn("configKeys", ConfigManager::GUILD_LEADER_SQUARE)
+	registerEnumIn("configKeys", ConfigManager::PVP_BALANCE)
 
 	// os
 	registerMethod("os", "mtime", LuaScriptInterface::luaSystemTime);

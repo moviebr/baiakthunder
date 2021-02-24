@@ -256,6 +256,9 @@ bool ConfigManager::load()
 	boolean[SHOW_MONSTER_EXIVA] = getGlobalBoolean(L, "showMonsterExiva", true);
 	boolean[REMOVE_ON_DESPAWN] = getGlobalBoolean(L, "removeOnDespawn", true);
 	boolean[PACKET_COMPRESSION] = getGlobalBoolean(L, "packetCompression", true);
+	boolean[ANTI_BOT] = getGlobalBoolean(L, "antiBot", true);
+	boolean[GUILD_LEADER_SQUARE] = getGlobalBoolean(L, "guildLeaderSquare", true);
+	boolean[PVP_BALANCE] = getGlobalBoolean(L, "pvpBalance", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

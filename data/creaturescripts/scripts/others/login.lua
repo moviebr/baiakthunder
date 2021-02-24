@@ -18,7 +18,7 @@ function onLogin(player)
 	end
 
 	-- Guild Leaders Destaque
-	if player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
+	if configManager.getBoolean(configKeys.GUILD_LEADER_SQUARE) and player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
 		guildLeaderSquare(player)
 	end
 
@@ -49,6 +49,12 @@ function onLogin(player)
 	if player:getStorageValue(configMining.level.storageTentativas) == -1 or player:getStorageValue(configMining.level.storageNivel) == -1 then
 		player:setStorageValue(configMining.level.storageTentativas, 0) -- Tentativas
 		player:setStorageValue(configMining.level.storageNivel, 1) -- Level
+	end
+
+	-- PVP Balance
+	if configManager.getBoolean(configKeys.CLOSED_WORLD) then
+		player:registerEvent("PvpBalance")
+    	player:registerEvent("PvpBalanceMA")
 	end
 
 	player:loadSpecialStorage()
@@ -119,24 +125,6 @@ function onLogin(player)
 	player:registerEvent("Tasks")
 	player:registerEvent("SuperUP")
 	player:registerEvent("GuildLevel")
-	return true
-end
 
-function guildLeaderSquare(player)
-	player = Player(player)
-	if not player then
-		return true
-	end
-
-	local playerId = player:getId()
-
-	spectators = Game.getSpectators(player:getPosition(), true, true, 0, 7, 0, 7)
-	for _, viewers in ipairs(spectators) do
-		if player:getGuildLevel() == 3 then
-			viewers:sendCreatureSquare(player, 215)
-		end
-	end
-	
-	addEvent(guildLeaderSquare, 500, playerId)
 	return true
 end

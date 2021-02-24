@@ -63,6 +63,9 @@ class ConfigManager
 			SHOW_MONSTER_EXIVA,
 			REMOVE_ON_DESPAWN,
 			PACKET_COMPRESSION,
+			ANTI_BOT,
+			GUILD_LEADER_SQUARE,
+			PVP_BALANCE,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};

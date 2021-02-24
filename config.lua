@@ -1,6 +1,8 @@
 GMFullLightOnEquipItem = true
 closedWorld = false
 showMonsterExiva = true
+antiBot = true
+guildLeaderSquare = true
 
 worldType = "pvp"
 hotkeyAimbotEnabled = true
