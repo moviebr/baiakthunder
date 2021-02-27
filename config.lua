@@ -3,6 +3,7 @@ closedWorld = false
 showMonsterExiva = true
 antiBot = true
 guildLeaderSquare = true
+pvpBalance = true
 
 worldType = "pvp"
 hotkeyAimbotEnabled = true

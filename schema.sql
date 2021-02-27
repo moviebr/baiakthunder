@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `type` int(11) NOT NULL DEFAULT '1',
   `premdays` int(11) NOT NULL DEFAULT '0',
   `lastday` int(10) unsigned NOT NULL DEFAULT '0',
+  `premium_points` int(11) NOT NULL DEFAULT '0',
   `email` varchar(255) NOT NULL DEFAULT '',
   `creation` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -915,12 +916,20 @@ CREATE TABLE IF NOT EXISTS `sellchar` (
   `oldid` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `accounts` ADD `backup_points` INT(11) NOT NULL DEFAULT '0' AFTER `premium_points`;
+
 INSERT INTO `server_config` (`config`, `value`) VALUES ('db_version', '24'), ('motd_hash', ''), ('motd_num', '0'), ('players_record', '0');
 
 INSERT INTO `z_shop_category` (`id`, `name`, `desc`, `button`, `hide`) VALUES
 (2, 'Extra Services', 'Compre um servi&ccedil;o extra para alterar o nome ou o sexo do personagem, alterar o nome da sua conta ou obter uma nova chave de recupera&ccedil;&atilde;o.', '_sbutton_getextraservice.gif', 0),
 (3, 'Outfits', 'Compre para seus personagens um ou mais outfits oferecidas aqui.', '_sbutton_getoutfit.gif', 0),
 (4, 'Items', 'Compre itens para o seu personagem e seja mais forte no jogo.', '_sbutton_getextraservice.gif', 0);
+
+INSERT INTO `z_shop_offer` (`id`, `category`, `coins`, `price`, `itemid`, `mount_id`, `addon_name`, `count`, `offer_type`, `offer_description`, `offer_name`, `offer_date`, `default_image`, `hide`) VALUES
+(5, 2, 250, '', 0, '', '', 1, 'changename', 'Buy a character name change to rename one of your characters.', 'Character Change Name', 1416865577, 'changename.png', 0),
+(6, 2, 10, '', 0, '', '', 1, 'changesex', 'Buy a character sex change to turn your male character into a female one, or your female character into a male one.', 'Character Change Sex', 1416874417, 'changesex.png', 1),
+(7, 2, 250, '', 0, '', '', 1, 'changeaccountname', 'Buy an account name change to select a different name for your account.', 'Account Name Change', 1416874601, 'changeaccountname.png', 0),
+(8, 2, 300, '', 0, '', '', 1, 'newrk', 'If you need a new recovery key, you can order it here. Note that the letter for the new recovery key can only be sent to the address in the account registration.', 'Recovery Key', 1416874816, 'newrk.png', 0);
 
 DROP TRIGGER IF EXISTS `ondelete_players`;
 DROP TRIGGER IF EXISTS `oncreate_guilds`;

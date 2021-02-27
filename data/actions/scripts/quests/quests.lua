@@ -1,13 +1,31 @@
 config = {
         quests = {
             [46571] = {
-                name = { active = false, value = "do Crusader Helmet.",},
+                name = { active = false, value = "do Crusader Helmet."},
                 rewards = {
                     {id = 2497, count = 1},
                 },
                 level = { active = false, min = 150,},
                 storage = { active = true, key = 91143,},
                 effect = { active = false, effectWin = 30,},
+            },
+            [46572] = {
+                name = { active = false, value = "do Crusader Helmet."},
+                rewards = {
+                    {id = 9693, count = 1},
+                },
+                level = { active = false, min = 150,},
+                storage = { active = true, key = 91146,},
+                effect = { active = true, effectWin = 30,},
+            },
+            [46573] = {
+                name = { active = false, value = "do Crusader Helmet."},
+                rewards = {
+                    {id = 9971, count = 20},
+                },
+                level = { active = false, min = 150,},
+                storage = { active = true, key = 91147,},
+                effect = { active = true, effectWin = 30,},
             },
         },
     messages = {

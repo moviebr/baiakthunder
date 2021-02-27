@@ -17,7 +17,7 @@
 	<action actionid="57591" script="quests/medusaAnihi.lua"/>
 	<action fromaid="34589" toaid="34592" script="quests/medusaAnihiPremio.lua" />
 
-	<action actionid="7171" script="quests/quests.lua" />
+	<action fromaid="46571" toaid="46573" script="quests/quests.lua" />
 
 	<!-- Events -->
 	<action actionid="10103" script="custom/events/snowball.lua"/>
