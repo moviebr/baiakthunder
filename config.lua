@@ -101,7 +101,6 @@ experienceStages = {
 	{ minlevel = 551, maxlevel = 600, multiplier = 0.5 },
 	{ minlevel = 601, maxlevel = 670, multiplier = 0.1 },
 	{ minlevel = 671, multiplier = 0.05 },
-
 }
 
 rateExp = 5

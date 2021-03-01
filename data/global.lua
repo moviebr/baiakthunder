@@ -222,8 +222,8 @@ sendMailbox = function(playerId, id, count)
     return true
 end
 
-guildLeaderSquare = function(player)
-	player = Player(player)
+function Game.guildLeaderSquare(playerId)
+	player = Player(playerId)
 	if not player then
 		return false
 	end
@@ -233,10 +233,9 @@ guildLeaderSquare = function(player)
 	spectators = Game.getSpectators(player:getPosition(), true, true, 0, 7, 0, 7)
 	for _, viewers in ipairs(spectators) do
 		if player:getGuildLevel() == 3 then
-			viewers:sendCreatureSquare(player, 215)
+			viewers:sendCreatureSquare(playerId, 215)
 		end
 	end
 	
-	addEvent(guildLeaderSquare, 500, playerId)
-	return true
+	addEvent(Game.guildLeaderSquare, 500, playerId)
 end

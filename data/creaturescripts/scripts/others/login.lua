@@ -19,7 +19,7 @@ function onLogin(player)
 
 	-- Guild Leaders Destaque
 	if configManager.getBoolean(configKeys.GUILD_LEADER_SQUARE) and player:getAccountType() < ACCOUNT_TYPE_GAMEMASTER then
-		guildLeaderSquare(player)
+		Game.guildLeaderSquare(player:getId())
 	end
 
 	-- Stamina

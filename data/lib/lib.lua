@@ -4,6 +4,9 @@ dofile('data/lib/core/core.lua')
 -- Compatibility library for our old Lua API
 dofile('data/lib/compat/compat.lua')
 
+-- AntiBot
+dofile('data/lib/custom/antibot.lua')
+
 -- Dodge e Critical
 dofile('data/lib/custom/dodgeCritical.lua')
 
