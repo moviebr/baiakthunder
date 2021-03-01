@@ -22,7 +22,7 @@ function checkAnti(playerId)
 	min, max = ANTIBOT.verification[1], ANTIBOT.verification[2]
 	random = math.random(min, max)
 
-	addEvent(
+	addEvent(function()
 		ANTIBOT:time(player:getId())
 		checkAnti(player:getId())
 	end, random * 60 * 1000)
