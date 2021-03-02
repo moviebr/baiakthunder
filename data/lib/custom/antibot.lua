@@ -31,7 +31,6 @@ ANTIBOT = {
 			players = {},
 		},
 	},
-	notUseOnTrainers = true, -- True = training players will not be checked
 	verification = {40, 60}, -- in minutes
 }
 
@@ -44,7 +43,7 @@ function ANTIBOT:addTry(playerId)
 	end
 
 	playerId = player:getId()
-	
+
 	if not ANTIBOT.punishment.try.players[playerId] then
 		ANTIBOT.punishment.try.players[playerId] = 0
 	end
@@ -66,11 +65,6 @@ function ANTIBOT:time(playerId)
 	end
 
 	playerId = player:getId()
-
-	if ANTIBOT.useOnTrainers and staminaBonus.events[player:getName()] then
-		ANTIBOT:reset(playerId)
-		return false
-	end
 
 	if not ANTIBOT.punishment.time.players[playerId] then
 		ANTIBOT.punishment.time.players[playerId] = 0
