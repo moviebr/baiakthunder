@@ -32,6 +32,7 @@ ANTIBOT = {
 		},
 	},
 	notUseOnTrainers = true, -- True = training players will not be checked
+	notUseOnPz = true, -- True = players on pz will not be checked
 	verification = {40, 60}, -- in minutes
 }
 
@@ -66,6 +67,11 @@ function ANTIBOT:time(playerId)
 	end
 
 	playerId = player:getId()
+
+	if (ANTIBOT.notUseOnPz) and (Tile(player:getPosition()):hasFlag(TILESTATE_PROTECTIONZONE)) then
+		ANTIBOT:reset(playerId)
+		return false
+	end
 
 	if ANTIBOT.notUseOnTrainers and staminaBonus.events[player:getName()] then
 		ANTIBOT:reset(playerId)
