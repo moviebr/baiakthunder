@@ -11,7 +11,7 @@ function Creature:onAreaCombat(tile, isAggressive)
 	return RETURNVALUE_NOERROR
 end
 
-local staminaBonus = {
+staminaBonus = {
 	target = 'Trainer',
 	period = 180000,
     periodPremium = 120000,
