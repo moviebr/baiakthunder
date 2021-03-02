@@ -11,7 +11,7 @@ function Creature:onAreaCombat(tile, isAggressive)
 	return RETURNVALUE_NOERROR
 end
 
-local staminaBonus = {
+staminaBonus = {
 	target = 'Trainer',
 	period = 180000,
     periodPremium = 120000,
@@ -82,7 +82,7 @@ function Creature:onTargetCombat(target)
             end
 		end
     end
-
+    
     if configManager.getBoolean(configKeys.PVP_BALANCE) then
         target:registerEvent("PvpBalance")
         target:registerEvent("PvpBalanceMA")
