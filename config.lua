@@ -4,6 +4,7 @@ showMonsterExiva = true
 antiBot = true
 guildLeaderSquare = true
 pvpBalance = true
+pushCruzado = true
 
 worldType = "pvp"
 hotkeyAimbotEnabled = true

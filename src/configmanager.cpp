@@ -259,6 +259,7 @@ bool ConfigManager::load()
 	boolean[ANTI_BOT] = getGlobalBoolean(L, "antiBot", true);
 	boolean[GUILD_LEADER_SQUARE] = getGlobalBoolean(L, "guildLeaderSquare", true);
 	boolean[PVP_BALANCE] = getGlobalBoolean(L, "pvpBalance", true);
+	boolean[PUSH_CRUZADO] = getGlobalBoolean(L, "pushCruzado", true);
 
 	string[DEFAULT_PRIORITY] = getGlobalString(L, "defaultPriority", "high");
 	string[SERVER_NAME] = getGlobalString(L, "serverName", "");

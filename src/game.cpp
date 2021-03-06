@@ -693,8 +693,7 @@ void Game::playerMoveCreature(Player* player, Creature* movingCreature, const Po
 		return;
 	}
 
-	// Testar push cruzado
-	//player->setNextActionTask(nullptr);
+	player->setNextActionTask(nullptr);
 
 	if (!player->hasFlag(PlayerFlag_CanMoveAllThings) && !Position::areInRange<1, 1, 0>(movingCreatureOrigPos, player->getPosition())) {
 		//need to walk to the creature first before moving it
@@ -1754,7 +1753,11 @@ void Game::playerMove(uint32_t playerId, Direction direction)
 	}
 
 	player->resetIdleTime();
-	player->setNextWalkActionTask(nullptr);
+
+	// Testar push cruzado
+	if (!g_config.getBoolean(ConfigManager::PUSH_CRUZADO)){
+		player->setNextWalkActionTask(nullptr);
+	}
 
 	player->startAutoWalk(std::vector<Direction> { direction });
 }

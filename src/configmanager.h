@@ -66,6 +66,7 @@ class ConfigManager
 			ANTI_BOT,
 			GUILD_LEADER_SQUARE,
 			PVP_BALANCE,
+			PUSH_CRUZADO,
 
 			LAST_BOOLEAN_CONFIG /* this must be the last one */
 		};
