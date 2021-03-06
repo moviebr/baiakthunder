@@ -73,13 +73,185 @@ void printXMLError(const std::string& where, const std::string& fileName, const 
 	std::cout << '^' << std::endl;
 }
 
-static uint32_t circularShift(int bits, uint32_t value)
-{
-	return (value << bits) | (value >> (32 - bits));
-}
-
 static void processSHA1MessageBlock(const uint8_t* messageBlock, uint32_t* H)
 {
+
+	#if defined(__SHA__)
+	const __m128i MASK = _mm_set_epi64x(0x0001020304050607ULL, 0x08090A0B0C0D0E0FULL);
+
+	__m128i ABCD = _mm_load_si128(reinterpret_cast<const __m128i*>(H));
+	__m128i E0 = _mm_set_epi32(H[4], 0, 0, 0);
+	ABCD = _mm_shuffle_epi32(ABCD, 0x1B);
+
+	// Save current state
+	__m128i ABCD_SAVE = ABCD;
+	__m128i E0_SAVE = E0;
+
+	// Rounds 0-3
+	__m128i MSG0 = _mm_shuffle_epi8(_mm_load_si128(reinterpret_cast<const __m128i*>(messageBlock + 0)), MASK);
+	E0 = _mm_add_epi32(E0, MSG0);
+	__m128i E1 = ABCD;
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 0);
+
+	// Rounds 4-7
+	__m128i MSG1 = _mm_shuffle_epi8(_mm_load_si128(reinterpret_cast<const __m128i*>(messageBlock + 16)), MASK);
+	E1 = _mm_sha1nexte_epu32(E1, MSG1);
+	E0 = ABCD;
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 0);
+	MSG0 = _mm_sha1msg1_epu32(MSG0, MSG1);
+
+	// Rounds 8-11
+	__m128i MSG2 = _mm_shuffle_epi8(_mm_load_si128(reinterpret_cast<const __m128i*>(messageBlock + 32)), MASK);
+	E0 = _mm_sha1nexte_epu32(E0, MSG2);
+	E1 = ABCD;
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 0);
+	MSG1 = _mm_sha1msg1_epu32(MSG1, MSG2);
+	MSG0 = _mm_xor_si128(MSG0, MSG2);
+
+	// Rounds 12-15
+	__m128i MSG3 = _mm_shuffle_epi8(_mm_load_si128(reinterpret_cast<const __m128i*>(messageBlock + 48)), MASK);
+	E1 = _mm_sha1nexte_epu32(E1, MSG3);
+	E0 = ABCD;
+	MSG0 = _mm_sha1msg2_epu32(MSG0, MSG3);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 0);
+	MSG2 = _mm_sha1msg1_epu32(MSG2, MSG3);
+	MSG1 = _mm_xor_si128(MSG1, MSG3);
+
+	// Rounds 16-19
+	E0 = _mm_sha1nexte_epu32(E0, MSG0);
+	E1 = ABCD;
+	MSG1 = _mm_sha1msg2_epu32(MSG1, MSG0);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 0);
+	MSG3 = _mm_sha1msg1_epu32(MSG3, MSG0);
+	MSG2 = _mm_xor_si128(MSG2, MSG0);
+
+	// Rounds 20-23
+	E1 = _mm_sha1nexte_epu32(E1, MSG1);
+	E0 = ABCD;
+	MSG2 = _mm_sha1msg2_epu32(MSG2, MSG1);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 1);
+	MSG0 = _mm_sha1msg1_epu32(MSG0, MSG1);
+	MSG3 = _mm_xor_si128(MSG3, MSG1);
+
+	// Rounds 24-27
+	E0 = _mm_sha1nexte_epu32(E0, MSG2);
+	E1 = ABCD;
+	MSG3 = _mm_sha1msg2_epu32(MSG3, MSG2);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 1);
+	MSG1 = _mm_sha1msg1_epu32(MSG1, MSG2);
+	MSG0 = _mm_xor_si128(MSG0, MSG2);
+
+	// Rounds 28-31
+	E1 = _mm_sha1nexte_epu32(E1, MSG3);
+	E0 = ABCD;
+	MSG0 = _mm_sha1msg2_epu32(MSG0, MSG3);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 1);
+	MSG2 = _mm_sha1msg1_epu32(MSG2, MSG3);
+	MSG1 = _mm_xor_si128(MSG1, MSG3);
+
+	// Rounds 32-35
+	E0 = _mm_sha1nexte_epu32(E0, MSG0);
+	E1 = ABCD;
+	MSG1 = _mm_sha1msg2_epu32(MSG1, MSG0);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 1);
+	MSG3 = _mm_sha1msg1_epu32(MSG3, MSG0);
+	MSG2 = _mm_xor_si128(MSG2, MSG0);
+
+	// Rounds 36-39
+	E1 = _mm_sha1nexte_epu32(E1, MSG1);
+	E0 = ABCD;
+	MSG2 = _mm_sha1msg2_epu32(MSG2, MSG1);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 1);
+	MSG0 = _mm_sha1msg1_epu32(MSG0, MSG1);
+	MSG3 = _mm_xor_si128(MSG3, MSG1);
+
+	// Rounds 40-43
+	E0 = _mm_sha1nexte_epu32(E0, MSG2);
+	E1 = ABCD;
+	MSG3 = _mm_sha1msg2_epu32(MSG3, MSG2);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 2);
+	MSG1 = _mm_sha1msg1_epu32(MSG1, MSG2);
+	MSG0 = _mm_xor_si128(MSG0, MSG2);
+
+	// Rounds 44-47
+	E1 = _mm_sha1nexte_epu32(E1, MSG3);
+	E0 = ABCD;
+	MSG0 = _mm_sha1msg2_epu32(MSG0, MSG3);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 2);
+	MSG2 = _mm_sha1msg1_epu32(MSG2, MSG3);
+	MSG1 = _mm_xor_si128(MSG1, MSG3);
+
+	// Rounds 48-51
+	E0 = _mm_sha1nexte_epu32(E0, MSG0);
+	E1 = ABCD;
+	MSG1 = _mm_sha1msg2_epu32(MSG1, MSG0);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 2);
+	MSG3 = _mm_sha1msg1_epu32(MSG3, MSG0);
+	MSG2 = _mm_xor_si128(MSG2, MSG0);
+
+	// Rounds 52-55
+	E1 = _mm_sha1nexte_epu32(E1, MSG1);
+	E0 = ABCD;
+	MSG2 = _mm_sha1msg2_epu32(MSG2, MSG1);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 2);
+	MSG0 = _mm_sha1msg1_epu32(MSG0, MSG1);
+	MSG3 = _mm_xor_si128(MSG3, MSG1);
+
+	// Rounds 56-59
+	E0 = _mm_sha1nexte_epu32(E0, MSG2);
+	E1 = ABCD;
+	MSG3 = _mm_sha1msg2_epu32(MSG3, MSG2);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 2);
+	MSG1 = _mm_sha1msg1_epu32(MSG1, MSG2);
+	MSG0 = _mm_xor_si128(MSG0, MSG2);
+
+	// Rounds 60-63
+	E1 = _mm_sha1nexte_epu32(E1, MSG3);
+	E0 = ABCD;
+	MSG0 = _mm_sha1msg2_epu32(MSG0, MSG3);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 3);
+	MSG2 = _mm_sha1msg1_epu32(MSG2, MSG3);
+	MSG1 = _mm_xor_si128(MSG1, MSG3);
+
+	// Rounds 64-67
+	E0 = _mm_sha1nexte_epu32(E0, MSG0);
+	E1 = ABCD;
+	MSG1 = _mm_sha1msg2_epu32(MSG1, MSG0);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 3);
+	MSG3 = _mm_sha1msg1_epu32(MSG3, MSG0);
+	MSG2 = _mm_xor_si128(MSG2, MSG0);
+
+	// Rounds 68-71
+	E1 = _mm_sha1nexte_epu32(E1, MSG1);
+	E0 = ABCD;
+	MSG2 = _mm_sha1msg2_epu32(MSG2, MSG1);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 3);
+	MSG3 = _mm_xor_si128(MSG3, MSG1);
+
+	// Rounds 72-75
+	E0 = _mm_sha1nexte_epu32(E0, MSG2);
+	E1 = ABCD;
+	MSG3 = _mm_sha1msg2_epu32(MSG3, MSG2);
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E0, 3);
+
+	// Rounds 76-79
+	E1 = _mm_sha1nexte_epu32(E1, MSG3);
+	E0 = ABCD;
+	ABCD = _mm_sha1rnds4_epu32(ABCD, E1, 3);
+
+	// Combine state
+	E0 = _mm_sha1nexte_epu32(E0, E0_SAVE);
+	ABCD = _mm_add_epi32(ABCD, ABCD_SAVE);
+
+	// Save state
+	ABCD = _mm_shuffle_epi32(ABCD, 0x1B);
+	_mm_store_si128(reinterpret_cast<__m128i*>(H), ABCD);
+	H[4] = _mm_extract_epi32(E0, 3);
+	#else
+	auto circularShift = [](int32_t bits, uint32_t value) {
+		return (value << bits) | (value >> (32 - bits));
+	};
+
 	uint32_t W[80];
 	for (int i = 0; i < 16; ++i) {
 		const size_t offset = i << 2;
@@ -117,6 +289,7 @@ static void processSHA1MessageBlock(const uint8_t* messageBlock, uint32_t* H)
 	H[2] += C;
 	H[3] += D;
 	H[4] += E;
+	#endif
 }
 
 std::string transformToSHA1(const std::string& input)
@@ -256,7 +429,90 @@ void trim_left(std::string& source, char t)
 
 void toLowerCaseString(std::string& source)
 {
+	#if defined(__SSE4_2__)
+	const __m128i ranges = _mm_setr_epi8('A', 'Z', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	__m128i* mem = reinterpret_cast<__m128i*>(&source[0]);
+	const __m128i diff = _mm_set1_epi8(0x20);
+
+	const uint8_t mode = (_SIDD_UBYTE_OPS | _SIDD_CMP_RANGES | _SIDD_UNIT_MASK);
+	for (; ; ++mem) {
+		const __m128i chunk = _mm_loadu_si128(mem);
+		if (_mm_cmpistrc(ranges, chunk, mode)) {
+			const __m128i tmp1 = _mm_cmpistrm(ranges, chunk, mode);
+			const __m128i mask = _mm_and_si128(tmp1, diff);
+			_mm_storeu_si128(mem, _mm_xor_si128(chunk, mask));
+		}
+		if (_mm_cmpistrz(ranges, chunk, mode)) {
+			break;
+		}
+	}
+	#elif defined(__SSE2__)
+	const __m128i ranges1 = _mm_set1_epi8(static_cast<unsigned char>('A' + 128));
+	const __m128i ranges2 = _mm_set1_epi8(-128 + ('Z' - 'A'));
+	const __m128i diff = _mm_set1_epi8(0x20);
+
+	__m128i* mem = reinterpret_cast<__m128i*>(&source[0]);
+	size_t len = source.length();
+	for (; len >= 16; ++mem) {
+		const __m128i chunk = _mm_loadu_si128(mem);
+		const __m128i ranges = _mm_sub_epi8(chunk, ranges1);
+		const __m128i tmp1 = _mm_cmpgt_epi8(ranges, ranges2);
+		const __m128i mask = _mm_andnot_si128(tmp1, diff);
+		_mm_storeu_si128(mem, _mm_xor_si128(chunk, mask));
+		len -= 16;
+	}
+	char* src = reinterpret_cast<char*>(mem);
+	while (len--) {
+		*src = (('A' <= *src && *src <= 'Z') ? *src+0x20 : *src);
+		++src;
+	}
+	#else
 	std::transform(source.begin(), source.end(), source.begin(), tolower);
+	#endif
+}
+
+void toUpperCaseString(std::string& source)
+{
+	#if defined(__SSE4_2__)
+	__m128i* mem = reinterpret_cast<__m128i*>(&source[0]);
+	const __m128i ranges = _mm_setr_epi8('a', 'z', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	const __m128i diff = _mm_set1_epi8(0x20);
+
+	const uint8_t mode = (_SIDD_UBYTE_OPS | _SIDD_CMP_RANGES | _SIDD_UNIT_MASK);
+	for (; ; ++mem) {
+		const __m128i chunk = _mm_loadu_si128(mem);
+		if (_mm_cmpistrc(ranges, chunk, mode)) {
+			const __m128i tmp1 = _mm_cmpistrm(ranges, chunk, mode);
+			const __m128i mask = _mm_and_si128(tmp1, diff);
+			_mm_storeu_si128(mem, _mm_xor_si128(chunk, mask));
+		}
+		if (_mm_cmpistrz(ranges, chunk, mode)) {
+			break;
+		}
+	}
+	#elif defined(__SSE2__)
+	const __m128i ranges1 = _mm_set1_epi8(static_cast<unsigned char>('a' + 128));
+	const __m128i ranges2 = _mm_set1_epi8(-128 + ('z' - 'a'));
+	const __m128i diff = _mm_set1_epi8(0x20);
+
+	__m128i* mem = reinterpret_cast<__m128i*>(&source[0]);
+	size_t len = source.length();
+	for (; len >= 16; ++mem) {
+		const __m128i chunk = _mm_loadu_si128(mem);
+		const __m128i ranges = _mm_sub_epi8(chunk, ranges1);
+		const __m128i tmp1 = _mm_cmpgt_epi8(ranges, ranges2);
+		const __m128i mask = _mm_andnot_si128(tmp1, diff);
+		_mm_storeu_si128(mem, _mm_xor_si128(chunk, mask));
+		len -= 16;
+	}
+	char* src = reinterpret_cast<char*>(mem);
+	while (len--) {
+		*src = (('a' <= *src && *src <= 'z') ? *src-0x20 : *src);
+		++src;
+	}
+	#else
+	std::transform(source.begin(), source.end(), source.begin(), toupper);
+	#endif
 }
 
 std::string asLowerCaseString(std::string source)
@@ -267,7 +523,7 @@ std::string asLowerCaseString(std::string source)
 
 std::string asUpperCaseString(std::string source)
 {
-	std::transform(source.begin(), source.end(), source.begin(), toupper);
+	toUpperCaseString(source);
 	return source;
 }
 
@@ -774,16 +1030,44 @@ uint32_t adlerChecksum(const uint8_t* data, size_t length)
 
 	const uint16_t adler = 65521;
 
+	#if defined(__SSE2__)
+	const __m128i h16 = _mm_setr_epi16(16, 15, 14, 13, 12, 11, 10, 9);
+	const __m128i h8 = _mm_setr_epi16(8, 7, 6, 5, 4, 3, 2, 1);
+	const __m128i zeros = _mm_setzero_si128();
+	#endif
+
 	uint32_t a = 1, b = 0;
 
 	while (length > 0) {
 		size_t tmp = length > 5552 ? 5552 : length;
 		length -= tmp;
 
+		#if defined(__SSE2__)
+		while (tmp >= 16) {
+			__m128i vdata = _mm_loadu_si128(reinterpret_cast<const __m128i*>(data));
+			__m128i v = _mm_sad_epu8(vdata, zeros);
+			__m128i v32 = _mm_add_epi32(_mm_madd_epi16(_mm_unpacklo_epi8(vdata, zeros), h16), _mm_madd_epi16(_mm_unpackhi_epi8(vdata, zeros), h8));
+			v32 = _mm_add_epi32(v32, _mm_shuffle_epi32(v32, _MM_SHUFFLE(2, 3, 0, 1)));
+			v32 = _mm_add_epi32(v32, _mm_shuffle_epi32(v32, _MM_SHUFFLE(0, 1, 2, 3)));
+			v = _mm_add_epi32(v, _mm_shuffle_epi32(v, _MM_SHUFFLE(1, 0, 3, 2)));
+			b += (a << 4) + _mm_cvtsi128_si32(v32);
+			a += _mm_cvtsi128_si32(v);
+
+			data += 16;
+			tmp -= 16;
+		}
+
+		while (tmp--) {
+			a += *data++; b += a;
+		}
+		#else
+
 		do {
 			a += *data++;
 			b += a;
 		} while (--tmp);
+
+		#endif
 
 		a %= adler;
 		b %= adler;
