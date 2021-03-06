@@ -506,7 +506,7 @@ class Game
 		std::unordered_map<uint16_t, Item*> uniqueItems;
 		std::map<uint32_t, uint32_t> stages;
 
-		std::list<Creature*> checkCreatureLists[EVENT_CREATURECOUNT];
+		std::vector<Creature*> checkCreatureLists[EVENT_CREATURECOUNT];
 
 		std::vector<Creature*> ToReleaseCreatures;
 		std::vector<Item*> ToReleaseItems;

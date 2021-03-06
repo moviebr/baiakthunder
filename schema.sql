@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `premdays` int(11) NOT NULL DEFAULT '0',
   `lastday` int(10) unsigned NOT NULL DEFAULT '0',
   `premium_points` int(11) NOT NULL DEFAULT '0',
+  `backup_points` int(11) NOT NULL DEFAULT '0',
   `email` varchar(255) NOT NULL DEFAULT '',
   `creation` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -915,8 +916,6 @@ CREATE TABLE IF NOT EXISTS `sellchar` (
   `status` varchar(40) NOT NULL,
   `oldid` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-ALTER TABLE `accounts` ADD `backup_points` INT(11) NOT NULL DEFAULT '0' AFTER `premium_points`;
 
 INSERT INTO `server_config` (`config`, `value`) VALUES ('db_version', '24'), ('motd_hash', ''), ('motd_num', '0'), ('players_record', '0');
 
