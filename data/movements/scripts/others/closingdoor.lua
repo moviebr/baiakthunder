@@ -13,7 +13,7 @@ function onStepOut(creature, item, position, fromPosition)
 	end
 
 	if query == RETURNVALUE_NOERROR or query ~= RETURNVALUE_NOTENOUGHROOM then
-		doRelocate(position, newPosition)
+		fastRelocate(position, newPosition)
 	end
 
 	local i, tileItem, tileCount = 1, true, tile:getThingCount()

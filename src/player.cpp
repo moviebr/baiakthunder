@@ -1608,7 +1608,7 @@ void Player::addExperience(Creature* source, uint64_t exp, bool sendText/* = fal
 		strExp << exp;
 		g_game.addAnimatedText(strExp.str(), position, TEXTCOLOR_WHITE);
 
-		SpectatorVec spectators;
+		SpectatorVector spectators;
 		g_game.map.getSpectators(spectators, position, false, true);
 		spectators.erase(this);
 		if (!spectators.empty()) {
@@ -1692,7 +1692,7 @@ void Player::removeExperience(uint64_t exp, bool sendText/* = false*/)
 		strExp << lostExp;
 		g_game.addAnimatedText(strExp.str(), position, TEXTCOLOR_RED);
 
-		SpectatorVec spectators;
+		SpectatorVector spectators;
 		g_game.map.getSpectators(spectators, position, false, true);
 		spectators.erase(this);
 		if (!spectators.empty()) {

@@ -186,7 +186,7 @@ bool Container::isHoldingItem(const Item* item) const
 
 void Container::onAddContainerItem(Item* item)
 {
-	SpectatorVec spectators;
+	SpectatorVector spectators;
 	g_game.map.getSpectators(spectators, getPosition(), false, true, 2, 2, 2, 2);
 
 	//send to client
@@ -202,7 +202,7 @@ void Container::onAddContainerItem(Item* item)
 
 void Container::onUpdateContainerItem(uint32_t index, Item* oldItem, Item* newItem)
 {
-	SpectatorVec spectators;
+	SpectatorVector spectators;
 	g_game.map.getSpectators(spectators, getPosition(), false, true, 2, 2, 2, 2);
 
 	//send to client
@@ -218,7 +218,7 @@ void Container::onUpdateContainerItem(uint32_t index, Item* oldItem, Item* newIt
 
 void Container::onRemoveContainerItem(uint32_t index, Item* item)
 {
-	SpectatorVec spectators;
+	SpectatorVector spectators;
 	g_game.map.getSpectators(spectators, getPosition(), false, true, 2, 2, 2, 2);
 
 	//send change to client
