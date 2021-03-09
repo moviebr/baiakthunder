@@ -6,6 +6,10 @@ guildLeaderSquare = true
 pvpBalance = true
 pushCruzado = true
 
+monsterBonusHealth = 0.5
+monsterBonusSpeed = 0.02
+monsterBonusDamage = 0.02
+
 worldType = "pvp"
 hotkeyAimbotEnabled = true
 protectionLevel = 50

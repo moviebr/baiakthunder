@@ -74,7 +74,12 @@ class Monster final : public Creature
 			return mType->nameDescription;
 		}
 		std::string getDescription(int32_t) const override {
-			return strDescription + '.';
+			const Monster* monster = this->getMonster();
+			if (monster && monster->getLevel() > 0) {
+				return strDescription + ", level " + std::to_string(level) + '.';
+			} else {
+				return strDescription;
+			}
 		}
 
 		CreatureType_t getType() const override {
@@ -128,6 +133,9 @@ class Monster final : public Creature
 		}
 		bool canWalkOnFieldType(CombatType_t combatType) const;
 
+		int32_t getLevel() const {
+			return level;
+		}
 
 		void onAttackedCreatureDisappear(bool isLogout) override;
 

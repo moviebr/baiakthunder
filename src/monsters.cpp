@@ -846,6 +846,19 @@ MonsterType* Monsters::loadMonster(const std::string& file, const std::string& m
 		}
 	}
 
+	if ((node = monsterNode.child("level"))) {
+		if ((attr = node.attribute("min"))) {
+			mType->info.minLevel = pugi::cast<int32_t>(attr.value());
+		} else {
+			std::cout << "[Error - Monsters::loadMonster] Missing min level. " << file << std::endl;
+		}
+		if ((attr = node.attribute("max"))) {
+			mType->info.maxLevel = pugi::cast<int32_t>(attr.value());
+		} else {
+			std::cout << "[Error - Monsters::loadMonster] Missing max level. " << file << std::endl;
+		}
+	}
+
 	if ((node = monsterNode.child("flags"))) {
 		for (auto flagNode : node.children()) {
 			attr = flagNode.first_attribute();
