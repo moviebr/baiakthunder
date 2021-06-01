@@ -396,8 +396,8 @@ class Game
 		void ReleaseCreature(Creature* creature);
 		void ReleaseItem(Item* item);
 
-		bool canThrowObjectTo(const Position& fromPos, const Position& toPos, bool checkLineOfSight = true,
-		                      int32_t rangex = Map::maxClientViewportX, int32_t rangey = Map::maxClientViewportY) const;
+		bool canThrowObjectTo(const Position& fromPos, const Position& toPos, SightLines_t lineOfSight = SightLine_CheckSightLine,
+		                    int32_t rangex = Map::maxClientViewportX, int32_t rangey = Map::maxClientViewportY) const;
 		bool isSightClear(const Position& fromPos, const Position& toPos, bool floorCheck) const;
 
 		void changeSpeed(Creature* creature, int32_t varSpeedDelta);
