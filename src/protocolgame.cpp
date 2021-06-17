@@ -77,7 +77,7 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 		player->incrementReferenceCounter();
 
 		if (!IOLoginData::preloadPlayer(player, name)) {
-			disconnectClient("Não foi possível carregar seu personagem.");
+			disconnectClient("Nï¿½o foi possï¿½vel carregar seu personagem.");
 			return;
 		}
 
@@ -88,17 +88,17 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 		}
 
 		if (g_game.getGameState() == GAME_STATE_CLOSING && !player->hasFlag(PlayerFlag_CanAlwaysLogin)) {
-			disconnectClient("O jogo está desligando.\nPor favor, tente novamente mais tarde.");
+			disconnectClient("O jogo estï¿½ desligando.\nPor favor, tente novamente mais tarde.");
 			return;
 		}
 
 		if (g_game.getGameState() == GAME_STATE_CLOSED && !player->hasFlag(PlayerFlag_CanAlwaysLogin)) {
-			disconnectClient("O servidor está fechado no momento.\nPor favor, tente novamente mais tarde.");
+			disconnectClient("O servidor estï¿½ fechado no momento.\nPor favor, tente novamente mais tarde.");
 			return;
 		}
 
 		if (g_config.getBoolean(ConfigManager::ONE_PLAYER_ON_ACCOUNT) && player->getAccountType() < ACCOUNT_TYPE_GAMEMASTER && g_game.getPlayerByAccount(player->getAccount())) {
-			disconnectClient("Você pode fazer login apenas com um jogador\n na sua conta ao mesmo tempo.");
+			disconnectClient("Vocï¿½ pode fazer login apenas com um jogador\n na sua conta ao mesmo tempo.");
 			return;
 		}
 
@@ -111,9 +111,9 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 
 				std::ostringstream ss;
 				if (banInfo.expiresAt > 0) {
-					ss << "Sua conta foi banida até " << formatDateShort(banInfo.expiresAt) << ".\n\nRazão:\n" << banInfo.reason;
+					ss << "Sua conta foi banida atï¿½ " << formatDateShort(banInfo.expiresAt) << ".\n\nRazï¿½o:\n" << banInfo.reason;
 				} else {
-					ss << "Sua conta foi permanentemente banida.\n\nRazão:\n" << banInfo.reason;
+					ss << "Sua conta foi permanentemente banida.\n\nRazï¿½o:\n" << banInfo.reason;
 				}
 				disconnectClient(ss.str());
 				return;
@@ -125,7 +125,7 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 			int64_t retryTime = WaitingList::getTime(currentSlot);
 			std::ostringstream ss;
 
-			ss << "Muitos jogadores online.\nVocê está no lugar "
+			ss << "Muitos jogadores online.\nVocï¿½ estï¿½ no lugar "
 			   << currentSlot << " na lista de espera.";
 
 			auto output = OutputMessagePool::getOutputMessage();
@@ -138,7 +138,7 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 		}
 
 		if (!IOLoginData::loadPlayerById(player, player->getGUID())) {
-			disconnectClient("Não foi possível carregar seu personagem.");
+			disconnectClient("Nï¿½o foi possï¿½vel carregar seu personagem.");
 			return;
 		}
 
@@ -146,10 +146,11 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 
 		if (!g_game.placeCreature(player, player->getLoginPosition())) {
 			if (!g_game.placeCreature(player, player->getTemplePosition(), false, true)) {
-				disconnectClient("A posição do templo está errada.");
+				disconnectClient("A posiï¿½ï¿½o do templo estï¿½ errada.");
 				return;
 			}
 		}
+		player->autoOpenContainers();
 
 		if (operatingSystem >= CLIENTOS_OTCLIENT_LINUX) {
 			player->registerCreatureEvent("ExtendedOpcode");
@@ -161,7 +162,7 @@ void ProtocolGame::login(const std::string& name, uint32_t accountId, OperatingS
 	} else {
 		if (eventConnect != 0 || !g_config.getBoolean(ConfigManager::REPLACE_KICK_ON_LOGIN)) {
 			//Already trying to connect
-			disconnectClient("Você já está logado.");
+			disconnectClient("Vocï¿½ jï¿½ estï¿½ logado.");
 			return;
 		}
 
@@ -183,7 +184,7 @@ void ProtocolGame::connect(uint32_t playerId, OperatingSystem_t operatingSystem)
 
 	Player* foundPlayer = g_game.getPlayerByID(playerId);
 	if (!foundPlayer || foundPlayer->client) {
-		disconnectClient("Você já está logado.");
+		disconnectClient("Vocï¿½ jï¿½ estï¿½ logado.");
 		return;
 	}
 
@@ -202,6 +203,7 @@ void ProtocolGame::connect(uint32_t playerId, OperatingSystem_t operatingSystem)
 
 	player->client = getThis();
 	sendAddCreature(player, player->getPosition(), 0, false);
+	player->autoOpenContainers();
 	player->lastIP = player->getIP();
 	player->lastLoginSaved = std::max<time_t>(time(nullptr), player->lastLoginSaved + 1);
 	acceptPackets = true;
@@ -275,7 +277,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 	std::string password = msg.getString();
 
 	if (accountName.empty()) {
-		disconnectClient("Você deve inserir o nome da sua conta.");
+		disconnectClient("Vocï¿½ deve inserir o nome da sua conta.");
 		return;
 	}
 
@@ -294,18 +296,18 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 
 	if (version < CLIENT_VERSION_MIN || version > CLIENT_VERSION_MAX) {
 		std::ostringstream ss;
-		ss << "Somente clients com protocolo " << CLIENT_VERSION_STR << " são permitidos!";
+		ss << "Somente clients com protocolo " << CLIENT_VERSION_STR << " sï¿½o permitidos!";
 		disconnectClient(ss.str());
 		return;
 	}
 
 	if (g_game.getGameState() == GAME_STATE_STARTUP) {
-		disconnectClient("Gameworld está iniciando. Por favor, espere.");
+		disconnectClient("Gameworld estï¿½ iniciando. Por favor, espere.");
 		return;
 	}
 
 	if (g_game.getGameState() == GAME_STATE_MAINTAIN) {
-		disconnectClient("O Gameworld está em manutenção. Reconecte-se daqui a pouco.");
+		disconnectClient("O Gameworld estï¿½ em manutenï¿½ï¿½o. Reconecte-se daqui a pouco.");
 		return;
 	}
 
@@ -316,14 +318,14 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage& msg)
 		}
 
 		std::ostringstream ss;
-		ss << "Seu IP foi banido até " << formatDateShort(banInfo.expiresAt) << ".\n\nRazão:\n" << banInfo.reason;
+		ss << "Seu IP foi banido atï¿½ " << formatDateShort(banInfo.expiresAt) << ".\n\nRazï¿½o:\n" << banInfo.reason;
 		disconnectClient(ss.str());
 		return;
 	}
 
 	uint32_t accountId = IOLoginData::gameworldAuthentication(accountName, password, characterName);
 	if (accountId == 0) {
-		disconnectClient("O nome ou a senha da conta não estão corretos.");
+		disconnectClient("O nome ou a senha da conta nï¿½o estï¿½o corretos.");
 		return;
 	}
 

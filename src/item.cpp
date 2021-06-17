@@ -589,6 +589,16 @@ Attr_ReadValue Item::readAttr(AttrTypes_t attr, PropStream& propStream)
 			break;
 		}
 
+		case ATTR_AUTOOPEN: {
+			int8_t autoOpen;
+			if (!propStream.read<int8_t>(autoOpen)) {
+				return ATTR_READ_ERROR;
+			}
+
+			setIntAttr(ITEM_ATTRIBUTE_AUTOOPEN, autoOpen);
+			break;
+		}
+
 		//these should be handled through derived classes
 		//If these are called then something has changed in the items.xml since the map was saved
 		//just read the values
@@ -799,6 +809,11 @@ void Item::serializeAttr(PropWriteStream& propWriteStream) const
 		propWriteStream.writeString(getStrAttr(ITEM_ATTRIBUTE_SPECIAL));
 	}
 
+	if (hasAttribute(ITEM_ATTRIBUTE_AUTOOPEN)) {
+		propWriteStream.write<uint8_t>(ATTR_AUTOOPEN);
+		propWriteStream.write<int8_t>(getIntAttr(ITEM_ATTRIBUTE_AUTOOPEN));
+	}
+
 	if (hasAttribute(ITEM_ATTRIBUTE_CUSTOM)) {
 		const ItemAttributes::CustomAttributeMap* customAttrMap = attributes->getCustomAttributeMap();
 		propWriteStream.write<uint8_t>(ATTR_CUSTOM_ATTRIBUTES);
@@ -861,7 +876,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				if (item) {
 					tmpSubType = item->getSubType();
 				}
-				s << ". " << (it.stackable && tmpSubType > 1 ? "Eles" : "Isto") << " só pode ser usado por ";
+				s << ". " << (it.stackable && tmpSubType > 1 ? "Eles" : "Isto") << " sï¿½ pode ser usado por ";
 
 				const VocSpellMap& vocMap = rune->getVocMap();
 				std::vector<Vocation*> showVocMap;
@@ -1315,17 +1330,17 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 								}
 								s << ": ";
 							} else {
-								s << "Você lê: ";
+								s << "Vocï¿½ lï¿½: ";
 							}
 							s << *text;
 						} else {
-							s << "Nada está escrito";
+							s << "Nada estï¿½ escrito";
 						}
 					} else {
-						s << "Nada está escrito";
+						s << "Nada estï¿½ escrito";
 					}
 				} else {
-					s << "Você está muito longe para ler";
+					s << "Vocï¿½ estï¿½ muito longe para ler";
 				}
 			} else if (it.levelDoor != 0 && item) {
 				uint16_t actionId = item->getActionId();
@@ -1343,7 +1358,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 	if (it.showDuration) {
 		if (item && item->hasAttribute(ITEM_ATTRIBUTE_DURATION)) {
 			uint32_t duration = item->getDuration() / 1000;
-			s << " que expirará em ";
+			s << " que expirarï¿½ em ";
 
 			if (duration >= 86400) {
 				uint16_t days = duration / 86400;
@@ -1372,7 +1387,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 				s << duration << " segundo" << (duration != 1 ? "s" : "");
 			}
 		} else {
-			s << " isso é novinho em folha";
+			s << " isso ï¿½ novinho em folha";
 		}
 	}
 
@@ -1389,7 +1404,7 @@ std::string Item::getDescription(const ItemType& it, int32_t lookDistance,
 	}
 
 	if (it.wieldInfo != 0) {
-		s << "\nSó pode ser manejado adequadamente por ";
+		s << "\nSï¿½ pode ser manejado adequadamente por ";
 
 		if (it.wieldInfo & WIELDINFO_PREMIUM) {
 			s << "premium ";
