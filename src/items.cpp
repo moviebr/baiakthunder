@@ -218,6 +218,7 @@ void Items::clear()
 	items.clear();
 	reverseItemMap.clear();
 	nameToItems.clear();
+	inventory.clear();
 }
 
 bool Items::reload()
