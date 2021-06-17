@@ -78,7 +78,7 @@ class Monster final : public Creature
 			if (monster && monster->getLevel() > 0) {
 				return strDescription + ", level " + std::to_string(level) + '.';
 			} else {
-				return strDescription;
+				return strDescription + '.';
 			}
 		}
 
