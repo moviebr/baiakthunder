@@ -8,7 +8,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 		nextUseStaminaTime[playerId] = nil
 	end
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Você morreu.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Vocï¿½ morreu.")
 	player:say("ME FUDI", TALKTYPE_MONSTER_SAY)
 	if not deathListEnabled then
 		return
@@ -105,7 +105,7 @@ function onDeath(player, corpse, killer, mostDamageKiller, unjustified, mostDama
 	end
 	
 	if killer and killer:isPlayer() then
-		sendChannelMessage(12, TALKTYPE_CHANNEL_O, "O jogador ".. player:getName() .. " ["..player:getLevel().."] morreu pelo jogador ".. killer:getName() .." ["..killer:getLevel().."].")
+		player:sendTextMessage(TALKTYPE_CHANNEL_O, "O jogador ".. player:getName() .. " ["..player:getLevel().."] morreu pelo jogador ".. killer:getName() .." ["..killer:getLevel().."].", 12)
 		Game.broadcastMessage(player:getName().." ["..player:getLevel().."] acabou de ser morto pelo jogador "..killer:getName().." ["..killer:getLevel().."].", MESSAGE_STATUS_SMALL)
 	end
 	
