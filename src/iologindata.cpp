@@ -990,7 +990,7 @@ bool IOLoginData::savePlayer(Player* player)
 			}
 		}
 
-		if (!saveItems(player, itemList, rewardQuery, propWriteStream)) {
+		if (!saveItems(player, itemList, rewardQuery, propWriteStream, openContainers)) {
 			return false;
 		}
 	}
