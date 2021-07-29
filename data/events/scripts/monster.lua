@@ -52,7 +52,7 @@ function Monster:onDropLoot(corpse)
 			end
 		end
 	else
-		local text = ("Loot de %s: nada (devivo à baixa stamina)"):format(mType:getNameDescription())
+		local text = ("Loot de %s: nada (devivo Ã  baixa stamina)"):format(mType:getNameDescription())
 		local party = player:getParty()
 		if party then
 			party:broadcastPartyLoot(text)
@@ -65,3 +65,22 @@ function Monster:onDropLoot(corpse)
 		end
 	end
 end
+
+function Monster:onSpawn(position, startup, artificial)
+	--[[
+Arguments:
+position:
+the position the monster is placed at
+startup:
+true: the monster is spawned on server startup
+false: the monster is spawned after server startup
+artificial:
+true: the monster is spawned from a spawn on the map
+false: the monster is spawned artificially via Game.createMonster(name, pos)
+
+Return value:
+true: allows the monster to be spawned and placed on the map
+false: disallows the monster to be spawned and placed on the map
+	--]]
+	return true
+ end
