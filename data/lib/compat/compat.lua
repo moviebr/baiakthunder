@@ -1450,7 +1450,7 @@ end
 doBroadcastMessage = broadcastMessage
 
 function Guild.addMember(self, player)
-	return player:setGuild(guild)
+	return player:setGuild(self)
 end
 function Guild.removeMember(self, player)
 	return player:getGuild() == self and player:setGuild(nil)
