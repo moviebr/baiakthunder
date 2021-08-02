@@ -102,7 +102,11 @@ end
 
 function getCount(string)
 	local b, e = string:find("%d+")
-	return b and e and tonumber(string:sub(b, e)) or -1
+	local tonumber = tonumber(string:sub(b, e))
+	if tonumber > 2 ^ 32 - 1 then
+		print("Warning: Casting value to 32bit to prevent crash\n"..debug.traceback())
+	end
+	return b and e and math.min(2 ^ 32 - 1, tonumber) or -1
 end
 
 function Player.removeTotalMoney(self, amount)
@@ -131,4 +135,21 @@ end
 
 function Player.getTotalMoney(self)
 	return self:getMoney() + self:getBankBalance()
+end
+
+function getMoneyCount(string)
+	local b, e = string:find("%d+")
+	local tonumber = tonumber(string:sub(b, e))
+	if tonumber > 2 ^ 32 - 1 then
+		print("Warning: Casting value to 32bit to prevent crash\n"..debug.traceback())
+	end
+	local money = b and e and math.min(2 ^ 32 - 1, tonumber) or -1
+	if isValidMoney(money) then
+		return money
+	end
+	return -1
+end
+
+function isValidMoney(money)
+	return isNumber(money) and money > 0
 end
