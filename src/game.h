@@ -441,6 +441,11 @@ class Game
 		void addDistanceEffect(const Position& fromPos, const Position& toPos, uint8_t effect);
 		static void addDistanceEffect(const SpectatorVector& spectators, const Position& fromPos, const Position& toPos, uint8_t effect);
 
+		void setAccountStorageValue(const uint32_t accountId, const uint32_t key, const int32_t value);
+		int32_t getAccountStorageValue(const uint32_t accountId, const uint32_t key) const;
+		void loadAccountStorageValues();
+		bool saveAccountStorageValues() const;
+
 		void startDecay(Item* item);
 		void stopDecay(Item* item);
 		void internalDecayItem(Item* item);
@@ -505,6 +510,7 @@ class Game
 		std::unordered_map<uint32_t, Guild*> guilds;
 		std::unordered_map<uint16_t, Item*> uniqueItems;
 		std::map<uint32_t, uint32_t> stages;
+		std::unordered_map<uint32_t, std::unordered_map<uint32_t, int32_t>> accountStorageMap;
 
 		std::vector<Creature*> checkCreatureLists[EVENT_CREATURECOUNT];
 
