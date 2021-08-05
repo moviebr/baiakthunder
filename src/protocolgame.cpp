@@ -745,6 +745,10 @@ void ProtocolGame::parseAutoWalk(NetworkMessage& msg)
 
 void ProtocolGame::parseSetOutfit(NetworkMessage& msg)
 {
+	if (!player || player->isRemoved()) {
+		return;
+	}
+	
 	Outfit_t newOutfit;
 	newOutfit.lookType = msg.get<uint16_t>();
 	newOutfit.lookHead = msg.getByte();
