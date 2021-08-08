@@ -9684,6 +9684,7 @@ int LuaScriptInterface::luaPlayerSetGhostMode(lua_State* L)
 
 	Tile* tile = player->getTile();
 	const Position& position = player->getPosition();
+	const bool isInvisible = player->isInvisible();
 
 	SpectatorVector spectators;
 	g_game.map.getSpectators(spectators, position, true, true);
@@ -9696,6 +9697,10 @@ int LuaScriptInterface::luaPlayerSetGhostMode(lua_State* L)
 				tmpPlayer->sendCreatureAppear(player, position, showEffect);
 			}
 		} else {
+			if (isInvisible) {
+				continue;
+			}
+			
 			tmpPlayer->sendCreatureChangeVisible(player, !enabled);
 		}
 	}
