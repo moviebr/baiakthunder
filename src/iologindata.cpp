@@ -667,7 +667,7 @@ bool IOLoginData::saveItems(const Player* player, const ItemBlockList& itemList,
 			} else {
 				container->setAutoOpen(it->second);
 			}
-			queue.emplace_back(container, runningId);
+			containers.emplace_back(container, runningId);
 		}
 
 		propWriteStream.clear();
