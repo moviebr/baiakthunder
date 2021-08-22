@@ -105,13 +105,14 @@ void Npc::reset()
 	ignoreHeight = false;
 	focusCreature = 0;
 
-  moneyType = 0;
+	moneyType = 0;
 
 	delete npcEventHandler;
 	npcEventHandler = nullptr;
 
 	parameters.clear();
 	shopPlayerSet.clear();
+	spectators.clear();
 }
 
 void Npc::reload()
