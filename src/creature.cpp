@@ -251,6 +251,12 @@ bool Creature::getNextStep(Direction& dir, uint32_t&)
 
 void Creature::startAutoWalk(const std::vector<Direction>& listDir)
 {
+	Player* player = getPlayer();
+	if (player && player->isMovementBlocked()) {
+		player->sendCancelWalk();
+		return;
+	}
+
 	listWalkDir = listDir;
 
 	size_t size = 0;
@@ -1102,7 +1108,7 @@ void Creature::onGainExperience(uint64_t gainExp, Creature* target)
 	master->onGainExperience(gainExp, target);
 
 	std::ostringstream strExp;
-	strExp << ucfirst(getNameDescription()) + " ganhou " + std::to_string(gainExp) + (gainExp != 1 ? " pontos de experiência." : " ponto de experiência.");
+	strExp << ucfirst(getNameDescription()) + " ganhou " + std::to_string(gainExp) + (gainExp != 1 ? " pontos de experiÃªncia." : " ponto de experiÃªncia.");
 	g_game.addAnimatedText(strExp.str(), position, TEXTCOLOR_WHITE);
 }
 
