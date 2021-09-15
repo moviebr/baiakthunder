@@ -7,10 +7,10 @@ function talk.onSay(player, words, param)
     if action == "add" then
         local item = split[2]:gsub("%s+", "", 1)
         local itemType = ItemType(item)
-        if itemType:getId() == 0 then
+        if not itemType or itemType:getId() == 0 then
             itemType = ItemType(tonumber(item))
             if itemType:getId() == 0 then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "N„o tem item com esse id ou nome.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "N√£o tem item com esse id ou nome.")
                 return false
             end
         end
@@ -20,18 +20,18 @@ function talk.onSay(player, words, param)
         for i = AUTOLOOT_STORAGE_START, AUTOLOOT_STORAGE_END do
             local storage = player:getStorageValue(i)
             if size == AUTO_LOOT_MAX_ITEMS then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Sua lista est· cheia, remova algum para adicionar um novo.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Sua lista est√° cheia, remova algum para adicionar um novo.")
                 break
             end
 
             if storage == itemType:getId() then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." j· est· na sua lista.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." j√° est√° na sua lista.")
                 break
             end
 
             if storage <= 0 then
                 player:setStorageValue(i, itemType:getId())
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." foi adicionado ‡ sua lista.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." foi adicionado a sua lista.")
                 break
             end
 
@@ -43,7 +43,7 @@ function talk.onSay(player, words, param)
         if itemType:getId() == 0 then
             itemType = ItemType(tonumber(item))
             if itemType:getId() == 0 then
-                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "N„o existe um item com esse id ou nome.")
+                player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "N√£o existe um item com esse id ou nome.")
                 return false
             end
         end
@@ -57,7 +57,7 @@ function talk.onSay(player, words, param)
             end
         end
 
-        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." n„o foi achado na sua lista.")
+        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, itemName .." n√£o foi achado na sua lista.")
     elseif action == "list" then
         local text = "-- Auto Loot List --\n"
         local count = 1
@@ -89,7 +89,7 @@ function talk.onSay(player, words, param)
             player:setStorageValue(AUTOLOOT_STORAGE_GOLD, 1)
         end
     else
-        player:popupFYI("Veja abaixo os comandos disponÌveis do Auto Loot:\n\n!autoloot gold\n!autoloot list\n!autoloot add, itemname\n!autoloot remove, itemname\n!autoloot clear")
+        player:popupFYI("Veja abaixo os comandos dispon√≠veis do Auto Loot:\n\n!autoloot gold\n!autoloot list\n!autoloot add, itemname\n!autoloot remove, itemname\n!autoloot clear")
     end
 
     return false
