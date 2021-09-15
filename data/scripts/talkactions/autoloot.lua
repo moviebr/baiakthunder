@@ -9,7 +9,7 @@ function talk.onSay(player, words, param)
         local itemType = ItemType(item)
         if not itemType or itemType:getId() == 0 then
             itemType = ItemType(tonumber(item))
-            if itemType:getId() == 0 then
+            if not itemType or itemType:getId() == 0 then
                 player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Não tem item com esse id ou nome.")
                 return false
             end
