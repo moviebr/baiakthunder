@@ -717,6 +717,11 @@ Position getNextPosition(Direction direction, Position pos)
 
 Direction getDirectionTo(const Position& from, const Position& to)
 {
+
+	if (from == to) {
+		return DIRECTION_NONE;
+	}
+
 	Direction dir;
 
 	int32_t x_offset = Position::getOffsetX(from, to);
@@ -1253,200 +1258,200 @@ const char* getReturnMessage(ReturnValue value)
 {
 	switch (value) {
 		case RETURNVALUE_REWARDCHESTISEMPTY:
-			return "O baú está vazio no momento. Você não participou de nenhuma batalha nos últimos sete dias ou já reivindicou sua recompensa.";
+			return "O baï¿½ estï¿½ vazio no momento. VocÃª NÃ£o participou de nenhuma batalha nos ï¿½ltimos sete dias ou jï¿½ reivindicou sua recompensa.";
 			
 		case RETURNVALUE_DESTINATIONOUTOFREACH:
-			return "O destino está fora do alcance.";
+			return "O destino estï¿½ fora do alcance.";
 
 		case RETURNVALUE_NOTMOVEABLE:
-			return "Você não pode mover este objeto.";
+			return "VocÃª NÃ£o pode mover este objeto.";
 
 		case RETURNVALUE_DROPTWOHANDEDITEM:
-			return "Solte o objeto de duas mãos primeiro.";
+			return "Solte o objeto de duas mï¿½os primeiro.";
 
 		case RETURNVALUE_BOTHHANDSNEEDTOBEFREE:
-			return "Ambas as mãos precisam estar livres.";
+			return "Ambas as mï¿½os precisam estar livres.";
 
 		case RETURNVALUE_CANNOTBEDRESSED:
-			return "Você não pode vestir este objeto.";
+			return "VocÃª NÃ£o pode vestir este objeto.";
 
 		case RETURNVALUE_PUTTHISOBJECTINYOURHAND:
-			return "Coloque esse objeto na sua mão.";
+			return "Coloque esse objeto na sua mï¿½o.";
 
 		case RETURNVALUE_PUTTHISOBJECTINBOTHHANDS:
-			return "Coloque este objeto nas duas mãos.";
+			return "Coloque este objeto nas duas mï¿½os.";
 
 		case RETURNVALUE_CANONLYUSEONEWEAPON:
-			return "Você pode usar apenas uma arma.";
+			return "VocÃª pode usar apenas uma arma.";
 
 		case RETURNVALUE_TOOFARAWAY:
-			return "Você está muito longe.";
+			return "VocÃª estï¿½ muito longe.";
 
 		case RETURNVALUE_FIRSTGODOWNSTAIRS:
-			return "Primeiro desça as escadas.";
+			return "Primeiro desÃ§a as escadas.";
 
 		case RETURNVALUE_FIRSTGOUPSTAIRS:
 			return "Primeiro suba as escadas.";
 
 		case RETURNVALUE_NOTENOUGHCAPACITY:
-			return "Este objeto é muito pesado para você carregar.";
+			return "Este objeto Ã© muito pesado para vocÃª carregar.";
 
 		case RETURNVALUE_CONTAINERNOTENOUGHROOM:
-			return "Você não pode colocar mais objetos neste contêiner.";
+			return "VocÃª NÃ£o pode colocar mais objetos neste contï¿½iner.";
 
 		case RETURNVALUE_NEEDEXCHANGE:
 		case RETURNVALUE_NOTENOUGHROOM:
-			return "Não há espaço suficiente.";
+			return "NÃ£o hÃ¡ espaÃ§o suficiente.";
 
 		case RETURNVALUE_CANNOTPICKUP:
-			return "Você não pode pegar este objeto.";
+			return "VocÃª NÃ£o pode pegar este objeto.";
 
 		case RETURNVALUE_CANNOTTHROW:
-			return "Você não pode jogar lá.";
+			return "VocÃª NÃ£o pode jogar lÃ¡.";
 
 		case RETURNVALUE_THEREISNOWAY:
-			return "Não tem jeito.";
+			return "NÃ£o tem jeito.";
 
 		case RETURNVALUE_THISISIMPOSSIBLE:
-			return "Isto é impossível.";
+			return "Isto Ã© impossï¿½vel.";
 
 		case RETURNVALUE_PLAYERISPZLOCKED:
-			return "Você não pode entrar em uma zona de proteção depois de atacar outro jogador.";
+			return "VocÃª nÃ£o pode entrar em uma zona de proteÃ§Ã£o depois de atacar outro jogador.";
 
 		case RETURNVALUE_PLAYERISNOTINVITED:
-			return "Você não está convidado.";
+			return "VocÃª nÃ£o estÃ¡ convidado.";
 
 		case RETURNVALUE_CREATUREDOESNOTEXIST:
-			return "Criatura não existe.";
+			return "Criatura nÃ£o existe.";
 
 		case RETURNVALUE_DEPOTISFULL:
-			return "Você não pode colocar mais itens neste depot.";
+			return "VocÃª NÃ£o pode colocar mais itens neste depot.";
 
 		case RETURNVALUE_CANNOTUSETHISOBJECT:
-			return "Você não pode usar este objeto.";
+			return "VocÃª NÃ£o pode usar este objeto.";
 
 		case RETURNVALUE_PLAYERWITHTHISNAMEISNOTONLINE:
-			return "Um jogador com este nome não está online.";
+			return "Um jogador com este nome NÃ£o estÃ¡ online.";
 
 		case RETURNVALUE_NOTREQUIREDLEVELTOUSERUNE:
-			return "Você não tem magic level necessário para usar esta runa.";
+			return "VocÃª NÃ£o tem magic level necessÃ¡rio para usar esta runa.";
 
 		case RETURNVALUE_YOUAREALREADYTRADING:
-			return "Você já está negociando.";
+			return "VocÃª jÃ¡ estÃ¡ negociando.";
 
 		case RETURNVALUE_THISPLAYERISALREADYTRADING:
-			return "Este jogador já está negociando.";
+			return "Este jogador jï¿½ estï¿½ negociando.";
 
 		case RETURNVALUE_YOUMAYNOTLOGOUTDURINGAFIGHT:
-			return "Você não pode sair durante ou imediatamente após uma luta!";
+			return "VocÃª NÃ£o pode sair durante ou imediatamente apï¿½s uma luta!";
 
 		case RETURNVALUE_DIRECTPLAYERSHOOT:
-			return "Você não tem permissão para atirar diretamente nos jogadores.";
+			return "VocÃª NÃ£o tem permissï¿½o para atirar diretamente nos jogadores.";
 
 		case RETURNVALUE_NOTENOUGHLEVEL:
-			return "Seu nível está muito baixo.";
+			return "Seu nÃ­vel estï¿½ muito baixo.";
 
 		case RETURNVALUE_NOTENOUGHMAGICLEVEL:
-			return "Você não tem magic level suficiente.";
+			return "VocÃª NÃ£o tem magic level suficiente.";
 
 		case RETURNVALUE_NOTENOUGHMANA:
-			return "Você não tem mana suficiente.";
+			return "VocÃª NÃ£o tem mana suficiente.";
 
 		case RETURNVALUE_NOTENOUGHSOUL:
-			return "Você não tem soul suficiente.";
+			return "VocÃª NÃ£o tem soul suficiente.";
 
 		case RETURNVALUE_YOUAREEXHAUSTED:
-			return "Você está exausto.";
+			return "VocÃª estï¿½ exausto.";
 
 		case RETURNVALUE_YOUCANNOTUSEOBJECTSTHATFAST:
-			return "Você não pode usar objetos tão rápido.";
+			return "VocÃª NÃ£o pode usar objetos tï¿½o rï¿½pido.";
 
 		case RETURNVALUE_CANONLYUSETHISRUNEONCREATURES:
-			return "Você só pode usá-lo em criaturas.";
+			return "VocÃª sï¿½ pode usï¿½-lo em criaturas.";
 
 		case RETURNVALUE_PLAYERISNOTREACHABLE:
-			return "O jogador não está acessível.";
+			return "O jogador NÃ£o estï¿½ acessï¿½vel.";
 
 		case RETURNVALUE_CREATUREISNOTREACHABLE:
-			return "Criatura não é alcançável.";
+			return "Criatura NÃ£o ï¿½ alcanï¿½ï¿½vel.";
 
 		case RETURNVALUE_ACTIONNOTPERMITTEDINPROTECTIONZONE:
-			return "Esta ação não é permitida em uma zona de proteção.";
+			return "Esta aï¿½ï¿½o NÃ£o ï¿½ permitida em uma zona de proteï¿½ï¿½o.";
 
 		case RETURNVALUE_YOUMAYNOTATTACKTHISPLAYER:
-			return "Você não pode atacar essa pessoa.";
+			return "VocÃª NÃ£o pode atacar essa pessoa.";
 
 		case RETURNVALUE_YOUMAYNOTATTACKTHISCREATURE:
-			return "Você não pode atacar esta criatura.";
+			return "VocÃª NÃ£o pode atacar esta criatura.";
 
 		case RETURNVALUE_YOUMAYNOTATTACKAPERSONINPROTECTIONZONE:
-			return "Você não pode atacar uma pessoa em uma zona de proteção.";
+			return "VocÃª NÃ£o pode atacar uma pessoa em uma zona de proteï¿½ï¿½o.";
 
 		case RETURNVALUE_YOUMAYNOTATTACKAPERSONWHILEINPROTECTIONZONE:
-			return "Você não pode atacar uma pessoa enquanto estiver em uma zona de proteção.";
+			return "VocÃª NÃ£o pode atacar uma pessoa enquanto estiver em uma zona de proteï¿½ï¿½o.";
 
 		case RETURNVALUE_YOUCANONLYUSEITONCREATURES:
-			return "Você só pode usá-lo em criaturas.";
+			return "VocÃª sï¿½ pode usï¿½-lo em criaturas.";
 
 		case RETURNVALUE_TURNSECUREMODETOATTACKUNMARKEDPLAYERS:
-			return "Desative o modo seguro se você realmente quiser atacar jogadores não marcados.";
+			return "Desative o modo seguro se vocÃª realmente quiser atacar jogadores NÃ£o marcados.";
 
 		case RETURNVALUE_YOUNEEDPREMIUMACCOUNT:
-			return "Você precisa de uma conta premium.";
+			return "VocÃª precisa de uma conta premium.";
 
 		case RETURNVALUE_YOUNEEDTOLEARNTHISSPELL:
-			return "Você deve aprender esse feitiço primeiro.";
+			return "VocÃª deve aprender esse feitiï¿½o primeiro.";
 
 		case RETURNVALUE_YOURVOCATIONCANNOTUSETHISSPELL:
-			return "Você tem a vocação errada para lançar este feitiço.";
+			return "VocÃª tem a vocaï¿½ï¿½o errada para lanï¿½ar este feitiï¿½o.";
 
 		case RETURNVALUE_YOUNEEDAWEAPONTOUSETHISSPELL:
-			return "Você precisa equipar uma arma para usar esse feitiço.";
+			return "VocÃª precisa equipar uma arma para usar esse feitiï¿½o.";
 
 		case RETURNVALUE_PLAYERISPZLOCKEDLEAVEPVPZONE:
-			return "Você não pode sair de uma zona pvp depois de atacar outro jogador.";
+			return "VocÃª NÃ£o pode sair de uma zona pvp depois de atacar outro jogador.";
 
 		case RETURNVALUE_PLAYERISPZLOCKEDENTERPVPZONE:
-			return "Você não pode entrar em uma zona pvp depois de atacar outro jogador.";
+			return "VocÃª NÃ£o pode entrar em uma zona pvp depois de atacar outro jogador.";
 
 		case RETURNVALUE_ACTIONNOTPERMITTEDINANOPVPZONE:
-			return "Esta ação não é permitida em uma zona noo pvp.";
+			return "Esta aï¿½ï¿½o NÃ£o ï¿½ permitida em uma zona noo pvp.";
 
 		case RETURNVALUE_YOUCANNOTLOGOUTHERE:
-			return "Você não pode deslogar aqui.";
+			return "VocÃª NÃ£o pode deslogar aqui.";
 
 		case RETURNVALUE_YOUNEEDAMAGICITEMTOCASTSPELL:
-			return "Você precisa de um item mágico para lançar este feitiço.";
+			return "VocÃª precisa de um item mï¿½gico para lanï¿½ar este feitiï¿½o.";
 
 		case RETURNVALUE_CANNOTCONJUREITEMHERE:
-			return "Você não pode conjurar itens aqui.";
+			return "VocÃª NÃ£o pode conjurar itens aqui.";
 
 		case RETURNVALUE_YOUNEEDTOSPLITYOURSPEARS:
-			return "Você precisa dividir suas lanças primeiro.";
+			return "VocÃª precisa dividir suas lanï¿½as primeiro.";
 
 		case RETURNVALUE_NAMEISTOOAMBIGUOUS:
-			return "O nome do jogador é ambíguo.";
+			return "O nome do jogador ï¿½ ambï¿½guo.";
 
 		case RETURNVALUE_CANONLYUSEONESHIELD:
-			return "Você pode usar apenas um escudo.";
+			return "VocÃª pode usar apenas um escudo.";
 
 		case RETURNVALUE_NOPARTYMEMBERSINRANGE:
 			return "Nenhum membro do grupo dentro do alcance.";
 
 		case RETURNVALUE_YOUARENOTTHEOWNER:
-			return "Você não é o dono.";
+			return "VocÃª NÃ£o ï¿½ o dono.";
 
 		case RETURNVALUE_NOSUCHRAIDEXISTS:
-			return "Não existe essa raid.";
+			return "NÃ£o existe essa raid.";
 
 		case RETURNVALUE_ANOTHERRAIDISALREADYEXECUTING:
-			return "Outra raid já está em execução.";
+			return "Outra raid jï¿½ estï¿½ em execuï¿½ï¿½o.";
 
 		case RETURNVALUE_TRADEPLAYERFARAWAY:
 			return "Trade player is too far away.";
 
 		case RETURNVALUE_YOUDONTOWNTHISHOUSE:
-			return "Você não é dono desta casa.";
+			return "VocÃª NÃ£o ï¿½ dono desta casa.";
 
 		case RETURNVALUE_TRADEPLAYERALREADYOWNSAHOUSE:
 			return "Trade player already owns a house.";
@@ -1455,13 +1460,13 @@ const char* getReturnMessage(ReturnValue value)
 			return "Trade player is currently the highest bidder of an auctioned house.";
 
 		case RETURNVALUE_YOUCANNOTTRADETHISHOUSE:
-			return "Você não pode trocar esta casa.";
+			return "VocÃª NÃ£o pode trocar esta casa.";
 
 		case RETURNVALUE_YOUDONTHAVEREQUIREDPROFESSION:
-			return "Você não tem a profissão necessária.";
+			return "VocÃª NÃ£o tem a profissï¿½o necessï¿½ria.";
 
 		default: // RETURNVALUE_NOTPOSSIBLE, etc
-			return "Desculpe, não é possível.";
+			return "Desculpe, NÃ£o ï¿½ possï¿½vel.";
 	}
 }
 
