@@ -42,6 +42,7 @@
 #include "weapons.h"
 #include "script.h"
 
+#define FMT_HEADER_ONLY
 #include <fmt/format.h>
 
 extern ConfigManager g_config;
