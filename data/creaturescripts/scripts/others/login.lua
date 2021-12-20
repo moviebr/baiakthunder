@@ -22,9 +22,6 @@ function onLogin(player)
 		Game.guildLeaderSquare(player:getId())
 	end
 
-	-- Stamina
-	nextUseStaminaTime[player.uid] = 0
-
 	-- Eventos
 	if player:getStorageValue(STORAGEVALUE_EVENTS) >= 1 then
 		player:teleportTo(player:getTown():getTemplePosition())

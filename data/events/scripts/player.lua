@@ -306,6 +306,11 @@ local function useStamina(player)
 	end
 
 	local playerId = player:getId()
+	
+	if not nextUseStaminaTime[playerId] then
+		nextUseStaminaTime[playerId] = 0
+	end
+
 	local currentTime = os.time()
 	local timePassed = currentTime - nextUseStaminaTime[playerId]
 	if timePassed <= 0 then
