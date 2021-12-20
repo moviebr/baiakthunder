@@ -2123,7 +2123,7 @@ void ProtocolGame::AddPlayerStats(NetworkMessage& msg)
         msg.add<uint16_t>(0);
     }
 
-	msg.add<uint32_t>(player->getFreeCapacity());
+	msg.add<uint32_t>(player->hasFlag(PlayerFlag_HasInfiniteCapacity) ? 1000000 : player->getFreeCapacity());
 
 	msg.add<uint32_t>(std::min<uint32_t>(player->getExperience(), 0x7FFFFFFF));
 
