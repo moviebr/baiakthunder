@@ -120,6 +120,11 @@ bool Party::leaveParty(Player* player)
 	player->sendCreatureSkull(player);
 	player->sendPlayerPartyIcons(leader);
 
+	// remove pending invitation icons from the screen
+	for (Player* invitee : inviteList) {
+		player->sendCreatureShield(invitee);
+	}
+
 	player->sendTextMessage(MESSAGE_INFO_DESCR, "Você saiu da party.");
 
 	updateSharedExperience();
@@ -183,21 +188,28 @@ bool Party::joinParty(Player& player)
 		return false;
 	}
 
-	auto it = std::find(inviteList.begin(), inviteList.end(), &player);
-	if (it == inviteList.end()) {
-		return false;
+	// first player accepted the invitation
+	// the party gets officially formed
+	// the leader can no longer take invitations from others
+	if (memberList.empty()) {
+		leader->clearPartyInvitations();
 	}
 
-	inviteList.erase(it);
+	// add player to the party
+	memberList.push_back(&player);
+	player.setParty(this);
 
 	std::ostringstream ss;
 	ss << player.getName() << " entrou na party.";
 	broadcastPartyMessage(MESSAGE_INFO_DESCR, ss.str());
 
-	player.setParty(this);
+	// remove player pending invitations to this and other parties
+	player.clearPartyInvitations();
 
+	// update player icon on the screen
 	g_game.updatePlayerShield(&player);
 
+	// update player-member party icons
 	for (Player* member : memberList) {
 		member->sendCreatureSkull(&player);
 		player.sendPlayerPartyIcons(member);
@@ -206,10 +218,16 @@ bool Party::joinParty(Player& player)
 	player.sendCreatureSkull(&player);
 	leader->sendCreatureSkull(&player);
 	player.sendPlayerPartyIcons(leader);
+	
+	// update player own skull
+	player.sendCreatureSkull(&player);
 
-	memberList.push_back(&player);
+	// show the new member who else is invited
+	for (Player* invitee : inviteList) {
+		player.sendCreatureShield(invitee);
+	}
 
-	player.removePartyInvitation(this);
+	// check the party eligibility for shared experience
 	updateSharedExperience();
 
 	const std::string& leaderName = leader->getName();
@@ -274,12 +292,16 @@ bool Party::invitePlayer(Player& player)
 	leader->sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
 
 	inviteList.push_back(&player);
+	player.addPartyInvitation(this);
 
 	leader->sendCreatureShield(&player);
 	player.sendCreatureShield(leader);
 
-	player.addPartyInvitation(this);
-
+	// update the invitation status for other members
+	for (Player* member : memberList) {
+		member->sendCreatureShield(&player);
+	}
+	
 	ss.str(std::string());
 	ss << leader->getName() << " convidou você para " << (leader->getSex() == PLAYERSEX_FEMALE ? "sua" : "sua") << " party.";
 	player.sendTextMessage(MESSAGE_INFO_DESCR, ss.str());
