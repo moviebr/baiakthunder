@@ -661,11 +661,11 @@ bool IOLoginData::saveItems(const Player* player, const ItemBlockList& itemList,
 		++runningId;
 
 		if (Container* container = item->getContainer()) {
-			auto it = openContainers.find(container);
-			if (it == openContainers.end()) {
+			auto u = openContainers.find(container);
+			if (u == openContainers.end()) {
 				container->resetAutoOpen();
 			} else {
-				container->setAutoOpen(it->second);
+				container->setAutoOpen(u->second);
 			}
 			containers.emplace_back(container, runningId);
 		}
