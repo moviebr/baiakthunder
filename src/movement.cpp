@@ -772,6 +772,7 @@ ReturnValue MoveEvent::EquipItem(MoveEvent* moveEvent, Player* player, Item* ite
 
 	if (needUpdateStats) {
 		player->sendStats();
+		player->sendSkills();
 	}
 
 	return RETURNVALUE_NOERROR;
@@ -847,6 +848,7 @@ ReturnValue MoveEvent::DeEquipItem(MoveEvent*, Player* player, Item* item, slots
 
 	if (needUpdateStats) {
 		player->sendStats();
+		player->sendSkills();
 	}
 
 	return RETURNVALUE_NOERROR;
